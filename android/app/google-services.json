@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "593816528052",
+    "project_id": "qr-maker-8a139",
+    "storage_bucket": "qr-maker-8a139.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593816528052:android:49e4774bd0c131c74ba3e1",
+        "android_client_info": {
+          "package_name": "com.mohammeddawood.qrmaker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "593816528052-vmh40q20iumals8jejjv1b3vi9tg361g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACiW9zr2UIAWsE1fOM-hF-lgLC8Nnwln0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "593816528052-vmh40q20iumals8jejjv1b3vi9tg361g.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "593816528052-fb7bo2c4tvpi78mvsuqc07suvqve8od9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mohammeddawood.qrmaker"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
