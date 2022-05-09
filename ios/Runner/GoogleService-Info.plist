@@ -3,23 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>593816528052-fb7bo2c4tvpi78mvsuqc07suvqve8od9.apps.googleusercontent.com</string>
+	<string>751257968857-g9qfhors4j5funk2khsmlrtmcqfh3mfq.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.593816528052-fb7bo2c4tvpi78mvsuqc07suvqve8od9</string>
+	<string>com.googleusercontent.apps.751257968857-g9qfhors4j5funk2khsmlrtmcqfh3mfq</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>593816528052-jvbtg9i4bgggco7qdv2cjr8bd21h72jk.apps.googleusercontent.com</string>
+	<string>751257968857-2c5o93c9uo5acaq5vk762kssfvmh94aa.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBhmcV97CBrI13oA6XKK4kzf_vXWO0f-Vs</string>
+	<string>AIzaSyCSj5KkC9E79CQTO6DMduv2lgJLjBwiGQc</string>
 	<key>GCM_SENDER_ID</key>
-	<string>593816528052</string>
+	<string>751257968857</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.mohammeddawood.qrmaker</string>
+	<string>com.mohammeddawood.qr-maker-app</string>
 	<key>PROJECT_ID</key>
-	<string>qr-maker-8a139</string>
+	<string>qr-maker-app</string>
 	<key>STORAGE_BUCKET</key>
-	<string>qr-maker-8a139.appspot.com</string>
+	<string>qr-maker-app.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:593816528052:ios:d154fba9442c0c204ba3e1</string>
+	<string>1:751257968857:ios:0413f6eaa7edf062d69ec8</string>
 </dict>
 </plist>

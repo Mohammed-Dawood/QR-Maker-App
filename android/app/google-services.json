@@ -1,41 +1,34 @@
 {
   "project_info": {
-    "project_number": "593816528052",
-    "project_id": "qr-maker-8a139",
-    "storage_bucket": "qr-maker-8a139.appspot.com"
+    "project_number": "751257968857",
+    "project_id": "qr-maker-app",
+    "storage_bucket": "qr-maker-app.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:593816528052:android:49e4774bd0c131c74ba3e1",
+        "mobilesdk_app_id": "1:751257968857:android:3ee026e4ee2f4a57d69ec8",
         "android_client_info": {
-          "package_name": "com.mohammeddawood.qrmaker"
+          "package_name": "com.mohammeddawood.qr_maker_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "593816528052-vmh40q20iumals8jejjv1b3vi9tg361g.apps.googleusercontent.com",
+          "client_id": "751257968857-0sge1cpnl4jdrqvkdmbrmqubcgcofdo0.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyACiW9zr2UIAWsE1fOM-hF-lgLC8Nnwln0"
+          "current_key": "AIzaSyDbdBB9FNxN8mxlEHDICvYAEe7W0fsjKEc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "593816528052-vmh40q20iumals8jejjv1b3vi9tg361g.apps.googleusercontent.com",
+              "client_id": "751257968857-0sge1cpnl4jdrqvkdmbrmqubcgcofdo0.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "593816528052-fb7bo2c4tvpi78mvsuqc07suvqve8od9.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.mohammeddawood.qrmaker"
-              }
             }
           ]
         }
