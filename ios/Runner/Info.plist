@@ -49,5 +49,18 @@
 	<false/>
 	<key>io.flutter.embedded_views_preview</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>This app needs camera access to scan QR codes</string>	
 </dict>
 </plist>
+
+
+
+<!-- 
+if any fel in ISO u can use this code
+
+	<key>io.flutter.embedded_views_preview</key>
+	<true/>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/> 
+	-->

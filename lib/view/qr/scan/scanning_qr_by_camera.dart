@@ -16,20 +16,31 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
   QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
 
+  // In order to get hot reload to work we need to pause the camera if the platform
+  // is android, or resume the camera if the platform is iOS.
   @override
-  void dispose() {
-    controller?.dispose();
-    super.dispose();
-  }
-
-  @override
-  void reassemble() async {
+  void reassemble() {
     super.reassemble();
     if (Platform.isAndroid) {
-      await controller!.pauseCamera();
+      controller!.pauseCamera();
     }
     controller!.resumeCamera();
   }
+
+  // @override
+  // void dispose() {
+  //   controller?.dispose();
+  //   super.dispose();
+  // }
+
+  // @override
+  // void reassemble() async {
+  //   super.reassemble();
+  //   if (Platform.isAndroid) {
+  //     await controller!.pauseCamera();
+  //   }
+  //   controller!.resumeCamera();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +107,7 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
             ),
           ),
           Positioned(
-            top: 20,
+            top: 200,
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               decoration: BoxDecoration(
@@ -149,5 +160,11 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
         const SnackBar(content: Text('no Permission')),
       );
     }
+  }
+
+  @override
+  void dispose() {
+    controller?.dispose();
+    super.dispose();
   }
 }

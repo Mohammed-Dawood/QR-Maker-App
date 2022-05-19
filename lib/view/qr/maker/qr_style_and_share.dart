@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/controller/qr_share_and_save_controller.dart';
 
 class QrStyleAndShare extends StatefulWidget {
@@ -215,7 +215,7 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                                             pickerColor: eyesColor,
                                             paletteType: PaletteType.hueWheel,
                                             colorPickerWidth: 300,
-                                            showLabel: false,
+                                            labelTypes: const [],
                                             hexInputBar: true,
                                             onColorChanged: (color) => setState(
                                               () {
@@ -271,7 +271,7 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                                             pickerColor: dataColor,
                                             paletteType: PaletteType.hueWheel,
                                             colorPickerWidth: 300,
-                                            showLabel: false,
+                                            labelTypes: const [],
                                             hexInputBar: true,
                                             onColorChanged: (color) => setState(
                                               () {
@@ -327,7 +327,7 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                                             pickerColor: backgroundColor,
                                             paletteType: PaletteType.hueWheel,
                                             colorPickerWidth: 300,
-                                            showLabel: false,
+                                            labelTypes: const [],
                                             hexInputBar: true,
                                             onColorChanged: (color) => setState(
                                               () {
