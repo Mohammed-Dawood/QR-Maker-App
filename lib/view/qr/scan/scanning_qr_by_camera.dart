@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class ScanningQRByCamera extends StatefulWidget {
   const ScanningQRByCamera({Key? key}) : super(key: key);
@@ -27,21 +27,6 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
     controller!.resumeCamera();
   }
 
-  // @override
-  // void dispose() {
-  //   controller?.dispose();
-  //   super.dispose();
-  // }
-
-  // @override
-  // void reassemble() async {
-  //   super.reassemble();
-  //   if (Platform.isAndroid) {
-  //     await controller!.pauseCamera();
-  //   }
-  //   controller!.resumeCamera();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,18 +35,21 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
         actions: [
           IconButton(
             icon: FutureBuilder<bool?>(
-                future: controller?.getFlashStatus(),
-                builder: (context, snapshot) {
-                  if (snapshot.data != null) {
-                    return Icon(
-                        snapshot.data! ? Icons.flash_on : Icons.flash_off);
-                  } else {
-                    return const Icon(Icons.flash_off);
-                  }
-                }),
+              future: controller?.getFlashStatus(),
+              builder: (context, snapshot) {
+                if (snapshot.data != null) {
+                  return Icon(
+                      snapshot.data! ? Icons.flash_off : Icons.flash_on);
+                } else {
+                  return const Icon(Icons.flash_on);
+                }
+              },
+            ),
             onPressed: () async {
               await controller?.toggleFlash();
-              setState(() {});
+              setState(
+                () {},
+              );
             },
           ),
           IconButton(
@@ -89,15 +77,13 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
             bottom: 50,
             child: ElevatedButton(
               onPressed: () async {
-                if (await canLaunch('${result!.code}')) {
-                  await launch(
-                    '${result!.code}',
-                    forceSafariVC: true,
-                    forceWebView: true,
-                    enableJavaScript: true,
-                  );
+                final String url = '${result!.code}';
+
+                if (await canLaunchUrlString(url)) {
+                  launchUrlString(url);
                 } else {
                   throw 'Problem launching ${result!.code}';
+                  print('QR Code ERROR');
                 }
               },
               child: Text(
@@ -106,16 +92,6 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
               ),
             ),
           ),
-          Positioned(
-            top: 200,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              decoration: BoxDecoration(
-                color: Colors.white24,
-                borderRadius: BorderRadius.circular(8),
-              ),
-            ),
-          )
         ],
       ),
     );
@@ -168,3 +144,30 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
     super.dispose();
   }
 }
+
+
+
+
+
+
+//  Positioned(
+//             bottom: 50,
+//             child: ElevatedButton(
+//               onPressed: () async {
+//                 if (await canLaunch('${result!.code}')) {
+//                   await launch(
+//                     '${result!.code}',
+//                     forceSafariVC: true,
+//                     forceWebView: true,
+//                     enableJavaScript: true,
+//                   );
+//                 } else {
+//                   throw 'Problem launching ${result!.code}';
+//                 }
+//               },
+//               child: Text(
+//                 result != null ? 'Result : ${result!.code}' : 'Scan QR Code',
+//                 maxLines: 1,
+//               ),
+//             ),
+//           ),

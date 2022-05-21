@@ -31,7 +31,7 @@ class MainQrScan extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton.icon(
                   onPressed: () => Get.to(
-                    const ScanningQRByCamera(),
+                    () => const ScanningQRByCamera(),
                   ),
                   icon: const Icon(
                     Icons.qr_code_scanner,
