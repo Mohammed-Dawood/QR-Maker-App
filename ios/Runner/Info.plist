@@ -49,11 +49,13 @@
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>https</string>
-		<string>http</string>
 		<string>tel</string>
+		<string>http</string>
+		<string>wifi</string>
+		<string>https</string>		
 		<string>sms</string>
 		<string>mailto</string>
+		<string>facetime</string>
 	</array>
 	<key>io.flutter.embedded_views_preview</key>
 	<true/>

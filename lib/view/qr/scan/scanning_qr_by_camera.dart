@@ -80,15 +80,18 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
                 final String url = '${result!.code}';
 
                 if (await canLaunchUrlString(url)) {
-                  launchUrlString(url);
+                  await launchUrlString(url);
                 } else {
-                  throw 'Problem launching ${result!.code}';
-                  print('QR Code ERROR');
+                  throw 'Could not launch ${result!.code}';
                 }
               },
-              child: Text(
-                result != null ? 'Result : ${result!.code}' : 'Scan QR Code',
-                maxLines: 1,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 18),
+                child: Text(
+                  // result != null ? 'Result : ${result!.code}' : 'Scan QR Code',
+                  result != null ? 'Go to link ' : 'Scan QR Code',
+                  maxLines: 1,
+                ),
               ),
             ),
           ),
@@ -171,3 +174,4 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
 //               ),
 //             ),
 //           ),
+
