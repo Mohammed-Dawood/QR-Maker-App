@@ -135,7 +135,9 @@ class _MainQrState extends State<MainQr> {
         iconSize: (isScreenWidth(context)) ? 40 : 50,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.qr_code_scanner),
+            icon: Icon(
+              Icons.qr_code_scanner,
+            ),
             label: 'Scan',
           ),
           BottomNavigationBarItem(

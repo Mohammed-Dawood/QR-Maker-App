@@ -138,7 +138,9 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                             children: [
                               Text(
                                 'Gap',
-                                style: Theme.of(context).textTheme.headline3,
+                                style: (isScreenWidth(context))
+                                    ? Theme.of(context).textTheme.headline3
+                                    : Theme.of(context).textTheme.headline2,
                               ),
                               Switch(
                                 value: gapSwitch,
@@ -158,7 +160,9 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                             children: [
                               Text(
                                 'Eyes',
-                                style: Theme.of(context).textTheme.headline3,
+                                style: (isScreenWidth(context))
+                                    ? Theme.of(context).textTheme.headline3
+                                    : Theme.of(context).textTheme.headline2,
                               ),
                               Switch(
                                 value: eyesSwitch,
@@ -178,7 +182,9 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                             children: [
                               Text(
                                 'Data',
-                                style: Theme.of(context).textTheme.headline3,
+                                style: (isScreenWidth(context))
+                                    ? Theme.of(context).textTheme.headline3
+                                    : Theme.of(context).textTheme.headline2,
                               ),
                               Switch(
                                 value: dataSwitch,
@@ -198,7 +204,9 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                             children: [
                               Text(
                                 'Eyes Color',
-                                style: Theme.of(context).textTheme.headline3,
+                                style: (isScreenWidth(context))
+                                    ? Theme.of(context).textTheme.headline3
+                                    : Theme.of(context).textTheme.headline2,
                               ),
                               IconButton(
                                 onPressed: () {
@@ -243,7 +251,7 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                                 },
                                 icon: Icon(
                                   Icons.color_lens,
-                                  size: 30,
+                                  size: (isScreenWidth(context)) ? 30 : 35,
                                   color: eyesColor,
                                 ),
                               )
@@ -254,7 +262,9 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                             children: [
                               Text(
                                 'Data Color',
-                                style: Theme.of(context).textTheme.headline3,
+                                style: (isScreenWidth(context))
+                                    ? Theme.of(context).textTheme.headline3
+                                    : Theme.of(context).textTheme.headline2,
                               ),
                               IconButton(
                                 onPressed: () {
@@ -299,7 +309,7 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                                 },
                                 icon: Icon(
                                   Icons.color_lens,
-                                  size: 30,
+                                  size: (isScreenWidth(context)) ? 30 : 35,
                                   color: dataColor,
                                 ),
                               )
@@ -310,7 +320,9 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                             children: [
                               Text(
                                 'Background',
-                                style: Theme.of(context).textTheme.headline3,
+                                style: (isScreenWidth(context))
+                                    ? Theme.of(context).textTheme.headline3
+                                    : Theme.of(context).textTheme.headline2,
                               ),
                               IconButton(
                                 onPressed: () {
@@ -355,7 +367,7 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                                 },
                                 icon: Icon(
                                   Icons.color_lens,
-                                  size: 30,
+                                  size: (isScreenWidth(context)) ? 30 : 35,
                                   color: backgroundColor,
                                 ),
                               )
