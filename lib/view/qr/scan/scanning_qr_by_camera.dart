@@ -16,6 +16,9 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
   QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
 
+  bool isScreenWidth(BuildContext context) =>
+      MediaQuery.of(context).size.width < 600;
+
   // In order to get hot reload to work we need to pause the camera if the platform
   // is android, or resume the camera if the platform is iOS.
   @override
@@ -31,7 +34,14 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Scanner'),
+        title: Text(
+          'Scanner',
+          style: TextStyle(fontSize: (isScreenWidth(context)) ? 20 : 28),
+        ),
+        iconTheme: IconThemeData(
+          size: (isScreenWidth(context)) ? 24 : 30,
+          color: Colors.white,
+        ),
         actions: [
           IconButton(
             icon: FutureBuilder<bool?>(
@@ -39,7 +49,8 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
               builder: (context, snapshot) {
                 if (snapshot.data != null) {
                   return Icon(
-                      snapshot.data! ? Icons.flash_off : Icons.flash_on);
+                    snapshot.data! ? Icons.flash_off : Icons.flash_on,
+                  );
                 } else {
                   return const Icon(Icons.flash_on);
                 }
@@ -57,7 +68,9 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
                 future: controller?.getCameraInfo(),
                 builder: (context, snapshot) {
                   if (snapshot.data != null) {
-                    return const Icon(Icons.cameraswitch);
+                    return const Icon(
+                      Icons.cameraswitch,
+                    );
                   } else {
                     return Container();
                   }
@@ -86,10 +99,14 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
                 }
               },
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 18),
+                padding: (isScreenWidth(context))
+                    ? const EdgeInsets.symmetric(vertical: 18)
+                    : const EdgeInsets.symmetric(vertical: 20),
                 child: Text(
                   // result != null ? 'Result : ${result!.code}' : 'Scan QR Code',
                   result != null ? 'Go to link ' : 'Scan QR Code',
+                  style:
+                      TextStyle(fontSize: (isScreenWidth(context)) ? 18 : 25),
                   maxLines: 1,
                 ),
               ),

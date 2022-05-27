@@ -22,6 +22,10 @@ class _MainQrState extends State<MainQr> {
     const MainQrScan(),
     const MainQrMake(),
   ];
+
+  bool isScreenWidth(BuildContext context) =>
+      MediaQuery.of(context).size.width < 600;
+
   @override
   Widget build(BuildContext context) {
     // final user = FirebaseAuth.instance.currentUser!;
@@ -29,9 +33,17 @@ class _MainQrState extends State<MainQr> {
       appBar: AppBar(
         title: Text(
           title[selectScreen],
+          style: TextStyle(
+            fontSize: (isScreenWidth(context)) ? 20 : 28,
+          ),
+        ),
+        iconTheme: IconThemeData(
+          size: (isScreenWidth(context)) ? 24 : 30,
+          color: Colors.white,
         ),
       ),
       drawer: Drawer(
+        width: (isScreenWidth(context)) ? 300 : 400,
         child: GetBuilder<ThemeController>(
           init: ThemeController(),
           builder: (ThemeController controller) => Container(
@@ -120,7 +132,7 @@ class _MainQrState extends State<MainQr> {
             },
           );
         },
-        iconSize: 40,
+        iconSize: (isScreenWidth(context)) ? 40 : 50,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.qr_code_scanner),

@@ -35,7 +35,6 @@ class LightTheme {
       elevation: 10,
       titleTextStyle: const TextStyle(
         color: Colors.white,
-        fontSize: 22,
         fontWeight: FontWeight.bold,
       ),
     ),

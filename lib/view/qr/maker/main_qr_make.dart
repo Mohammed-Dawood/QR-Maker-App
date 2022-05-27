@@ -18,6 +18,9 @@ import 'package:qr_maker_app/view/qr/maker/qr_text_field/whats_upp.dart';
 class MainQrMake extends StatelessWidget {
   const MainQrMake({Key? key}) : super(key: key);
 
+  bool isScreenWidth(BuildContext context) =>
+      MediaQuery.of(context).size.width < 600;
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ThemeController>(
@@ -41,8 +44,8 @@ class MainQrMake extends StatelessWidget {
               right: 10,
             ),
             child: GridView(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: (isScreenWidth(context)) ? 3 : 5,
               ),
               children: [
                 LinkToTextField(

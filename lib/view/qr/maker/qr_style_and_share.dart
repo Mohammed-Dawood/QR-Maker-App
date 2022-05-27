@@ -29,6 +29,9 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
 
   ScreenshotController screenshotController = ScreenshotController();
 
+  bool isScreenWidth(BuildContext context) =>
+      MediaQuery.of(context).size.width < 600;
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ThemeController>(
@@ -46,7 +49,14 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
-            title: const Text('QR Style'),
+            title: Text(
+              'QR Style',
+              style: TextStyle(fontSize: (isScreenWidth(context)) ? 20 : 28),
+            ),
+            iconTheme: IconThemeData(
+              size: (isScreenWidth(context)) ? 24 : 30,
+              color: Colors.white,
+            ),
             actions: [
               GetBuilder<QrShareAndSaveController>(
                 init: QrShareAndSaveController(),
@@ -55,7 +65,9 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                     final image = await screenshotController.capture();
                     controller.saveAndShare(image!);
                   },
-                  icon: const Icon(Icons.share),
+                  icon: const Icon(
+                    Icons.share,
+                  ),
                 ),
               ),
             ],
@@ -74,7 +86,7 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                         child: Screenshot(
                           controller: screenshotController,
                           child: QrImage(
-                            size: 200,
+                            size: (isScreenWidth(context)) ? 200 : 250,
                             gapless: gapSwitch,
                             data: widget.valueQr,
                             version: QrVersions.auto,
@@ -111,10 +123,10 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(
+                  padding: EdgeInsets.only(
                     top: 50,
-                    left: 20,
-                    right: 20,
+                    left: (isScreenWidth(context)) ? 20 : 100,
+                    right: (isScreenWidth(context)) ? 20 : 100,
                   ),
                   child: Card(
                     child: Padding(
