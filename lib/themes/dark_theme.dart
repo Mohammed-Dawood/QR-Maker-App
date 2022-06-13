@@ -75,6 +75,9 @@ class DarkTheme {
       thumbColor: MaterialStateProperty.all(Colors.white),
       trackColor: MaterialStateProperty.all(Colors.grey.shade900),
     ),
+    dialogTheme: const DialogTheme(
+      backgroundColor: Colors.white,
+    ),
     hintColor: Colors.black45,
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: Colors.red,

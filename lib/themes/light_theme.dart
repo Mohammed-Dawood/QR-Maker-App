@@ -72,7 +72,7 @@ class LightTheme {
       margin: const EdgeInsets.all(10),
     ),
     dialogTheme: const DialogTheme(
-      backgroundColor: Colors.red,
+      backgroundColor: Colors.white,
     ),
     hintColor: Colors.black45,
     floatingActionButtonTheme: FloatingActionButtonThemeData(

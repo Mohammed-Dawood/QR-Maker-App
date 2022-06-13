@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:validators/validators.dart';
 import 'package:intl_phone_field/phone_number.dart';
@@ -16,23 +17,24 @@ class MakeVCard extends StatefulWidget {
 
 class _MakeVCardState extends State<MakeVCard> {
   var valueQr = '';
-  var completePhoneNumberMobil = '';
+
+  var completePhoneNumberFax = '';
   var completePhoneNumberWork = '';
   var completePhoneNumberHome = '';
-  var completePhoneNumberFax = '';
+  var completePhoneNumberMobil = '';
 
   GlobalKey<FormState> validateKey = GlobalKey<FormState>();
 
-  TextEditingController nameController = TextEditingController();
-  TextEditingController lastNameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
   TextEditingController urlController = TextEditingController();
-  TextEditingController dateController = TextEditingController();
-  TextEditingController streetController = TextEditingController();
   TextEditingController zipController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController bDayController = TextEditingController();
   TextEditingController cityController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController stateController = TextEditingController();
+  TextEditingController streetController = TextEditingController();
   TextEditingController countryController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -450,7 +452,7 @@ class _MakeVCardState extends State<MakeVCard> {
                       Card(
                         child: TextFormField(
                           cursorWidth: 3,
-                          controller: dateController,
+                          controller: bDayController,
                           keyboardType: TextInputType.datetime,
                           textInputAction: TextInputAction.next,
                           cursorColor: Theme.of(context).primaryColor,
@@ -458,8 +460,29 @@ class _MakeVCardState extends State<MakeVCard> {
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
                           ),
+                          onTap: () async {
+                            // Below line stops keyboard from appearing
+                            FocusScope.of(context).requestFocus(FocusNode());
+                            DateTime? newDate = await showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(1900),
+                              lastDate: DateTime(2100),
+                              initialDatePickerMode: DatePickerMode.year,
+                            );
+                            if (newDate != null) {
+                              String formattedDate =
+                                  DateFormat('yyyyMMdd').format(newDate);
+                              setState(
+                                () {
+                                  bDayController.text =
+                                      formattedDate; //set output date to TextField value.
+                                },
+                              );
+                            }
+                          },
                           decoration: InputDecoration(
-                            hintText: 'Date of birth (YYYY-MM-DD)',
+                            hintText: 'Date of birth',
                             filled: true,
                             fillColor: Colors.white,
                             prefixIcon: Icon(
@@ -668,9 +691,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                       "TEL;TYPE=Home: $completePhoneNumberHome",
                                       "TEL;TYPE=FAX: $completePhoneNumberFax",
                                       "URL:${urlController.text.toString()}",
-                                      "BDAY:${dateController.text.toString()}",
+                                      "BDAY:${bDayController.text.toString()}",
                                       "ADR;TYPE=home:;;${streetController.text.toString()} ;${cityController.text.toString()};${stateController.text.toString()};${zipController.text.toString()};${countryController.text.toString()} ",
-                                      "END:VCARD"
+                                      "END:VCARD",
                                     ].join("\r\n");
                                     Get.to(() =>
                                         QrStyleAndShare(valueQr: valueQr));
