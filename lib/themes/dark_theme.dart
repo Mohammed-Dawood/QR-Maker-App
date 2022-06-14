@@ -75,8 +75,20 @@ class DarkTheme {
       thumbColor: MaterialStateProperty.all(Colors.white),
       trackColor: MaterialStateProperty.all(Colors.grey.shade900),
     ),
-    dialogTheme: const DialogTheme(
-      backgroundColor: Colors.white,
+    dialogBackgroundColor: Colors.white,
+    colorScheme: ColorScheme.light(
+      primary: Colors.grey.shade800,
+      onPrimary: Colors.white,
+      onSurface: Colors.black,
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        primary: Colors.black,
+        textStyle: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 16,
+        ), // button text color
+      ),
     ),
     hintColor: Colors.black45,
     floatingActionButtonTheme: const FloatingActionButtonThemeData(

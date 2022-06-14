@@ -14,6 +14,8 @@ class MakeDate extends StatefulWidget {
 
 class _MakeDateState extends State<MakeDate> {
   var valueQr = '';
+  DateTime initialDate = DateTime.now();
+  TimeOfDay initialTime = TimeOfDay.now();
 
   GlobalKey<FormState> validateKey = GlobalKey<FormState>();
   TextEditingController eventTitleController = TextEditingController();
@@ -149,10 +151,22 @@ class _MakeDateState extends State<MakeDate> {
                             FocusScope.of(context).requestFocus(FocusNode());
                             DateTime? newDate = await showDatePicker(
                               context: context,
-                              initialDate: DateTime.now(),
-                              firstDate: DateTime(DateTime.now().year - 5),
-                              lastDate: DateTime(DateTime.now().year + 5),
-                              initialDatePickerMode: DatePickerMode.year,
+                              initialDate: initialDate,
+                              firstDate: DateTime(DateTime.now().year),
+                              lastDate: DateTime(2100),
+                              initialDatePickerMode: DatePickerMode.day,
+                              selectableDayPredicate: (DateTime day) {
+                                if ((day.isAfter(
+                                  DateTime.now().subtract(
+                                    const Duration(days: 1),
+                                  ),
+                                ))) {
+                                  return true;
+                                }
+                                return false;
+                              },
+                              initialEntryMode:
+                                  DatePickerEntryMode.calendarOnly,
                             );
 
                             if (newDate != null) {
@@ -160,6 +174,7 @@ class _MakeDateState extends State<MakeDate> {
                                   DateFormat('yyyyMMdd').format(newDate);
                               setState(
                                 () {
+                                  initialDate = newDate;
                                   eventDateStartController.text =
                                       formattedDate; //set output date to TextField value.
                                 },
@@ -207,7 +222,8 @@ class _MakeDateState extends State<MakeDate> {
                             FocusScope.of(context).requestFocus(FocusNode());
                             TimeOfDay? newTime = await showTimePicker(
                               context: context,
-                              initialTime: TimeOfDay.now(),
+                              initialTime: initialTime,
+                              initialEntryMode: TimePickerEntryMode.dial,
                             );
                             if (newTime != null) {
                               String formattedTime = DateFormat('HHmm').format(
@@ -264,10 +280,22 @@ class _MakeDateState extends State<MakeDate> {
                             FocusScope.of(context).requestFocus(FocusNode());
                             DateTime? newDate = await showDatePicker(
                               context: context,
-                              initialDate: DateTime.now(),
-                              firstDate: DateTime(DateTime.now().year - 5),
-                              lastDate: DateTime(DateTime.now().year + 5),
-                              initialDatePickerMode: DatePickerMode.year,
+                              initialDate: initialDate,
+                              firstDate: DateTime(initialDate.year),
+                              lastDate: DateTime(2100),
+                              initialDatePickerMode: DatePickerMode.day,
+                              selectableDayPredicate: (DateTime day) {
+                                if ((day.isAfter(
+                                  initialDate.subtract(
+                                    const Duration(days: 1),
+                                  ),
+                                ))) {
+                                  return true;
+                                }
+                                return false;
+                              },
+                              initialEntryMode:
+                                  DatePickerEntryMode.calendarOnly,
                             );
                             if (newDate != null) {
                               String formattedDate =
@@ -321,7 +349,8 @@ class _MakeDateState extends State<MakeDate> {
                             FocusScope.of(context).requestFocus(FocusNode());
                             TimeOfDay? newTime = await showTimePicker(
                               context: context,
-                              initialTime: TimeOfDay.now(),
+                              initialTime: initialTime,
+                              initialEntryMode: TimePickerEntryMode.dial,
                             );
                             if (newTime != null) {
                               String formattedTime = DateFormat('HHmm').format(

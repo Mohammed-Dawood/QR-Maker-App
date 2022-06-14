@@ -71,8 +71,20 @@ class LightTheme {
       elevation: 10,
       margin: const EdgeInsets.all(10),
     ),
-    dialogTheme: const DialogTheme(
-      backgroundColor: Colors.white,
+    dialogBackgroundColor: Colors.white,
+    colorScheme: ColorScheme.light(
+      primary: Colors.blue.shade500,
+      onPrimary: Colors.white,
+      onSurface: Colors.black,
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        primary: Colors.black,
+        textStyle: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 16,
+        ), // button text color
+      ),
     ),
     hintColor: Colors.black45,
     floatingActionButtonTheme: FloatingActionButtonThemeData(

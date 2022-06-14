@@ -469,6 +469,8 @@ class _MakeVCardState extends State<MakeVCard> {
                               firstDate: DateTime(1900),
                               lastDate: DateTime(2100),
                               initialDatePickerMode: DatePickerMode.year,
+                              initialEntryMode:
+                                  DatePickerEntryMode.calendarOnly,
                             );
                             if (newDate != null) {
                               String formattedDate =
