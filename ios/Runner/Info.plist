@@ -63,6 +63,10 @@
 	<string>This app needs camera access to scan QR codes</string>	
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_dartobservatory._tcp</string>
+	</array>
 </dict>
 </plist>
 

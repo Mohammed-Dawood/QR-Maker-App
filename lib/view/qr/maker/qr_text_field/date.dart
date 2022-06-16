@@ -15,7 +15,9 @@ class MakeDate extends StatefulWidget {
 class _MakeDateState extends State<MakeDate> {
   var valueQr = '';
   DateTime initialDate = DateTime.now();
-  TimeOfDay initialTime = TimeOfDay.now();
+
+  TimeOfDay timeStart = const TimeOfDay(hour: 00, minute: 00);
+  TimeOfDay timeEnd = const TimeOfDay(hour: 00, minute: 00);
 
   GlobalKey<FormState> validateKey = GlobalKey<FormState>();
   TextEditingController eventTitleController = TextEditingController();
@@ -24,6 +26,10 @@ class _MakeDateState extends State<MakeDate> {
   TextEditingController eventTimeEndController = TextEditingController();
   TextEditingController eventDateStartController = TextEditingController();
   TextEditingController eventTimeStartController = TextEditingController();
+  TextEditingController eventDateEndControllerQR = TextEditingController();
+  TextEditingController eventDateStartControllerQR = TextEditingController();
+  TextEditingController eventTimeEndControllerQR = TextEditingController();
+  TextEditingController eventTimeStartControllerQR = TextEditingController();
 
   bool isScreenWidth(BuildContext context) =>
       MediaQuery.of(context).size.width < 600;
@@ -136,12 +142,9 @@ class _MakeDateState extends State<MakeDate> {
                             }
                             return null;
                           },
-                          cursorWidth: 3,
                           readOnly: true,
                           controller: eventDateStartController,
-                          keyboardType: TextInputType.datetime,
                           textInputAction: TextInputAction.next,
-                          cursorColor: Theme.of(context).primaryColor,
                           style: const TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
@@ -170,13 +173,13 @@ class _MakeDateState extends State<MakeDate> {
                             );
 
                             if (newDate != null) {
-                              String formattedDate =
-                                  DateFormat('yyyyMMdd').format(newDate);
                               setState(
                                 () {
                                   initialDate = newDate;
                                   eventDateStartController.text =
-                                      formattedDate; //set output date to TextField value.
+                                      DateFormat('yyyy/MM/dd').format(newDate);
+                                  eventDateStartControllerQR.text =
+                                      DateFormat('yyyyMMdd').format(newDate);
                                 },
                               );
                             }
@@ -207,12 +210,9 @@ class _MakeDateState extends State<MakeDate> {
                             }
                             return null;
                           },
-                          cursorWidth: 3,
                           readOnly: true,
                           controller: eventTimeStartController,
-                          keyboardType: TextInputType.datetime,
                           textInputAction: TextInputAction.next,
-                          cursorColor: Theme.of(context).primaryColor,
                           style: const TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
@@ -222,19 +222,26 @@ class _MakeDateState extends State<MakeDate> {
                             FocusScope.of(context).requestFocus(FocusNode());
                             TimeOfDay? newTime = await showTimePicker(
                               context: context,
-                              initialTime: initialTime,
+                              initialTime: timeStart,
                               initialEntryMode: TimePickerEntryMode.dial,
+                              builder: (context, child) {
+                                return MediaQuery(
+                                  data: MediaQuery.of(context).copyWith(
+                                    // Using 12-Hour format
+                                    alwaysUse24HourFormat: true,
+                                  ),
+                                  // If you want 24-Hour format, just change alwaysUse24HourFormat to true
+                                  child: child!,
+                                );
+                              },
                             );
+
                             if (newTime != null) {
-                              String formattedTime = DateFormat('HHmm').format(
-                                DateFormat.jm().parse(
-                                  newTime.format(context).toString(),
-                                ),
-                              );
                               setState(
                                 () {
+                                  timeStart = newTime;
                                   eventTimeStartController.text =
-                                      formattedTime; //set output date to TextField value.
+                                      newTime.format(context);
                                 },
                               );
                             }
@@ -265,12 +272,9 @@ class _MakeDateState extends State<MakeDate> {
                             }
                             return null;
                           },
-                          cursorWidth: 3,
                           readOnly: true,
                           controller: eventDateEndController,
-                          keyboardType: TextInputType.datetime,
                           textInputAction: TextInputAction.next,
-                          cursorColor: Theme.of(context).primaryColor,
                           style: const TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
@@ -298,12 +302,12 @@ class _MakeDateState extends State<MakeDate> {
                                   DatePickerEntryMode.calendarOnly,
                             );
                             if (newDate != null) {
-                              String formattedDate =
-                                  DateFormat('yyyyMMdd').format(newDate);
                               setState(
                                 () {
                                   eventDateEndController.text =
-                                      formattedDate; //set output date to TextField value.
+                                      DateFormat('yyyy/MM/dd').format(newDate);
+                                  eventDateEndControllerQR.text =
+                                      DateFormat('yyyyMMdd').format(newDate);
                                 },
                               );
                             }
@@ -334,12 +338,9 @@ class _MakeDateState extends State<MakeDate> {
                             }
                             return null;
                           },
-                          cursorWidth: 3,
                           readOnly: true,
                           controller: eventTimeEndController,
-                          keyboardType: TextInputType.datetime,
                           textInputAction: TextInputAction.next,
-                          cursorColor: Theme.of(context).primaryColor,
                           style: const TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
@@ -349,19 +350,25 @@ class _MakeDateState extends State<MakeDate> {
                             FocusScope.of(context).requestFocus(FocusNode());
                             TimeOfDay? newTime = await showTimePicker(
                               context: context,
-                              initialTime: initialTime,
+                              initialTime: timeEnd,
                               initialEntryMode: TimePickerEntryMode.dial,
+                              builder: (context, child) {
+                                return MediaQuery(
+                                  data: MediaQuery.of(context).copyWith(
+                                    // Using 12-Hour format
+                                    alwaysUse24HourFormat: true,
+                                  ),
+                                  // If you want 24-Hour format, just change alwaysUse24HourFormat to true
+                                  child: child!,
+                                );
+                              },
                             );
                             if (newTime != null) {
-                              String formattedTime = DateFormat('HHmm').format(
-                                DateFormat.jm().parse(
-                                  newTime.format(context).toString(),
-                                ),
-                              );
                               setState(
                                 () {
+                                  timeEnd = newTime;
                                   eventTimeEndController.text =
-                                      formattedTime; //set output date to TextField value.
+                                      newTime.format(context);
                                 },
                               );
                             }
@@ -396,8 +403,8 @@ class _MakeDateState extends State<MakeDate> {
                                       "BEGIN:VEVENT",
                                       "SUMMARY:${eventTitleController.text.toString()}",
                                       "LOCATION:${eventAddressController.text.toString()}",
-                                      "DTSTART:${eventDateStartController.text.toString()}T${eventTimeStartController.text.toString()}00",
-                                      "DTEND:${eventDateEndController.text.toString()}T${eventTimeEndController.text.toString()}00",
+                                      "DTSTART:${eventDateStartControllerQR.text.toString()}T${timeStart.hour.toString().padLeft(2, '0')}${timeStart.minute.toString().padLeft(2, '0')}00",
+                                      "DTEND:${eventDateEndControllerQR.text.toString()}T${timeEnd.hour.toString().padLeft(2, '0')}${timeEnd.minute.toString().padLeft(2, '0')}00",
                                       "END:VEVENT",
                                     ].join("\r\n");
 
