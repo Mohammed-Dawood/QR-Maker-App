@@ -91,6 +91,7 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
             child: ElevatedButton(
               onPressed: () async {
                 final String url = '${result!.code}';
+                // final String url = 'SMSTO:001234567890:hello';
 
                 if (await canLaunchUrlString(url)) {
                   await launchUrlString(url);
@@ -103,7 +104,6 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
                     ? const EdgeInsets.symmetric(vertical: 18)
                     : const EdgeInsets.symmetric(vertical: 20),
                 child: Text(
-                  // result != null ? 'Result : ${result!.code}' : 'Scan QR Code',
                   result != null ? 'Go to link ' : 'Scan QR Code',
                   style:
                       TextStyle(fontSize: (isScreenWidth(context)) ? 18 : 25),

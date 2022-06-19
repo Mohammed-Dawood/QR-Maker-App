@@ -54,8 +54,12 @@
 		<string>wifi</string>
 		<string>https</string>		
 		<string>sms</string>
+		<string>smsto</string>
+		<string>SMS</string>
+		<string>SMSTO</string>
 		<string>mailto</string>
 		<string>facetime</string>
+		<string>VEVENT</string> 
 	</array>
 	<key>io.flutter.embedded_views_preview</key>
 	<true/>
@@ -69,5 +73,3 @@
 	</array>
 </dict>
 </plist>
-
-
