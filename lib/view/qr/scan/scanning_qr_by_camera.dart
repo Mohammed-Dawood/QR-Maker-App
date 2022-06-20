@@ -104,7 +104,7 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
                     ? const EdgeInsets.symmetric(vertical: 18)
                     : const EdgeInsets.symmetric(vertical: 20),
                 child: Text(
-                  result != null ? 'Go to link ' : 'Scan QR Code',
+                  result != null ? ' Go to link ' : 'Scan QR Code',
                   style:
                       TextStyle(fontSize: (isScreenWidth(context)) ? 18 : 25),
                   maxLines: 1,

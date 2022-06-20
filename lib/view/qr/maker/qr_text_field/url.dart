@@ -20,6 +20,12 @@ class _MakeUrlState extends State<MakeUrl> {
       MediaQuery.of(context).size.width < 600;
 
   @override
+  void initState() {
+    urlController.addListener(() => setState(() {}));
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GetBuilder<ThemeController>(
       init: ThemeController(),
@@ -73,6 +79,17 @@ class _MakeUrlState extends State<MakeUrl> {
                               Icons.link,
                               color: Theme.of(context).primaryColor,
                             ),
+                            suffixIcon: urlController.text.isEmpty
+                                ? Container(
+                                    width: 0,
+                                  )
+                                : IconButton(
+                                    onPressed: () => urlController.clear(),
+                                    icon: Icon(
+                                      Icons.close,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
