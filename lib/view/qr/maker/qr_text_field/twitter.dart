@@ -13,10 +13,14 @@ class MakeTwitter extends StatefulWidget {
 
 class _MakeTwitterState extends State<MakeTwitter> {
   var valueQr = '';
-
   GlobalKey<FormState> validateKey = GlobalKey<FormState>();
-
   TextEditingController twitterController = TextEditingController();
+
+  @override
+  void initState() {
+    twitterController.addListener(() => setState(() {}));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +72,17 @@ class _MakeTwitterState extends State<MakeTwitter> {
                             Icons.link,
                             color: Theme.of(context).primaryColor,
                           ),
+                          suffixIcon: twitterController.text.isEmpty
+                              ? Container(
+                                  width: 0,
+                                )
+                              : IconButton(
+                                  onPressed: () => twitterController.clear(),
+                                  icon: Icon(
+                                    Icons.close,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                ),
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(

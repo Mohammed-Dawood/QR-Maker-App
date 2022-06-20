@@ -19,6 +19,13 @@ class _MakeLocationState extends State<MakeLocation> {
   TextEditingController longitudeController = TextEditingController();
 
   @override
+  void initState() {
+    latitudeController.addListener(() => setState(() {}));
+    longitudeController.addListener(() => setState(() {}));
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GetBuilder<ThemeController>(
       init: ThemeController(),
@@ -71,6 +78,17 @@ class _MakeLocationState extends State<MakeLocation> {
                             Icons.location_on,
                             color: Theme.of(context).primaryColor,
                           ),
+                          suffixIcon: latitudeController.text.isEmpty
+                              ? Container(
+                                  width: 0,
+                                )
+                              : IconButton(
+                                  onPressed: () => latitudeController.clear(),
+                                  icon: Icon(
+                                    Icons.close,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                ),
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -110,6 +128,17 @@ class _MakeLocationState extends State<MakeLocation> {
                             Icons.location_on,
                             color: Theme.of(context).primaryColor,
                           ),
+                          suffixIcon: longitudeController.text.isEmpty
+                              ? Container(
+                                  width: 0,
+                                )
+                              : IconButton(
+                                  onPressed: () => longitudeController.clear(),
+                                  icon: Icon(
+                                    Icons.close,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                ),
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(

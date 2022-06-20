@@ -28,11 +28,16 @@ class _MakeDateState extends State<MakeDate> {
   TextEditingController eventTimeStartController = TextEditingController();
   TextEditingController eventDateEndControllerQR = TextEditingController();
   TextEditingController eventDateStartControllerQR = TextEditingController();
-  TextEditingController eventTimeEndControllerQR = TextEditingController();
-  TextEditingController eventTimeStartControllerQR = TextEditingController();
 
   bool isScreenWidth(BuildContext context) =>
       MediaQuery.of(context).size.width < 600;
+
+  @override
+  void initState() {
+    eventTitleController.addListener(() => setState(() {}));
+    eventAddressController.addListener(() => setState(() {}));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,6 +93,18 @@ class _MakeDateState extends State<MakeDate> {
                               Icons.event_note,
                               color: Theme.of(context).primaryColor,
                             ),
+                            suffixIcon: eventTitleController.text.isEmpty
+                                ? Container(
+                                    width: 0,
+                                  )
+                                : IconButton(
+                                    onPressed: () =>
+                                        eventTitleController.clear(),
+                                    icon: Icon(
+                                      Icons.close,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -124,6 +141,18 @@ class _MakeDateState extends State<MakeDate> {
                               Icons.location_on,
                               color: Theme.of(context).primaryColor,
                             ),
+                            suffixIcon: eventAddressController.text.isEmpty
+                                ? Container(
+                                    width: 0,
+                                  )
+                                : IconButton(
+                                    onPressed: () =>
+                                        eventAddressController.clear(),
+                                    icon: Icon(
+                                      Icons.close,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(

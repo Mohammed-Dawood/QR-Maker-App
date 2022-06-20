@@ -17,6 +17,12 @@ class _MakeFacebookState extends State<MakeFacebook> {
   TextEditingController facebookController = TextEditingController();
 
   @override
+  void initState() {
+    facebookController.addListener(() => setState(() {}));
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GetBuilder<ThemeController>(
       init: ThemeController(),
@@ -67,6 +73,17 @@ class _MakeFacebookState extends State<MakeFacebook> {
                             color: Theme.of(context).primaryColor,
                             size: 30,
                           ),
+                          suffixIcon: facebookController.text.isEmpty
+                              ? Container(
+                                  width: 0,
+                                )
+                              : IconButton(
+                                  onPressed: () => facebookController.clear(),
+                                  icon: Icon(
+                                    Icons.close,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                ),
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(

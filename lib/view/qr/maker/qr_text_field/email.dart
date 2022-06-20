@@ -13,12 +13,18 @@ class MakeEmail extends StatefulWidget {
 
 class _MakeEmailState extends State<MakeEmail> {
   var valueQr = '';
-
   GlobalKey<FormState> validateKey = GlobalKey<FormState>();
-
   TextEditingController emailController = TextEditingController();
   TextEditingController subjectController = TextEditingController();
   TextEditingController messageController = TextEditingController();
+
+  @override
+  void initState() {
+    emailController.addListener(() => setState(() {}));
+    subjectController.addListener(() => setState(() {}));
+    messageController.addListener(() => setState(() {}));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +76,17 @@ class _MakeEmailState extends State<MakeEmail> {
                             Icons.email,
                             color: Theme.of(context).primaryColor,
                           ),
+                          suffixIcon: emailController.text.isEmpty
+                              ? Container(
+                                  width: 0,
+                                )
+                              : IconButton(
+                                  onPressed: () => emailController.clear(),
+                                  icon: Icon(
+                                    Icons.close,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                ),
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -99,6 +116,17 @@ class _MakeEmailState extends State<MakeEmail> {
                             Icons.subject,
                             color: Theme.of(context).primaryColor,
                           ),
+                          suffixIcon: subjectController.text.isEmpty
+                              ? Container(
+                                  width: 0,
+                                )
+                              : IconButton(
+                                  onPressed: () => subjectController.clear(),
+                                  icon: Icon(
+                                    Icons.close,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                ),
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -130,6 +158,17 @@ class _MakeEmailState extends State<MakeEmail> {
                             Icons.message,
                             color: Theme.of(context).primaryColor,
                           ),
+                          suffixIcon: messageController.text.isEmpty
+                              ? Container(
+                                  width: 0,
+                                )
+                              : IconButton(
+                                  onPressed: () => messageController.clear(),
+                                  icon: Icon(
+                                    Icons.close,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                ),
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(

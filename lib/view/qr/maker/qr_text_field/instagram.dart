@@ -13,10 +13,14 @@ class MakeInstagram extends StatefulWidget {
 
 class _MakeInstagramState extends State<MakeInstagram> {
   var valueQr = '';
-
   GlobalKey<FormState> validateKey = GlobalKey<FormState>();
-
   TextEditingController instagramController = TextEditingController();
+
+  @override
+  void initState() {
+    instagramController.addListener(() => setState(() {}));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +71,17 @@ class _MakeInstagramState extends State<MakeInstagram> {
                             Icons.photo_camera_outlined,
                             color: Theme.of(context).primaryColor,
                           ),
+                          suffixIcon: instagramController.text.isEmpty
+                              ? Container(
+                                  width: 0,
+                                )
+                              : IconButton(
+                                  onPressed: () => instagramController.clear(),
+                                  icon: Icon(
+                                    Icons.close,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                ),
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(

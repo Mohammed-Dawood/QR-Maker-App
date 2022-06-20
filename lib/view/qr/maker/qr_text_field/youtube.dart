@@ -17,6 +17,12 @@ class _MakeYoutubeState extends State<MakeYoutube> {
   TextEditingController youtubeController = TextEditingController();
 
   @override
+  void initState() {
+    youtubeController.addListener(() => setState(() {}));
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GetBuilder<ThemeController>(
       init: ThemeController(),
@@ -66,6 +72,17 @@ class _MakeYoutubeState extends State<MakeYoutube> {
                             Icons.youtube_searched_for,
                             color: Theme.of(context).primaryColor,
                           ),
+                          suffixIcon: youtubeController.text.isEmpty
+                              ? Container(
+                                  width: 0,
+                                )
+                              : IconButton(
+                                  onPressed: () => youtubeController.clear(),
+                                  icon: Icon(
+                                    Icons.close,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                ),
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(

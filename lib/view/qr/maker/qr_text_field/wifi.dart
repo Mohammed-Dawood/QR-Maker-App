@@ -21,6 +21,13 @@ class _MakeWifiState extends State<MakeWifi> {
   TextEditingController passNetController = TextEditingController();
 
   @override
+  void initState() {
+    nameNetController.addListener(() => setState(() {}));
+    passNetController.addListener(() => setState(() {}));
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GetBuilder<ThemeController>(
       init: ThemeController(),
@@ -70,6 +77,17 @@ class _MakeWifiState extends State<MakeWifi> {
                             Icons.wifi,
                             color: Theme.of(context).primaryColor,
                           ),
+                          suffixIcon: nameNetController.text.isEmpty
+                              ? Container(
+                                  width: 0,
+                                )
+                              : IconButton(
+                                  onPressed: () => nameNetController.clear(),
+                                  icon: Icon(
+                                    Icons.close,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                ),
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -106,6 +124,17 @@ class _MakeWifiState extends State<MakeWifi> {
                             Icons.wifi_password,
                             color: Theme.of(context).primaryColor,
                           ),
+                          suffixIcon: passNetController.text.isEmpty
+                              ? Container(
+                                  width: 0,
+                                )
+                              : IconButton(
+                                  onPressed: () => passNetController.clear(),
+                                  icon: Icon(
+                                    Icons.close,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                ),
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
