@@ -13,6 +13,7 @@ class MakeUrl extends StatefulWidget {
 
 class _MakeUrlState extends State<MakeUrl> {
   var valueQr = '';
+
   GlobalKey<FormState> validateKey = GlobalKey<FormState>();
   TextEditingController urlController = TextEditingController();
 
@@ -49,8 +50,8 @@ class _MakeUrlState extends State<MakeUrl> {
                 key: validateKey,
                 child: Padding(
                   padding: isScreenWidth(context)
-                      ? const EdgeInsets.symmetric(horizontal: 20)
-                      : const EdgeInsets.symmetric(horizontal: 80),
+                      ? const EdgeInsets.symmetric(horizontal: 10)
+                      : const EdgeInsets.symmetric(horizontal: 100),
                   child: Column(
                     children: [
                       Card(

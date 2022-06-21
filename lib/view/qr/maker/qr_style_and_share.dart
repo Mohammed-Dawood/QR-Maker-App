@@ -77,7 +77,9 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 20),
+                  padding: EdgeInsets.only(
+                    top: isScreenWidth(context) ? 20 : 60,
+                  ),
                   child: Center(
                     child: Card(
                       color: backgroundColor,
@@ -86,7 +88,7 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                         child: Screenshot(
                           controller: screenshotController,
                           child: QrImage(
-                            size: (isScreenWidth(context)) ? 200 : 250,
+                            size: (isScreenWidth(context)) ? 200 : 300,
                             gapless: gapSwitch,
                             data: widget.valueQr,
                             version: QrVersions.auto,
@@ -124,9 +126,9 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(
-                    top: 50,
-                    left: (isScreenWidth(context)) ? 20 : 100,
-                    right: (isScreenWidth(context)) ? 20 : 100,
+                    top: (isScreenWidth(context)) ? 50 : 100,
+                    left: (isScreenWidth(context)) ? 40 : 150,
+                    right: (isScreenWidth(context)) ? 40 : 150,
                   ),
                   child: Card(
                     child: Padding(

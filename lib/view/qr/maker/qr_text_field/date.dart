@@ -15,7 +15,6 @@ class MakeDate extends StatefulWidget {
 class _MakeDateState extends State<MakeDate> {
   var valueQr = '';
   DateTime initialDate = DateTime.now();
-
   TimeOfDay timeStart = const TimeOfDay(hour: 00, minute: 00);
   TimeOfDay timeEnd = const TimeOfDay(hour: 00, minute: 00);
 
@@ -63,8 +62,8 @@ class _MakeDateState extends State<MakeDate> {
                 key: validateKey,
                 child: Padding(
                   padding: isScreenWidth(context)
-                      ? const EdgeInsets.symmetric(horizontal: 20)
-                      : const EdgeInsets.symmetric(horizontal: 80),
+                      ? const EdgeInsets.symmetric(horizontal: 10)
+                      : const EdgeInsets.symmetric(horizontal: 100),
                   child: Column(
                     children: [
                       Card(

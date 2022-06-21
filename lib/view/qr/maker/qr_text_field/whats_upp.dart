@@ -21,6 +21,9 @@ class _MakeWhatsUppState extends State<MakeWhatsUpp> {
   GlobalKey<FormState> validateKey = GlobalKey<FormState>();
   TextEditingController whatsUppController = TextEditingController();
 
+  bool isScreenWidth(BuildContext context) =>
+      MediaQuery.of(context).size.width < 600;
+
   @override
   void initState() {
     whatsUppController.addListener(() => setState(() {}));
@@ -49,137 +52,142 @@ class _MakeWhatsUppState extends State<MakeWhatsUpp> {
               scrollDirection: Axis.vertical,
               child: Form(
                 key: validateKey,
-                child: Column(
-                  children: [
-                    Card(
-                      child: IntlPhoneField(
-                        validator: (PhoneNumber? phone) {
-                          if (!isLength(phone!.number, 8, 20)) {
-                            return 'Please enter a valid Phone Number';
-                          }
-                          return null;
-                        },
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        cursorWidth: 3,
-                        controller: whatsUppController,
-                        disableLengthCheck: true,
-                        keyboardType: TextInputType.number,
-                        textInputAction: TextInputAction.next,
-                        dropdownIconPosition: IconPosition.trailing,
-                        cursorColor: Theme.of(context).primaryColor,
-                        flagsButtonPadding: const EdgeInsets.only(left: 10),
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        dropdownTextStyle: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                        pickerDialogStyle: PickerDialogStyle(
-                          backgroundColor: Colors.white,
-                          countryCodeStyle: const TextStyle(
+                child: Padding(
+                  padding: isScreenWidth(context)
+                      ? const EdgeInsets.symmetric(horizontal: 10)
+                      : const EdgeInsets.symmetric(horizontal: 100),
+                  child: Column(
+                    children: [
+                      Card(
+                        child: IntlPhoneField(
+                          validator: (PhoneNumber? phone) {
+                            if (!isLength(phone!.number, 8, 20)) {
+                              return 'Please enter a valid Phone Number';
+                            }
+                            return null;
+                          },
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          cursorWidth: 3,
+                          controller: whatsUppController,
+                          disableLengthCheck: true,
+                          keyboardType: TextInputType.number,
+                          textInputAction: TextInputAction.next,
+                          dropdownIconPosition: IconPosition.trailing,
+                          cursorColor: Theme.of(context).primaryColor,
+                          flagsButtonPadding: const EdgeInsets.only(left: 10),
+                          style: const TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
                           ),
-                          countryNameStyle: const TextStyle(
+                          dropdownTextStyle: const TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
+                            fontSize: 16,
                           ),
-                          searchFieldCursorColor: Colors.white,
-                          searchFieldInputDecoration: InputDecoration(
-                            filled: true,
-                            fillColor: Theme.of(context).primaryColor,
-                            suffixIcon: const Icon(
-                              Icons.search,
-                              color: Colors.white,
-                              size: 30,
-                            ),
-                            label: const Text('Search country'),
-                            labelStyle: const TextStyle(
-                              color: Colors.white,
+                          pickerDialogStyle: PickerDialogStyle(
+                            backgroundColor: Colors.white,
+                            countryCodeStyle: const TextStyle(
+                              color: Colors.black,
                               fontWeight: FontWeight.bold,
                             ),
-                            floatingLabelStyle: const TextStyle(
-                              color: Colors.white,
+                            countryNameStyle: const TextStyle(
+                              color: Colors.black,
                               fontWeight: FontWeight.bold,
                             ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2,
+                            searchFieldCursorColor: Colors.white,
+                            searchFieldInputDecoration: InputDecoration(
+                              filled: true,
+                              fillColor: Theme.of(context).primaryColor,
+                              suffixIcon: const Icon(
+                                Icons.search,
+                                color: Colors.white,
+                                size: 30,
+                              ),
+                              label: const Text('Search country'),
+                              labelStyle: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              floatingLabelStyle: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 2,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        decoration: InputDecoration(
-                          hintText: 'Phone Number',
-                          filled: true,
-                          fillColor: Colors.white,
-                          suffixIcon: whatsUppController.text.isEmpty
-                              ? Container(
-                                  width: 0,
-                                )
-                              : IconButton(
-                                  onPressed: () => whatsUppController.clear(),
-                                  icon: Icon(
-                                    Icons.close,
-                                    color: Theme.of(context).primaryColor,
+                          decoration: InputDecoration(
+                            hintText: 'Phone Number',
+                            filled: true,
+                            fillColor: Colors.white,
+                            suffixIcon: whatsUppController.text.isEmpty
+                                ? Container(
+                                    width: 0,
+                                  )
+                                : IconButton(
+                                    onPressed: () => whatsUppController.clear(),
+                                    icon: Icon(
+                                      Icons.close,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
                                   ),
-                                ),
-                          border: const OutlineInputBorder(),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Theme.of(context).primaryColor,
-                              width: 3,
+                            border: const OutlineInputBorder(),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 3,
+                              ),
+                            ),
+                          ),
+                          onChanged: (PhoneNumber phone) {
+                            completePhoneNumber = phone.completeNumber;
+                          },
+                        ),
+                      ),
+                      Card(
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              if (validateKey.currentState!.validate()) {
+                                setState(
+                                  () {
+                                    valueQr =
+                                        'https://wa.me/' + completePhoneNumber;
+                                    Get.to(() =>
+                                        QrStyleAndShare(valueQr: valueQr));
+                                  },
+                                );
+                              }
+                            },
+                            child: const Padding(
+                              padding: EdgeInsets.symmetric(vertical: 18),
+                              child: Text('Create QR Code'),
                             ),
                           ),
                         ),
-                        onChanged: (PhoneNumber phone) {
-                          completePhoneNumber = phone.completeNumber;
-                        },
                       ),
-                    ),
-                    Card(
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            if (validateKey.currentState!.validate()) {
-                              setState(
-                                () {
-                                  valueQr =
-                                      'https://wa.me/' + completePhoneNumber;
-                                  Get.to(
-                                      () => QrStyleAndShare(valueQr: valueQr));
-                                },
-                              );
-                            }
-                          },
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 18),
-                            child: Text('Create QR Code'),
+                      Card(
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton.icon(
+                            onPressed: () {
+                              Get.back();
+                            },
+                            label: const Padding(
+                              padding: EdgeInsets.symmetric(vertical: 18),
+                              child: Text('Back'),
+                            ),
+                            icon: const Icon(Icons.arrow_back_ios_new),
                           ),
                         ),
                       ),
-                    ),
-                    Card(
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton.icon(
-                          onPressed: () {
-                            Get.back();
-                          },
-                          label: const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 18),
-                            child: Text('Back'),
-                          ),
-                          icon: const Icon(Icons.arrow_back_ios_new),
-                        ),
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

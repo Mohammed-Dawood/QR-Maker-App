@@ -13,10 +13,13 @@ class MakeLocation extends StatefulWidget {
 
 class _MakeLocationState extends State<MakeLocation> {
   var valueQr = '';
-  GlobalKey<FormState> validateKey = GlobalKey<FormState>();
 
+  GlobalKey<FormState> validateKey = GlobalKey<FormState>();
   TextEditingController latitudeController = TextEditingController();
   TextEditingController longitudeController = TextEditingController();
+
+  bool isScreenWidth(BuildContext context) =>
+      MediaQuery.of(context).size.width < 600;
 
   @override
   void initState() {
@@ -47,149 +50,155 @@ class _MakeLocationState extends State<MakeLocation> {
               scrollDirection: Axis.vertical,
               child: Form(
                 key: validateKey,
-                child: Column(
-                  children: [
-                    Card(
-                      child: TextFormField(
-                        validator: (value) {
-                          if (isNull(value!)) {
-                            return 'Please enter a valid latitude';
-                          }
-                          return null;
-                        },
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        cursorWidth: 3,
-                        controller: latitudeController,
-                        keyboardType: const TextInputType.numberWithOptions(
-                          signed: true,
-                          decimal: true,
-                        ),
-                        textInputAction: TextInputAction.next,
-                        cursorColor: Theme.of(context).primaryColor,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        decoration: InputDecoration(
-                          hintText: 'Enter latitude',
-                          filled: true,
-                          fillColor: Colors.white,
-                          prefixIcon: Icon(
-                            Icons.location_on,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          suffixIcon: latitudeController.text.isEmpty
-                              ? Container(
-                                  width: 0,
-                                )
-                              : IconButton(
-                                  onPressed: () => latitudeController.clear(),
-                                  icon: Icon(
-                                    Icons.close,
-                                    color: Theme.of(context).primaryColor,
-                                  ),
-                                ),
-                          border: const OutlineInputBorder(),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Theme.of(context).primaryColor,
-                              width: 3,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Card(
-                      child: TextFormField(
-                        validator: (value) {
-                          if (isNull(value!)) {
-                            return 'Please enter a valid longitude';
-                          }
-                          return null;
-                        },
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        cursorWidth: 3,
-                        controller: longitudeController,
-                        keyboardType: const TextInputType.numberWithOptions(
-                          signed: true,
-                          decimal: true,
-                        ),
-                        textInputAction: TextInputAction.next,
-                        cursorColor: Theme.of(context).primaryColor,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        decoration: InputDecoration(
-                          hintText: 'Enter longitude',
-                          filled: true,
-                          fillColor: Colors.white,
-                          prefixIcon: Icon(
-                            Icons.location_on,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          suffixIcon: longitudeController.text.isEmpty
-                              ? Container(
-                                  width: 0,
-                                )
-                              : IconButton(
-                                  onPressed: () => longitudeController.clear(),
-                                  icon: Icon(
-                                    Icons.close,
-                                    color: Theme.of(context).primaryColor,
-                                  ),
-                                ),
-                          border: const OutlineInputBorder(),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Theme.of(context).primaryColor,
-                              width: 3,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Card(
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            if (validateKey.currentState!.validate()) {
-                              setState(
-                                () {
-                                  valueQr = 'geo:' +
-                                      latitudeController.text +
-                                      ',' +
-                                      longitudeController.text;
-                                  Get.to(
-                                      () => QrStyleAndShare(valueQr: valueQr));
-                                },
-                              );
+                child: Padding(
+                  padding: isScreenWidth(context)
+                      ? const EdgeInsets.symmetric(horizontal: 10)
+                      : const EdgeInsets.symmetric(horizontal: 100),
+                  child: Column(
+                    children: [
+                      Card(
+                        child: TextFormField(
+                          validator: (value) {
+                            if (isNull(value!)) {
+                              return 'Please enter a valid latitude';
                             }
+                            return null;
                           },
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 18),
-                            child: Text('Create QR Code'),
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          cursorWidth: 3,
+                          controller: latitudeController,
+                          keyboardType: const TextInputType.numberWithOptions(
+                            signed: true,
+                            decimal: true,
+                          ),
+                          textInputAction: TextInputAction.next,
+                          cursorColor: Theme.of(context).primaryColor,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          decoration: InputDecoration(
+                            hintText: 'Enter latitude',
+                            filled: true,
+                            fillColor: Colors.white,
+                            prefixIcon: Icon(
+                              Icons.location_on,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            suffixIcon: latitudeController.text.isEmpty
+                                ? Container(
+                                    width: 0,
+                                  )
+                                : IconButton(
+                                    onPressed: () => latitudeController.clear(),
+                                    icon: Icon(
+                                      Icons.close,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
+                            border: const OutlineInputBorder(),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 3,
+                              ),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Card(
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton.icon(
-                          onPressed: () {
-                            Get.back();
+                      Card(
+                        child: TextFormField(
+                          validator: (value) {
+                            if (isNull(value!)) {
+                              return 'Please enter a valid longitude';
+                            }
+                            return null;
                           },
-                          label: const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 18),
-                            child: Text('Back'),
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          cursorWidth: 3,
+                          controller: longitudeController,
+                          keyboardType: const TextInputType.numberWithOptions(
+                            signed: true,
+                            decimal: true,
                           ),
-                          icon: const Icon(Icons.arrow_back_ios_new),
+                          textInputAction: TextInputAction.next,
+                          cursorColor: Theme.of(context).primaryColor,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          decoration: InputDecoration(
+                            hintText: 'Enter longitude',
+                            filled: true,
+                            fillColor: Colors.white,
+                            prefixIcon: Icon(
+                              Icons.location_on,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            suffixIcon: longitudeController.text.isEmpty
+                                ? Container(
+                                    width: 0,
+                                  )
+                                : IconButton(
+                                    onPressed: () =>
+                                        longitudeController.clear(),
+                                    icon: Icon(
+                                      Icons.close,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
+                            border: const OutlineInputBorder(),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 3,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                      Card(
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              if (validateKey.currentState!.validate()) {
+                                setState(
+                                  () {
+                                    valueQr = 'geo:' +
+                                        latitudeController.text +
+                                        ',' +
+                                        longitudeController.text;
+                                    Get.to(() =>
+                                        QrStyleAndShare(valueQr: valueQr));
+                                  },
+                                );
+                              }
+                            },
+                            child: const Padding(
+                              padding: EdgeInsets.symmetric(vertical: 18),
+                              child: Text('Create QR Code'),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Card(
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton.icon(
+                            onPressed: () {
+                              Get.back();
+                            },
+                            label: const Padding(
+                              padding: EdgeInsets.symmetric(vertical: 18),
+                              child: Text('Back'),
+                            ),
+                            icon: const Icon(Icons.arrow_back_ios_new),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

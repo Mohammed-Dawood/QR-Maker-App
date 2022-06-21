@@ -28,8 +28,8 @@ class MainQrScan extends StatelessWidget {
           body: Center(
             child: Padding(
               padding: (isScreenWidth(context))
-                  ? const EdgeInsets.symmetric(horizontal: 30)
-                  : const EdgeInsets.symmetric(horizontal: 100),
+                  ? const EdgeInsets.symmetric(horizontal: 100)
+                  : const EdgeInsets.symmetric(horizontal: 200),
               child: SizedBox(
                 width: double.infinity,
                 child: ElevatedButton.icon(

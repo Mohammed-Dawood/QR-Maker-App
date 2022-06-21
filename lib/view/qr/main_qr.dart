@@ -132,7 +132,6 @@ class _MainQrState extends State<MainQr> {
             },
           );
         },
-        iconSize: (isScreenWidth(context)) ? 40 : 50,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(

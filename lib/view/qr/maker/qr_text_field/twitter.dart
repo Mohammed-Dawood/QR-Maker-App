@@ -13,8 +13,12 @@ class MakeTwitter extends StatefulWidget {
 
 class _MakeTwitterState extends State<MakeTwitter> {
   var valueQr = '';
+
   GlobalKey<FormState> validateKey = GlobalKey<FormState>();
   TextEditingController twitterController = TextEditingController();
+
+  bool isScreenWidth(BuildContext context) =>
+      MediaQuery.of(context).size.width < 600;
 
   @override
   void initState() {
@@ -44,93 +48,98 @@ class _MakeTwitterState extends State<MakeTwitter> {
               scrollDirection: Axis.vertical,
               child: Form(
                 key: validateKey,
-                child: Column(
-                  children: [
-                    Card(
-                      child: TextFormField(
-                        validator: (value) {
-                          if (!isURL(value)) {
-                            return 'Please enter a valid link';
-                          }
-                          return null;
-                        },
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        cursorWidth: 3,
-                        controller: twitterController,
-                        keyboardType: TextInputType.url,
-                        textInputAction: TextInputAction.next,
-                        cursorColor: Theme.of(context).primaryColor,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        decoration: InputDecoration(
-                          hintText: 'https://twitter.com/...',
-                          filled: true,
-                          fillColor: Colors.white,
-                          prefixIcon: Icon(
-                            Icons.link,
-                            color: Theme.of(context).primaryColor,
+                child: Padding(
+                  padding: isScreenWidth(context)
+                      ? const EdgeInsets.symmetric(horizontal: 10)
+                      : const EdgeInsets.symmetric(horizontal: 100),
+                  child: Column(
+                    children: [
+                      Card(
+                        child: TextFormField(
+                          validator: (value) {
+                            if (!isURL(value)) {
+                              return 'Please enter a valid link';
+                            }
+                            return null;
+                          },
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          cursorWidth: 3,
+                          controller: twitterController,
+                          keyboardType: TextInputType.url,
+                          textInputAction: TextInputAction.next,
+                          cursorColor: Theme.of(context).primaryColor,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
                           ),
-                          suffixIcon: twitterController.text.isEmpty
-                              ? Container(
-                                  width: 0,
-                                )
-                              : IconButton(
-                                  onPressed: () => twitterController.clear(),
-                                  icon: Icon(
-                                    Icons.close,
-                                    color: Theme.of(context).primaryColor,
-                                  ),
-                                ),
-                          border: const OutlineInputBorder(),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                          decoration: InputDecoration(
+                            hintText: 'https://twitter.com/...',
+                            filled: true,
+                            fillColor: Colors.white,
+                            prefixIcon: Icon(
+                              Icons.link,
                               color: Theme.of(context).primaryColor,
-                              width: 3,
+                            ),
+                            suffixIcon: twitterController.text.isEmpty
+                                ? Container(
+                                    width: 0,
+                                  )
+                                : IconButton(
+                                    onPressed: () => twitterController.clear(),
+                                    icon: Icon(
+                                      Icons.close,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
+                            border: const OutlineInputBorder(),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 3,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    Card(
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            if (validateKey.currentState!.validate()) {
-                              setState(
-                                () {
-                                  valueQr = twitterController.text.toString();
-                                  Get.to(
-                                      () => QrStyleAndShare(valueQr: valueQr));
-                                },
-                              );
-                            }
-                          },
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 18),
-                            child: Text('Create QR Code'),
+                      Card(
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              if (validateKey.currentState!.validate()) {
+                                setState(
+                                  () {
+                                    valueQr = twitterController.text.toString();
+                                    Get.to(() =>
+                                        QrStyleAndShare(valueQr: valueQr));
+                                  },
+                                );
+                              }
+                            },
+                            child: const Padding(
+                              padding: EdgeInsets.symmetric(vertical: 18),
+                              child: Text('Create QR Code'),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Card(
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton.icon(
-                          onPressed: () {
-                            Get.back();
-                          },
-                          label: const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 18),
-                            child: Text('Back'),
+                      Card(
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton.icon(
+                            onPressed: () {
+                              Get.back();
+                            },
+                            label: const Padding(
+                              padding: EdgeInsets.symmetric(vertical: 18),
+                              child: Text('Back'),
+                            ),
+                            icon: const Icon(Icons.arrow_back_ios_new),
                           ),
-                          icon: const Icon(Icons.arrow_back_ios_new),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

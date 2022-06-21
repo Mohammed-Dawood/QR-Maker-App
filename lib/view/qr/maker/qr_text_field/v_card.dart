@@ -17,14 +17,12 @@ class MakeVCard extends StatefulWidget {
 
 class _MakeVCardState extends State<MakeVCard> {
   var valueQr = '';
-
   var completePhoneNumberFax = '';
   var completePhoneNumberWork = '';
   var completePhoneNumberHome = '';
   var completePhoneNumberMobil = '';
 
   GlobalKey<FormState> validateKey = GlobalKey<FormState>();
-
   TextEditingController urlController = TextEditingController();
   TextEditingController zipController = TextEditingController();
   TextEditingController faxController = TextEditingController();
@@ -38,6 +36,9 @@ class _MakeVCardState extends State<MakeVCard> {
   TextEditingController streetController = TextEditingController();
   TextEditingController mobileController = TextEditingController();
   TextEditingController countryController = TextEditingController();
+
+  bool isScreenWidth(BuildContext context) =>
+      MediaQuery.of(context).size.width < 600;
 
   @override
   void initState() {
@@ -80,809 +81,820 @@ class _MakeVCardState extends State<MakeVCard> {
               children: [
                 Form(
                   key: validateKey,
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      Card(
-                        child: TextFormField(
-                          validator: (String? name) {
-                            if (isNull(name)) {
-                              return 'Please enter a Wifi Name';
-                            }
-                            return null;
-                          },
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          cursorWidth: 3,
-                          controller: nameController,
-                          keyboardType: TextInputType.name,
-                          textInputAction: TextInputAction.next,
-                          cursorColor: Theme.of(context).primaryColor,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          decoration: InputDecoration(
-                            hintText: 'Full Name ',
-                            filled: true,
-                            fillColor: Colors.white,
-                            prefixIcon: Icon(
-                              Icons.person,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            suffixIcon: nameController.text.isEmpty
-                                ? Container(
-                                    width: 0,
-                                  )
-                                : IconButton(
-                                    onPressed: () => nameController.clear(),
-                                    icon: Icon(
-                                      Icons.close,
-                                      color: Theme.of(context).primaryColor,
-                                    ),
-                                  ),
-                            border: const OutlineInputBorder(),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 3,
-                              ),
-                            ),
-                          ),
+                  child: Padding(
+                    padding: isScreenWidth(context)
+                        ? const EdgeInsets.symmetric(horizontal: 10)
+                        : const EdgeInsets.symmetric(horizontal: 100),
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 150,
                         ),
-                      ),
-                      Card(
-                        child: TextFormField(
-                          cursorWidth: 3,
-                          controller: emailController,
-                          keyboardType: TextInputType.emailAddress,
-                          textInputAction: TextInputAction.next,
-                          cursorColor: Theme.of(context).primaryColor,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          decoration: InputDecoration(
-                            hintText: 'name@mail.com',
-                            filled: true,
-                            fillColor: Colors.white,
-                            prefixIcon: Icon(
-                              Icons.email,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            suffixIcon: emailController.text.isEmpty
-                                ? Container(
-                                    width: 0,
-                                  )
-                                : IconButton(
-                                    onPressed: () => emailController.clear(),
-                                    icon: Icon(
-                                      Icons.close,
-                                      color: Theme.of(context).primaryColor,
-                                    ),
-                                  ),
-                            border: const OutlineInputBorder(),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 3,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Card(
-                        child: IntlPhoneField(
-                          validator: (PhoneNumber? phone) {
-                            if (!isLength(phone!.number, 8, 20)) {
-                              return 'Please enter a valid Phone Number';
-                            }
-                            return null;
-                          },
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          cursorWidth: 3,
-                          controller: mobileController,
-                          disableLengthCheck: true,
-                          keyboardType: TextInputType.number,
-                          textInputAction: TextInputAction.next,
-                          dropdownIconPosition: IconPosition.trailing,
-                          cursorColor: Theme.of(context).primaryColor,
-                          flagsButtonPadding: const EdgeInsets.only(
-                            left: 10,
-                          ),
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          dropdownTextStyle: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
-                          pickerDialogStyle: PickerDialogStyle(
-                            backgroundColor: Colors.white,
-                            countryCodeStyle: const TextStyle(
+                        Card(
+                          child: TextFormField(
+                            validator: (String? name) {
+                              if (isNull(name)) {
+                                return 'Please enter a Wifi Name';
+                              }
+                              return null;
+                            },
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            cursorWidth: 3,
+                            controller: nameController,
+                            keyboardType: TextInputType.name,
+                            textInputAction: TextInputAction.next,
+                            cursorColor: Theme.of(context).primaryColor,
+                            style: const TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
                             ),
-                            countryNameStyle: const TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            searchFieldCursorColor: Colors.white,
-                            searchFieldInputDecoration: InputDecoration(
+                            decoration: InputDecoration(
+                              hintText: 'Full Name ',
                               filled: true,
-                              fillColor: Theme.of(context).primaryColor,
-                              label: const Text('Search country'),
-                              labelStyle: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                              fillColor: Colors.white,
+                              prefixIcon: Icon(
+                                Icons.person,
+                                color: Theme.of(context).primaryColor,
                               ),
-                              suffixIcon: const Icon(
-                                Icons.search,
-                                color: Colors.white,
-                                size: 30,
-                              ),
-                              floatingLabelStyle: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              focusedBorder: UnderlineInputBorder(
+                              suffixIcon: nameController.text.isEmpty
+                                  ? Container(
+                                      width: 0,
+                                    )
+                                  : IconButton(
+                                      onPressed: () => nameController.clear(),
+                                      icon: Icon(
+                                        Icons.close,
+                                        color: Theme.of(context).primaryColor,
+                                      ),
+                                    ),
+                              border: const OutlineInputBorder(),
+                              focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Theme.of(context).primaryColor,
-                                  width: 2,
+                                  width: 3,
                                 ),
                               ),
                             ),
                           ),
-                          decoration: InputDecoration(
-                            hintText: 'Phone(Mobile)',
-                            filled: true,
-                            fillColor: Colors.white,
-                            suffixIcon: mobileController.text.isEmpty
-                                ? Container(
-                                    width: 0,
-                                  )
-                                : IconButton(
-                                    onPressed: () => mobileController.clear(),
-                                    icon: Icon(
-                                      Icons.close,
-                                      color: Theme.of(context).primaryColor,
-                                    ),
-                                  ),
-                            border: const OutlineInputBorder(),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 3,
-                              ),
-                            ),
-                          ),
-                          onChanged: (PhoneNumber phone) {
-                            completePhoneNumberMobil = phone.completeNumber;
-                          },
                         ),
-                      ),
-                      Card(
-                        child: IntlPhoneField(
-                          validator: (PhoneNumber? phone) {
-                            if (!isLength(phone!.number, 8, 20)) {
-                              return 'Please enter a valid Phone Number';
-                            }
-                            return null;
-                          },
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          cursorWidth: 3,
-                          controller: workController,
-                          disableLengthCheck: true,
-                          keyboardType: TextInputType.number,
-                          textInputAction: TextInputAction.next,
-                          dropdownIconPosition: IconPosition.trailing,
-                          cursorColor: Theme.of(context).primaryColor,
-                          flagsButtonPadding: const EdgeInsets.only(
-                            left: 10,
-                          ),
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          dropdownTextStyle: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
-                          pickerDialogStyle: PickerDialogStyle(
-                            backgroundColor: Colors.white,
-                            countryCodeStyle: const TextStyle(
+                        Card(
+                          child: TextFormField(
+                            cursorWidth: 3,
+                            controller: emailController,
+                            keyboardType: TextInputType.emailAddress,
+                            textInputAction: TextInputAction.next,
+                            cursorColor: Theme.of(context).primaryColor,
+                            style: const TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
                             ),
-                            countryNameStyle: const TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            searchFieldCursorColor: Colors.white,
-                            searchFieldInputDecoration: InputDecoration(
+                            decoration: InputDecoration(
+                              hintText: 'name@mail.com',
                               filled: true,
-                              fillColor: Theme.of(context).primaryColor,
-                              label: const Text('Search country'),
-                              labelStyle: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                              fillColor: Colors.white,
+                              prefixIcon: Icon(
+                                Icons.email,
+                                color: Theme.of(context).primaryColor,
                               ),
-                              suffixIcon: const Icon(
-                                Icons.search,
-                                color: Colors.white,
-                                size: 30,
-                              ),
-                              floatingLabelStyle: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              focusedBorder: UnderlineInputBorder(
+                              suffixIcon: emailController.text.isEmpty
+                                  ? Container(
+                                      width: 0,
+                                    )
+                                  : IconButton(
+                                      onPressed: () => emailController.clear(),
+                                      icon: Icon(
+                                        Icons.close,
+                                        color: Theme.of(context).primaryColor,
+                                      ),
+                                    ),
+                              border: const OutlineInputBorder(),
+                              focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Theme.of(context).primaryColor,
-                                  width: 2,
+                                  width: 3,
                                 ),
                               ),
                             ),
                           ),
-                          decoration: InputDecoration(
-                            hintText: 'Phone(Work)',
-                            filled: true,
-                            fillColor: Colors.white,
-                            suffixIcon: workController.text.isEmpty
-                                ? Container(
-                                    width: 0,
-                                  )
-                                : IconButton(
-                                    onPressed: () => workController.clear(),
-                                    icon: Icon(
-                                      Icons.close,
-                                      color: Theme.of(context).primaryColor,
-                                    ),
-                                  ),
-                            border: const OutlineInputBorder(),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 3,
-                              ),
-                            ),
-                          ),
-                          onChanged: (PhoneNumber phone) {
-                            completePhoneNumberWork = phone.completeNumber;
-                          },
                         ),
-                      ),
-                      Card(
-                        child: IntlPhoneField(
-                          validator: (PhoneNumber? phone) {
-                            if (!isLength(phone!.number, 8, 20)) {
-                              return 'Please enter a valid Phone Number';
-                            }
-                            return null;
-                          },
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          cursorWidth: 3,
-                          controller: homeController,
-                          disableLengthCheck: true,
-                          keyboardType: TextInputType.number,
-                          textInputAction: TextInputAction.next,
-                          dropdownIconPosition: IconPosition.trailing,
-                          cursorColor: Theme.of(context).primaryColor,
-                          flagsButtonPadding: const EdgeInsets.only(
-                            left: 10,
-                          ),
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          dropdownTextStyle: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
-                          pickerDialogStyle: PickerDialogStyle(
-                            backgroundColor: Colors.white,
-                            countryCodeStyle: const TextStyle(
+                        Card(
+                          child: IntlPhoneField(
+                            validator: (PhoneNumber? phone) {
+                              if (!isLength(phone!.number, 8, 20)) {
+                                return 'Please enter a valid Phone Number';
+                              }
+                              return null;
+                            },
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            cursorWidth: 3,
+                            controller: mobileController,
+                            disableLengthCheck: true,
+                            keyboardType: TextInputType.number,
+                            textInputAction: TextInputAction.next,
+                            dropdownIconPosition: IconPosition.trailing,
+                            cursorColor: Theme.of(context).primaryColor,
+                            flagsButtonPadding: const EdgeInsets.only(
+                              left: 10,
+                            ),
+                            style: const TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
                             ),
-                            countryNameStyle: const TextStyle(
+                            dropdownTextStyle: const TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
+                              fontSize: 16,
                             ),
-                            searchFieldCursorColor: Colors.white,
-                            searchFieldInputDecoration: InputDecoration(
-                              filled: true,
-                              fillColor: Theme.of(context).primaryColor,
-                              label: const Text('Search country'),
-                              labelStyle: const TextStyle(
-                                color: Colors.white,
+                            pickerDialogStyle: PickerDialogStyle(
+                              backgroundColor: Colors.white,
+                              countryCodeStyle: const TextStyle(
+                                color: Colors.black,
                                 fontWeight: FontWeight.bold,
                               ),
-                              suffixIcon: const Icon(
-                                Icons.search,
-                                color: Colors.white,
-                                size: 30,
-                              ),
-                              floatingLabelStyle: const TextStyle(
-                                color: Colors.white,
+                              countryNameStyle: const TextStyle(
+                                color: Colors.black,
                                 fontWeight: FontWeight.bold,
                               ),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 2,
+                              searchFieldCursorColor: Colors.white,
+                              searchFieldInputDecoration: InputDecoration(
+                                filled: true,
+                                fillColor: Theme.of(context).primaryColor,
+                                label: const Text('Search country'),
+                                labelStyle: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                suffixIcon: const Icon(
+                                  Icons.search,
+                                  color: Colors.white,
+                                  size: 30,
+                                ),
+                                floatingLabelStyle: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 2,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          decoration: InputDecoration(
-                            hintText: 'Phone(Home)',
-                            filled: true,
-                            fillColor: Colors.white,
-                            suffixIcon: homeController.text.isEmpty
-                                ? Container(
-                                    width: 0,
-                                  )
-                                : IconButton(
-                                    onPressed: () => homeController.clear(),
-                                    icon: Icon(
-                                      Icons.close,
-                                      color: Theme.of(context).primaryColor,
-                                    ),
-                                  ),
-                            border: const OutlineInputBorder(),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 3,
-                              ),
-                            ),
-                          ),
-                          onChanged: (PhoneNumber phone) {
-                            completePhoneNumberHome = phone.completeNumber;
-                          },
-                        ),
-                      ),
-                      Card(
-                        child: IntlPhoneField(
-                          validator: (PhoneNumber? phone) {
-                            if (!isLength(phone!.number, 8, 20)) {
-                              return 'Please enter a valid Phone Number';
-                            }
-                            return null;
-                          },
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          cursorWidth: 3,
-                          controller: faxController,
-                          disableLengthCheck: true,
-                          keyboardType: TextInputType.number,
-                          textInputAction: TextInputAction.next,
-                          dropdownIconPosition: IconPosition.trailing,
-                          cursorColor: Theme.of(context).primaryColor,
-                          flagsButtonPadding: const EdgeInsets.only(
-                            left: 10,
-                          ),
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          dropdownTextStyle: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
-                          pickerDialogStyle: PickerDialogStyle(
-                            backgroundColor: Colors.white,
-                            countryCodeStyle: const TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            countryNameStyle: const TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            searchFieldCursorColor: Colors.white,
-                            searchFieldInputDecoration: InputDecoration(
+                            decoration: InputDecoration(
+                              hintText: 'Phone(Mobile)',
                               filled: true,
-                              fillColor: Theme.of(context).primaryColor,
-                              label: const Text('Search country'),
-                              labelStyle: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              suffixIcon: const Icon(
-                                Icons.search,
-                                color: Colors.white,
-                                size: 30,
-                              ),
-                              floatingLabelStyle: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              focusedBorder: UnderlineInputBorder(
+                              fillColor: Colors.white,
+                              suffixIcon: mobileController.text.isEmpty
+                                  ? Container(
+                                      width: 0,
+                                    )
+                                  : IconButton(
+                                      onPressed: () => mobileController.clear(),
+                                      icon: Icon(
+                                        Icons.close,
+                                        color: Theme.of(context).primaryColor,
+                                      ),
+                                    ),
+                              border: const OutlineInputBorder(),
+                              focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Theme.of(context).primaryColor,
-                                  width: 2,
+                                  width: 3,
                                 ),
                               ),
                             ),
+                            onChanged: (PhoneNumber phone) {
+                              completePhoneNumberMobil = phone.completeNumber;
+                            },
                           ),
-                          decoration: InputDecoration(
-                            hintText: 'Fax',
-                            filled: true,
-                            fillColor: Colors.white,
-                            suffixIcon: faxController.text.isEmpty
-                                ? Container(
-                                    width: 0,
-                                  )
-                                : IconButton(
-                                    onPressed: () => faxController.clear(),
-                                    icon: Icon(
-                                      Icons.close,
-                                      color: Theme.of(context).primaryColor,
-                                    ),
+                        ),
+                        Card(
+                          child: IntlPhoneField(
+                            validator: (PhoneNumber? phone) {
+                              if (!isLength(phone!.number, 8, 20)) {
+                                return 'Please enter a valid Phone Number';
+                              }
+                              return null;
+                            },
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            cursorWidth: 3,
+                            controller: workController,
+                            disableLengthCheck: true,
+                            keyboardType: TextInputType.number,
+                            textInputAction: TextInputAction.next,
+                            dropdownIconPosition: IconPosition.trailing,
+                            cursorColor: Theme.of(context).primaryColor,
+                            flagsButtonPadding: const EdgeInsets.only(
+                              left: 10,
+                            ),
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            dropdownTextStyle: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                            pickerDialogStyle: PickerDialogStyle(
+                              backgroundColor: Colors.white,
+                              countryCodeStyle: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              countryNameStyle: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              searchFieldCursorColor: Colors.white,
+                              searchFieldInputDecoration: InputDecoration(
+                                filled: true,
+                                fillColor: Theme.of(context).primaryColor,
+                                label: const Text('Search country'),
+                                labelStyle: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                suffixIcon: const Icon(
+                                  Icons.search,
+                                  color: Colors.white,
+                                  size: 30,
+                                ),
+                                floatingLabelStyle: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 2,
                                   ),
-                            border: const OutlineInputBorder(),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 3,
+                                ),
                               ),
                             ),
+                            decoration: InputDecoration(
+                              hintText: 'Phone(Work)',
+                              filled: true,
+                              fillColor: Colors.white,
+                              suffixIcon: workController.text.isEmpty
+                                  ? Container(
+                                      width: 0,
+                                    )
+                                  : IconButton(
+                                      onPressed: () => workController.clear(),
+                                      icon: Icon(
+                                        Icons.close,
+                                        color: Theme.of(context).primaryColor,
+                                      ),
+                                    ),
+                              border: const OutlineInputBorder(),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 3,
+                                ),
+                              ),
+                            ),
+                            onChanged: (PhoneNumber phone) {
+                              completePhoneNumberWork = phone.completeNumber;
+                            },
                           ),
-                          onChanged: (PhoneNumber phone) {
-                            completePhoneNumberFax = phone.completeNumber;
-                          },
                         ),
-                      ),
-                      Card(
-                        child: TextFormField(
-                          cursorWidth: 3,
-                          controller: bDayController,
-                          keyboardType: TextInputType.datetime,
-                          textInputAction: TextInputAction.next,
-                          cursorColor: Theme.of(context).primaryColor,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
+                        Card(
+                          child: IntlPhoneField(
+                            validator: (PhoneNumber? phone) {
+                              if (!isLength(phone!.number, 8, 20)) {
+                                return 'Please enter a valid Phone Number';
+                              }
+                              return null;
+                            },
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            cursorWidth: 3,
+                            controller: homeController,
+                            disableLengthCheck: true,
+                            keyboardType: TextInputType.number,
+                            textInputAction: TextInputAction.next,
+                            dropdownIconPosition: IconPosition.trailing,
+                            cursorColor: Theme.of(context).primaryColor,
+                            flagsButtonPadding: const EdgeInsets.only(
+                              left: 10,
+                            ),
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            dropdownTextStyle: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                            pickerDialogStyle: PickerDialogStyle(
+                              backgroundColor: Colors.white,
+                              countryCodeStyle: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              countryNameStyle: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              searchFieldCursorColor: Colors.white,
+                              searchFieldInputDecoration: InputDecoration(
+                                filled: true,
+                                fillColor: Theme.of(context).primaryColor,
+                                label: const Text('Search country'),
+                                labelStyle: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                suffixIcon: const Icon(
+                                  Icons.search,
+                                  color: Colors.white,
+                                  size: 30,
+                                ),
+                                floatingLabelStyle: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 2,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            decoration: InputDecoration(
+                              hintText: 'Phone(Home)',
+                              filled: true,
+                              fillColor: Colors.white,
+                              suffixIcon: homeController.text.isEmpty
+                                  ? Container(
+                                      width: 0,
+                                    )
+                                  : IconButton(
+                                      onPressed: () => homeController.clear(),
+                                      icon: Icon(
+                                        Icons.close,
+                                        color: Theme.of(context).primaryColor,
+                                      ),
+                                    ),
+                              border: const OutlineInputBorder(),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 3,
+                                ),
+                              ),
+                            ),
+                            onChanged: (PhoneNumber phone) {
+                              completePhoneNumberHome = phone.completeNumber;
+                            },
                           ),
-                          onTap: () async {
-                            // Below line stops keyboard from appearing
-                            FocusScope.of(context).requestFocus(FocusNode());
-                            DateTime? newDate = await showDatePicker(
-                              context: context,
-                              initialDate: DateTime.now(),
-                              firstDate: DateTime(1900),
-                              lastDate: DateTime(2100),
-                              initialDatePickerMode: DatePickerMode.year,
-                              initialEntryMode:
-                                  DatePickerEntryMode.calendarOnly,
-                            );
-                            if (newDate != null) {
-                              String formattedDate =
-                                  DateFormat('yyyyMMdd').format(newDate);
-                              setState(
-                                () {
-                                  bDayController.text =
-                                      formattedDate; //set output date to TextField value.
-                                },
+                        ),
+                        Card(
+                          child: IntlPhoneField(
+                            validator: (PhoneNumber? phone) {
+                              if (!isLength(phone!.number, 8, 20)) {
+                                return 'Please enter a valid Phone Number';
+                              }
+                              return null;
+                            },
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            cursorWidth: 3,
+                            controller: faxController,
+                            disableLengthCheck: true,
+                            keyboardType: TextInputType.number,
+                            textInputAction: TextInputAction.next,
+                            dropdownIconPosition: IconPosition.trailing,
+                            cursorColor: Theme.of(context).primaryColor,
+                            flagsButtonPadding: const EdgeInsets.only(
+                              left: 10,
+                            ),
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            dropdownTextStyle: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                            pickerDialogStyle: PickerDialogStyle(
+                              backgroundColor: Colors.white,
+                              countryCodeStyle: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              countryNameStyle: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              searchFieldCursorColor: Colors.white,
+                              searchFieldInputDecoration: InputDecoration(
+                                filled: true,
+                                fillColor: Theme.of(context).primaryColor,
+                                label: const Text('Search country'),
+                                labelStyle: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                suffixIcon: const Icon(
+                                  Icons.search,
+                                  color: Colors.white,
+                                  size: 30,
+                                ),
+                                floatingLabelStyle: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 2,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            decoration: InputDecoration(
+                              hintText: 'Fax',
+                              filled: true,
+                              fillColor: Colors.white,
+                              suffixIcon: faxController.text.isEmpty
+                                  ? Container(
+                                      width: 0,
+                                    )
+                                  : IconButton(
+                                      onPressed: () => faxController.clear(),
+                                      icon: Icon(
+                                        Icons.close,
+                                        color: Theme.of(context).primaryColor,
+                                      ),
+                                    ),
+                              border: const OutlineInputBorder(),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 3,
+                                ),
+                              ),
+                            ),
+                            onChanged: (PhoneNumber phone) {
+                              completePhoneNumberFax = phone.completeNumber;
+                            },
+                          ),
+                        ),
+                        Card(
+                          child: TextFormField(
+                            cursorWidth: 3,
+                            controller: bDayController,
+                            keyboardType: TextInputType.datetime,
+                            textInputAction: TextInputAction.next,
+                            cursorColor: Theme.of(context).primaryColor,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            onTap: () async {
+                              // Below line stops keyboard from appearing
+                              FocusScope.of(context).requestFocus(FocusNode());
+                              DateTime? newDate = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(1900),
+                                lastDate: DateTime(2100),
+                                initialDatePickerMode: DatePickerMode.year,
+                                initialEntryMode:
+                                    DatePickerEntryMode.calendarOnly,
                               );
-                            }
-                          },
-                          decoration: InputDecoration(
-                            hintText: 'Date of birth',
-                            filled: true,
-                            fillColor: Colors.white,
-                            prefixIcon: Icon(
-                              Icons.date_range,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            border: const OutlineInputBorder(),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 3,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Card(
-                        child: TextFormField(
-                          cursorWidth: 3,
-                          controller: urlController,
-                          keyboardType: TextInputType.url,
-                          textInputAction: TextInputAction.next,
-                          cursorColor: Theme.of(context).primaryColor,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          decoration: InputDecoration(
-                            hintText: 'https://www.example.com/',
-                            filled: true,
-                            fillColor: Colors.white,
-                            prefixIcon: Icon(
-                              Icons.link,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            suffixIcon: urlController.text.isEmpty
-                                ? Container(
-                                    width: 0,
-                                  )
-                                : IconButton(
-                                    onPressed: () => urlController.clear(),
-                                    icon: Icon(
-                                      Icons.close,
-                                      color: Theme.of(context).primaryColor,
-                                    ),
-                                  ),
-                            border: const OutlineInputBorder(),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 3,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Card(
-                        child: TextFormField(
-                          cursorWidth: 3,
-                          controller: streetController,
-                          keyboardType: TextInputType.streetAddress,
-                          textInputAction: TextInputAction.next,
-                          cursorColor: Theme.of(context).primaryColor,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          decoration: InputDecoration(
-                            hintText: 'Street address',
-                            filled: true,
-                            fillColor: Colors.white,
-                            prefixIcon: Icon(
-                              Icons.location_on,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            suffixIcon: streetController.text.isEmpty
-                                ? Container(
-                                    width: 0,
-                                  )
-                                : IconButton(
-                                    onPressed: () => streetController.clear(),
-                                    icon: Icon(
-                                      Icons.close,
-                                      color: Theme.of(context).primaryColor,
-                                    ),
-                                  ),
-                            border: const OutlineInputBorder(),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 3,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Card(
-                        child: TextFormField(
-                          cursorWidth: 3,
-                          controller: zipController,
-                          keyboardType: TextInputType.streetAddress,
-                          textInputAction: TextInputAction.next,
-                          cursorColor: Theme.of(context).primaryColor,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          decoration: InputDecoration(
-                            hintText: 'Zip code',
-                            filled: true,
-                            fillColor: Colors.white,
-                            prefixIcon: Icon(
-                              Icons.location_on,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            suffixIcon: zipController.text.isEmpty
-                                ? Container(
-                                    width: 0,
-                                  )
-                                : IconButton(
-                                    onPressed: () => zipController.clear(),
-                                    icon: Icon(
-                                      Icons.close,
-                                      color: Theme.of(context).primaryColor,
-                                    ),
-                                  ),
-                            border: const OutlineInputBorder(),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 3,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Card(
-                        child: TextFormField(
-                          cursorWidth: 3,
-                          controller: cityController,
-                          keyboardType: TextInputType.streetAddress,
-                          textInputAction: TextInputAction.next,
-                          cursorColor: Theme.of(context).primaryColor,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          decoration: InputDecoration(
-                            hintText: 'City',
-                            filled: true,
-                            fillColor: Colors.white,
-                            prefixIcon: Icon(
-                              Icons.location_on,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            suffixIcon: cityController.text.isEmpty
-                                ? Container(
-                                    width: 0,
-                                  )
-                                : IconButton(
-                                    onPressed: () => cityController.clear(),
-                                    icon: Icon(
-                                      Icons.close,
-                                      color: Theme.of(context).primaryColor,
-                                    ),
-                                  ),
-                            border: const OutlineInputBorder(),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 3,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Card(
-                        child: TextFormField(
-                          cursorWidth: 3,
-                          controller: stateController,
-                          keyboardType: TextInputType.streetAddress,
-                          textInputAction: TextInputAction.next,
-                          cursorColor: Theme.of(context).primaryColor,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          decoration: InputDecoration(
-                            hintText: 'State',
-                            filled: true,
-                            fillColor: Colors.white,
-                            prefixIcon: Icon(
-                              Icons.location_on,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            suffixIcon: stateController.text.isEmpty
-                                ? Container(
-                                    width: 0,
-                                  )
-                                : IconButton(
-                                    onPressed: () => stateController.clear(),
-                                    icon: Icon(
-                                      Icons.close,
-                                      color: Theme.of(context).primaryColor,
-                                    ),
-                                  ),
-                            border: const OutlineInputBorder(),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 3,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Card(
-                        child: TextFormField(
-                          cursorWidth: 3,
-                          controller: countryController,
-                          keyboardType: TextInputType.streetAddress,
-                          textInputAction: TextInputAction.next,
-                          cursorColor: Theme.of(context).primaryColor,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          decoration: InputDecoration(
-                            hintText: 'Country',
-                            filled: true,
-                            fillColor: Colors.white,
-                            prefixIcon: Icon(
-                              Icons.location_on,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            suffixIcon: countryController.text.isEmpty
-                                ? Container(
-                                    width: 0,
-                                  )
-                                : IconButton(
-                                    onPressed: () => countryController.clear(),
-                                    icon: Icon(
-                                      Icons.close,
-                                      color: Theme.of(context).primaryColor,
-                                    ),
-                                  ),
-                            border: const OutlineInputBorder(),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 3,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Card(
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              if (validateKey.currentState!.validate()) {
+                              if (newDate != null) {
+                                String formattedDate =
+                                    DateFormat('yyyyMMdd').format(newDate);
                                 setState(
                                   () {
-                                    valueQr = [
-                                      "BEGIN:VCARD",
-                                      "VERSION:3.0",
-                                      "FN: ${nameController.text.toString()}",
-                                      "EMAIL: ${emailController.text.toString()}",
-                                      "TEL;TYPE=CELL: $completePhoneNumberMobil",
-                                      "TEL;TYPE=WORK: $completePhoneNumberWork",
-                                      "TEL;TYPE=Home: $completePhoneNumberHome",
-                                      "TEL;TYPE=FAX: $completePhoneNumberFax",
-                                      "URL:${urlController.text.toString()}",
-                                      "BDAY:${bDayController.text.toString()}",
-                                      "ADR;TYPE=home:;;${streetController.text.toString()} ;${cityController.text.toString()};${stateController.text.toString()};${zipController.text.toString()};${countryController.text.toString()} ",
-                                      "END:VCARD",
-                                    ].join("\r\n");
-                                    Get.to(() =>
-                                        QrStyleAndShare(valueQr: valueQr));
+                                    bDayController.text =
+                                        formattedDate; //set output date to TextField value.
                                   },
                                 );
                               }
                             },
-                            child: const Padding(
-                              padding: EdgeInsets.symmetric(vertical: 18),
-                              child: Text('Create QR Code'),
+                            decoration: InputDecoration(
+                              hintText: 'Date of birth',
+                              filled: true,
+                              fillColor: Colors.white,
+                              prefixIcon: Icon(
+                                Icons.date_range,
+                                color: Theme.of(context).primaryColor,
+                              ),
+                              border: const OutlineInputBorder(),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 3,
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      Card(
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton.icon(
-                            onPressed: () {
-                              Get.back();
-                            },
-                            label: const Padding(
-                              padding: EdgeInsets.symmetric(vertical: 18),
-                              child: Text('Back'),
+                        Card(
+                          child: TextFormField(
+                            cursorWidth: 3,
+                            controller: urlController,
+                            keyboardType: TextInputType.url,
+                            textInputAction: TextInputAction.next,
+                            cursorColor: Theme.of(context).primaryColor,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
                             ),
-                            icon: const Icon(Icons.arrow_back_ios_new),
+                            decoration: InputDecoration(
+                              hintText: 'https://www.example.com/',
+                              filled: true,
+                              fillColor: Colors.white,
+                              prefixIcon: Icon(
+                                Icons.link,
+                                color: Theme.of(context).primaryColor,
+                              ),
+                              suffixIcon: urlController.text.isEmpty
+                                  ? Container(
+                                      width: 0,
+                                    )
+                                  : IconButton(
+                                      onPressed: () => urlController.clear(),
+                                      icon: Icon(
+                                        Icons.close,
+                                        color: Theme.of(context).primaryColor,
+                                      ),
+                                    ),
+                              border: const OutlineInputBorder(),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 3,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                        Card(
+                          child: TextFormField(
+                            cursorWidth: 3,
+                            controller: streetController,
+                            keyboardType: TextInputType.streetAddress,
+                            textInputAction: TextInputAction.next,
+                            cursorColor: Theme.of(context).primaryColor,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            decoration: InputDecoration(
+                              hintText: 'Street address',
+                              filled: true,
+                              fillColor: Colors.white,
+                              prefixIcon: Icon(
+                                Icons.location_on,
+                                color: Theme.of(context).primaryColor,
+                              ),
+                              suffixIcon: streetController.text.isEmpty
+                                  ? Container(
+                                      width: 0,
+                                    )
+                                  : IconButton(
+                                      onPressed: () => streetController.clear(),
+                                      icon: Icon(
+                                        Icons.close,
+                                        color: Theme.of(context).primaryColor,
+                                      ),
+                                    ),
+                              border: const OutlineInputBorder(),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 3,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Card(
+                          child: TextFormField(
+                            cursorWidth: 3,
+                            controller: zipController,
+                            keyboardType: TextInputType.streetAddress,
+                            textInputAction: TextInputAction.next,
+                            cursorColor: Theme.of(context).primaryColor,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            decoration: InputDecoration(
+                              hintText: 'Zip code',
+                              filled: true,
+                              fillColor: Colors.white,
+                              prefixIcon: Icon(
+                                Icons.location_on,
+                                color: Theme.of(context).primaryColor,
+                              ),
+                              suffixIcon: zipController.text.isEmpty
+                                  ? Container(
+                                      width: 0,
+                                    )
+                                  : IconButton(
+                                      onPressed: () => zipController.clear(),
+                                      icon: Icon(
+                                        Icons.close,
+                                        color: Theme.of(context).primaryColor,
+                                      ),
+                                    ),
+                              border: const OutlineInputBorder(),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 3,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Card(
+                          child: TextFormField(
+                            cursorWidth: 3,
+                            controller: cityController,
+                            keyboardType: TextInputType.streetAddress,
+                            textInputAction: TextInputAction.next,
+                            cursorColor: Theme.of(context).primaryColor,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            decoration: InputDecoration(
+                              hintText: 'City',
+                              filled: true,
+                              fillColor: Colors.white,
+                              prefixIcon: Icon(
+                                Icons.location_on,
+                                color: Theme.of(context).primaryColor,
+                              ),
+                              suffixIcon: cityController.text.isEmpty
+                                  ? Container(
+                                      width: 0,
+                                    )
+                                  : IconButton(
+                                      onPressed: () => cityController.clear(),
+                                      icon: Icon(
+                                        Icons.close,
+                                        color: Theme.of(context).primaryColor,
+                                      ),
+                                    ),
+                              border: const OutlineInputBorder(),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 3,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Card(
+                          child: TextFormField(
+                            cursorWidth: 3,
+                            controller: stateController,
+                            keyboardType: TextInputType.streetAddress,
+                            textInputAction: TextInputAction.next,
+                            cursorColor: Theme.of(context).primaryColor,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            decoration: InputDecoration(
+                              hintText: 'State',
+                              filled: true,
+                              fillColor: Colors.white,
+                              prefixIcon: Icon(
+                                Icons.location_on,
+                                color: Theme.of(context).primaryColor,
+                              ),
+                              suffixIcon: stateController.text.isEmpty
+                                  ? Container(
+                                      width: 0,
+                                    )
+                                  : IconButton(
+                                      onPressed: () => stateController.clear(),
+                                      icon: Icon(
+                                        Icons.close,
+                                        color: Theme.of(context).primaryColor,
+                                      ),
+                                    ),
+                              border: const OutlineInputBorder(),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 3,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Card(
+                          child: TextFormField(
+                            cursorWidth: 3,
+                            controller: countryController,
+                            keyboardType: TextInputType.streetAddress,
+                            textInputAction: TextInputAction.next,
+                            cursorColor: Theme.of(context).primaryColor,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            decoration: InputDecoration(
+                              hintText: 'Country',
+                              filled: true,
+                              fillColor: Colors.white,
+                              prefixIcon: Icon(
+                                Icons.location_on,
+                                color: Theme.of(context).primaryColor,
+                              ),
+                              suffixIcon: countryController.text.isEmpty
+                                  ? Container(
+                                      width: 0,
+                                    )
+                                  : IconButton(
+                                      onPressed: () =>
+                                          countryController.clear(),
+                                      icon: Icon(
+                                        Icons.close,
+                                        color: Theme.of(context).primaryColor,
+                                      ),
+                                    ),
+                              border: const OutlineInputBorder(),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 3,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Card(
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                if (validateKey.currentState!.validate()) {
+                                  setState(
+                                    () {
+                                      valueQr = [
+                                        "BEGIN:VCARD",
+                                        "VERSION:3.0",
+                                        "FN: ${nameController.text.toString()}",
+                                        "EMAIL: ${emailController.text.toString()}",
+                                        "TEL;TYPE=CELL: $completePhoneNumberMobil",
+                                        "TEL;TYPE=WORK: $completePhoneNumberWork",
+                                        "TEL;TYPE=Home: $completePhoneNumberHome",
+                                        "TEL;TYPE=FAX: $completePhoneNumberFax",
+                                        "URL:${urlController.text.toString()}",
+                                        "BDAY:${bDayController.text.toString()}",
+                                        "ADR;TYPE=home:;;${streetController.text.toString()} ;${cityController.text.toString()};${stateController.text.toString()};${zipController.text.toString()};${countryController.text.toString()} ",
+                                        "END:VCARD",
+                                      ].join("\r\n");
+                                      Get.to(() =>
+                                          QrStyleAndShare(valueQr: valueQr));
+                                    },
+                                  );
+                                }
+                              },
+                              child: const Padding(
+                                padding: EdgeInsets.symmetric(vertical: 18),
+                                child: Text('Create QR Code'),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Card(
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton.icon(
+                              onPressed: () {
+                                Get.back();
+                              },
+                              label: const Padding(
+                                padding: EdgeInsets.symmetric(vertical: 18),
+                                child: Text('Back'),
+                              ),
+                              icon: const Icon(Icons.arrow_back_ios_new),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
