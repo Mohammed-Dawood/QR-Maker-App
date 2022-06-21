@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:validators/validators.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/view/registration/main_sign_in.dart';
 
 class ResetPassword extends StatefulWidget {
@@ -14,8 +14,10 @@ class ResetPassword extends StatefulWidget {
 
 class _ResetPasswordState extends State<ResetPassword> {
   GlobalKey<FormState> validateKey = GlobalKey<FormState>();
-
   TextEditingController emailController = TextEditingController();
+
+  bool isScreenWidth(BuildContext context) =>
+      MediaQuery.of(context).size.width < 600;
 
   @override
   void dispose() {
@@ -83,6 +85,7 @@ class _ResetPasswordState extends State<ResetPassword> {
     return GetBuilder<ThemeController>(
       init: ThemeController(),
       builder: (ThemeController controller) => Container(
+        padding: const EdgeInsets.all(30),
         alignment: Alignment.center,
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -92,21 +95,27 @@ class _ResetPasswordState extends State<ResetPassword> {
             fit: BoxFit.cover,
           ),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(30.0),
-          child: Scaffold(
-            backgroundColor: Colors.transparent,
-            body: Center(
-              child: SingleChildScrollView(
-                child: Form(
-                  key: validateKey,
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Center(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Form(
+                key: validateKey,
+                child: Padding(
+                  padding: isScreenWidth(context)
+                      ? const EdgeInsets.symmetric(horizontal: 10)
+                      : const EdgeInsets.symmetric(horizontal: 100),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        'Receive an email to reset your password.',
-                        style: Theme.of(context).textTheme.headline4,
-                        textAlign: TextAlign.center,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Text(
+                          'Receive an email to reset your password.',
+                          style: Theme.of(context).textTheme.headline4,
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                       const SizedBox(
                         height: 50,

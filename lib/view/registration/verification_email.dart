@@ -29,6 +29,9 @@ class _VerificationEmailState extends State<VerificationEmail> {
     }
   }
 
+  bool isScreenWidth(BuildContext context) =>
+      MediaQuery.of(context).size.width < 600;
+
   @override
   void dispose() {
     timer?.cancel();
@@ -78,51 +81,59 @@ class _VerificationEmailState extends State<VerificationEmail> {
             child: Scaffold(
               backgroundColor: Colors.transparent,
               body: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'A verification email has been sent to your email.',
-                      style: Theme.of(context).textTheme.headline4,
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                    Card(
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton.icon(
-                          onPressed:
-                              canResendEmail ? sendVerificationEmail : null,
-                          icon: const Icon(Icons.email),
-                          label: const Padding(
-                            padding: EdgeInsets.symmetric(
-                              vertical: 18,
+                child: Padding(
+                  padding: isScreenWidth(context)
+                      ? const EdgeInsets.symmetric(horizontal: 10)
+                      : const EdgeInsets.symmetric(horizontal: 100),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Text(
+                          'A verification email has been sent to your email.',
+                          style: Theme.of(context).textTheme.headline4,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 50,
+                      ),
+                      Card(
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton.icon(
+                            onPressed:
+                                canResendEmail ? sendVerificationEmail : null,
+                            icon: const Icon(Icons.email),
+                            label: const Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 18,
+                              ),
+                              child: Text(' Resent Email '),
                             ),
-                            child: Text(' Resent Email '),
                           ),
                         ),
                       ),
-                    ),
-                    Card(
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton.icon(
-                          onPressed: () {
-                            FirebaseAuth.instance.signOut();
-                          },
-                          icon: const Icon(Icons.cancel_outlined),
-                          label: const Padding(
-                            padding: EdgeInsets.symmetric(
-                              vertical: 18,
+                      Card(
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton.icon(
+                            onPressed: () {
+                              FirebaseAuth.instance.signOut();
+                            },
+                            icon: const Icon(Icons.cancel_outlined),
+                            label: const Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 18,
+                              ),
+                              child: Text(' Cancel '),
                             ),
-                            child: Text(' Cancel '),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
