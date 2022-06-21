@@ -32,89 +32,170 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Scanner',
-          style: TextStyle(fontSize: (isScreenWidth(context)) ? 20 : 28),
-        ),
-        iconTheme: IconThemeData(
-          size: (isScreenWidth(context)) ? 24 : 30,
-          color: Colors.white,
-        ),
-        actions: [
-          IconButton(
-            icon: FutureBuilder<bool?>(
-              future: controller?.getFlashStatus(),
-              builder: (context, snapshot) {
-                if (snapshot.data != null) {
-                  return Icon(
-                    snapshot.data! ? Icons.flash_off : Icons.flash_on,
-                  );
-                } else {
-                  return const Icon(Icons.flash_on);
-                }
-              },
-            ),
-            onPressed: () async {
-              await controller?.toggleFlash();
-              setState(
-                () {},
-              );
-            },
-          ),
-          IconButton(
-            icon: FutureBuilder(
-                future: controller?.getCameraInfo(),
-                builder: (context, snapshot) {
-                  if (snapshot.data != null) {
-                    return const Icon(
-                      Icons.cameraswitch,
-                    );
-                  } else {
-                    return Container();
-                  }
-                }),
-            onPressed: () async {
-              await controller?.flipCamera();
-              setState(() {});
-            },
-          ),
-        ],
-      ),
-      body: Stack(
-        alignment: Alignment.center,
-        children: <Widget>[
-          _buildQrView(context),
-          Positioned(
-            bottom: 50,
-            child: ElevatedButton(
-              onPressed: () async {
-                final String url = '${result!.code}';
-                // final String url = 'SMSTO:001234567890:hello';
-
-                if (await canLaunchUrlString(url)) {
-                  await launchUrlString(url);
-                } else {
-                  throw 'Could not launch ${result!.code}';
-                }
-              },
-              child: Padding(
-                padding: (isScreenWidth(context))
-                    ? const EdgeInsets.symmetric(vertical: 18)
-                    : const EdgeInsets.symmetric(vertical: 20),
-                child: Text(
-                  result != null ? ' Go to link ' : 'Scan QR Code',
-                  style:
-                      TextStyle(fontSize: (isScreenWidth(context)) ? 18 : 25),
-                  maxLines: 1,
-                ),
+    return MediaQuery.of(context).orientation == Orientation.portrait
+        ? Scaffold(
+            appBar: AppBar(
+              title: Text(
+                'Scanner',
+                style: TextStyle(fontSize: (isScreenWidth(context)) ? 20 : 28),
               ),
+              iconTheme: IconThemeData(
+                size: (isScreenWidth(context)) ? 24 : 30,
+                color: Colors.white,
+              ),
+              actions: [
+                IconButton(
+                  icon: FutureBuilder<bool?>(
+                    future: controller?.getFlashStatus(),
+                    builder: (context, snapshot) {
+                      if (snapshot.data != null) {
+                        return Icon(
+                          snapshot.data! ? Icons.flash_off : Icons.flash_on,
+                        );
+                      } else {
+                        return const Icon(Icons.flash_on);
+                      }
+                    },
+                  ),
+                  onPressed: () async {
+                    await controller?.toggleFlash();
+                    setState(
+                      () {},
+                    );
+                  },
+                ),
+                IconButton(
+                  icon: FutureBuilder(
+                      future: controller?.getCameraInfo(),
+                      builder: (context, snapshot) {
+                        if (snapshot.data != null) {
+                          return const Icon(
+                            Icons.cameraswitch,
+                          );
+                        } else {
+                          return Container();
+                        }
+                      }),
+                  onPressed: () async {
+                    await controller?.flipCamera();
+                    setState(() {});
+                  },
+                ),
+              ],
             ),
-          ),
-        ],
-      ),
-    );
+            body: Stack(
+              alignment: Alignment.center,
+              children: <Widget>[
+                _buildQrView(context),
+                Positioned(
+                  bottom: 50,
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      final String url = '${result!.code}';
+                      // final String url = 'SMSTO:001234567890:hello';
+
+                      if (await canLaunchUrlString(url)) {
+                        await launchUrlString(url);
+                      } else {
+                        throw 'Could not launch ${result!.code}';
+                      }
+                    },
+                    child: Padding(
+                      padding: (isScreenWidth(context))
+                          ? const EdgeInsets.symmetric(vertical: 18)
+                          : const EdgeInsets.symmetric(vertical: 20),
+                      child: Text(
+                        result != null ? ' Go to link ' : 'Scan QR Code',
+                        style: TextStyle(
+                            fontSize: (isScreenWidth(context)) ? 18 : 25),
+                        maxLines: 1,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          )
+        : Scaffold(
+            appBar: AppBar(
+              title: const Text(
+                'Scanner',
+                style: TextStyle(fontSize: 28),
+              ),
+              iconTheme: const IconThemeData(
+                size: 30,
+                color: Colors.white,
+              ),
+              actions: [
+                IconButton(
+                  icon: FutureBuilder<bool?>(
+                    future: controller?.getFlashStatus(),
+                    builder: (context, snapshot) {
+                      if (snapshot.data != null) {
+                        return Icon(
+                          snapshot.data! ? Icons.flash_off : Icons.flash_on,
+                        );
+                      } else {
+                        return const Icon(Icons.flash_on);
+                      }
+                    },
+                  ),
+                  onPressed: () async {
+                    await controller?.toggleFlash();
+                    setState(
+                      () {},
+                    );
+                  },
+                ),
+                IconButton(
+                  icon: FutureBuilder(
+                      future: controller?.getCameraInfo(),
+                      builder: (context, snapshot) {
+                        if (snapshot.data != null) {
+                          return const Icon(
+                            Icons.cameraswitch,
+                          );
+                        } else {
+                          return Container();
+                        }
+                      }),
+                  onPressed: () async {
+                    await controller?.flipCamera();
+                    setState(() {});
+                  },
+                ),
+              ],
+            ),
+            body: Stack(
+              alignment: Alignment.center,
+              children: <Widget>[
+                _buildQrView(context),
+                Positioned(
+                  bottom: 50,
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      final String url = '${result!.code}';
+                      // final String url = 'SMSTO:001234567890:hello';
+
+                      if (await canLaunchUrlString(url)) {
+                        await launchUrlString(url);
+                      } else {
+                        throw 'Could not launch ${result!.code}';
+                      }
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      child: Text(
+                        result != null ? ' Go to link ' : 'Scan QR Code',
+                        style: const TextStyle(fontSize: 25),
+                        maxLines: 1,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
   }
 
   Widget _buildQrView(BuildContext context) {

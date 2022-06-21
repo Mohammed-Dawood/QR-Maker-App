@@ -74,69 +74,134 @@ class _VerificationEmailState extends State<VerificationEmail> {
 
   @override
   Widget build(BuildContext context) {
-    return isEmailVerified
-        ? const MainQr()
-        : Padding(
-            padding: const EdgeInsets.all(30.0),
-            child: Scaffold(
-              backgroundColor: Colors.transparent,
-              body: Center(
-                child: Padding(
-                  padding: isScreenWidth(context)
-                      ? const EdgeInsets.symmetric(horizontal: 10)
-                      : const EdgeInsets.symmetric(horizontal: 100),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Text(
-                          'A verification email has been sent to your email.',
-                          style: Theme.of(context).textTheme.headline4,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      Card(
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton.icon(
-                            onPressed:
-                                canResendEmail ? sendVerificationEmail : null,
-                            icon: const Icon(Icons.email),
-                            label: const Padding(
-                              padding: EdgeInsets.symmetric(
-                                vertical: 18,
-                              ),
-                              child: Text(' Resent Email '),
+    return MediaQuery.of(context).orientation == Orientation.portrait
+        ? isEmailVerified
+            ? const MainQr()
+            : Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: Scaffold(
+                  backgroundColor: Colors.transparent,
+                  body: Center(
+                    child: Padding(
+                      padding: isScreenWidth(context)
+                          ? const EdgeInsets.symmetric(horizontal: 10)
+                          : const EdgeInsets.symmetric(horizontal: 100),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Text(
+                              'A verification email has been sent to your email.',
+                              style: Theme.of(context).textTheme.headline4,
+                              textAlign: TextAlign.center,
                             ),
                           ),
-                        ),
-                      ),
-                      Card(
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton.icon(
-                            onPressed: () {
-                              FirebaseAuth.instance.signOut();
-                            },
-                            icon: const Icon(Icons.cancel_outlined),
-                            label: const Padding(
-                              padding: EdgeInsets.symmetric(
-                                vertical: 18,
+                          const SizedBox(
+                            height: 50,
+                          ),
+                          Card(
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: ElevatedButton.icon(
+                                onPressed: canResendEmail
+                                    ? sendVerificationEmail
+                                    : null,
+                                icon: const Icon(Icons.email),
+                                label: const Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: 18,
+                                  ),
+                                  child: Text(' Resent Email '),
+                                ),
                               ),
-                              child: Text(' Cancel '),
                             ),
                           ),
-                        ),
+                          Card(
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: ElevatedButton.icon(
+                                onPressed: () {
+                                  FirebaseAuth.instance.signOut();
+                                },
+                                icon: const Icon(Icons.cancel_outlined),
+                                label: const Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: 18,
+                                  ),
+                                  child: Text(' Cancel '),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
-              ),
-            ),
-          );
+              )
+        : isEmailVerified
+            ? const MainQr()
+            : Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: Scaffold(
+                  backgroundColor: Colors.transparent,
+                  body: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 200),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Text(
+                              'A verification email has been sent to your email.',
+                              style: Theme.of(context).textTheme.headline4,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 50,
+                          ),
+                          Card(
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: ElevatedButton.icon(
+                                onPressed: canResendEmail
+                                    ? sendVerificationEmail
+                                    : null,
+                                icon: const Icon(Icons.email),
+                                label: const Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: 18,
+                                  ),
+                                  child: Text(' Resent Email '),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Card(
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: ElevatedButton.icon(
+                                onPressed: () {
+                                  FirebaseAuth.instance.signOut();
+                                },
+                                icon: const Icon(Icons.cancel_outlined),
+                                label: const Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: 18,
+                                  ),
+                                  child: Text(' Cancel '),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              );
   }
 }

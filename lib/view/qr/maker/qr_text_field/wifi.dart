@@ -31,243 +31,498 @@ class _MakeWifiState extends State<MakeWifi> {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<ThemeController>(
-      init: ThemeController(),
-      builder: (ThemeController controller) => Container(
-        padding: const EdgeInsets.all(30),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: controller.initValue
-                ? const AssetImage('images/background_dark.png')
-                : const AssetImage('images/background_light.png'),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          body: Center(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Form(
-                key: validateKey,
-                child: Padding(
-                  padding: isScreenWidth(context)
-                      ? const EdgeInsets.symmetric(horizontal: 10)
-                      : const EdgeInsets.symmetric(horizontal: 100),
-                  child: Column(
-                    children: [
-                      Card(
-                        child: TextFormField(
-                          validator: (value) {
-                            if (isNull(value)) {
-                              return 'Please enter a Wifi Name';
-                            }
-                            return null;
-                          },
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          cursorWidth: 3,
-                          controller: nameNetController,
-                          keyboardType: TextInputType.text,
-                          textInputAction: TextInputAction.next,
-                          cursorColor: Theme.of(context).primaryColor,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          decoration: InputDecoration(
-                            hintText: 'Wifi Name',
-                            filled: true,
-                            fillColor: Colors.white,
-                            prefixIcon: Icon(
-                              Icons.wifi,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            suffixIcon: nameNetController.text.isEmpty
-                                ? Container(
-                                    width: 0,
-                                  )
-                                : IconButton(
-                                    onPressed: () => nameNetController.clear(),
-                                    icon: Icon(
-                                      Icons.close,
+    return MediaQuery.of(context).orientation == Orientation.portrait
+        ? GetBuilder<ThemeController>(
+            init: ThemeController(),
+            builder: (ThemeController controller) => Container(
+              padding: const EdgeInsets.all(30),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: controller.initValue
+                      ? const AssetImage('images/background_dark.png')
+                      : const AssetImage('images/background_light.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Scaffold(
+                backgroundColor: Colors.transparent,
+                body: Center(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Form(
+                      key: validateKey,
+                      child: Padding(
+                        padding: isScreenWidth(context)
+                            ? const EdgeInsets.symmetric(horizontal: 10)
+                            : const EdgeInsets.symmetric(horizontal: 100),
+                        child: Column(
+                          children: [
+                            Card(
+                              child: TextFormField(
+                                validator: (value) {
+                                  if (isNull(value)) {
+                                    return 'Please enter a Wifi Name';
+                                  }
+                                  return null;
+                                },
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                cursorWidth: 3,
+                                controller: nameNetController,
+                                keyboardType: TextInputType.text,
+                                textInputAction: TextInputAction.next,
+                                cursorColor: Theme.of(context).primaryColor,
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                decoration: InputDecoration(
+                                  hintText: 'Wifi Name',
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                  prefixIcon: Icon(
+                                    Icons.wifi,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  suffixIcon: nameNetController.text.isEmpty
+                                      ? Container(
+                                          width: 0,
+                                        )
+                                      : IconButton(
+                                          onPressed: () =>
+                                              nameNetController.clear(),
+                                          icon: Icon(
+                                            Icons.close,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                          ),
+                                        ),
+                                  border: const OutlineInputBorder(),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
                                       color: Theme.of(context).primaryColor,
+                                      width: 3,
                                     ),
                                   ),
-                            border: const OutlineInputBorder(),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 3,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Card(
-                        child: TextFormField(
-                          validator: (value) {
-                            if (isNull(value)) {
-                              return 'Please enter a Wifi Password';
-                            }
-                            return null;
-                          },
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          cursorWidth: 3,
-                          controller: passNetController,
-                          textInputAction: TextInputAction.next,
-                          keyboardType: TextInputType.visiblePassword,
-                          cursorColor: Theme.of(context).primaryColor,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          decoration: InputDecoration(
-                            hintText: 'Wifi Password',
-                            filled: true,
-                            fillColor: Colors.white,
-                            prefixIcon: Icon(
-                              Icons.wifi_password,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            suffixIcon: passNetController.text.isEmpty
-                                ? Container(
-                                    width: 0,
-                                  )
-                                : IconButton(
-                                    onPressed: () => passNetController.clear(),
-                                    icon: Icon(
-                                      Icons.close,
-                                      color: Theme.of(context).primaryColor,
-                                    ),
-                                  ),
-                            border: const OutlineInputBorder(),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 3,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Card(
-                        shape: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.black54,
-                          ),
-                        ),
-                        color: Colors.white,
-                        child: Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: Icon(
-                                  Icons.security,
-                                  color: Theme.of(context).primaryColor,
                                 ),
                               ),
-                              Expanded(
-                                flex: 7,
-                                child: DropdownButton<String>(
-                                  hint: const Text(
-                                    ' Select Wifi Security Type',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
+                            ),
+                            Card(
+                              child: TextFormField(
+                                validator: (value) {
+                                  if (isNull(value)) {
+                                    return 'Please enter a Wifi Password';
+                                  }
+                                  return null;
+                                },
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                cursorWidth: 3,
+                                controller: passNetController,
+                                textInputAction: TextInputAction.next,
+                                keyboardType: TextInputType.visiblePassword,
+                                cursorColor: Theme.of(context).primaryColor,
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                decoration: InputDecoration(
+                                  hintText: 'Wifi Password',
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                  prefixIcon: Icon(
+                                    Icons.wifi_password,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  suffixIcon: passNetController.text.isEmpty
+                                      ? Container(
+                                          width: 0,
+                                        )
+                                      : IconButton(
+                                          onPressed: () =>
+                                              passNetController.clear(),
+                                          icon: Icon(
+                                            Icons.close,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                          ),
+                                        ),
+                                  border: const OutlineInputBorder(),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 3,
                                     ),
                                   ),
-                                  borderRadius: BorderRadius.circular(5),
-                                  iconSize: 36,
-                                  icon: const Icon(
-                                    Icons.arrow_drop_down,
-                                    color: Colors.black,
-                                  ),
-                                  underline: Container(
-                                    height: 0,
-                                  ),
-                                  value: dropValue,
-                                  onChanged: (newValue) {
-                                    setState(
-                                      () {
-                                        dropValue = newValue!;
-                                      },
-                                    );
-                                  },
-                                  items: <String>['WPA/WPA2', 'WEP']
-                                      .map<DropdownMenuItem<String>>(
-                                    (String value) {
-                                      return DropdownMenuItem<String>(
-                                        value: value,
-                                        child: Text(
-                                          value,
-                                          style: const TextStyle(
-                                            color: Colors.black,
+                                ),
+                              ),
+                            ),
+                            Card(
+                              shape: const OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.black54,
+                                ),
+                              ),
+                              color: Colors.white,
+                              child: Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Expanded(
+                                      flex: 1,
+                                      child: Icon(
+                                        Icons.security,
+                                        color: Theme.of(context).primaryColor,
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 7,
+                                      child: DropdownButton<String>(
+                                        hint: const Text(
+                                          ' Select Wifi Security Type',
+                                          style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
-                                      );
-                                    },
-                                  ).toList(),
+                                        borderRadius: BorderRadius.circular(5),
+                                        iconSize: 36,
+                                        icon: const Icon(
+                                          Icons.arrow_drop_down,
+                                          color: Colors.black,
+                                        ),
+                                        underline: Container(
+                                          height: 0,
+                                        ),
+                                        value: dropValue,
+                                        onChanged: (newValue) {
+                                          setState(
+                                            () {
+                                              dropValue = newValue!;
+                                            },
+                                          );
+                                        },
+                                        items: <String>['WPA/WPA2', 'WEP']
+                                            .map<DropdownMenuItem<String>>(
+                                          (String value) {
+                                            return DropdownMenuItem<String>(
+                                              value: value,
+                                              child: Text(
+                                                value,
+                                                style: const TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ).toList(),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Card(
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              if (validateKey.currentState!.validate()) {
-                                setState(
-                                  () {
-                                    valueQr = 'WIFI:S:' +
-                                        nameNetController.text.toString() +
-                                        ';T:' +
-                                        dropValue +
-                                        ';P:' +
-                                        passNetController.text.toString() +
-                                        ';H:False;;';
-                                    Get.to(() =>
-                                        QrStyleAndShare(valueQr: valueQr));
+                            ),
+                            Card(
+                              child: SizedBox(
+                                width: double.infinity,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    if (validateKey.currentState!.validate()) {
+                                      setState(
+                                        () {
+                                          valueQr = 'WIFI:S:' +
+                                              nameNetController.text
+                                                  .toString() +
+                                              ';T:' +
+                                              dropValue +
+                                              ';P:' +
+                                              passNetController.text
+                                                  .toString() +
+                                              ';H:False;;';
+                                          Get.to(() => QrStyleAndShare(
+                                              valueQr: valueQr));
+                                        },
+                                      );
+                                    }
                                   },
-                                );
-                              }
-                            },
-                            child: const Padding(
-                              padding: EdgeInsets.symmetric(vertical: 18),
-                              child: Text('Create QR Code'),
+                                  child: const Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 18),
+                                    child: Text('Create QR Code'),
+                                  ),
+                                ),
+                              ),
                             ),
-                          ),
+                            Card(
+                              child: SizedBox(
+                                width: double.infinity,
+                                child: ElevatedButton.icon(
+                                  onPressed: () {
+                                    Get.back();
+                                  },
+                                  label: const Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 18),
+                                    child: Text('Back'),
+                                  ),
+                                  icon: const Icon(Icons.arrow_back_ios_new),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      Card(
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton.icon(
-                            onPressed: () {
-                              Get.back();
-                            },
-                            label: const Padding(
-                              padding: EdgeInsets.symmetric(vertical: 18),
-                              child: Text('Back'),
-                            ),
-                            icon: const Icon(Icons.arrow_back_ios_new),
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ),
-      ),
-    );
+          )
+        : GetBuilder<ThemeController>(
+            init: ThemeController(),
+            builder: (ThemeController controller) => Container(
+              padding: const EdgeInsets.all(30),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: controller.initValue
+                      ? const AssetImage('images/background_dark.png')
+                      : const AssetImage('images/background_light.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Scaffold(
+                backgroundColor: Colors.transparent,
+                body: Center(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Form(
+                      key: validateKey,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 200),
+                        child: Column(
+                          children: [
+                            Card(
+                              child: TextFormField(
+                                validator: (value) {
+                                  if (isNull(value)) {
+                                    return 'Please enter a Wifi Name';
+                                  }
+                                  return null;
+                                },
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                cursorWidth: 3,
+                                controller: nameNetController,
+                                keyboardType: TextInputType.text,
+                                textInputAction: TextInputAction.next,
+                                cursorColor: Theme.of(context).primaryColor,
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                decoration: InputDecoration(
+                                  hintText: 'Wifi Name',
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                  prefixIcon: Icon(
+                                    Icons.wifi,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  suffixIcon: nameNetController.text.isEmpty
+                                      ? Container(
+                                          width: 0,
+                                        )
+                                      : IconButton(
+                                          onPressed: () =>
+                                              nameNetController.clear(),
+                                          icon: Icon(
+                                            Icons.close,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                          ),
+                                        ),
+                                  border: const OutlineInputBorder(),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 3,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Card(
+                              child: TextFormField(
+                                validator: (value) {
+                                  if (isNull(value)) {
+                                    return 'Please enter a Wifi Password';
+                                  }
+                                  return null;
+                                },
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                cursorWidth: 3,
+                                controller: passNetController,
+                                textInputAction: TextInputAction.next,
+                                keyboardType: TextInputType.visiblePassword,
+                                cursorColor: Theme.of(context).primaryColor,
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                decoration: InputDecoration(
+                                  hintText: 'Wifi Password',
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                  prefixIcon: Icon(
+                                    Icons.wifi_password,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  suffixIcon: passNetController.text.isEmpty
+                                      ? Container(
+                                          width: 0,
+                                        )
+                                      : IconButton(
+                                          onPressed: () =>
+                                              passNetController.clear(),
+                                          icon: Icon(
+                                            Icons.close,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                          ),
+                                        ),
+                                  border: const OutlineInputBorder(),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 3,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Card(
+                              shape: const OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.black54,
+                                ),
+                              ),
+                              color: Colors.white,
+                              child: Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Expanded(
+                                      flex: 1,
+                                      child: Icon(
+                                        Icons.security,
+                                        color: Theme.of(context).primaryColor,
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 7,
+                                      child: DropdownButton<String>(
+                                        hint: const Text(
+                                          ' Select Wifi Security Type',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        borderRadius: BorderRadius.circular(5),
+                                        iconSize: 36,
+                                        icon: const Icon(
+                                          Icons.arrow_drop_down,
+                                          color: Colors.black,
+                                        ),
+                                        underline: Container(
+                                          height: 0,
+                                        ),
+                                        value: dropValue,
+                                        onChanged: (newValue) {
+                                          setState(
+                                            () {
+                                              dropValue = newValue!;
+                                            },
+                                          );
+                                        },
+                                        items: <String>['WPA/WPA2', 'WEP']
+                                            .map<DropdownMenuItem<String>>(
+                                          (String value) {
+                                            return DropdownMenuItem<String>(
+                                              value: value,
+                                              child: Text(
+                                                value,
+                                                style: const TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ).toList(),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Card(
+                              child: SizedBox(
+                                width: double.infinity,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    if (validateKey.currentState!.validate()) {
+                                      setState(
+                                        () {
+                                          valueQr = 'WIFI:S:' +
+                                              nameNetController.text
+                                                  .toString() +
+                                              ';T:' +
+                                              dropValue +
+                                              ';P:' +
+                                              passNetController.text
+                                                  .toString() +
+                                              ';H:False;;';
+                                          Get.to(() => QrStyleAndShare(
+                                              valueQr: valueQr));
+                                        },
+                                      );
+                                    }
+                                  },
+                                  child: const Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 18),
+                                    child: Text('Create QR Code'),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Card(
+                              child: SizedBox(
+                                width: double.infinity,
+                                child: ElevatedButton.icon(
+                                  onPressed: () {
+                                    Get.back();
+                                  },
+                                  label: const Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 18),
+                                    child: Text('Back'),
+                                  ),
+                                  icon: const Icon(Icons.arrow_back_ios_new),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
   }
 }
