@@ -19,6 +19,13 @@ class _MakeWhatsUppState extends State<MakeWhatsUpp> {
   var completePhoneNumber = '';
 
   GlobalKey<FormState> validateKey = GlobalKey<FormState>();
+  TextEditingController whatsUppController = TextEditingController();
+
+  @override
+  void initState() {
+    whatsUppController.addListener(() => setState(() {}));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +61,7 @@ class _MakeWhatsUppState extends State<MakeWhatsUpp> {
                         },
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         cursorWidth: 3,
+                        controller: whatsUppController,
                         disableLengthCheck: true,
                         keyboardType: TextInputType.number,
                         textInputAction: TextInputAction.next,
@@ -109,6 +117,17 @@ class _MakeWhatsUppState extends State<MakeWhatsUpp> {
                           hintText: 'Phone Number',
                           filled: true,
                           fillColor: Colors.white,
+                          suffixIcon: whatsUppController.text.isEmpty
+                              ? Container(
+                                  width: 0,
+                                )
+                              : IconButton(
+                                  onPressed: () => whatsUppController.clear(),
+                                  icon: Icon(
+                                    Icons.close,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                ),
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(

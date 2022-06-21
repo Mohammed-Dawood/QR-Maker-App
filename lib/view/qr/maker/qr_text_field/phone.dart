@@ -19,6 +19,13 @@ class _MakePhoneState extends State<MakePhone> {
   var completePhoneNumber = '';
 
   GlobalKey<FormState> validateKey = GlobalKey<FormState>();
+  TextEditingController phoneController = TextEditingController();
+
+  @override
+  void initState() {
+    phoneController.addListener(() => setState(() {}));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +61,7 @@ class _MakePhoneState extends State<MakePhone> {
                         },
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         cursorWidth: 3,
+                        controller: phoneController,
                         disableLengthCheck: true,
                         keyboardType: TextInputType.number,
                         textInputAction: TextInputAction.next,
@@ -111,6 +119,17 @@ class _MakePhoneState extends State<MakePhone> {
                           hintText: 'Phone Number',
                           filled: true,
                           fillColor: Colors.white,
+                          suffixIcon: phoneController.text.isEmpty
+                              ? Container(
+                                  width: 0,
+                                )
+                              : IconButton(
+                                  onPressed: () => phoneController.clear(),
+                                  icon: Icon(
+                                    Icons.close,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                ),
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(

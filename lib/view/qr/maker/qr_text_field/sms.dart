@@ -19,7 +19,16 @@ class _MakeSMSState extends State<MakeSMS> {
   var completePhoneNumber = '';
 
   GlobalKey<FormState> validateKey = GlobalKey<FormState>();
+  TextEditingController phoneController = TextEditingController();
   TextEditingController messageController = TextEditingController();
+
+  @override
+  void initState() {
+    phoneController.addListener(() => setState(() {}));
+    messageController.addListener(() => setState(() {}));
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +64,7 @@ class _MakeSMSState extends State<MakeSMS> {
                         },
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         cursorWidth: 3,
+                        controller: phoneController,
                         disableLengthCheck: true,
                         keyboardType: TextInputType.number,
                         textInputAction: TextInputAction.next,
@@ -110,6 +120,17 @@ class _MakeSMSState extends State<MakeSMS> {
                           hintText: 'Phone Number',
                           filled: true,
                           fillColor: Colors.white,
+                          suffixIcon: phoneController.text.isEmpty
+                              ? Container(
+                                  width: 0,
+                                )
+                              : IconButton(
+                                  onPressed: () => phoneController.clear(),
+                                  icon: Icon(
+                                    Icons.close,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                ),
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -144,6 +165,17 @@ class _MakeSMSState extends State<MakeSMS> {
                             Icons.message,
                             color: Theme.of(context).primaryColor,
                           ),
+                          suffixIcon: messageController.text.isEmpty
+                              ? Container(
+                                  width: 0,
+                                )
+                              : IconButton(
+                                  onPressed: () => messageController.clear(),
+                                  icon: Icon(
+                                    Icons.close,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                ),
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(

@@ -27,14 +27,35 @@ class _MakeVCardState extends State<MakeVCard> {
 
   TextEditingController urlController = TextEditingController();
   TextEditingController zipController = TextEditingController();
+  TextEditingController faxController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController bDayController = TextEditingController();
   TextEditingController cityController = TextEditingController();
+  TextEditingController workController = TextEditingController();
+  TextEditingController homeController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController stateController = TextEditingController();
   TextEditingController streetController = TextEditingController();
+  TextEditingController mobileController = TextEditingController();
   TextEditingController countryController = TextEditingController();
-  TextEditingController lastNameController = TextEditingController();
+
+  @override
+  void initState() {
+    urlController.addListener(() => setState(() {}));
+    zipController.addListener(() => setState(() {}));
+    faxController.addListener(() => setState(() {}));
+    cityController.addListener(() => setState(() {}));
+    nameController.addListener(() => setState(() {}));
+    workController.addListener(() => setState(() {}));
+    homeController.addListener(() => setState(() {}));
+    stateController.addListener(() => setState(() {}));
+    emailController.addListener(() => setState(() {}));
+    mobileController.addListener(() => setState(() {}));
+    streetController.addListener(() => setState(() {}));
+    countryController.addListener(() => setState(() {}));
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +111,17 @@ class _MakeVCardState extends State<MakeVCard> {
                               Icons.person,
                               color: Theme.of(context).primaryColor,
                             ),
+                            suffixIcon: nameController.text.isEmpty
+                                ? Container(
+                                    width: 0,
+                                  )
+                                : IconButton(
+                                    onPressed: () => nameController.clear(),
+                                    icon: Icon(
+                                      Icons.close,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -119,6 +151,17 @@ class _MakeVCardState extends State<MakeVCard> {
                               Icons.email,
                               color: Theme.of(context).primaryColor,
                             ),
+                            suffixIcon: emailController.text.isEmpty
+                                ? Container(
+                                    width: 0,
+                                  )
+                                : IconButton(
+                                    onPressed: () => emailController.clear(),
+                                    icon: Icon(
+                                      Icons.close,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -139,6 +182,7 @@ class _MakeVCardState extends State<MakeVCard> {
                           },
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           cursorWidth: 3,
+                          controller: mobileController,
                           disableLengthCheck: true,
                           keyboardType: TextInputType.number,
                           textInputAction: TextInputAction.next,
@@ -196,6 +240,17 @@ class _MakeVCardState extends State<MakeVCard> {
                             hintText: 'Phone(Mobile)',
                             filled: true,
                             fillColor: Colors.white,
+                            suffixIcon: mobileController.text.isEmpty
+                                ? Container(
+                                    width: 0,
+                                  )
+                                : IconButton(
+                                    onPressed: () => mobileController.clear(),
+                                    icon: Icon(
+                                      Icons.close,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -219,6 +274,7 @@ class _MakeVCardState extends State<MakeVCard> {
                           },
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           cursorWidth: 3,
+                          controller: workController,
                           disableLengthCheck: true,
                           keyboardType: TextInputType.number,
                           textInputAction: TextInputAction.next,
@@ -276,6 +332,17 @@ class _MakeVCardState extends State<MakeVCard> {
                             hintText: 'Phone(Work)',
                             filled: true,
                             fillColor: Colors.white,
+                            suffixIcon: workController.text.isEmpty
+                                ? Container(
+                                    width: 0,
+                                  )
+                                : IconButton(
+                                    onPressed: () => workController.clear(),
+                                    icon: Icon(
+                                      Icons.close,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -299,6 +366,7 @@ class _MakeVCardState extends State<MakeVCard> {
                           },
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           cursorWidth: 3,
+                          controller: homeController,
                           disableLengthCheck: true,
                           keyboardType: TextInputType.number,
                           textInputAction: TextInputAction.next,
@@ -356,6 +424,17 @@ class _MakeVCardState extends State<MakeVCard> {
                             hintText: 'Phone(Home)',
                             filled: true,
                             fillColor: Colors.white,
+                            suffixIcon: homeController.text.isEmpty
+                                ? Container(
+                                    width: 0,
+                                  )
+                                : IconButton(
+                                    onPressed: () => homeController.clear(),
+                                    icon: Icon(
+                                      Icons.close,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -379,6 +458,7 @@ class _MakeVCardState extends State<MakeVCard> {
                           },
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           cursorWidth: 3,
+                          controller: faxController,
                           disableLengthCheck: true,
                           keyboardType: TextInputType.number,
                           textInputAction: TextInputAction.next,
@@ -436,6 +516,17 @@ class _MakeVCardState extends State<MakeVCard> {
                             hintText: 'Fax',
                             filled: true,
                             fillColor: Colors.white,
+                            suffixIcon: faxController.text.isEmpty
+                                ? Container(
+                                    width: 0,
+                                  )
+                                : IconButton(
+                                    onPressed: () => faxController.clear(),
+                                    icon: Icon(
+                                      Icons.close,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -520,6 +611,17 @@ class _MakeVCardState extends State<MakeVCard> {
                               Icons.link,
                               color: Theme.of(context).primaryColor,
                             ),
+                            suffixIcon: urlController.text.isEmpty
+                                ? Container(
+                                    width: 0,
+                                  )
+                                : IconButton(
+                                    onPressed: () => urlController.clear(),
+                                    icon: Icon(
+                                      Icons.close,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -549,6 +651,17 @@ class _MakeVCardState extends State<MakeVCard> {
                               Icons.location_on,
                               color: Theme.of(context).primaryColor,
                             ),
+                            suffixIcon: streetController.text.isEmpty
+                                ? Container(
+                                    width: 0,
+                                  )
+                                : IconButton(
+                                    onPressed: () => streetController.clear(),
+                                    icon: Icon(
+                                      Icons.close,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -578,6 +691,17 @@ class _MakeVCardState extends State<MakeVCard> {
                               Icons.location_on,
                               color: Theme.of(context).primaryColor,
                             ),
+                            suffixIcon: zipController.text.isEmpty
+                                ? Container(
+                                    width: 0,
+                                  )
+                                : IconButton(
+                                    onPressed: () => zipController.clear(),
+                                    icon: Icon(
+                                      Icons.close,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -607,6 +731,17 @@ class _MakeVCardState extends State<MakeVCard> {
                               Icons.location_on,
                               color: Theme.of(context).primaryColor,
                             ),
+                            suffixIcon: cityController.text.isEmpty
+                                ? Container(
+                                    width: 0,
+                                  )
+                                : IconButton(
+                                    onPressed: () => cityController.clear(),
+                                    icon: Icon(
+                                      Icons.close,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -636,6 +771,17 @@ class _MakeVCardState extends State<MakeVCard> {
                               Icons.location_on,
                               color: Theme.of(context).primaryColor,
                             ),
+                            suffixIcon: stateController.text.isEmpty
+                                ? Container(
+                                    width: 0,
+                                  )
+                                : IconButton(
+                                    onPressed: () => stateController.clear(),
+                                    icon: Icon(
+                                      Icons.close,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -665,6 +811,17 @@ class _MakeVCardState extends State<MakeVCard> {
                               Icons.location_on,
                               color: Theme.of(context).primaryColor,
                             ),
+                            suffixIcon: countryController.text.isEmpty
+                                ? Container(
+                                    width: 0,
+                                  )
+                                : IconButton(
+                                    onPressed: () => countryController.clear(),
+                                    icon: Icon(
+                                      Icons.close,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
