@@ -43,7 +43,7 @@ class _MainQrState extends State<MainQr> {
         ),
       ),
       drawer: Drawer(
-        width: (isScreenWidth(context)) ? 300 : 400,
+        width: (isScreenWidth(context)) ? 300 : 300,
         child: GetBuilder<ThemeController>(
           init: ThemeController(),
           builder: (ThemeController controller) => Container(
@@ -80,7 +80,7 @@ class _MainQrState extends State<MainQr> {
                 Card(
                   child: SizedBox(
                     width: double.infinity,
-                    height: 50,
+                    height: 53,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [

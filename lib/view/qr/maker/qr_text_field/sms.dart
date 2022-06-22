@@ -91,6 +91,9 @@ class _MakeSMSState extends State<MakeSMS> {
                                   fontSize: 16,
                                 ),
                                 pickerDialogStyle: PickerDialogStyle(
+                                  width: isScreenWidth(context)
+                                      ? double.infinity
+                                      : 500,
                                   backgroundColor: Colors.white,
                                   countryCodeStyle: const TextStyle(
                                     color: Colors.black,
@@ -300,6 +303,7 @@ class _MakeSMSState extends State<MakeSMS> {
                                   fontSize: 16,
                                 ),
                                 pickerDialogStyle: PickerDialogStyle(
+                                  width: 500,
                                   backgroundColor: Colors.white,
                                   countryCodeStyle: const TextStyle(
                                     color: Colors.black,
