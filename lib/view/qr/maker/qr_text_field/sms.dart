@@ -94,15 +94,6 @@ class _MakeSMSState extends State<MakeSMS> {
                                   width: isScreenWidth(context)
                                       ? double.infinity
                                       : 500,
-                                  backgroundColor: Colors.white,
-                                  countryCodeStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  countryNameStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
                                   searchFieldCursorColor: Colors.white,
                                   searchFieldInputDecoration: InputDecoration(
                                     filled: true,
@@ -304,15 +295,6 @@ class _MakeSMSState extends State<MakeSMS> {
                                 ),
                                 pickerDialogStyle: PickerDialogStyle(
                                   width: 500,
-                                  backgroundColor: Colors.white,
-                                  countryCodeStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  countryNameStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
                                   searchFieldCursorColor: Colors.white,
                                   searchFieldInputDecoration: InputDecoration(
                                     filled: true,

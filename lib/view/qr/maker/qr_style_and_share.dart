@@ -235,45 +235,42 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                                     ),
                                     IconButton(
                                       onPressed: () {
-                                        Get.bottomSheet(
-                                          SizedBox(
-                                            height: 550,
-                                            child: Column(
-                                              children: [
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.end,
-                                                  children: [
-                                                    FloatingActionButton.small(
-                                                      onPressed: () {
-                                                        Get.back();
-                                                      },
-                                                      child: const Icon(
-                                                        Icons.cancel_outlined,
-                                                        color: Colors.white,
-                                                        size: 30,
-                                                      ),
-                                                    ),
-                                                  ],
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              AlertDialog(
+                                            content: SingleChildScrollView(
+                                              child: ColorPicker(
+                                                hexInputBar: true,
+                                                labelTypes: const [],
+                                                pickerColor: eyesColor,
+                                                colorPickerWidth:
+                                                    isScreenWidth(context)
+                                                        ? 220
+                                                        : 400,
+                                                pickerAreaBorderRadius:
+                                                    const BorderRadius.all(
+                                                  Radius.circular(5),
                                                 ),
-                                                ColorPicker(
-                                                  pickerColor: eyesColor,
-                                                  paletteType:
-                                                      PaletteType.hueWheel,
-                                                  colorPickerWidth: 300,
-                                                  labelTypes: const [],
-                                                  hexInputBar: true,
-                                                  onColorChanged: (color) =>
-                                                      setState(
-                                                    () {
-                                                      eyesColor = color;
-                                                    },
-                                                  ),
+                                                paletteType: PaletteType.hsl,
+                                                pickerAreaHeightPercent: 1.0,
+                                                onColorChanged: (Color color) =>
+                                                    setState(
+                                                  () {
+                                                    eyesColor = color;
+                                                  },
                                                 ),
-                                              ],
+                                              ),
                                             ),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: const Text('Select'),
+                                              )
+                                            ],
                                           ),
-                                          isScrollControlled: true,
                                         );
                                       },
                                       icon: Icon(
@@ -301,45 +298,42 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                                     ),
                                     IconButton(
                                       onPressed: () {
-                                        Get.bottomSheet(
-                                          SizedBox(
-                                            height: 550,
-                                            child: Column(
-                                              children: [
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.end,
-                                                  children: [
-                                                    FloatingActionButton.small(
-                                                      onPressed: () {
-                                                        Get.back();
-                                                      },
-                                                      child: const Icon(
-                                                        Icons.cancel_outlined,
-                                                        color: Colors.white,
-                                                        size: 30,
-                                                      ),
-                                                    ),
-                                                  ],
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              AlertDialog(
+                                            content: SingleChildScrollView(
+                                              child: ColorPicker(
+                                                hexInputBar: true,
+                                                labelTypes: const [],
+                                                pickerColor: dataColor,
+                                                colorPickerWidth:
+                                                    isScreenWidth(context)
+                                                        ? 220
+                                                        : 400,
+                                                pickerAreaBorderRadius:
+                                                    const BorderRadius.all(
+                                                  Radius.circular(5),
                                                 ),
-                                                ColorPicker(
-                                                  pickerColor: dataColor,
-                                                  paletteType:
-                                                      PaletteType.hueWheel,
-                                                  colorPickerWidth: 300,
-                                                  labelTypes: const [],
-                                                  hexInputBar: true,
-                                                  onColorChanged: (color) =>
-                                                      setState(
-                                                    () {
-                                                      dataColor = color;
-                                                    },
-                                                  ),
+                                                paletteType: PaletteType.hsl,
+                                                pickerAreaHeightPercent: 1.0,
+                                                onColorChanged: (Color color) =>
+                                                    setState(
+                                                  () {
+                                                    dataColor = color;
+                                                  },
                                                 ),
-                                              ],
+                                              ),
                                             ),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: const Text('Select'),
+                                              )
+                                            ],
                                           ),
-                                          isScrollControlled: true,
                                         );
                                       },
                                       icon: Icon(
@@ -367,45 +361,42 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                                     ),
                                     IconButton(
                                       onPressed: () {
-                                        Get.bottomSheet(
-                                          SizedBox(
-                                            height: 550,
-                                            child: Column(
-                                              children: [
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.end,
-                                                  children: [
-                                                    FloatingActionButton.small(
-                                                      onPressed: () {
-                                                        Get.back();
-                                                      },
-                                                      child: const Icon(
-                                                        Icons.cancel_outlined,
-                                                        color: Colors.white,
-                                                        size: 30,
-                                                      ),
-                                                    ),
-                                                  ],
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              AlertDialog(
+                                            content: SingleChildScrollView(
+                                              child: ColorPicker(
+                                                hexInputBar: true,
+                                                labelTypes: const [],
+                                                pickerColor: backgroundColor,
+                                                colorPickerWidth:
+                                                    isScreenWidth(context)
+                                                        ? 220
+                                                        : 400,
+                                                pickerAreaBorderRadius:
+                                                    const BorderRadius.all(
+                                                  Radius.circular(5),
                                                 ),
-                                                ColorPicker(
-                                                  pickerColor: backgroundColor,
-                                                  paletteType:
-                                                      PaletteType.hueWheel,
-                                                  colorPickerWidth: 300,
-                                                  labelTypes: const [],
-                                                  hexInputBar: true,
-                                                  onColorChanged: (color) =>
-                                                      setState(
-                                                    () {
-                                                      backgroundColor = color;
-                                                    },
-                                                  ),
+                                                paletteType: PaletteType.hsl,
+                                                pickerAreaHeightPercent: 1.0,
+                                                onColorChanged: (Color color) =>
+                                                    setState(
+                                                  () {
+                                                    backgroundColor = color;
+                                                  },
                                                 ),
-                                              ],
+                                              ),
                                             ),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: const Text('Select'),
+                                              )
+                                            ],
                                           ),
-                                          isScrollControlled: true,
                                         );
                                       },
                                       icon: Icon(
@@ -602,50 +593,49 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                                   children: [
                                     Text(
                                       'Eyes Color',
-                                      style:
-                                          Theme.of(context).textTheme.headline2,
+                                      style: (isScreenWidth(context))
+                                          ? Theme.of(context)
+                                              .textTheme
+                                              .headline3
+                                          : Theme.of(context)
+                                              .textTheme
+                                              .headline2,
                                     ),
                                     IconButton(
                                       onPressed: () {
-                                        Get.bottomSheet(
-                                          SizedBox(
-                                            height: 550,
-                                            child: Column(
-                                              children: [
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.end,
-                                                  children: [
-                                                    FloatingActionButton.small(
-                                                      onPressed: () {
-                                                        Get.back();
-                                                      },
-                                                      child: const Icon(
-                                                        Icons.cancel_outlined,
-                                                        color: Colors.white,
-                                                        size: 30,
-                                                      ),
-                                                    ),
-                                                  ],
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              AlertDialog(
+                                            content: SingleChildScrollView(
+                                              child: ColorPicker(
+                                                hexInputBar: true,
+                                                labelTypes: const [],
+                                                pickerColor: eyesColor,
+                                                colorPickerWidth: 400,
+                                                pickerAreaBorderRadius:
+                                                    const BorderRadius.all(
+                                                  Radius.circular(5),
                                                 ),
-                                                ColorPicker(
-                                                  pickerColor: eyesColor,
-                                                  paletteType:
-                                                      PaletteType.hueWheel,
-                                                  colorPickerWidth: 300,
-                                                  labelTypes: const [],
-                                                  hexInputBar: true,
-                                                  onColorChanged: (color) =>
-                                                      setState(
-                                                    () {
-                                                      eyesColor = color;
-                                                    },
-                                                  ),
+                                                paletteType: PaletteType.hsl,
+                                                pickerAreaHeightPercent: 1.0,
+                                                onColorChanged: (Color color) =>
+                                                    setState(
+                                                  () {
+                                                    eyesColor = color;
+                                                  },
                                                 ),
-                                              ],
+                                              ),
                                             ),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: const Text('Select'),
+                                              )
+                                            ],
                                           ),
-                                          isScrollControlled: true,
                                         );
                                       },
                                       icon: Icon(
@@ -662,50 +652,49 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                                   children: [
                                     Text(
                                       'Data Color',
-                                      style:
-                                          Theme.of(context).textTheme.headline2,
+                                      style: (isScreenWidth(context))
+                                          ? Theme.of(context)
+                                              .textTheme
+                                              .headline3
+                                          : Theme.of(context)
+                                              .textTheme
+                                              .headline2,
                                     ),
                                     IconButton(
                                       onPressed: () {
-                                        Get.bottomSheet(
-                                          SizedBox(
-                                            height: 550,
-                                            child: Column(
-                                              children: [
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.end,
-                                                  children: [
-                                                    FloatingActionButton.small(
-                                                      onPressed: () {
-                                                        Get.back();
-                                                      },
-                                                      child: const Icon(
-                                                        Icons.cancel_outlined,
-                                                        color: Colors.white,
-                                                        size: 30,
-                                                      ),
-                                                    ),
-                                                  ],
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              AlertDialog(
+                                            content: SingleChildScrollView(
+                                              child: ColorPicker(
+                                                hexInputBar: true,
+                                                labelTypes: const [],
+                                                pickerColor: dataColor,
+                                                colorPickerWidth: 400,
+                                                pickerAreaBorderRadius:
+                                                    const BorderRadius.all(
+                                                  Radius.circular(5),
                                                 ),
-                                                ColorPicker(
-                                                  pickerColor: dataColor,
-                                                  paletteType:
-                                                      PaletteType.hueWheel,
-                                                  colorPickerWidth: 300,
-                                                  labelTypes: const [],
-                                                  hexInputBar: true,
-                                                  onColorChanged: (color) =>
-                                                      setState(
-                                                    () {
-                                                      dataColor = color;
-                                                    },
-                                                  ),
+                                                paletteType: PaletteType.hsl,
+                                                pickerAreaHeightPercent: 1.0,
+                                                onColorChanged: (Color color) =>
+                                                    setState(
+                                                  () {
+                                                    dataColor = color;
+                                                  },
                                                 ),
-                                              ],
+                                              ),
                                             ),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: const Text('Select'),
+                                              )
+                                            ],
                                           ),
-                                          isScrollControlled: true,
                                         );
                                       },
                                       icon: Icon(
@@ -722,50 +711,49 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                                   children: [
                                     Text(
                                       'Background',
-                                      style:
-                                          Theme.of(context).textTheme.headline2,
+                                      style: (isScreenWidth(context))
+                                          ? Theme.of(context)
+                                              .textTheme
+                                              .headline3
+                                          : Theme.of(context)
+                                              .textTheme
+                                              .headline2,
                                     ),
                                     IconButton(
                                       onPressed: () {
-                                        Get.bottomSheet(
-                                          SizedBox(
-                                            height: 550,
-                                            child: Column(
-                                              children: [
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.end,
-                                                  children: [
-                                                    FloatingActionButton.small(
-                                                      onPressed: () {
-                                                        Get.back();
-                                                      },
-                                                      child: const Icon(
-                                                        Icons.cancel_outlined,
-                                                        color: Colors.white,
-                                                        size: 30,
-                                                      ),
-                                                    ),
-                                                  ],
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              AlertDialog(
+                                            content: SingleChildScrollView(
+                                              child: ColorPicker(
+                                                hexInputBar: true,
+                                                labelTypes: const [],
+                                                pickerColor: backgroundColor,
+                                                colorPickerWidth: 400,
+                                                pickerAreaBorderRadius:
+                                                    const BorderRadius.all(
+                                                  Radius.circular(5),
                                                 ),
-                                                ColorPicker(
-                                                  pickerColor: backgroundColor,
-                                                  paletteType:
-                                                      PaletteType.hueWheel,
-                                                  colorPickerWidth: 300,
-                                                  labelTypes: const [],
-                                                  hexInputBar: true,
-                                                  onColorChanged: (color) =>
-                                                      setState(
-                                                    () {
-                                                      backgroundColor = color;
-                                                    },
-                                                  ),
+                                                paletteType: PaletteType.hsl,
+                                                pickerAreaHeightPercent: 1.0,
+                                                onColorChanged: (Color color) =>
+                                                    setState(
+                                                  () {
+                                                    backgroundColor = color;
+                                                  },
                                                 ),
-                                              ],
+                                              ),
                                             ),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: const Text('Select'),
+                                              )
+                                            ],
                                           ),
-                                          isScrollControlled: true,
                                         );
                                       },
                                       icon: Icon(

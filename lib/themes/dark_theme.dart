@@ -75,7 +75,6 @@ class DarkTheme {
       thumbColor: MaterialStateProperty.all(Colors.white),
       trackColor: MaterialStateProperty.all(Colors.grey.shade900),
     ),
-    dialogBackgroundColor: Colors.white,
     colorScheme: ColorScheme.light(
       primary: Colors.grey.shade800,
       onPrimary: Colors.white,
@@ -83,7 +82,7 @@ class DarkTheme {
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-        primary: Colors.black,
+        primary: Colors.white,
         textStyle: const TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 16,
@@ -91,6 +90,12 @@ class DarkTheme {
       ),
     ),
     hintColor: Colors.black45,
+    dialogTheme: DialogTheme(
+      backgroundColor: Colors.grey.shade500,
+    ),
+    timePickerTheme: TimePickerThemeData(
+      backgroundColor: Colors.grey.shade500,
+    ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: Colors.red,
     ),

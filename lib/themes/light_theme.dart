@@ -71,7 +71,6 @@ class LightTheme {
       elevation: 10,
       margin: const EdgeInsets.all(10),
     ),
-    dialogBackgroundColor: Colors.white,
     colorScheme: ColorScheme.light(
       primary: Colors.blue.shade500,
       onPrimary: Colors.white,
@@ -79,7 +78,7 @@ class LightTheme {
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-        primary: Colors.black,
+        primary: Colors.white,
         textStyle: const TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 16,
@@ -87,6 +86,12 @@ class LightTheme {
       ),
     ),
     hintColor: Colors.black45,
+    dialogTheme: DialogTheme(
+      backgroundColor: Colors.blue.shade200,
+    ),
+    timePickerTheme: TimePickerThemeData(
+      backgroundColor: Colors.blue.shade200,
+    ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: Colors.blue.shade500,
     ),

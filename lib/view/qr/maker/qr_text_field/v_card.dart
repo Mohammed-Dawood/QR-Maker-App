@@ -216,15 +216,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                     width: isScreenWidth(context)
                                         ? double.infinity
                                         : 500,
-                                    backgroundColor: Colors.white,
-                                    countryCodeStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    countryNameStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
                                     searchFieldCursorColor: Colors.white,
                                     searchFieldInputDecoration: InputDecoration(
                                       filled: true,
@@ -315,15 +306,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                     width: isScreenWidth(context)
                                         ? double.infinity
                                         : 500,
-                                    backgroundColor: Colors.white,
-                                    countryCodeStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    countryNameStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
                                     searchFieldCursorColor: Colors.white,
                                     searchFieldInputDecoration: InputDecoration(
                                       filled: true,
@@ -414,15 +396,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                     width: isScreenWidth(context)
                                         ? double.infinity
                                         : 500,
-                                    backgroundColor: Colors.white,
-                                    countryCodeStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    countryNameStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
                                     searchFieldCursorColor: Colors.white,
                                     searchFieldInputDecoration: InputDecoration(
                                       filled: true,
@@ -513,15 +486,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                     width: isScreenWidth(context)
                                         ? double.infinity
                                         : 500,
-                                    backgroundColor: Colors.white,
-                                    countryCodeStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    countryNameStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
                                     searchFieldCursorColor: Colors.white,
                                     searchFieldInputDecoration: InputDecoration(
                                       filled: true,
@@ -1100,15 +1064,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                   ),
                                   pickerDialogStyle: PickerDialogStyle(
                                     width: 500,
-                                    backgroundColor: Colors.white,
-                                    countryCodeStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    countryNameStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
                                     searchFieldCursorColor: Colors.white,
                                     searchFieldInputDecoration: InputDecoration(
                                       filled: true,
@@ -1197,15 +1152,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                   ),
                                   pickerDialogStyle: PickerDialogStyle(
                                     width: 500,
-                                    backgroundColor: Colors.white,
-                                    countryCodeStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    countryNameStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
                                     searchFieldCursorColor: Colors.white,
                                     searchFieldInputDecoration: InputDecoration(
                                       filled: true,
@@ -1294,15 +1240,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                   ),
                                   pickerDialogStyle: PickerDialogStyle(
                                     width: 500,
-                                    backgroundColor: Colors.white,
-                                    countryCodeStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    countryNameStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
                                     searchFieldCursorColor: Colors.white,
                                     searchFieldInputDecoration: InputDecoration(
                                       filled: true,
@@ -1391,15 +1328,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                   ),
                                   pickerDialogStyle: PickerDialogStyle(
                                     width: 500,
-                                    backgroundColor: Colors.white,
-                                    countryCodeStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    countryNameStyle: const TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
                                     searchFieldCursorColor: Colors.white,
                                     searchFieldInputDecoration: InputDecoration(
                                       filled: true,
