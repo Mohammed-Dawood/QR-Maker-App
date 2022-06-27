@@ -29,7 +29,7 @@
         </intent>
     </queries>
    <application
-        android:label="QR Maker App"
+        android:label="QR Maker"
         android:usesCleartextTraffic="true"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
