@@ -59,21 +59,6 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                     size: (isScreenWidth(context)) ? 24 : 30,
                     color: Colors.white,
                   ),
-                  actions: [
-                    GetBuilder<QrShareAndSaveController>(
-                      init: QrShareAndSaveController(),
-                      builder: (QrShareAndSaveController controller) =>
-                          IconButton(
-                        onPressed: () async {
-                          final image = await screenshotController.capture();
-                          controller.saveAndShare(image!);
-                        },
-                        icon: const Icon(
-                          Icons.share,
-                        ),
-                      ),
-                    ),
-                  ],
                 ),
                 body: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
@@ -413,6 +398,102 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                           ),
                         ),
                       ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: (isScreenWidth(context)) ? 40 : 150,
+                          right: (isScreenWidth(context)) ? 40 : 150,
+                        ),
+                        child: GetBuilder<QrShareAndSaveController>(
+                          init: QrShareAndSaveController(),
+                          builder: (QrShareAndSaveController controller) =>
+                              Card(
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: ElevatedButton.icon(
+                                onPressed: () async {
+                                  final image =
+                                      await screenshotController.capture();
+                                  controller.saveAndShare(image!);
+                                },
+                                label: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 18),
+                                  child: Text(
+                                    'Share',
+                                    style: (isScreenWidth(context))
+                                        ? Theme.of(context).textTheme.headline3
+                                        : Theme.of(context).textTheme.headline2,
+                                  ),
+                                ),
+                                icon: Icon(
+                                  Icons.share,
+                                  size: (isScreenWidth(context)) ? 30 : 35,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: (isScreenWidth(context)) ? 40 : 150,
+                          right: (isScreenWidth(context)) ? 40 : 150,
+                        ),
+                        child: Card(
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton.icon(
+                              onPressed: () {
+                                Get.back();
+                              },
+                              label: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 18),
+                                child: Text(
+                                  '',
+                                  style: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.headline3
+                                      : Theme.of(context).textTheme.headline2,
+                                ),
+                              ),
+                              icon: Icon(
+                                Icons.save,
+                                size: (isScreenWidth(context)) ? 30 : 35,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: (isScreenWidth(context)) ? 40 : 150,
+                          right: (isScreenWidth(context)) ? 40 : 150,
+                        ),
+                        child: Card(
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton.icon(
+                              onPressed: () {
+                                Get.back();
+                              },
+                              label: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 18),
+                                child: Text(
+                                  '',
+                                  style: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.headline3
+                                      : Theme.of(context).textTheme.headline2,
+                                ),
+                              ),
+                              icon: Icon(
+                                Icons.history,
+                                size: (isScreenWidth(context)) ? 30 : 35,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -442,21 +523,6 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                     size: 30,
                     color: Colors.white,
                   ),
-                  actions: [
-                    GetBuilder<QrShareAndSaveController>(
-                      init: QrShareAndSaveController(),
-                      builder: (QrShareAndSaveController controller) =>
-                          IconButton(
-                        onPressed: () async {
-                          final image = await screenshotController.capture();
-                          controller.saveAndShare(image!);
-                        },
-                        icon: const Icon(
-                          Icons.share,
-                        ),
-                      ),
-                    ),
-                  ],
                 ),
                 body: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
@@ -765,6 +831,97 @@ class _QrStyleAndShareState extends State<QrStyleAndShare> {
                                   ],
                                 ),
                               ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 250,
+                          right: 250,
+                        ),
+                        child: GetBuilder<QrShareAndSaveController>(
+                          init: QrShareAndSaveController(),
+                          builder: (QrShareAndSaveController controller) =>
+                              Card(
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: ElevatedButton.icon(
+                                onPressed: () async {
+                                  final image =
+                                      await screenshotController.capture();
+                                  controller.saveAndShare(image!);
+                                },
+                                label: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 18),
+                                  child: Text(
+                                    'Share',
+                                    style:
+                                        Theme.of(context).textTheme.headline2,
+                                  ),
+                                ),
+                                icon: const Icon(
+                                  Icons.share,
+                                  size: 35,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 250,
+                          right: 250,
+                        ),
+                        child: Card(
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton.icon(
+                              onPressed: () {
+                                Get.back();
+                              },
+                              label: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 18),
+                                child: Text(
+                                  '',
+                                  style: Theme.of(context).textTheme.headline2,
+                                ),
+                              ),
+                              icon: const Icon(
+                                Icons.save,
+                                size: 35,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 250,
+                          right: 250,
+                        ),
+                        child: Card(
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton.icon(
+                              onPressed: () {
+                                Get.back();
+                              },
+                              label: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 18),
+                                child: Text(
+                                  '',
+                                  style: Theme.of(context).textTheme.headline2,
+                                ),
+                              ),
+                              icon: const Icon(
+                                Icons.history,
+                                size: 35,
+                              ),
                             ),
                           ),
                         ),

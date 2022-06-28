@@ -115,8 +115,10 @@ class _MakeUrlState extends State<MakeUrl> {
                                         () {
                                           valueQr =
                                               urlController.text.toString();
-                                          Get.to(() => QrStyleAndShare(
-                                              valueQr: valueQr));
+                                          Get.to(
+                                            () => QrStyleAndShare(
+                                                valueQr: valueQr),
+                                          );
                                         },
                                       );
                                     }

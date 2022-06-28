@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:qr_maker_app/view/qr/scan/main_qr_scan.dart';
 import 'package:qr_maker_app/view/qr/maker/main_qr_make.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
+import 'package:qr_maker_app/view/qr/History/main_qr_history.dart';
 
 class MainQr extends StatefulWidget {
   const MainQr({Key? key}) : super(key: key);
@@ -14,13 +15,11 @@ class MainQr extends StatefulWidget {
 
 class _MainQrState extends State<MainQr> {
   int selectScreen = 0;
-  List<String> title = [
-    'Scan QR Code',
-    'Make QR Code',
-  ];
+  List<String> title = ['Scan QR Code', 'Make QR Code', 'History QR Code'];
   List<Widget> screens = [
     const MainQrScan(),
     const MainQrMake(),
+    const MainQrHistory(),
   ];
 
   bool isScreenWidth(BuildContext context) =>
@@ -142,6 +141,12 @@ class _MainQrState extends State<MainQr> {
           BottomNavigationBarItem(
             icon: Icon(Icons.qr_code),
             label: 'Make',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.history,
+            ),
+            label: 'History',
           ),
         ],
       ),
