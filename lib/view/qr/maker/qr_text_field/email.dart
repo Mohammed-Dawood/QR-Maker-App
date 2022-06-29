@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:validators/validators.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
-import 'package:qr_maker_app/view/qr/maker/qr_style_and_share.dart';
+import 'package:qr_maker_app/view/qr/maker/style_share_save_qr_code.dart';
 
 class MakeEmail extends StatefulWidget {
   const MakeEmail({Key? key}) : super(key: key);
@@ -205,7 +205,7 @@ class _MakeEmailState extends State<MakeEmail> {
                                         () {
                                           valueQr =
                                               'MAILTO: ${emailController.text.toString()} ?subject=${subjectController.text.toString()}&body=${messageController.text.toString()}';
-                                          Get.to(() => QrStyleAndShare(
+                                          Get.to(() => StyleShareSaveQrCode(
                                               valueQr: valueQr));
                                         },
                                       );
@@ -412,7 +412,7 @@ class _MakeEmailState extends State<MakeEmail> {
                                         () {
                                           valueQr =
                                               'MAILTO: ${emailController.text.toString()} ?subject=${subjectController.text.toString()}&body=${messageController.text.toString()}';
-                                          Get.to(() => QrStyleAndShare(
+                                          Get.to(() => StyleShareSaveQrCode(
                                               valueQr: valueQr));
                                         },
                                       );

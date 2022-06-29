@@ -82,7 +82,7 @@ class DarkTheme {
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-        primary: Colors.white,
+        foregroundColor: Colors.white,
         textStyle: const TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 16,

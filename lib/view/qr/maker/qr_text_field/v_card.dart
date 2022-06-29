@@ -6,7 +6,7 @@ import 'package:intl_phone_field/phone_number.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
-import 'package:qr_maker_app/view/qr/maker/qr_style_and_share.dart';
+import 'package:qr_maker_app/view/qr/maker/style_share_save_qr_code.dart';
 
 class MakeVCard extends StatefulWidget {
   const MakeVCard({Key? key}) : super(key: key);
@@ -873,7 +873,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                               "ADR;TYPE=home:;;${streetController.text.toString()} ;${cityController.text.toString()};${stateController.text.toString()};${zipController.text.toString()};${countryController.text.toString()} ",
                                               "END:VCARD",
                                             ].join("\r\n");
-                                            Get.to(() => QrStyleAndShare(
+                                            Get.to(() => StyleShareSaveQrCode(
                                                 valueQr: valueQr));
                                           },
                                         );
@@ -1715,7 +1715,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                               "ADR;TYPE=home:;;${streetController.text.toString()} ;${cityController.text.toString()};${stateController.text.toString()};${zipController.text.toString()};${countryController.text.toString()} ",
                                               "END:VCARD",
                                             ].join("\r\n");
-                                            Get.to(() => QrStyleAndShare(
+                                            Get.to(() => StyleShareSaveQrCode(
                                                 valueQr: valueQr));
                                           },
                                         );

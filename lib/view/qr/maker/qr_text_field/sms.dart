@@ -5,7 +5,7 @@ import 'package:intl_phone_field/phone_number.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
-import 'package:qr_maker_app/view/qr/maker/qr_style_and_share.dart';
+import 'package:qr_maker_app/view/qr/maker/style_share_save_qr_code.dart';
 
 class MakeSMS extends StatefulWidget {
   const MakeSMS({Key? key}) : super(key: key);
@@ -204,7 +204,7 @@ class _MakeSMSState extends State<MakeSMS> {
                                         () {
                                           valueQr =
                                               'SMSTO:$completePhoneNumber: ${messageController.text.toString()}';
-                                          Get.to(() => QrStyleAndShare(
+                                          Get.to(() => StyleShareSaveQrCode(
                                               valueQr: valueQr));
                                         },
                                       );
@@ -405,7 +405,7 @@ class _MakeSMSState extends State<MakeSMS> {
                                         () {
                                           valueQr =
                                               'SMSTO:$completePhoneNumber: ${messageController.text.toString()}';
-                                          Get.to(() => QrStyleAndShare(
+                                          Get.to(() => StyleShareSaveQrCode(
                                               valueQr: valueQr));
                                         },
                                       );

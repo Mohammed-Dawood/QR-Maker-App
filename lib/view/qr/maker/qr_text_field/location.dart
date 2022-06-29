@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:validators/validators.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
-import 'package:qr_maker_app/view/qr/maker/qr_style_and_share.dart';
+import 'package:qr_maker_app/view/qr/maker/style_share_save_qr_code.dart';
 
 class MakeLocation extends StatefulWidget {
   const MakeLocation({Key? key}) : super(key: key);
@@ -177,7 +177,7 @@ class _MakeLocationState extends State<MakeLocation> {
                                               latitudeController.text +
                                               ',' +
                                               longitudeController.text;
-                                          Get.to(() => QrStyleAndShare(
+                                          Get.to(() => StyleShareSaveQrCode(
                                               valueQr: valueQr));
                                         },
                                       );
@@ -358,7 +358,7 @@ class _MakeLocationState extends State<MakeLocation> {
                                               latitudeController.text +
                                               ',' +
                                               longitudeController.text;
-                                          Get.to(() => QrStyleAndShare(
+                                          Get.to(() => StyleShareSaveQrCode(
                                               valueQr: valueQr));
                                         },
                                       );

@@ -1,6 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.qr_maker_app">
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Permission option for the 'storage' group -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <queries>
         <!-- If your app opens https URLs -->
         <intent>
@@ -31,6 +36,7 @@
    <application
         android:label="QR Maker"
         android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
