@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class HistoryQrCodeController extends GetxController {
+class HistoryQrCodeListController extends GetxController {
   List historyQrImage = [
     {'image': 'images/url.png'},
     {'image': 'images/date.png'},
