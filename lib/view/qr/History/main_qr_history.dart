@@ -1,6 +1,8 @@
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:qr_maker_app/view/qr/History/show_qr_image.dart';
+import 'package:qr_maker_app/controller/history_qr_code_controller.dart';
 
 class MainQrHistory extends StatefulWidget {
   const MainQrHistory({Key? key}) : super(key: key);
@@ -10,21 +12,6 @@ class MainQrHistory extends StatefulWidget {
 }
 
 class _MainQrHistoryState extends State<MainQrHistory> {
-  List qrImageHistoryList = [
-    {'image': 'images/url.png'},
-    {'image': 'images/url.png'},
-    {'image': 'images/url.png'},
-    {'image': 'images/url.png'},
-    {'image': 'images/url.png'},
-    {'image': 'images/url.png'},
-    {'image': 'images/url.png'},
-    {'image': 'images/url.png'},
-    {'image': 'images/url.png'},
-    {'image': 'images/url.png'},
-    {'image': 'images/url.png'},
-    {'image': 'images/url.png'},
-  ];
-
   bool isScreenWidth(BuildContext context) =>
       MediaQuery.of(context).size.width < 600;
 
@@ -51,23 +38,33 @@ class _MainQrHistoryState extends State<MainQrHistory> {
                     left: 10,
                     right: 10,
                   ),
-                  child: GridView.builder(
-                    itemCount: qrImageHistoryList.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: (isScreenWidth(context)) ? 3 : 5,
-                    ),
-                    itemBuilder: (BuildContext context, int index) {
-                      return Card(
-                        child: InkWell(
-                          onTap: () {},
-                          child: Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Image.asset(
-                                '${qrImageHistoryList[index]['image']}'),
+                  child: GetBuilder<HistoryQrCodeController>(
+                    init: HistoryQrCodeController(),
+                    builder: (HistoryQrCodeController controller) =>
+                        GridView.builder(
+                      itemCount: controller.historyQrImage.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: (isScreenWidth(context)) ? 3 : 5,
+                      ),
+                      itemBuilder: (BuildContext context, int index) {
+                        return Card(
+                          child: InkWell(
+                            onTap: () {
+                              Get.to(
+                                () => ShowQrImage(
+                                    image:
+                                        '${controller.historyQrImage[index]['image']}'),
+                              );
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Image.asset(
+                                  '${controller.historyQrImage[index]['image']}'),
+                            ),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
@@ -93,24 +90,34 @@ class _MainQrHistoryState extends State<MainQrHistory> {
                     left: 10,
                     right: 10,
                   ),
-                  child: GridView.builder(
-                    itemCount: qrImageHistoryList.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 7,
-                    ),
-                    itemBuilder: (BuildContext context, int index) {
-                      return Card(
-                        child: InkWell(
-                          onTap: () {},
-                          child: Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Image.asset(
-                                '${qrImageHistoryList[index]['image']}'),
+                  child: GetBuilder<HistoryQrCodeController>(
+                    init: HistoryQrCodeController(),
+                    builder: (HistoryQrCodeController controller) =>
+                        GridView.builder(
+                      itemCount: controller.historyQrImage.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 7,
+                      ),
+                      itemBuilder: (BuildContext context, int index) {
+                        return Card(
+                          child: InkWell(
+                            onTap: () {
+                              Get.to(
+                                () => ShowQrImage(
+                                    image:
+                                        '${controller.historyQrImage[index]['image']}'),
+                              );
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Image.asset(
+                                  '${controller.historyQrImage[index]['image']}'),
+                            ),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
