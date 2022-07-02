@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/view/qr/History/show_qr_image.dart';
-import 'package:qr_maker_app/controller/history_qr_code_list_controller.dart';
+import 'package:qr_maker_app/controller/history_qr_code_controller.dart';
 
 class MainQrHistory extends StatefulWidget {
   const MainQrHistory({Key? key}) : super(key: key);
@@ -38,9 +38,9 @@ class _MainQrHistoryState extends State<MainQrHistory> {
                     left: 10,
                     right: 10,
                   ),
-                  child: GetBuilder<HistoryQrCodeListController>(
-                    init: HistoryQrCodeListController(),
-                    builder: (HistoryQrCodeListController controller) =>
+                  child: GetBuilder<HistoryQrCodeController>(
+                    init: HistoryQrCodeController(),
+                    builder: (HistoryQrCodeController controller) =>
                         GridView.builder(
                       itemCount: controller.historyQrImage.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -90,9 +90,9 @@ class _MainQrHistoryState extends State<MainQrHistory> {
                     left: 10,
                     right: 10,
                   ),
-                  child: GetBuilder<HistoryQrCodeListController>(
-                    init: HistoryQrCodeListController(),
-                    builder: (HistoryQrCodeListController controller) =>
+                  child: GetBuilder<HistoryQrCodeController>(
+                    init: HistoryQrCodeController(),
+                    builder: (HistoryQrCodeController controller) =>
                         GridView.builder(
                       itemCount: controller.historyQrImage.length,
                       gridDelegate:
