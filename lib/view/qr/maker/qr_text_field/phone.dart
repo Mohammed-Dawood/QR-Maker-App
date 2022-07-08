@@ -5,7 +5,7 @@ import 'package:intl_phone_field/phone_number.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
-import 'package:qr_maker_app/view/qr/maker/style_share_save_qr_code.dart';
+import 'package:qr_maker_app/view/qr/maker/style_share_save_history_qr_code.dart';
 
 class MakePhone extends StatefulWidget {
   const MakePhone({Key? key}) : super(key: key);
@@ -157,8 +157,9 @@ class _MakePhoneState extends State<MakePhone> {
                                       setState(
                                         () {
                                           valueQr = completePhoneNumber;
-                                          Get.to(() => StyleShareSaveQrCode(
-                                              valueQr: valueQr));
+                                          Get.to(() =>
+                                              StyleShareSaveHistoryQrCode(
+                                                  valueQr: valueQr));
                                         },
                                       );
                                     }
@@ -314,8 +315,9 @@ class _MakePhoneState extends State<MakePhone> {
                                       setState(
                                         () {
                                           valueQr = completePhoneNumber;
-                                          Get.to(() => StyleShareSaveQrCode(
-                                              valueQr: valueQr));
+                                          Get.to(() =>
+                                              StyleShareSaveHistoryQrCode(
+                                                  valueQr: valueQr));
                                         },
                                       );
                                     }

@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:validators/validators.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
-import 'package:qr_maker_app/view/qr/maker/style_share_save_qr_code.dart';
+import 'package:qr_maker_app/view/qr/maker/style_share_save_history_qr_code.dart';
 
 class MakeTwitter extends StatefulWidget {
   const MakeTwitter({Key? key}) : super(key: key);
@@ -115,8 +115,9 @@ class _MakeTwitterState extends State<MakeTwitter> {
                                         () {
                                           valueQr =
                                               twitterController.text.toString();
-                                          Get.to(() => StyleShareSaveQrCode(
-                                              valueQr: valueQr));
+                                          Get.to(() =>
+                                              StyleShareSaveHistoryQrCode(
+                                                  valueQr: valueQr));
                                         },
                                       );
                                     }
@@ -236,8 +237,9 @@ class _MakeTwitterState extends State<MakeTwitter> {
                                         () {
                                           valueQr =
                                               twitterController.text.toString();
-                                          Get.to(() => StyleShareSaveQrCode(
-                                              valueQr: valueQr));
+                                          Get.to(() =>
+                                              StyleShareSaveHistoryQrCode(
+                                                  valueQr: valueQr));
                                         },
                                       );
                                     }

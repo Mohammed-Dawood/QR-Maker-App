@@ -7,8 +7,8 @@ import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/controller/save_qr_code_controller.dart';
 import 'package:qr_maker_app/controller/share_qr_code_controller.dart';
 
-class StyleShareSaveQrCode extends StatefulWidget {
-  const StyleShareSaveQrCode({
+class StyleShareSaveHistoryQrCode extends StatefulWidget {
+  const StyleShareSaveHistoryQrCode({
     Key? key,
     required this.valueQr,
   }) : super(key: key);
@@ -16,10 +16,12 @@ class StyleShareSaveQrCode extends StatefulWidget {
   final String valueQr;
 
   @override
-  State<StyleShareSaveQrCode> createState() => _StyleShareSaveQrCodeState();
+  State<StyleShareSaveHistoryQrCode> createState() =>
+      _StyleShareSaveHistoryQrCodeState();
 }
 
-class _StyleShareSaveQrCodeState extends State<StyleShareSaveQrCode> {
+class _StyleShareSaveHistoryQrCodeState
+    extends State<StyleShareSaveHistoryQrCode> {
   // double versionValue = QrVersions.auto;
   bool gapSwitch = false;
   bool eyesSwitch = false;
