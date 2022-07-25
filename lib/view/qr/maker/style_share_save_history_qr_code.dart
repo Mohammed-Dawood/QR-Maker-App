@@ -6,6 +6,7 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/controller/save_qr_code_controller.dart';
 import 'package:qr_maker_app/controller/share_qr_code_controller.dart';
+import 'package:qr_maker_app/controller/history_qr_code_controller.dart';
 
 class StyleShareSaveHistoryQrCode extends StatefulWidget {
   const StyleShareSaveHistoryQrCode({
@@ -31,6 +32,8 @@ class _StyleShareSaveHistoryQrCodeState
   Color backgroundColor = Colors.white;
 
   ScreenshotController screenshotController = ScreenshotController();
+
+  HistoryQrCodeController historyQrCodeController = Get.find();
 
   bool isScreenWidth(BuildContext context) =>
       MediaQuery.of(context).size.width < 600;
@@ -406,41 +409,6 @@ class _StyleShareSaveHistoryQrCodeState
                           left: (isScreenWidth(context)) ? 40 : 150,
                           right: (isScreenWidth(context)) ? 40 : 150,
                         ),
-                        child: GetBuilder<ShareQrCodeController>(
-                          init: ShareQrCodeController(),
-                          builder: (ShareQrCodeController controller) => Card(
-                            child: SizedBox(
-                              width: double.infinity,
-                              child: ElevatedButton.icon(
-                                onPressed: () async {
-                                  final image =
-                                      await screenshotController.capture();
-                                  controller.shareQrCode(image!);
-                                },
-                                label: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 18),
-                                  child: Text(
-                                    'Share QR Code',
-                                    style: (isScreenWidth(context))
-                                        ? Theme.of(context).textTheme.headline3
-                                        : Theme.of(context).textTheme.headline2,
-                                  ),
-                                ),
-                                icon: Icon(
-                                  Icons.share,
-                                  size: (isScreenWidth(context)) ? 30 : 35,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          left: (isScreenWidth(context)) ? 40 : 150,
-                          right: (isScreenWidth(context)) ? 40 : 150,
-                        ),
                         child: GetBuilder<SaveQrCodeController>(
                           init: SaveQrCodeController(),
                           builder: (SaveQrCodeController controller) => Card(
@@ -476,18 +444,56 @@ class _StyleShareSaveHistoryQrCodeState
                           left: (isScreenWidth(context)) ? 40 : 150,
                           right: (isScreenWidth(context)) ? 40 : 150,
                         ),
+                        child: GetBuilder<ShareQrCodeController>(
+                          init: ShareQrCodeController(),
+                          builder: (ShareQrCodeController controller) => Card(
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: ElevatedButton.icon(
+                                onPressed: () async {
+                                  final image =
+                                      await screenshotController.capture();
+                                  controller.shareQrCode(image!);
+                                },
+                                label: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 18),
+                                  child: Text(
+                                    'Share QR Code',
+                                    style: (isScreenWidth(context))
+                                        ? Theme.of(context).textTheme.headline3
+                                        : Theme.of(context).textTheme.headline2,
+                                  ),
+                                ),
+                                icon: Icon(
+                                  Icons.share,
+                                  size: (isScreenWidth(context)) ? 30 : 35,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: (isScreenWidth(context)) ? 40 : 150,
+                          right: (isScreenWidth(context)) ? 40 : 150,
+                        ),
                         child: Card(
                           child: SizedBox(
                             width: double.infinity,
                             child: ElevatedButton.icon(
-                              onPressed: () {
-                                Get.back();
+                              onPressed: () async {
+                                final image =
+                                    await screenshotController.capture();
+                                historyQrCodeController
+                                    .addQrCodeImageToHistory(image!);
                               },
                               label: Padding(
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 18),
                                 child: Text(
-                                  '',
+                                  'Add To History',
                                   style: (isScreenWidth(context))
                                       ? Theme.of(context).textTheme.headline3
                                       : Theme.of(context).textTheme.headline2,
@@ -847,40 +853,6 @@ class _StyleShareSaveHistoryQrCodeState
                           left: 250,
                           right: 250,
                         ),
-                        child: GetBuilder<ShareQrCodeController>(
-                          init: ShareQrCodeController(),
-                          builder: (ShareQrCodeController controller) => Card(
-                            child: SizedBox(
-                              width: double.infinity,
-                              child: ElevatedButton.icon(
-                                onPressed: () async {
-                                  final image =
-                                      await screenshotController.capture();
-                                  controller.shareQrCode(image!);
-                                },
-                                label: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 18),
-                                  child: Text(
-                                    'Share QR Code',
-                                    style:
-                                        Theme.of(context).textTheme.headline2,
-                                  ),
-                                ),
-                                icon: const Icon(
-                                  Icons.share,
-                                  size: 35,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 250,
-                          right: 250,
-                        ),
                         child: GetBuilder<SaveQrCodeController>(
                           init: SaveQrCodeController(),
                           builder: (SaveQrCodeController controller) => Card(
@@ -915,18 +887,55 @@ class _StyleShareSaveHistoryQrCodeState
                           left: 250,
                           right: 250,
                         ),
+                        child: GetBuilder<ShareQrCodeController>(
+                          init: ShareQrCodeController(),
+                          builder: (ShareQrCodeController controller) => Card(
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: ElevatedButton.icon(
+                                onPressed: () async {
+                                  final image =
+                                      await screenshotController.capture();
+                                  controller.shareQrCode(image!);
+                                },
+                                label: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 18),
+                                  child: Text(
+                                    'Share QR Code',
+                                    style:
+                                        Theme.of(context).textTheme.headline2,
+                                  ),
+                                ),
+                                icon: const Icon(
+                                  Icons.share,
+                                  size: 35,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 250,
+                          right: 250,
+                        ),
                         child: Card(
                           child: SizedBox(
                             width: double.infinity,
                             child: ElevatedButton.icon(
-                              onPressed: () {
-                                Get.back();
+                              onPressed: () async {
+                                final image =
+                                    await screenshotController.capture();
+                                historyQrCodeController
+                                    .addQrCodeImageToHistory(image!);
                               },
                               label: Padding(
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 18),
                                 child: Text(
-                                  '',
+                                  'Add To History',
                                   style: Theme.of(context).textTheme.headline2,
                                 ),
                               ),

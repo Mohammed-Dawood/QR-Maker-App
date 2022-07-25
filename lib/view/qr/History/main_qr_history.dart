@@ -42,7 +42,7 @@ class _MainQrHistoryState extends State<MainQrHistory> {
                     init: HistoryQrCodeController(),
                     builder: (HistoryQrCodeController controller) =>
                         GridView.builder(
-                      itemCount: controller.historyQrImage.length,
+                      itemCount: controller.historyQrCodeImageList.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: (isScreenWidth(context)) ? 3 : 5,
                       ),
@@ -52,14 +52,17 @@ class _MainQrHistoryState extends State<MainQrHistory> {
                             onTap: () {
                               Get.to(
                                 () => ShowQrImage(
-                                    image:
-                                        '${controller.historyQrImage[index]['image']}'),
+                                  image:
+                                      controller.historyQrCodeImageList[index],
+                                  index: index,
+                                ),
                               );
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Image.asset(
-                                  '${controller.historyQrImage[index]['image']}'),
+                                controller.historyQrCodeImageList[index],
+                              ),
                             ),
                           ),
                         );
@@ -94,7 +97,7 @@ class _MainQrHistoryState extends State<MainQrHistory> {
                     init: HistoryQrCodeController(),
                     builder: (HistoryQrCodeController controller) =>
                         GridView.builder(
-                      itemCount: controller.historyQrImage.length,
+                      itemCount: controller.historyQrCodeImageList.length,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 7,
@@ -105,14 +108,17 @@ class _MainQrHistoryState extends State<MainQrHistory> {
                             onTap: () {
                               Get.to(
                                 () => ShowQrImage(
-                                    image:
-                                        '${controller.historyQrImage[index]['image']}'),
+                                  image:
+                                      controller.historyQrCodeImageList[index],
+                                  index: index,
+                                ),
                               );
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Image.asset(
-                                  '${controller.historyQrImage[index]['image']}'),
+                                controller.historyQrCodeImageList[index],
+                              ),
                             ),
                           ),
                         );

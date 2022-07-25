@@ -7,10 +7,7 @@ import 'package:image_gallery_saver/image_gallery_saver.dart';
 class SaveQrCodeController extends GetxController {
   Future<String> saveQrCode(Uint8List bytes) async {
     await [Permission.storage].request();
-    final time = DateTime.now()
-        .toIso8601String()
-        .replaceAll('.', '-')
-        .replaceAll('.', '-');
+    final time = DateTime.now().toIso8601String().replaceAll('.', '-');
 
     final name = 'QR Maker_$time';
     final result = await ImageGallerySaver.saveImage(bytes, name: name);

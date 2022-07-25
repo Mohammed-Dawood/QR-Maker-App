@@ -49,6 +49,7 @@ dependencies:
   rename: ^2.0.1
   screenshot: ^1.2.3
   share_plus: ^4.0.10
+  shared_preferences: ^2.0.15
   url_launcher: ^6.1.4
   validators: ^3.0.0
 
