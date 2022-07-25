@@ -65,5 +65,6 @@ class HistoryQrCodeController extends GetxController {
     await prefs.setStringList('newQrCodeImageList', historyQrCodeImageList);
     update();
     Get.back();
+    Get.back();
   }
 }

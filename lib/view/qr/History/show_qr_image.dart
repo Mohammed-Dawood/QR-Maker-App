@@ -134,9 +134,36 @@ class _ShowQrImageState extends State<ShowQrImage> {
                         child: SizedBox(
                           width: (isScreenWidth(context)) ? 300 : 400,
                           child: ElevatedButton.icon(
-                            onPressed: () async {
-                              historyQrCodeController
-                                  .deleteItemFromQrCodeImageList(widget.index);
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                  title: Text(
+                                    'Delete QR Code !',
+                                    style: (isScreenWidth(context))
+                                        ? Theme.of(context).textTheme.headline3
+                                        : Theme.of(context).textTheme.headline2,
+                                  ),
+                                  content: const Text(
+                                    'This QR Code will be deleted from history on your device.',
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () => Get.back(),
+                                      child: const Text('Cancel'),
+                                    ),
+                                    TextButton(
+                                      onPressed: () async {
+                                        historyQrCodeController
+                                            .deleteItemFromQrCodeImageList(
+                                          widget.index,
+                                        );
+                                      },
+                                      child: const Text('Delete'),
+                                    ),
+                                  ],
+                                ),
+                              );
                             },
                             icon: Icon(
                               Icons.delete,
@@ -259,9 +286,35 @@ class _ShowQrImageState extends State<ShowQrImage> {
                         child: SizedBox(
                           width: 400,
                           child: ElevatedButton.icon(
-                            onPressed: () async {
-                              historyQrCodeController
-                                  .deleteItemFromQrCodeImageList(widget.index);
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                  title: Text(
+                                    'Delete QR Code !',
+                                    style:
+                                        Theme.of(context).textTheme.headline2,
+                                  ),
+                                  content: const Text(
+                                    'This QR Code will be deleted from history on your device.',
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () => Get.back(),
+                                      child: const Text('Cancel'),
+                                    ),
+                                    TextButton(
+                                      onPressed: () async {
+                                        historyQrCodeController
+                                            .deleteItemFromQrCodeImageList(
+                                          widget.index,
+                                        );
+                                      },
+                                      child: const Text('Delete'),
+                                    ),
+                                  ],
+                                ),
+                              );
                             },
                             icon: const Icon(
                               Icons.delete,
