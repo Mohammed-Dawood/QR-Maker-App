@@ -35,7 +35,6 @@ class _MakeWifiState extends State<MakeWifi> {
         ? GetBuilder<ThemeController>(
             init: ThemeController(),
             builder: (ThemeController controller) => Container(
-              padding: const EdgeInsets.all(30),
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 image: DecorationImage(
@@ -47,6 +46,17 @@ class _MakeWifiState extends State<MakeWifi> {
               ),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
+                appBar: AppBar(
+                  title: Text(
+                    'Wifi QR Code',
+                    style:
+                        TextStyle(fontSize: (isScreenWidth(context)) ? 20 : 28),
+                  ),
+                  iconTheme: IconThemeData(
+                    size: (isScreenWidth(context)) ? 24 : 30,
+                    color: Colors.white,
+                  ),
+                ),
                 body: Center(
                   child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
@@ -54,8 +64,8 @@ class _MakeWifiState extends State<MakeWifi> {
                       key: validateKey,
                       child: Padding(
                         padding: isScreenWidth(context)
-                            ? const EdgeInsets.symmetric(horizontal: 10)
-                            : const EdgeInsets.symmetric(horizontal: 100),
+                            ? const EdgeInsets.symmetric(horizontal: 40)
+                            : const EdgeInsets.symmetric(horizontal: 130),
                         child: Column(
                           children: [
                             Card(
@@ -253,21 +263,6 @@ class _MakeWifiState extends State<MakeWifi> {
                                     padding: EdgeInsets.symmetric(vertical: 18),
                                     child: Text('Create QR Code'),
                                   ),
-                                ),
-                              ),
-                            ),
-                            Card(
-                              child: SizedBox(
-                                width: double.infinity,
-                                child: ElevatedButton.icon(
-                                  onPressed: () {
-                                    Get.back();
-                                  },
-                                  label: const Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 18),
-                                    child: Text('Back'),
-                                  ),
-                                  icon: const Icon(Icons.arrow_back_ios_new),
                                 ),
                               ),
                             ),
@@ -283,7 +278,6 @@ class _MakeWifiState extends State<MakeWifi> {
         : GetBuilder<ThemeController>(
             init: ThemeController(),
             builder: (ThemeController controller) => Container(
-              padding: const EdgeInsets.all(30),
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 image: DecorationImage(
@@ -295,13 +289,23 @@ class _MakeWifiState extends State<MakeWifi> {
               ),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
+                appBar: AppBar(
+                  title: const Text(
+                    'Wifi QR Code',
+                    style: TextStyle(fontSize: 28),
+                  ),
+                  iconTheme: const IconThemeData(
+                    size: 30,
+                    color: Colors.white,
+                  ),
+                ),
                 body: Center(
                   child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Form(
                       key: validateKey,
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 200),
+                        padding: const EdgeInsets.symmetric(horizontal: 230),
                         child: Column(
                           children: [
                             Card(
@@ -499,21 +503,6 @@ class _MakeWifiState extends State<MakeWifi> {
                                     padding: EdgeInsets.symmetric(vertical: 18),
                                     child: Text('Create QR Code'),
                                   ),
-                                ),
-                              ),
-                            ),
-                            Card(
-                              child: SizedBox(
-                                width: double.infinity,
-                                child: ElevatedButton.icon(
-                                  onPressed: () {
-                                    Get.back();
-                                  },
-                                  label: const Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 18),
-                                    child: Text('Back'),
-                                  ),
-                                  icon: const Icon(Icons.arrow_back_ios_new),
                                 ),
                               ),
                             ),
