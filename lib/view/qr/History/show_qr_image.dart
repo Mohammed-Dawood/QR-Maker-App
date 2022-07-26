@@ -145,7 +145,7 @@ class _ShowQrImageState extends State<ShowQrImage> {
                                         : Theme.of(context).textTheme.headline2,
                                   ),
                                   content: const Text(
-                                    'This QR Code will be deleted from history on your device.',
+                                    'Are you sure you want to delete your QR Code? This QR Code will be deleted from history on your device.',
                                   ),
                                   actions: [
                                     TextButton(
@@ -296,7 +296,7 @@ class _ShowQrImageState extends State<ShowQrImage> {
                                         Theme.of(context).textTheme.headline2,
                                   ),
                                   content: const Text(
-                                    'This QR Code will be deleted from history on your device.',
+                                    'Are you sure you want to delete your QR Code? This QR Code will be deleted from history on your device.',
                                   ),
                                   actions: [
                                     TextButton(

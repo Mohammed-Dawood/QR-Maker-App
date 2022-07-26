@@ -43,7 +43,7 @@ class _MainQrState extends State<MainQr> {
 
   @override
   Widget build(BuildContext context) {
-    // final user = FirebaseAuth.instance.currentUser!;
+    // final user = FirebaseAuth.instance.currentUser;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -81,12 +81,13 @@ class _MainQrState extends State<MainQr> {
                 //     height: 50,
                 //     child: Center(
                 //       child: Text(
-                //         '${user.email}',
+                //         '${FirebaseAuth.instance.currentUser?.email}',
                 //         overflow: TextOverflow.ellipsis,
                 //         maxLines: 1,
                 //         style: const TextStyle(
                 //           color: Colors.white,
-                //           fontSize: 15,
+                //           fontSize: 18,
+                //           fontWeight: FontWeight.bold,
                 //         ),
                 //       ),
                 //     ),
@@ -127,8 +128,56 @@ class _MainQrState extends State<MainQr> {
                         FirebaseAuth.instance.signOut();
                       },
                       icon: const Icon(Icons.lock_outline),
-                      label: const Text(
-                        ' Sign Out ',
+                      label: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Sign Out',
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Card(
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 50,
+                    child: ElevatedButton.icon(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                            title: Text(
+                              'Delete QR Maker Account !',
+                              style: (isScreenWidth(context))
+                                  ? Theme.of(context).textTheme.headline3
+                                  : Theme.of(context).textTheme.headline2,
+                            ),
+                            content: const Text(
+                              'Are you sure you want to delete your account? This will permanently erase your account.',
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () => Get.back(),
+                                child: const Text('Cancel'),
+                              ),
+                              TextButton(
+                                onPressed: () async {
+                                  await FirebaseAuth.instance.currentUser
+                                      ?.delete();
+                                  Get.back();
+                                },
+                                child: const Text('Delete'),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                      icon: const Icon(Icons.delete),
+                      label: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Delete Account',
+                        ),
                       ),
                     ),
                   ),
