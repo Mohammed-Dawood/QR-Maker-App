@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
+import 'package:qr_maker_app/view/qr/main_qr.dart';
 import 'package:qr_maker_app/themes/dark_theme.dart';
 import 'package:qr_maker_app/themes/light_theme.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
-import 'package:qr_maker_app/view/registration/main_sign_in.dart';
+// import 'package:qr_maker_app/view/registration/main_sign_in.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,7 +17,7 @@ void main() async {
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   await initialization(null);
   await GetStorage.init();
-  await Firebase.initializeApp();
+  // await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -37,7 +38,8 @@ class MyApp extends StatelessWidget {
       theme: LightTheme.lightTheme,
       darkTheme: DarkTheme.darkTheme,
       themeMode: ThemeController().theme,
-      home: const MainSignIn(),
+      // home: const MainSignIn(),
+      home: const MainQr(),
     );
   }
 }

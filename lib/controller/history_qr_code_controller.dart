@@ -18,7 +18,10 @@ class HistoryQrCodeController extends GetxController {
 
     final String pathQrCodeImage = directoryQrCodeImage.path;
 
-    final String time = DateTime.now().toIso8601String().replaceAll('.', '-');
+    final String time = DateTime.now()
+        .toIso8601String()
+        .replaceAll('.', '-')
+        .replaceAll(':', '-');
 
     String nameQrCodeImage = 'QRMakerApp_$time.txt';
 
