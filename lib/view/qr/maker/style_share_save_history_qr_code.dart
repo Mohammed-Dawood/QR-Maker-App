@@ -4,6 +4,7 @@ import 'package:screenshot/screenshot.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
+import 'package:qr_maker_app/controller/vibration_controller.dart';
 import 'package:qr_maker_app/controller/save_qr_code_controller.dart';
 import 'package:qr_maker_app/controller/share_qr_code_controller.dart';
 import 'package:qr_maker_app/controller/history_qr_code_controller.dart';
@@ -411,28 +412,40 @@ class _StyleShareSaveHistoryQrCodeState
                         ),
                         child: GetBuilder<SaveQrCodeController>(
                           init: SaveQrCodeController(),
-                          builder: (SaveQrCodeController controller) => Card(
-                            child: SizedBox(
-                              width: double.infinity,
-                              child: ElevatedButton.icon(
-                                onPressed: () async {
-                                  final image =
-                                      await screenshotController.capture();
-                                  controller.saveQrCode(image!);
-                                },
-                                label: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 18),
-                                  child: Text(
-                                    'Save QR Code',
-                                    style: (isScreenWidth(context))
-                                        ? Theme.of(context).textTheme.headline3
-                                        : Theme.of(context).textTheme.headline2,
+                          builder:
+                              (SaveQrCodeController saveQrCodeController) =>
+                                  GetBuilder<VibrationController>(
+                            init: VibrationController(),
+                            builder:
+                                (VibrationController vibrationController) =>
+                                    Card(
+                              child: SizedBox(
+                                width: double.infinity,
+                                child: ElevatedButton.icon(
+                                  onPressed: () async {
+                                    final image =
+                                        await screenshotController.capture();
+                                    saveQrCodeController.saveQrCode(image!);
+                                    vibrationController.vibration();
+                                  },
+                                  label: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 18),
+                                    child: Text(
+                                      'Save QR Code',
+                                      style: (isScreenWidth(context))
+                                          ? Theme.of(context)
+                                              .textTheme
+                                              .headline3
+                                          : Theme.of(context)
+                                              .textTheme
+                                              .headline2,
+                                    ),
                                   ),
-                                ),
-                                icon: Icon(
-                                  Icons.save,
-                                  size: (isScreenWidth(context)) ? 30 : 35,
+                                  icon: Icon(
+                                    Icons.save,
+                                    size: (isScreenWidth(context)) ? 30 : 35,
+                                  ),
                                 ),
                               ),
                             ),
@@ -446,28 +459,39 @@ class _StyleShareSaveHistoryQrCodeState
                         ),
                         child: GetBuilder<ShareQrCodeController>(
                           init: ShareQrCodeController(),
-                          builder: (ShareQrCodeController controller) => Card(
-                            child: SizedBox(
-                              width: double.infinity,
-                              child: ElevatedButton.icon(
-                                onPressed: () async {
-                                  final image =
-                                      await screenshotController.capture();
-                                  controller.shareQrCode(image!);
-                                },
-                                label: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 18),
-                                  child: Text(
-                                    'Share QR Code',
-                                    style: (isScreenWidth(context))
-                                        ? Theme.of(context).textTheme.headline3
-                                        : Theme.of(context).textTheme.headline2,
+                          builder: (ShareQrCodeController controller) =>
+                              GetBuilder<VibrationController>(
+                            init: VibrationController(),
+                            builder:
+                                (VibrationController vibrationController) =>
+                                    Card(
+                              child: SizedBox(
+                                width: double.infinity,
+                                child: ElevatedButton.icon(
+                                  onPressed: () async {
+                                    final image =
+                                        await screenshotController.capture();
+                                    controller.shareQrCode(image!);
+                                    vibrationController.vibration();
+                                  },
+                                  label: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 18),
+                                    child: Text(
+                                      'Share QR Code',
+                                      style: (isScreenWidth(context))
+                                          ? Theme.of(context)
+                                              .textTheme
+                                              .headline3
+                                          : Theme.of(context)
+                                              .textTheme
+                                              .headline2,
+                                    ),
                                   ),
-                                ),
-                                icon: Icon(
-                                  Icons.share,
-                                  size: (isScreenWidth(context)) ? 30 : 35,
+                                  icon: Icon(
+                                    Icons.share,
+                                    size: (isScreenWidth(context)) ? 30 : 35,
+                                  ),
                                 ),
                               ),
                             ),
@@ -479,29 +503,34 @@ class _StyleShareSaveHistoryQrCodeState
                           left: (isScreenWidth(context)) ? 40 : 150,
                           right: (isScreenWidth(context)) ? 40 : 150,
                         ),
-                        child: Card(
-                          child: SizedBox(
-                            width: double.infinity,
-                            child: ElevatedButton.icon(
-                              onPressed: () async {
-                                final image =
-                                    await screenshotController.capture();
-                                historyQrCodeController
-                                    .addQrCodeImageToHistory(image!);
-                              },
-                              label: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 18),
-                                child: Text(
-                                  'Add To History',
-                                  style: (isScreenWidth(context))
-                                      ? Theme.of(context).textTheme.headline3
-                                      : Theme.of(context).textTheme.headline2,
+                        child: GetBuilder<VibrationController>(
+                          init: VibrationController(),
+                          builder: (VibrationController vibrationController) =>
+                              Card(
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: ElevatedButton.icon(
+                                onPressed: () async {
+                                  final image =
+                                      await screenshotController.capture();
+                                  historyQrCodeController
+                                      .addQrCodeImageToHistory(image!);
+                                  vibrationController.vibration();
+                                },
+                                label: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 18),
+                                  child: Text(
+                                    'Add To History',
+                                    style: (isScreenWidth(context))
+                                        ? Theme.of(context).textTheme.headline3
+                                        : Theme.of(context).textTheme.headline2,
+                                  ),
                                 ),
-                              ),
-                              icon: Icon(
-                                Icons.history,
-                                size: (isScreenWidth(context)) ? 30 : 35,
+                                icon: Icon(
+                                  Icons.history,
+                                  size: (isScreenWidth(context)) ? 30 : 35,
+                                ),
                               ),
                             ),
                           ),
@@ -855,27 +884,34 @@ class _StyleShareSaveHistoryQrCodeState
                         ),
                         child: GetBuilder<SaveQrCodeController>(
                           init: SaveQrCodeController(),
-                          builder: (SaveQrCodeController controller) => Card(
-                            child: SizedBox(
-                              width: double.infinity,
-                              child: ElevatedButton.icon(
-                                onPressed: () async {
-                                  final image =
-                                      await screenshotController.capture();
-                                  controller.saveQrCode(image!);
-                                },
-                                label: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 18),
-                                  child: Text(
-                                    'Save QR Code',
-                                    style:
-                                        Theme.of(context).textTheme.headline2,
+                          builder: (SaveQrCodeController controller) =>
+                              GetBuilder<VibrationController>(
+                            init: VibrationController(),
+                            builder:
+                                (VibrationController vibrationController) =>
+                                    Card(
+                              child: SizedBox(
+                                width: double.infinity,
+                                child: ElevatedButton.icon(
+                                  onPressed: () async {
+                                    final image =
+                                        await screenshotController.capture();
+                                    controller.saveQrCode(image!);
+                                    vibrationController.vibration();
+                                  },
+                                  label: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 18),
+                                    child: Text(
+                                      'Save QR Code',
+                                      style:
+                                          Theme.of(context).textTheme.headline2,
+                                    ),
                                   ),
-                                ),
-                                icon: const Icon(
-                                  Icons.save,
-                                  size: 35,
+                                  icon: const Icon(
+                                    Icons.save,
+                                    size: 35,
+                                  ),
                                 ),
                               ),
                             ),
@@ -889,27 +925,34 @@ class _StyleShareSaveHistoryQrCodeState
                         ),
                         child: GetBuilder<ShareQrCodeController>(
                           init: ShareQrCodeController(),
-                          builder: (ShareQrCodeController controller) => Card(
-                            child: SizedBox(
-                              width: double.infinity,
-                              child: ElevatedButton.icon(
-                                onPressed: () async {
-                                  final image =
-                                      await screenshotController.capture();
-                                  controller.shareQrCode(image!);
-                                },
-                                label: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 18),
-                                  child: Text(
-                                    'Share QR Code',
-                                    style:
-                                        Theme.of(context).textTheme.headline2,
+                          builder: (ShareQrCodeController controller) =>
+                              GetBuilder<VibrationController>(
+                            init: VibrationController(),
+                            builder:
+                                (VibrationController vibrationController) =>
+                                    Card(
+                              child: SizedBox(
+                                width: double.infinity,
+                                child: ElevatedButton.icon(
+                                  onPressed: () async {
+                                    final image =
+                                        await screenshotController.capture();
+                                    controller.shareQrCode(image!);
+                                    vibrationController.vibration();
+                                  },
+                                  label: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 18),
+                                    child: Text(
+                                      'Share QR Code',
+                                      style:
+                                          Theme.of(context).textTheme.headline2,
+                                    ),
                                   ),
-                                ),
-                                icon: const Icon(
-                                  Icons.share,
-                                  size: 35,
+                                  icon: const Icon(
+                                    Icons.share,
+                                    size: 35,
+                                  ),
                                 ),
                               ),
                             ),
@@ -921,27 +964,32 @@ class _StyleShareSaveHistoryQrCodeState
                           left: 250,
                           right: 250,
                         ),
-                        child: Card(
-                          child: SizedBox(
-                            width: double.infinity,
-                            child: ElevatedButton.icon(
-                              onPressed: () async {
-                                final image =
-                                    await screenshotController.capture();
-                                historyQrCodeController
-                                    .addQrCodeImageToHistory(image!);
-                              },
-                              label: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 18),
-                                child: Text(
-                                  'Add To History',
-                                  style: Theme.of(context).textTheme.headline2,
+                        child: GetBuilder<VibrationController>(
+                          init: VibrationController(),
+                          builder: (VibrationController vibrationController) =>
+                              Card(
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: ElevatedButton.icon(
+                                onPressed: () async {
+                                  final image =
+                                      await screenshotController.capture();
+                                  historyQrCodeController
+                                      .addQrCodeImageToHistory(image!);
+                                },
+                                label: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 18),
+                                  child: Text(
+                                    'Add To History',
+                                    style:
+                                        Theme.of(context).textTheme.headline2,
+                                  ),
                                 ),
-                              ),
-                              icon: const Icon(
-                                Icons.history,
-                                size: 35,
+                                icon: const Icon(
+                                  Icons.history,
+                                  size: 35,
+                                ),
                               ),
                             ),
                           ),

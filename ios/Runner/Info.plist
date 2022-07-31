@@ -76,5 +76,7 @@
 	<!-- permison add image to library -->
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>This app needs access to the library to save QR codes</string>	
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 </dict>
 </plist>

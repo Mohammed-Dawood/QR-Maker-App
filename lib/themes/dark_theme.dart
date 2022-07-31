@@ -73,7 +73,6 @@ class DarkTheme {
     ),
     switchTheme: SwitchThemeData(
       thumbColor: MaterialStateProperty.all(Colors.white),
-      trackColor: MaterialStateProperty.all(Colors.grey.shade900),
     ),
     colorScheme: ColorScheme.light(
       primary: Colors.grey.shade800,

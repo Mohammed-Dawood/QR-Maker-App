@@ -71,6 +71,9 @@ class LightTheme {
       elevation: 10,
       margin: const EdgeInsets.all(10),
     ),
+    switchTheme: SwitchThemeData(
+      thumbColor: MaterialStateProperty.all(Colors.white),
+    ),
     colorScheme: ColorScheme.light(
       primary: Colors.blue.shade500,
       onPrimary: Colors.white,

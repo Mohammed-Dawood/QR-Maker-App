@@ -5,12 +5,15 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 
 class SaveQrCodeController extends GetxController {
-  Future<String> saveQrCode(Uint8List bytes) async {
+  Future<void> saveQrCode(Uint8List bytes) async {
     await [Permission.storage].request();
-    final time = DateTime.now().toIso8601String().replaceAll('.', '-');
+    final time = DateTime.now()
+        .toIso8601String()
+        .replaceAll('.', '-')
+        .replaceAll(':', '-');
 
     final name = 'QR Maker_$time';
-    final result = await ImageGallerySaver.saveImage(bytes, name: name);
+    await ImageGallerySaver.saveImage(bytes, name: name);
     Get.snackbar(
       'QR Maker',
       "The image has been saved successfully",
@@ -26,6 +29,5 @@ class SaveQrCodeController extends GetxController {
         vertical: 10,
       ),
     );
-    return result['filePath'];
   }
 }
