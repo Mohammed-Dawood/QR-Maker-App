@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'dart:developer';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+import 'package:qr_maker_app/controller/vibration_controller.dart';
 
 class ScanningQRByCamera extends StatefulWidget {
   const ScanningQRByCamera({Key? key}) : super(key: key);
@@ -18,6 +20,10 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
 
   bool isScreenWidth(BuildContext context) =>
       MediaQuery.of(context).size.width < 600;
+
+  VibrationController vibrationController = Get.put(
+    VibrationController(),
+  );
 
   // In order to get hot reload to work we need to pause the camera if the platform
   // is android, or resume the camera if the platform is iOS.
@@ -89,26 +95,37 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
                 _buildQrView(context),
                 Positioned(
                   bottom: 50,
-                  child: ElevatedButton(
-                    onPressed: () async {
-                      final String url = '${result!.code}';
-                      // final String url = 'SMSTO:001234567890:hello';
+                  child: Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: ElevatedButton.icon(
+                      style: ButtonStyle(
+                        backgroundColor: result != null
+                            ? MaterialStateProperty.all(Colors.red)
+                            : null,
+                      ),
+                      onPressed: () async {
+                        final String url = '${result!.code}';
+                        // final String url = 'SMSTO:001234567890:hello';
 
-                      if (await canLaunchUrlString(url)) {
-                        await launchUrlString(url);
-                      } else {
-                        throw 'Could not launch ${result!.code}';
-                      }
-                    },
-                    child: Padding(
-                      padding: (isScreenWidth(context))
-                          ? const EdgeInsets.symmetric(vertical: 18)
-                          : const EdgeInsets.symmetric(vertical: 20),
-                      child: Text(
-                        result != null ? ' Go to link ' : 'Scan QR Code',
-                        style: TextStyle(
-                            fontSize: (isScreenWidth(context)) ? 18 : 25),
-                        maxLines: 1,
+                        if (await canLaunchUrlString(url)) {
+                          await launchUrlString(url);
+                        } else {
+                          throw 'Could not launch ${result!.code}';
+                        }
+                      },
+                      icon: result != null
+                          ? const Icon(Icons.arrow_back)
+                          : const Icon(Icons.search),
+                      label: Padding(
+                        padding: (isScreenWidth(context))
+                            ? const EdgeInsets.symmetric(vertical: 18)
+                            : const EdgeInsets.symmetric(vertical: 20),
+                        child: Text(
+                          result != null ? 'Go to link' : 'Scan QR Code',
+                          style: TextStyle(
+                              fontSize: (isScreenWidth(context)) ? 18 : 25),
+                          maxLines: 1,
+                        ),
                       ),
                     ),
                   ),
@@ -172,23 +189,34 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
                 _buildQrView(context),
                 Positioned(
                   bottom: 50,
-                  child: ElevatedButton(
-                    onPressed: () async {
-                      final String url = '${result!.code}';
-                      // final String url = 'SMSTO:001234567890:hello';
+                  child: Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: ElevatedButton.icon(
+                      style: ButtonStyle(
+                        backgroundColor: result != null
+                            ? MaterialStateProperty.all(Colors.red)
+                            : null,
+                      ),
+                      onPressed: () async {
+                        final String url = '${result!.code}';
+                        // final String url = 'SMSTO:001234567890:hello';
 
-                      if (await canLaunchUrlString(url)) {
-                        await launchUrlString(url);
-                      } else {
-                        throw 'Could not launch ${result!.code}';
-                      }
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: Text(
-                        result != null ? ' Go to link ' : 'Scan QR Code',
-                        style: const TextStyle(fontSize: 25),
-                        maxLines: 1,
+                        if (await canLaunchUrlString(url)) {
+                          await launchUrlString(url);
+                        } else {
+                          throw 'Could not launch ${result!.code}';
+                        }
+                      },
+                      icon: result != null
+                          ? const Icon(Icons.arrow_back)
+                          : const Icon(Icons.search),
+                      label: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        child: Text(
+                          result != null ? 'Go to link' : 'Scan QR Code',
+                          style: const TextStyle(fontSize: 25),
+                          maxLines: 1,
+                        ),
                       ),
                     ),
                   ),
@@ -226,6 +254,7 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
     controller.scannedDataStream.listen((Barcode scanData) {
       setState(() {
         result = scanData;
+        vibrationController.vibration();
       });
     });
   }
