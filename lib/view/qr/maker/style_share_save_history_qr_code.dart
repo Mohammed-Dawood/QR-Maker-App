@@ -976,6 +976,7 @@ class _StyleShareSaveHistoryQrCodeState
                                       await screenshotController.capture();
                                   historyQrCodeController
                                       .addQrCodeImageToHistory(image!);
+                                  vibrationController.vibration();
                                 },
                                 label: Padding(
                                   padding:

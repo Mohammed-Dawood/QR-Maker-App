@@ -266,6 +266,7 @@ class _ShowQrImageState extends State<ShowQrImage> {
                                   final image =
                                       await screenshotController.capture();
                                   controller.saveQrCode(image!);
+                                  vibrationController.vibration();
                                 },
                                 icon: const Icon(
                                   Icons.save,
