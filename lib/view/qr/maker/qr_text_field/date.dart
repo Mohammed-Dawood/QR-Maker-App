@@ -460,9 +460,11 @@ class _MakeDateState extends State<MakeDate> {
                                             "END:VEVENT",
                                           ].join("\r\n");
 
-                                          Get.to(() =>
-                                              StyleShareSaveHistoryQrCode(
-                                                  valueQr: valueQr));
+                                          Get.to(
+                                              () => StyleShareSaveHistoryQrCode(
+                                                    valueQr: valueQr,
+                                                    image: 'images/date.png',
+                                                  ));
                                         },
                                       );
                                     }
@@ -899,9 +901,11 @@ class _MakeDateState extends State<MakeDate> {
                                             "END:VEVENT",
                                           ].join("\r\n");
 
-                                          Get.to(() =>
-                                              StyleShareSaveHistoryQrCode(
-                                                  valueQr: valueQr));
+                                          Get.to(
+                                              () => StyleShareSaveHistoryQrCode(
+                                                    valueQr: valueQr,
+                                                    image: 'images/date.png',
+                                                  ));
                                         },
                                       );
                                     }

@@ -167,9 +167,11 @@ class _MakePhoneState extends State<MakePhone> {
                                       setState(
                                         () {
                                           valueQr = completePhoneNumber;
-                                          Get.to(() =>
-                                              StyleShareSaveHistoryQrCode(
-                                                  valueQr: valueQr));
+                                          Get.to(
+                                              () => StyleShareSaveHistoryQrCode(
+                                                    valueQr: valueQr,
+                                                    image: 'images/phone.png',
+                                                  ));
                                         },
                                       );
                                     }
@@ -319,9 +321,11 @@ class _MakePhoneState extends State<MakePhone> {
                                       setState(
                                         () {
                                           valueQr = completePhoneNumber;
-                                          Get.to(() =>
-                                              StyleShareSaveHistoryQrCode(
-                                                  valueQr: valueQr));
+                                          Get.to(
+                                              () => StyleShareSaveHistoryQrCode(
+                                                    valueQr: valueQr,
+                                                    image: 'images/phone.png',
+                                                  ));
                                         },
                                       );
                                     }

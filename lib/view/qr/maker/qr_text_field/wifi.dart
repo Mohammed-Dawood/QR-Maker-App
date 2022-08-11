@@ -252,9 +252,11 @@ class _MakeWifiState extends State<MakeWifi> {
                                               passNetController.text
                                                   .toString() +
                                               ';H:False;;';
-                                          Get.to(() =>
-                                              StyleShareSaveHistoryQrCode(
-                                                  valueQr: valueQr));
+                                          Get.to(
+                                              () => StyleShareSaveHistoryQrCode(
+                                                    valueQr: valueQr,
+                                                    image: 'images/wifi.png',
+                                                  ));
                                         },
                                       );
                                     }
@@ -492,9 +494,11 @@ class _MakeWifiState extends State<MakeWifi> {
                                               passNetController.text
                                                   .toString() +
                                               ';H:False;;';
-                                          Get.to(() =>
-                                              StyleShareSaveHistoryQrCode(
-                                                  valueQr: valueQr));
+                                          Get.to(
+                                              () => StyleShareSaveHistoryQrCode(
+                                                    valueQr: valueQr,
+                                                    image: 'images/wifi.png',
+                                                  ));
                                         },
                                       );
                                     }

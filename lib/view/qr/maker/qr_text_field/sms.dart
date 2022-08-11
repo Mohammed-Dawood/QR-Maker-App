@@ -214,9 +214,11 @@ class _MakeSMSState extends State<MakeSMS> {
                                         () {
                                           valueQr =
                                               'SMSTO:$completePhoneNumber: ${messageController.text.toString()}';
-                                          Get.to(() =>
-                                              StyleShareSaveHistoryQrCode(
-                                                  valueQr: valueQr));
+                                          Get.to(
+                                              () => StyleShareSaveHistoryQrCode(
+                                                    valueQr: valueQr,
+                                                    image: 'images/sms.png',
+                                                  ));
                                         },
                                       );
                                     }
@@ -410,9 +412,11 @@ class _MakeSMSState extends State<MakeSMS> {
                                         () {
                                           valueQr =
                                               'SMSTO:$completePhoneNumber: ${messageController.text.toString()}';
-                                          Get.to(() =>
-                                              StyleShareSaveHistoryQrCode(
-                                                  valueQr: valueQr));
+                                          Get.to(
+                                              () => StyleShareSaveHistoryQrCode(
+                                                    valueQr: valueQr,
+                                                    image: 'images/sms.png',
+                                                  ));
                                         },
                                       );
                                     }

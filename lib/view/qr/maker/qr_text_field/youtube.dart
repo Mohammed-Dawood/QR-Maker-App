@@ -125,9 +125,11 @@ class _MakeYoutubeState extends State<MakeYoutube> {
                                         () {
                                           valueQr =
                                               youtubeController.text.toString();
-                                          Get.to(() =>
-                                              StyleShareSaveHistoryQrCode(
-                                                  valueQr: valueQr));
+                                          Get.to(
+                                              () => StyleShareSaveHistoryQrCode(
+                                                    valueQr: valueQr,
+                                                    image: 'images/youtube.png',
+                                                  ));
                                         },
                                       );
                                     }
@@ -241,9 +243,11 @@ class _MakeYoutubeState extends State<MakeYoutube> {
                                         () {
                                           valueQr =
                                               youtubeController.text.toString();
-                                          Get.to(() =>
-                                              StyleShareSaveHistoryQrCode(
-                                                  valueQr: valueQr));
+                                          Get.to(
+                                              () => StyleShareSaveHistoryQrCode(
+                                                    valueQr: valueQr,
+                                                    image: 'images/youtube.png',
+                                                  ));
                                         },
                                       );
                                     }

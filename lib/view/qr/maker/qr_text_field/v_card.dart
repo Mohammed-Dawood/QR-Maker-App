@@ -885,7 +885,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                             ].join("\r\n");
                                             Get.to(() =>
                                                 StyleShareSaveHistoryQrCode(
-                                                    valueQr: valueQr));
+                                                  valueQr: valueQr,
+                                                  image: 'images/v-card.png',
+                                                ));
                                           },
                                         );
                                       }
@@ -1721,7 +1723,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                             ].join("\r\n");
                                             Get.to(() =>
                                                 StyleShareSaveHistoryQrCode(
-                                                    valueQr: valueQr));
+                                                  valueQr: valueQr,
+                                                  image: 'images/v-card.png',
+                                                ));
                                           },
                                         );
                                       }

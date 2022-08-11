@@ -127,7 +127,9 @@ class _MakeUrlState extends State<MakeUrl> {
                                               urlController.text.toString();
                                           Get.to(
                                             () => StyleShareSaveHistoryQrCode(
-                                                valueQr: valueQr),
+                                              valueQr: valueQr,
+                                              image: 'images/url.png',
+                                            ),
                                           );
                                         },
                                       );
@@ -242,9 +244,11 @@ class _MakeUrlState extends State<MakeUrl> {
                                         () {
                                           valueQr =
                                               urlController.text.toString();
-                                          Get.to(() =>
-                                              StyleShareSaveHistoryQrCode(
-                                                  valueQr: valueQr));
+                                          Get.to(
+                                              () => StyleShareSaveHistoryQrCode(
+                                                    valueQr: valueQr,
+                                                    image: 'images/url.png',
+                                                  ));
                                         },
                                       );
                                     }

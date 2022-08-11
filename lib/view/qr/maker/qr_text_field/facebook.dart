@@ -128,7 +128,9 @@ class _MakeFacebookState extends State<MakeFacebook> {
                                               .toString();
                                           Get.to(() =>
                                               StyleShareSaveHistoryQrCode(
-                                                  valueQr: valueQr));
+                                                valueQr: valueQr,
+                                                image: 'images/facebook.png',
+                                              ));
                                         },
                                       );
                                     }
@@ -245,7 +247,9 @@ class _MakeFacebookState extends State<MakeFacebook> {
                                               .toString();
                                           Get.to(() =>
                                               StyleShareSaveHistoryQrCode(
-                                                  valueQr: valueQr));
+                                                valueQr: valueQr,
+                                                image: 'images/facebook.png',
+                                              ));
                                         },
                                       );
                                     }

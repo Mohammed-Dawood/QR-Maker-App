@@ -189,7 +189,9 @@ class _MakeLocationState extends State<MakeLocation> {
                                               longitudeController.text;
                                           Get.to(() =>
                                               StyleShareSaveHistoryQrCode(
-                                                  valueQr: valueQr));
+                                                valueQr: valueQr,
+                                                image: 'images/location.png',
+                                              ));
                                         },
                                       );
                                     }
@@ -365,7 +367,9 @@ class _MakeLocationState extends State<MakeLocation> {
                                               longitudeController.text;
                                           Get.to(() =>
                                               StyleShareSaveHistoryQrCode(
-                                                  valueQr: valueQr));
+                                                valueQr: valueQr,
+                                                image: 'images/location.png',
+                                              ));
                                         },
                                       );
                                     }

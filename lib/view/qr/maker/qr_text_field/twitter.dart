@@ -125,9 +125,11 @@ class _MakeTwitterState extends State<MakeTwitter> {
                                         () {
                                           valueQr =
                                               twitterController.text.toString();
-                                          Get.to(() =>
-                                              StyleShareSaveHistoryQrCode(
-                                                  valueQr: valueQr));
+                                          Get.to(
+                                              () => StyleShareSaveHistoryQrCode(
+                                                    valueQr: valueQr,
+                                                    image: 'images/twitter.png',
+                                                  ));
                                         },
                                       );
                                     }
@@ -241,9 +243,11 @@ class _MakeTwitterState extends State<MakeTwitter> {
                                         () {
                                           valueQr =
                                               twitterController.text.toString();
-                                          Get.to(() =>
-                                              StyleShareSaveHistoryQrCode(
-                                                  valueQr: valueQr));
+                                          Get.to(
+                                              () => StyleShareSaveHistoryQrCode(
+                                                    valueQr: valueQr,
+                                                    image: 'images/twitter.png',
+                                                  ));
                                         },
                                       );
                                     }

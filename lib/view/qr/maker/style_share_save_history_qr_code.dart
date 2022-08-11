@@ -13,9 +13,11 @@ class StyleShareSaveHistoryQrCode extends StatefulWidget {
   const StyleShareSaveHistoryQrCode({
     Key? key,
     required this.valueQr,
+    required this.image,
   }) : super(key: key);
 
   final String valueQr;
+  final String image;
 
   @override
   State<StyleShareSaveHistoryQrCode> createState() =>
@@ -25,9 +27,11 @@ class StyleShareSaveHistoryQrCode extends StatefulWidget {
 class _StyleShareSaveHistoryQrCodeState
     extends State<StyleShareSaveHistoryQrCode> {
   // double versionValue = QrVersions.auto;
+  double logoSize = 50;
   bool gapSwitch = false;
   bool eyesSwitch = false;
   bool dataSwitch = false;
+  bool logoSwitch = true;
   Color eyesColor = Colors.black;
   Color dataColor = Colors.black;
   Color backgroundColor = Colors.white;
@@ -82,37 +86,50 @@ class _StyleShareSaveHistoryQrCodeState
                               padding: const EdgeInsets.all(5.0),
                               child: Screenshot(
                                 controller: screenshotController,
-                                child: QrImage(
-                                  size: (isScreenWidth(context)) ? 200 : 300,
-                                  gapless: gapSwitch,
-                                  data: widget.valueQr,
-                                  version: QrVersions.auto,
-                                  semanticsLabel: 'qr maker',
-                                  backgroundColor: backgroundColor,
-                                  eyeStyle: QrEyeStyle(
-                                    eyeShape: eyesSwitch
-                                        ? QrEyeShape.circle
-                                        : QrEyeShape.square,
-                                    color: eyesColor,
-                                  ),
-                                  dataModuleStyle: QrDataModuleStyle(
-                                    dataModuleShape: dataSwitch
-                                        ? QrDataModuleShape.circle
-                                        : QrDataModuleShape.square,
-                                    color: dataColor,
-                                  ),
-                                  // embeddedImage: const AssetImage('images/url.png'),
-                                  // embeddedImageStyle: QrEmbeddedImageStyle(
-                                  //   size: const Size(50, 50),
-                                  // ),
-                                  errorStateBuilder: (cxt, err) {
-                                    return const Center(
-                                      child: Text(
-                                        "Uh oh! Something went wrong...",
-                                        textAlign: TextAlign.center,
+                                child: Stack(
+                                  alignment: AlignmentDirectional.center,
+                                  children: [
+                                    QrImage(
+                                      size:
+                                          (isScreenWidth(context)) ? 200 : 300,
+                                      gapless: gapSwitch,
+                                      data: widget.valueQr,
+                                      version: QrVersions.auto,
+                                      semanticsLabel: 'qr maker',
+                                      backgroundColor: backgroundColor,
+                                      eyeStyle: QrEyeStyle(
+                                        eyeShape: eyesSwitch
+                                            ? QrEyeShape.circle
+                                            : QrEyeShape.square,
+                                        color: eyesColor,
                                       ),
-                                    );
-                                  },
+                                      dataModuleStyle: QrDataModuleStyle(
+                                        dataModuleShape: dataSwitch
+                                            ? QrDataModuleShape.circle
+                                            : QrDataModuleShape.square,
+                                        color: dataColor,
+                                      ),
+                                      // embeddedImage: imageSwitch
+                                      //     ? AssetImage(widget.image)
+                                      //     : null,
+                                      // embeddedImageStyle: QrEmbeddedImageStyle(
+                                      //   size: const Size(50, 50),
+                                      // ),
+                                      errorStateBuilder: (cxt, err) {
+                                        return const Center(
+                                          child: Text(
+                                            "Uh oh! Something went wrong...",
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                    Image.asset(
+                                      widget.image,
+                                      width: logoSwitch ? logoSize : 0,
+                                      height: logoSwitch ? logoSize : 0,
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
@@ -154,6 +171,7 @@ class _StyleShareSaveHistoryQrCodeState
                                         );
                                       },
                                       activeColor: Colors.white,
+                                      inactiveTrackColor: Colors.grey.shade900,
                                     ),
                                   ],
                                 ),
@@ -181,6 +199,7 @@ class _StyleShareSaveHistoryQrCodeState
                                         );
                                       },
                                       activeColor: Colors.white,
+                                      inactiveTrackColor: Colors.grey.shade900,
                                     ),
                                   ],
                                 ),
@@ -208,7 +227,67 @@ class _StyleShareSaveHistoryQrCodeState
                                         );
                                       },
                                       activeColor: Colors.white,
+                                      inactiveTrackColor: Colors.grey.shade900,
                                     ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Logo',
+                                      style: (isScreenWidth(context))
+                                          ? Theme.of(context)
+                                              .textTheme
+                                              .headline3
+                                          : Theme.of(context)
+                                              .textTheme
+                                              .headline2,
+                                    ),
+                                    Switch(
+                                      value: logoSwitch,
+                                      onChanged: (value) {
+                                        setState(
+                                          () {
+                                            logoSwitch = value;
+                                          },
+                                        );
+                                      },
+                                      activeColor: Colors.white,
+                                      inactiveTrackColor: Colors.grey.shade900,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Logo Size',
+                                      style: (isScreenWidth(context))
+                                          ? Theme.of(context)
+                                              .textTheme
+                                              .headline3
+                                          : Theme.of(context)
+                                              .textTheme
+                                              .headline2,
+                                    ),
+                                    SizedBox(
+                                      width: isScreenWidth(context) ? 120 : 200,
+                                      child: Slider(
+                                        min: 25.0,
+                                        max: 75.0,
+                                        value: logoSize,
+                                        onChanged: logoSwitch
+                                            ? ((value) {
+                                                setState(() {
+                                                  logoSize = value;
+                                                });
+                                              })
+                                            : null,
+                                      ),
+                                    )
                                   ],
                                 ),
                                 Row(
@@ -581,37 +660,49 @@ class _StyleShareSaveHistoryQrCodeState
                               padding: const EdgeInsets.all(5.0),
                               child: Screenshot(
                                 controller: screenshotController,
-                                child: QrImage(
-                                  size: 300,
-                                  gapless: gapSwitch,
-                                  data: widget.valueQr,
-                                  version: QrVersions.auto,
-                                  semanticsLabel: 'qr maker',
-                                  backgroundColor: backgroundColor,
-                                  eyeStyle: QrEyeStyle(
-                                    eyeShape: eyesSwitch
-                                        ? QrEyeShape.circle
-                                        : QrEyeShape.square,
-                                    color: eyesColor,
-                                  ),
-                                  dataModuleStyle: QrDataModuleStyle(
-                                    dataModuleShape: dataSwitch
-                                        ? QrDataModuleShape.circle
-                                        : QrDataModuleShape.square,
-                                    color: dataColor,
-                                  ),
-                                  // embeddedImage: const AssetImage('images/url.png'),
-                                  // embeddedImageStyle: QrEmbeddedImageStyle(
-                                  //   size: const Size(50, 50),
-                                  // ),
-                                  errorStateBuilder: (cxt, err) {
-                                    return const Center(
-                                      child: Text(
-                                        "Uh oh! Something went wrong...",
-                                        textAlign: TextAlign.center,
+                                child: Stack(
+                                  alignment: AlignmentDirectional.center,
+                                  children: [
+                                    QrImage(
+                                      size: 300,
+                                      gapless: gapSwitch,
+                                      data: widget.valueQr,
+                                      version: QrVersions.auto,
+                                      semanticsLabel: 'qr maker',
+                                      backgroundColor: backgroundColor,
+                                      eyeStyle: QrEyeStyle(
+                                        eyeShape: eyesSwitch
+                                            ? QrEyeShape.circle
+                                            : QrEyeShape.square,
+                                        color: eyesColor,
                                       ),
-                                    );
-                                  },
+                                      dataModuleStyle: QrDataModuleStyle(
+                                        dataModuleShape: dataSwitch
+                                            ? QrDataModuleShape.circle
+                                            : QrDataModuleShape.square,
+                                        color: dataColor,
+                                      ),
+                                      // embeddedImage: imageSwitch
+                                      //     ? AssetImage(widget.image)
+                                      //     : null,
+                                      // embeddedImageStyle: QrEmbeddedImageStyle(
+                                      //   size: const Size(50, 50),
+                                      // ),
+                                      errorStateBuilder: (cxt, err) {
+                                        return const Center(
+                                          child: Text(
+                                            "Uh oh! Something went wrong...",
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                    Image.asset(
+                                      widget.image,
+                                      width: logoSwitch ? logoSize : 0,
+                                      height: logoSwitch ? logoSize : 0,
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
@@ -648,6 +739,7 @@ class _StyleShareSaveHistoryQrCodeState
                                         );
                                       },
                                       activeColor: Colors.white,
+                                      inactiveTrackColor: Colors.grey.shade900,
                                     ),
                                   ],
                                 ),
@@ -670,6 +762,7 @@ class _StyleShareSaveHistoryQrCodeState
                                         );
                                       },
                                       activeColor: Colors.white,
+                                      inactiveTrackColor: Colors.grey.shade900,
                                     ),
                                   ],
                                 ),
@@ -692,7 +785,57 @@ class _StyleShareSaveHistoryQrCodeState
                                         );
                                       },
                                       activeColor: Colors.white,
+                                      inactiveTrackColor: Colors.grey.shade900,
                                     ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Logo',
+                                      style:
+                                          Theme.of(context).textTheme.headline2,
+                                    ),
+                                    Switch(
+                                      value: logoSwitch,
+                                      onChanged: (value) {
+                                        setState(
+                                          () {
+                                            logoSwitch = value;
+                                          },
+                                        );
+                                      },
+                                      activeColor: Colors.white,
+                                      inactiveTrackColor: Colors.grey.shade900,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Logo Size',
+                                      style:
+                                          Theme.of(context).textTheme.headline2,
+                                    ),
+                                    SizedBox(
+                                      width: 200,
+                                      child: Slider(
+                                        min: 25.0,
+                                        max: 75.0,
+                                        value: logoSize,
+                                        onChanged: logoSwitch
+                                            ? ((value) {
+                                                setState(() {
+                                                  logoSize = value;
+                                                });
+                                              })
+                                            : null,
+                                      ),
+                                    )
                                   ],
                                 ),
                                 Row(

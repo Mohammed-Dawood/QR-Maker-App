@@ -79,6 +79,11 @@ class LightTheme {
       onPrimary: Colors.white,
       onSurface: Colors.black,
     ),
+    sliderTheme: SliderThemeData(
+      thumbColor: Colors.white,
+      activeTrackColor: Colors.white54,
+      inactiveTrackColor: Colors.grey.shade900,
+    ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         foregroundColor: Colors.white,

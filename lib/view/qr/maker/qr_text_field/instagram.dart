@@ -127,7 +127,9 @@ class _MakeInstagramState extends State<MakeInstagram> {
                                               .toString();
                                           Get.to(() =>
                                               StyleShareSaveHistoryQrCode(
-                                                  valueQr: valueQr));
+                                                valueQr: valueQr,
+                                                image: 'images/instagram.png',
+                                              ));
                                         },
                                       );
                                     }
@@ -243,7 +245,9 @@ class _MakeInstagramState extends State<MakeInstagram> {
                                               .toString();
                                           Get.to(() =>
                                               StyleShareSaveHistoryQrCode(
-                                                  valueQr: valueQr));
+                                                valueQr: valueQr,
+                                                image: 'images/instagram.png',
+                                              ));
                                         },
                                       );
                                     }

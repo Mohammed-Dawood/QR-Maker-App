@@ -215,9 +215,11 @@ class _MakeEmailState extends State<MakeEmail> {
                                         () {
                                           valueQr =
                                               'MAILTO: ${emailController.text.toString()} ?subject=${subjectController.text.toString()}&body=${messageController.text.toString()}';
-                                          Get.to(() =>
-                                              StyleShareSaveHistoryQrCode(
-                                                  valueQr: valueQr));
+                                          Get.to(
+                                              () => StyleShareSaveHistoryQrCode(
+                                                    valueQr: valueQr,
+                                                    image: 'images/email.png',
+                                                  ));
                                         },
                                       );
                                     }
@@ -417,9 +419,11 @@ class _MakeEmailState extends State<MakeEmail> {
                                         () {
                                           valueQr =
                                               'MAILTO: ${emailController.text.toString()} ?subject=${subjectController.text.toString()}&body=${messageController.text.toString()}';
-                                          Get.to(() =>
-                                              StyleShareSaveHistoryQrCode(
-                                                  valueQr: valueQr));
+                                          Get.to(
+                                              () => StyleShareSaveHistoryQrCode(
+                                                    valueQr: valueQr,
+                                                    image: 'images/email.png',
+                                                  ));
                                         },
                                       );
                                     }

@@ -169,7 +169,9 @@ class _MakeWhatsUppState extends State<MakeWhatsUpp> {
                                               completePhoneNumber;
                                           Get.to(() =>
                                               StyleShareSaveHistoryQrCode(
-                                                  valueQr: valueQr));
+                                                valueQr: valueQr,
+                                                image: 'images/whats_upp.png',
+                                              ));
                                         },
                                       );
                                     }
@@ -321,7 +323,9 @@ class _MakeWhatsUppState extends State<MakeWhatsUpp> {
                                               completePhoneNumber;
                                           Get.to(() =>
                                               StyleShareSaveHistoryQrCode(
-                                                  valueQr: valueQr));
+                                                valueQr: valueQr,
+                                                image: 'images/whats_upp.png',
+                                              ));
                                         },
                                       );
                                     }
