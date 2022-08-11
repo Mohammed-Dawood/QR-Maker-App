@@ -27,11 +27,11 @@ class StyleShareSaveHistoryQrCode extends StatefulWidget {
 class _StyleShareSaveHistoryQrCodeState
     extends State<StyleShareSaveHistoryQrCode> {
   // double versionValue = QrVersions.auto;
-  double logoSize = 50;
+  double logoSize = 30;
   bool gapSwitch = false;
+  bool logoSwitch = true;
   bool eyesSwitch = false;
   bool dataSwitch = false;
-  bool logoSwitch = true;
   Color eyesColor = Colors.black;
   Color dataColor = Colors.black;
   Color backgroundColor = Colors.white;
@@ -276,8 +276,10 @@ class _StyleShareSaveHistoryQrCodeState
                                     SizedBox(
                                       width: isScreenWidth(context) ? 120 : 200,
                                       child: Slider(
-                                        min: 25.0,
-                                        max: 75.0,
+                                        min: 20.0,
+                                        max: isScreenWidth(context)
+                                            ? 33.0
+                                            : 50.0,
                                         value: logoSize,
                                         onChanged: logoSwitch
                                             ? ((value) {
@@ -824,8 +826,8 @@ class _StyleShareSaveHistoryQrCodeState
                                     SizedBox(
                                       width: 200,
                                       child: Slider(
-                                        min: 25.0,
-                                        max: 75.0,
+                                        min: 20.0,
+                                        max: 50.0,
                                         value: logoSize,
                                         onChanged: logoSwitch
                                             ? ((value) {
