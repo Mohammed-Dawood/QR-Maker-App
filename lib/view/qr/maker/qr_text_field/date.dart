@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:validators/validators.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/style_share_save_history_qr_code.dart';
@@ -464,6 +465,8 @@ class _MakeDateState extends State<MakeDate> {
                                               () => StyleShareSaveHistoryQrCode(
                                                     valueQr: valueQr,
                                                     image: 'images/date.png',
+                                                    versionValueWithLogo:
+                                                        QrVersions.auto,
                                                   ));
                                         },
                                       );
@@ -905,6 +908,8 @@ class _MakeDateState extends State<MakeDate> {
                                               () => StyleShareSaveHistoryQrCode(
                                                     valueQr: valueQr,
                                                     image: 'images/date.png',
+                                                    versionValueWithLogo:
+                                                        QrVersions.auto,
                                                   ));
                                         },
                                       );

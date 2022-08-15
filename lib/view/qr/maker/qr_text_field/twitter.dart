@@ -129,6 +129,7 @@ class _MakeTwitterState extends State<MakeTwitter> {
                                               () => StyleShareSaveHistoryQrCode(
                                                     valueQr: valueQr,
                                                     image: 'images/twitter.png',
+                                                    versionValueWithLogo: 6,
                                                   ));
                                         },
                                       );
@@ -247,6 +248,7 @@ class _MakeTwitterState extends State<MakeTwitter> {
                                               () => StyleShareSaveHistoryQrCode(
                                                     valueQr: valueQr,
                                                     image: 'images/twitter.png',
+                                                    versionValueWithLogo: 6,
                                                   ));
                                         },
                                       );

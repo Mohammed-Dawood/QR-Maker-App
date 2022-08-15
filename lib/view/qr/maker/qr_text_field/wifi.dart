@@ -256,6 +256,7 @@ class _MakeWifiState extends State<MakeWifi> {
                                               () => StyleShareSaveHistoryQrCode(
                                                     valueQr: valueQr,
                                                     image: 'images/wifi.png',
+                                                    versionValueWithLogo: 6,
                                                   ));
                                         },
                                       );
@@ -498,6 +499,7 @@ class _MakeWifiState extends State<MakeWifi> {
                                               () => StyleShareSaveHistoryQrCode(
                                                     valueQr: valueQr,
                                                     image: 'images/wifi.png',
+                                                    versionValueWithLogo: 6,
                                                   ));
                                         },
                                       );

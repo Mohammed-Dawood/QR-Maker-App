@@ -71,7 +71,7 @@ class _MainQrState extends State<MainQr> {
             ),
           ),
           drawer: Drawer(
-            width: (isScreenWidth(context)) ? 300 : 300,
+            width: (isScreenWidth(context)) ? 300 : 400,
             child: Container(
               padding: const EdgeInsets.all(20),
               alignment: Alignment.center,
@@ -107,55 +107,49 @@ class _MainQrState extends State<MainQr> {
                   Card(
                     child: SizedBox(
                       width: double.infinity,
-                      height: 53,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(left: 10),
-                            child: Text(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: isScreenWidth(context) ? 5 : 10,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
                               'Dark Theme',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: (isScreenWidth(context))
+                                  ? Theme.of(context).textTheme.headline3
+                                  : Theme.of(context).textTheme.headline2,
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 10),
-                            child: Switch(
+                            Switch(
                               value: themeController.initValue,
                               onChanged: themeController.switchTheme,
                               activeTrackColor: Colors.white54,
                               inactiveTrackColor: Colors.grey.shade900,
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
                   Card(
                     child: SizedBox(
                       width: double.infinity,
-                      height: 53,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(left: 10),
-                            child: Text(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: isScreenWidth(context) ? 5 : 10,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
                               'Vibration',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: (isScreenWidth(context))
+                                  ? Theme.of(context).textTheme.headline3
+                                  : Theme.of(context).textTheme.headline2,
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 10),
-                            child: GetBuilder<VibrationController>(
+                            GetBuilder<VibrationController>(
                               init: VibrationController(),
                               builder:
                                   (VibrationController vibrationController) =>
@@ -166,8 +160,8 @@ class _MainQrState extends State<MainQr> {
                                 inactiveTrackColor: Colors.grey.shade900,
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),

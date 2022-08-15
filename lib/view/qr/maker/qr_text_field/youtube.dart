@@ -129,6 +129,7 @@ class _MakeYoutubeState extends State<MakeYoutube> {
                                               () => StyleShareSaveHistoryQrCode(
                                                     valueQr: valueQr,
                                                     image: 'images/youtube.png',
+                                                    versionValueWithLogo: 6,
                                                   ));
                                         },
                                       );
@@ -247,6 +248,7 @@ class _MakeYoutubeState extends State<MakeYoutube> {
                                               () => StyleShareSaveHistoryQrCode(
                                                     valueQr: valueQr,
                                                     image: 'images/youtube.png',
+                                                    versionValueWithLogo: 6,
                                                   ));
                                         },
                                       );

@@ -129,6 +129,7 @@ class _MakeInstagramState extends State<MakeInstagram> {
                                               StyleShareSaveHistoryQrCode(
                                                 valueQr: valueQr,
                                                 image: 'images/instagram.png',
+                                                versionValueWithLogo: 6,
                                               ));
                                         },
                                       );
@@ -247,6 +248,7 @@ class _MakeInstagramState extends State<MakeInstagram> {
                                               StyleShareSaveHistoryQrCode(
                                                 valueQr: valueQr,
                                                 image: 'images/instagram.png',
+                                                versionValueWithLogo: 6,
                                               ));
                                         },
                                       );

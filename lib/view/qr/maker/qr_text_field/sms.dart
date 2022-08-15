@@ -218,6 +218,7 @@ class _MakeSMSState extends State<MakeSMS> {
                                               () => StyleShareSaveHistoryQrCode(
                                                     valueQr: valueQr,
                                                     image: 'images/sms.png',
+                                                    versionValueWithLogo: 6,
                                                   ));
                                         },
                                       );
@@ -416,6 +417,7 @@ class _MakeSMSState extends State<MakeSMS> {
                                               () => StyleShareSaveHistoryQrCode(
                                                     valueQr: valueQr,
                                                     image: 'images/sms.png',
+                                                    versionValueWithLogo: 6,
                                                   ));
                                         },
                                       );

@@ -83,6 +83,8 @@ class DarkTheme {
       thumbColor: Colors.white,
       activeTrackColor: Colors.white54,
       inactiveTrackColor: Colors.grey.shade900,
+      disabledActiveTrackColor: Colors.black38,
+      disabledInactiveTrackColor: Colors.black38,
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(

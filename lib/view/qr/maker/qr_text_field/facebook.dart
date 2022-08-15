@@ -130,6 +130,7 @@ class _MakeFacebookState extends State<MakeFacebook> {
                                               StyleShareSaveHistoryQrCode(
                                                 valueQr: valueQr,
                                                 image: 'images/facebook.png',
+                                                versionValueWithLogo: 6,
                                               ));
                                         },
                                       );
@@ -249,6 +250,7 @@ class _MakeFacebookState extends State<MakeFacebook> {
                                               StyleShareSaveHistoryQrCode(
                                                 valueQr: valueQr,
                                                 image: 'images/facebook.png',
+                                                versionValueWithLogo: 6,
                                               ));
                                         },
                                       );

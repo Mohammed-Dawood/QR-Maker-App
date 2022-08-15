@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:validators/validators.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/style_share_save_history_qr_code.dart';
@@ -129,6 +130,8 @@ class _MakeUrlState extends State<MakeUrl> {
                                             () => StyleShareSaveHistoryQrCode(
                                               valueQr: valueQr,
                                               image: 'images/url.png',
+                                              versionValueWithLogo:
+                                                  QrVersions.auto,
                                             ),
                                           );
                                         },
@@ -248,6 +251,8 @@ class _MakeUrlState extends State<MakeUrl> {
                                               () => StyleShareSaveHistoryQrCode(
                                                     valueQr: valueQr,
                                                     image: 'images/url.png',
+                                                    versionValueWithLogo:
+                                                        QrVersions.auto,
                                                   ));
                                         },
                                       );

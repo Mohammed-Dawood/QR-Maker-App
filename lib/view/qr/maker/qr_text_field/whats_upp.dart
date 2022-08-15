@@ -171,6 +171,7 @@ class _MakeWhatsUppState extends State<MakeWhatsUpp> {
                                               StyleShareSaveHistoryQrCode(
                                                 valueQr: valueQr,
                                                 image: 'images/whats_upp.png',
+                                                versionValueWithLogo: 6,
                                               ));
                                         },
                                       );
@@ -325,6 +326,7 @@ class _MakeWhatsUppState extends State<MakeWhatsUpp> {
                                               StyleShareSaveHistoryQrCode(
                                                 valueQr: valueQr,
                                                 image: 'images/whats_upp.png',
+                                                versionValueWithLogo: 6,
                                               ));
                                         },
                                       );

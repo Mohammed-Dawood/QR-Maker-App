@@ -191,6 +191,7 @@ class _MakeLocationState extends State<MakeLocation> {
                                               StyleShareSaveHistoryQrCode(
                                                 valueQr: valueQr,
                                                 image: 'images/location.png',
+                                                versionValueWithLogo: 6,
                                               ));
                                         },
                                       );
@@ -369,6 +370,7 @@ class _MakeLocationState extends State<MakeLocation> {
                                               StyleShareSaveHistoryQrCode(
                                                 valueQr: valueQr,
                                                 image: 'images/location.png',
+                                                versionValueWithLogo: 6,
                                               ));
                                         },
                                       );

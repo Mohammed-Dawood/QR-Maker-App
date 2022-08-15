@@ -171,6 +171,7 @@ class _MakePhoneState extends State<MakePhone> {
                                               () => StyleShareSaveHistoryQrCode(
                                                     valueQr: valueQr,
                                                     image: 'images/phone.png',
+                                                    versionValueWithLogo: 6,
                                                   ));
                                         },
                                       );
@@ -325,6 +326,7 @@ class _MakePhoneState extends State<MakePhone> {
                                               () => StyleShareSaveHistoryQrCode(
                                                     valueQr: valueQr,
                                                     image: 'images/phone.png',
+                                                    versionValueWithLogo: 6,
                                                   ));
                                         },
                                       );
