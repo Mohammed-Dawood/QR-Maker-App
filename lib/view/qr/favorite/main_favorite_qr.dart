@@ -1,17 +1,17 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
-import 'package:qr_maker_app/view/qr/History/show_qr_image.dart';
-import 'package:qr_maker_app/controller/history_qr_code_controller.dart';
+import 'package:qr_maker_app/view/qr/favorite/show_favorite_qr_image.dart';
+import 'package:qr_maker_app/controller/favorite_qr_code_controller.dart';
 
-class MainQrHistory extends StatefulWidget {
-  const MainQrHistory({Key? key}) : super(key: key);
+class MainFavoriteQr extends StatefulWidget {
+  const MainFavoriteQr({Key? key}) : super(key: key);
 
   @override
-  State<MainQrHistory> createState() => _MainQrHistoryState();
+  State<MainFavoriteQr> createState() => _MainFavoriteQrState();
 }
 
-class _MainQrHistoryState extends State<MainQrHistory> {
+class _MainFavoriteQrState extends State<MainFavoriteQr> {
   bool isScreenWidth(BuildContext context) =>
       MediaQuery.of(context).size.width < 600;
 
@@ -38,11 +38,11 @@ class _MainQrHistoryState extends State<MainQrHistory> {
                     left: 10,
                     right: 10,
                   ),
-                  child: GetBuilder<HistoryQrCodeController>(
-                    init: HistoryQrCodeController(),
-                    builder: (HistoryQrCodeController controller) =>
+                  child: GetBuilder<FavoriteQrCodeController>(
+                    init: FavoriteQrCodeController(),
+                    builder: (FavoriteQrCodeController controller) =>
                         GridView.builder(
-                      itemCount: controller.historyQrCodeImageList.length,
+                      itemCount: controller.favoriteQrCodeImageList.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: (isScreenWidth(context)) ? 3 : 5,
                       ),
@@ -51,9 +51,9 @@ class _MainQrHistoryState extends State<MainQrHistory> {
                           child: InkWell(
                             onTap: () {
                               Get.to(
-                                () => ShowQrImage(
+                                () => ShowFavoriteQrImage(
                                   image:
-                                      controller.historyQrCodeImageList[index],
+                                      controller.favoriteQrCodeImageList[index],
                                   index: index,
                                 ),
                               );
@@ -61,7 +61,7 @@ class _MainQrHistoryState extends State<MainQrHistory> {
                             child: Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Image.asset(
-                                controller.historyQrCodeImageList[index],
+                                controller.favoriteQrCodeImageList[index],
                               ),
                             ),
                           ),
@@ -93,11 +93,11 @@ class _MainQrHistoryState extends State<MainQrHistory> {
                     left: 10,
                     right: 10,
                   ),
-                  child: GetBuilder<HistoryQrCodeController>(
-                    init: HistoryQrCodeController(),
-                    builder: (HistoryQrCodeController controller) =>
+                  child: GetBuilder<FavoriteQrCodeController>(
+                    init: FavoriteQrCodeController(),
+                    builder: (FavoriteQrCodeController controller) =>
                         GridView.builder(
-                      itemCount: controller.historyQrCodeImageList.length,
+                      itemCount: controller.favoriteQrCodeImageList.length,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 7,
@@ -107,9 +107,9 @@ class _MainQrHistoryState extends State<MainQrHistory> {
                           child: InkWell(
                             onTap: () {
                               Get.to(
-                                () => ShowQrImage(
+                                () => ShowFavoriteQrImage(
                                   image:
-                                      controller.historyQrCodeImageList[index],
+                                      controller.favoriteQrCodeImageList[index],
                                   index: index,
                                 ),
                               );
@@ -117,7 +117,7 @@ class _MainQrHistoryState extends State<MainQrHistory> {
                             child: Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Image.asset(
-                                controller.historyQrCodeImageList[index],
+                                controller.favoriteQrCodeImageList[index],
                               ),
                             ),
                           ),

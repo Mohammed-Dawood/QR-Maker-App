@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class HistoryQrCodeController extends GetxController {
-  List<String> historyQrCodeImageList = [];
+class FavoriteQrCodeController extends GetxController {
+  List<String> favoriteQrCodeImageList = [];
 
-  Future<void> addQrCodeImageToHistory(
+  Future<void> addQrCodeImageToFavorite(
     Uint8List qrImage,
   ) async {
     final Directory directoryQrCodeImage =
@@ -34,15 +34,15 @@ class HistoryQrCodeController extends GetxController {
       ),
     );
 
-    historyQrCodeImageList.add('$pathQrCodeImage/$nameQrCodeImage');
+    favoriteQrCodeImageList.add('$pathQrCodeImage/$nameQrCodeImage');
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    await prefs.setStringList('newQrCodeImageList', historyQrCodeImageList);
+    await prefs.setStringList('newQrCodeImageList', favoriteQrCodeImageList);
 
     Get.snackbar(
       'QR Maker',
-      "The image has been added to history successfully",
+      "The image has been added to favorite successfully",
       icon: const Icon(
         Icons.done,
         color: Colors.green,
@@ -59,13 +59,13 @@ class HistoryQrCodeController extends GetxController {
 
   Future<void> getQrImageListFromSahrePref() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    historyQrCodeImageList = prefs.getStringList('newQrCodeImageList')!;
+    favoriteQrCodeImageList = prefs.getStringList('newQrCodeImageList')!;
   }
 
   Future<void> deleteItemFromQrCodeImageList(int number) async {
-    historyQrCodeImageList.remove(historyQrCodeImageList[number]);
+    favoriteQrCodeImageList.remove(favoriteQrCodeImageList[number]);
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setStringList('newQrCodeImageList', historyQrCodeImageList);
+    await prefs.setStringList('newQrCodeImageList', favoriteQrCodeImageList);
     update();
     Get.back();
     Get.back();

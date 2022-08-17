@@ -7,7 +7,7 @@ import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
 import 'package:qr_maker_app/controller/save_qr_code_controller.dart';
 import 'package:qr_maker_app/controller/share_qr_code_controller.dart';
-import 'package:qr_maker_app/controller/history_qr_code_controller.dart';
+import 'package:qr_maker_app/controller/favorite_qr_code_controller.dart';
 
 class StyleShareSaveHistoryQrCode extends StatefulWidget {
   const StyleShareSaveHistoryQrCode({
@@ -41,7 +41,7 @@ class _StyleShareSaveHistoryQrCodeState
 
   ScreenshotController screenshotController = ScreenshotController();
 
-  HistoryQrCodeController historyQrCodeController = Get.find();
+  FavoriteQrCodeController historyQrCodeController = Get.find();
 
   bool isScreenWidth(BuildContext context) =>
       MediaQuery.of(context).size.width < 600;
@@ -732,14 +732,14 @@ class _StyleShareSaveHistoryQrCodeState
                                       final image =
                                           await screenshotController.capture();
                                       historyQrCodeController
-                                          .addQrCodeImageToHistory(image!);
+                                          .addQrCodeImageToFavorite(image!);
                                       vibrationController.vibration();
                                     },
                                     label: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 18),
                                       child: Text(
-                                        'Add To History',
+                                        'Add To Favorite',
                                         style: (isScreenWidth(context))
                                             ? Theme.of(context)
                                                 .textTheme
@@ -750,7 +750,7 @@ class _StyleShareSaveHistoryQrCodeState
                                       ),
                                     ),
                                     icon: Icon(
-                                      Icons.history,
+                                      Icons.favorite,
                                       size: (isScreenWidth(context)) ? 30 : 35,
                                     ),
                                   ),
@@ -1374,21 +1374,21 @@ class _StyleShareSaveHistoryQrCodeState
                                       final image =
                                           await screenshotController.capture();
                                       historyQrCodeController
-                                          .addQrCodeImageToHistory(image!);
+                                          .addQrCodeImageToFavorite(image!);
                                       vibrationController.vibration();
                                     },
                                     label: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 18),
                                       child: Text(
-                                        'Add To History',
+                                        'Add To Favorite',
                                         style: Theme.of(context)
                                             .textTheme
                                             .headline2,
                                       ),
                                     ),
                                     icon: const Icon(
-                                      Icons.history,
+                                      Icons.favorite,
                                       size: 35,
                                     ),
                                   ),

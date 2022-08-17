@@ -6,10 +6,10 @@ import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
 import 'package:qr_maker_app/controller/save_qr_code_controller.dart';
 import 'package:qr_maker_app/controller/share_qr_code_controller.dart';
-import 'package:qr_maker_app/controller/history_qr_code_controller.dart';
+import 'package:qr_maker_app/controller/favorite_qr_code_controller.dart';
 
-class ShowQrImage extends StatefulWidget {
-  const ShowQrImage({
+class ShowFavoriteQrImage extends StatefulWidget {
+  const ShowFavoriteQrImage({
     Key? key,
     required this.index,
     required this.image,
@@ -19,11 +19,11 @@ class ShowQrImage extends StatefulWidget {
   final String image;
 
   @override
-  State<ShowQrImage> createState() => _ShowQrImageState();
+  State<ShowFavoriteQrImage> createState() => _ShowFavoriteQrImageState();
 }
 
-class _ShowQrImageState extends State<ShowQrImage> {
-  HistoryQrCodeController historyQrCodeController = Get.find();
+class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
+  FavoriteQrCodeController historyQrCodeController = Get.find();
   ScreenshotController screenshotController = ScreenshotController();
   TextEditingController qrCodeNameController = TextEditingController();
 
@@ -257,7 +257,7 @@ class _ShowQrImageState extends State<ShowQrImage> {
                                                 .headline2,
                                       ),
                                       content: const Text(
-                                        'Are you sure you want to delete your QR Code? This QR Code will be deleted from history on your device.',
+                                        'Are you sure you want to delete your QR Code? This QR Code will be deleted from favorite on your device.',
                                       ),
                                       actions: [
                                         TextButton(
@@ -511,7 +511,7 @@ class _ShowQrImageState extends State<ShowQrImage> {
                                             .headline2,
                                       ),
                                       content: const Text(
-                                        'Are you sure you want to delete your QR Code? This QR Code will be deleted from history on your device.',
+                                        'Are you sure you want to delete your QR Code? This QR Code will be deleted from favorite on your device.',
                                       ),
                                       actions: [
                                         TextButton(

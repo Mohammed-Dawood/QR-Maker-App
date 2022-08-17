@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:qr_maker_app/view/qr/scan/main_qr_scan.dart';
 import 'package:qr_maker_app/view/qr/maker/main_qr_make.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
-import 'package:qr_maker_app/view/qr/History/main_qr_history.dart';
+import 'package:qr_maker_app/view/qr/favorite/main_favorite_qr.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
-import 'package:qr_maker_app/controller/history_qr_code_controller.dart';
+import 'package:qr_maker_app/controller/favorite_qr_code_controller.dart';
 
 class MainQr extends StatefulWidget {
   const MainQr({Key? key}) : super(key: key);
@@ -20,16 +20,16 @@ class _MainQrState extends State<MainQr> {
   List<String> title = [
     'Scan QR Code',
     'Make QR Code',
-    'History QR Code',
+    'Favorite QR Code',
   ];
   List<Widget> screens = [
     const MainQrScan(),
     const MainQrMake(),
-    const MainQrHistory(),
+    const MainFavoriteQr(),
   ];
 
-  HistoryQrCodeController historyQrCodeController = Get.put(
-    HistoryQrCodeController(),
+  FavoriteQrCodeController historyQrCodeController = Get.put(
+    FavoriteQrCodeController(),
     permanent: true,
   );
 
@@ -254,9 +254,9 @@ class _MainQrState extends State<MainQr> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.history,
+                  Icons.favorite,
                 ),
-                label: 'History',
+                label: 'Favorite',
               ),
             ],
           ),
