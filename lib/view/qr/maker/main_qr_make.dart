@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
-import 'package:qr_maker_app/view/qr/maker/qr_text_field/date.dart';
 import 'package:qr_maker_app/view/qr/maker/qr_text_field/url.dart';
 import 'package:qr_maker_app/view/qr/maker/qr_text_field/sms.dart';
 import 'package:qr_maker_app/view/qr/maker/qr_text_field/wifi.dart';
+import 'package:qr_maker_app/view/qr/maker/qr_text_field/date.dart';
 import 'package:qr_maker_app/view/qr/maker/qr_text_field/email.dart';
 import 'package:qr_maker_app/view/qr/maker/qr_text_field/phone.dart';
 import 'package:qr_maker_app/view/qr/maker/qr_text_field/v_card.dart';
@@ -13,6 +13,7 @@ import 'package:qr_maker_app/view/qr/maker/qr_text_field/twitter.dart';
 import 'package:qr_maker_app/view/qr/maker/link_to_qr_text_field.dart';
 import 'package:qr_maker_app/view/qr/maker/qr_text_field/facebook.dart';
 import 'package:qr_maker_app/view/qr/maker/qr_text_field/location.dart';
+import 'package:qr_maker_app/view/qr/maker/qr_text_field/linkedin.dart';
 import 'package:qr_maker_app/view/qr/maker/qr_text_field/instagram.dart';
 import 'package:qr_maker_app/view/qr/maker/qr_text_field/whats_upp.dart';
 
@@ -101,6 +102,10 @@ class MainQrMake extends StatelessWidget {
                       LinkToTextField(
                         goToLink: () => Get.to(() => const MakeDate()),
                         assetName: 'images/date.png',
+                      ),
+                      LinkToTextField(
+                        goToLink: () => Get.to(() => const MakeLinkedIn()),
+                        assetName: 'images/linkedin.png',
                       ),
                     ],
                   ),
