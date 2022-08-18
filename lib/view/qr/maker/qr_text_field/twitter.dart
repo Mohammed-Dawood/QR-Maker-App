@@ -91,6 +91,7 @@ class _MakeTwitterState extends State<MakeTwitter> {
                                   prefixIcon: Icon(
                                     Icons.link,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: twitterController.text.isEmpty
                                       ? Container(
@@ -210,6 +211,7 @@ class _MakeTwitterState extends State<MakeTwitter> {
                                   prefixIcon: Icon(
                                     Icons.link,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: twitterController.text.isEmpty
                                       ? Container(

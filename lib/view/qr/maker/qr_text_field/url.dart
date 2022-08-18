@@ -92,6 +92,7 @@ class _MakeUrlState extends State<MakeUrl> {
                                   prefixIcon: Icon(
                                     Icons.link,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: urlController.text.isEmpty
                                       ? Container(
@@ -213,6 +214,7 @@ class _MakeUrlState extends State<MakeUrl> {
                                   prefixIcon: Icon(
                                     Icons.link,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: urlController.text.isEmpty
                                       ? Container(

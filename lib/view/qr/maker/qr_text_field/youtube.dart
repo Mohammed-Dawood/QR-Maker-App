@@ -91,6 +91,7 @@ class _MakeYoutubeState extends State<MakeYoutube> {
                                   prefixIcon: Icon(
                                     Icons.youtube_searched_for,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: youtubeController.text.isEmpty
                                       ? Container(
@@ -210,6 +211,7 @@ class _MakeYoutubeState extends State<MakeYoutube> {
                                   prefixIcon: Icon(
                                     Icons.youtube_searched_for,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: youtubeController.text.isEmpty
                                       ? Container(

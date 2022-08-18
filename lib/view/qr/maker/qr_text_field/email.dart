@@ -96,6 +96,7 @@ class _MakeEmailState extends State<MakeEmail> {
                                   prefixIcon: Icon(
                                     Icons.email,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: emailController.text.isEmpty
                                       ? Container(
@@ -138,6 +139,7 @@ class _MakeEmailState extends State<MakeEmail> {
                                   prefixIcon: Icon(
                                     Icons.subject,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: subjectController.text.isEmpty
                                       ? Container(
@@ -182,6 +184,7 @@ class _MakeEmailState extends State<MakeEmail> {
                                   prefixIcon: Icon(
                                     Icons.message,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: messageController.text.isEmpty
                                       ? Container(
@@ -302,6 +305,7 @@ class _MakeEmailState extends State<MakeEmail> {
                                   prefixIcon: Icon(
                                     Icons.email,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: emailController.text.isEmpty
                                       ? Container(
@@ -344,6 +348,7 @@ class _MakeEmailState extends State<MakeEmail> {
                                   prefixIcon: Icon(
                                     Icons.subject,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: subjectController.text.isEmpty
                                       ? Container(
@@ -388,6 +393,7 @@ class _MakeEmailState extends State<MakeEmail> {
                                   prefixIcon: Icon(
                                     Icons.message,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: messageController.text.isEmpty
                                       ? Container(

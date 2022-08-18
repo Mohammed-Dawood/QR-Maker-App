@@ -128,6 +128,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.person,
                                       color: Theme.of(context).primaryColor,
+                                      size: 30,
                                     ),
                                     suffixIcon: nameController.text.isEmpty
                                         ? Container(
@@ -170,6 +171,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.email,
                                       color: Theme.of(context).primaryColor,
+                                      size: 30,
                                     ),
                                     suffixIcon: emailController.text.isEmpty
                                         ? Container(
@@ -598,6 +600,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.date_range,
                                       color: Theme.of(context).primaryColor,
+                                      size: 30,
                                     ),
                                     border: const OutlineInputBorder(),
                                     focusedBorder: OutlineInputBorder(
@@ -627,6 +630,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.link,
                                       color: Theme.of(context).primaryColor,
+                                      size: 30,
                                     ),
                                     suffixIcon: urlController.text.isEmpty
                                         ? Container(
@@ -669,6 +673,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
+                                      size: 30,
                                     ),
                                     suffixIcon: streetController.text.isEmpty
                                         ? Container(
@@ -711,6 +716,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
+                                      size: 30,
                                     ),
                                     suffixIcon: zipController.text.isEmpty
                                         ? Container(
@@ -753,6 +759,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
+                                      size: 30,
                                     ),
                                     suffixIcon: cityController.text.isEmpty
                                         ? Container(
@@ -795,6 +802,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
+                                      size: 30,
                                     ),
                                     suffixIcon: stateController.text.isEmpty
                                         ? Container(
@@ -837,6 +845,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
+                                      size: 30,
                                     ),
                                     suffixIcon: countryController.text.isEmpty
                                         ? Container(
@@ -976,6 +985,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.person,
                                       color: Theme.of(context).primaryColor,
+                                      size: 30,
                                     ),
                                     suffixIcon: nameController.text.isEmpty
                                         ? Container(
@@ -1018,6 +1028,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.email,
                                       color: Theme.of(context).primaryColor,
+                                      size: 30,
                                     ),
                                     suffixIcon: emailController.text.isEmpty
                                         ? Container(
@@ -1438,6 +1449,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.date_range,
                                       color: Theme.of(context).primaryColor,
+                                      size: 30,
                                     ),
                                     border: const OutlineInputBorder(),
                                     focusedBorder: OutlineInputBorder(
@@ -1467,6 +1479,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.link,
                                       color: Theme.of(context).primaryColor,
+                                      size: 30,
                                     ),
                                     suffixIcon: urlController.text.isEmpty
                                         ? Container(
@@ -1509,6 +1522,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
+                                      size: 30,
                                     ),
                                     suffixIcon: streetController.text.isEmpty
                                         ? Container(
@@ -1551,6 +1565,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
+                                      size: 30,
                                     ),
                                     suffixIcon: zipController.text.isEmpty
                                         ? Container(
@@ -1593,6 +1608,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
+                                      size: 30,
                                     ),
                                     suffixIcon: cityController.text.isEmpty
                                         ? Container(
@@ -1635,6 +1651,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
+                                      size: 30,
                                     ),
                                     suffixIcon: stateController.text.isEmpty
                                         ? Container(
@@ -1677,6 +1694,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
+                                      size: 30,
                                     ),
                                     suffixIcon: countryController.text.isEmpty
                                         ? Container(

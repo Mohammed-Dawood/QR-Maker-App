@@ -94,6 +94,7 @@ class _MakeWifiState extends State<MakeWifi> {
                                   prefixIcon: Icon(
                                     Icons.wifi,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: nameNetController.text.isEmpty
                                       ? Container(
@@ -144,6 +145,7 @@ class _MakeWifiState extends State<MakeWifi> {
                                   prefixIcon: Icon(
                                     Icons.wifi_password,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: passNetController.text.isEmpty
                                       ? Container(
@@ -186,6 +188,7 @@ class _MakeWifiState extends State<MakeWifi> {
                                       child: Icon(
                                         Icons.security,
                                         color: Theme.of(context).primaryColor,
+                                        size: 30,
                                       ),
                                     ),
                                     Expanded(
@@ -337,6 +340,7 @@ class _MakeWifiState extends State<MakeWifi> {
                                   prefixIcon: Icon(
                                     Icons.wifi,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: nameNetController.text.isEmpty
                                       ? Container(
@@ -387,6 +391,7 @@ class _MakeWifiState extends State<MakeWifi> {
                                   prefixIcon: Icon(
                                     Icons.wifi_password,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: passNetController.text.isEmpty
                                       ? Container(
@@ -429,6 +434,7 @@ class _MakeWifiState extends State<MakeWifi> {
                                       child: Icon(
                                         Icons.security,
                                         color: Theme.of(context).primaryColor,
+                                        size: 30,
                                       ),
                                     ),
                                     Expanded(

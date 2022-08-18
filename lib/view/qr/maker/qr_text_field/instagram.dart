@@ -91,6 +91,7 @@ class _MakeInstagramState extends State<MakeInstagram> {
                                   prefixIcon: Icon(
                                     Icons.photo_camera_outlined,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: instagramController.text.isEmpty
                                       ? Container(
@@ -210,6 +211,7 @@ class _MakeInstagramState extends State<MakeInstagram> {
                                   prefixIcon: Icon(
                                     Icons.photo_camera_outlined,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: instagramController.text.isEmpty
                                       ? Container(

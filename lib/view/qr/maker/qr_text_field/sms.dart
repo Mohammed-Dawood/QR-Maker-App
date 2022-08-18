@@ -180,6 +180,7 @@ class _MakeSMSState extends State<MakeSMS> {
                                   prefixIcon: Icon(
                                     Icons.message,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: messageController.text.isEmpty
                                       ? Container(
@@ -379,6 +380,7 @@ class _MakeSMSState extends State<MakeSMS> {
                                   prefixIcon: Icon(
                                     Icons.message,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: messageController.text.isEmpty
                                       ? Container(

@@ -97,6 +97,7 @@ class _MakeLocationState extends State<MakeLocation> {
                                   prefixIcon: Icon(
                                     Icons.location_on,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: latitudeController.text.isEmpty
                                       ? Container(
@@ -151,6 +152,7 @@ class _MakeLocationState extends State<MakeLocation> {
                                   prefixIcon: Icon(
                                     Icons.location_on,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: longitudeController.text.isEmpty
                                       ? Container(
@@ -276,6 +278,7 @@ class _MakeLocationState extends State<MakeLocation> {
                                   prefixIcon: Icon(
                                     Icons.location_on,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: latitudeController.text.isEmpty
                                       ? Container(
@@ -330,6 +333,7 @@ class _MakeLocationState extends State<MakeLocation> {
                                   prefixIcon: Icon(
                                     Icons.location_on,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: longitudeController.text.isEmpty
                                       ? Container(

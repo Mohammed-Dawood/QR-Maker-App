@@ -89,7 +89,7 @@ class _MakeLinkedInState extends State<MakeLinkedIn> {
                                   filled: true,
                                   fillColor: Colors.white,
                                   prefixIcon: Icon(
-                                    Icons.facebook,
+                                    Icons.link,
                                     color: Theme.of(context).primaryColor,
                                     size: 30,
                                   ),
@@ -209,7 +209,7 @@ class _MakeLinkedInState extends State<MakeLinkedIn> {
                                   filled: true,
                                   fillColor: Colors.white,
                                   prefixIcon: Icon(
-                                    Icons.facebook,
+                                    Icons.link,
                                     color: Theme.of(context).primaryColor,
                                     size: 30,
                                   ),

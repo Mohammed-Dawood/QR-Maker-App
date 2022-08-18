@@ -104,6 +104,7 @@ class _MakeDateState extends State<MakeDate> {
                                   prefixIcon: Icon(
                                     Icons.event_note,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: eventTitleController.text.isEmpty
                                       ? Container(
@@ -154,6 +155,7 @@ class _MakeDateState extends State<MakeDate> {
                                   prefixIcon: Icon(
                                     Icons.location_on,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: eventAddressController
                                           .text.isEmpty
@@ -239,6 +241,7 @@ class _MakeDateState extends State<MakeDate> {
                                   prefixIcon: Icon(
                                     Icons.event_available,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   border: const OutlineInputBorder(),
                                   focusedBorder: OutlineInputBorder(
@@ -302,6 +305,7 @@ class _MakeDateState extends State<MakeDate> {
                                   prefixIcon: Icon(
                                     Icons.access_time_outlined,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   border: const OutlineInputBorder(),
                                   focusedBorder: OutlineInputBorder(
@@ -371,6 +375,7 @@ class _MakeDateState extends State<MakeDate> {
                                   prefixIcon: Icon(
                                     Icons.event_available,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   border: const OutlineInputBorder(),
                                   focusedBorder: OutlineInputBorder(
@@ -433,6 +438,7 @@ class _MakeDateState extends State<MakeDate> {
                                   prefixIcon: Icon(
                                     Icons.access_time_outlined,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   border: const OutlineInputBorder(),
                                   focusedBorder: OutlineInputBorder(
@@ -547,6 +553,7 @@ class _MakeDateState extends State<MakeDate> {
                                   prefixIcon: Icon(
                                     Icons.event_note,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: eventTitleController.text.isEmpty
                                       ? Container(
@@ -597,6 +604,7 @@ class _MakeDateState extends State<MakeDate> {
                                   prefixIcon: Icon(
                                     Icons.location_on,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   suffixIcon: eventAddressController
                                           .text.isEmpty
@@ -682,6 +690,7 @@ class _MakeDateState extends State<MakeDate> {
                                   prefixIcon: Icon(
                                     Icons.event_available,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   border: const OutlineInputBorder(),
                                   focusedBorder: OutlineInputBorder(
@@ -745,6 +754,7 @@ class _MakeDateState extends State<MakeDate> {
                                   prefixIcon: Icon(
                                     Icons.access_time_outlined,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   border: const OutlineInputBorder(),
                                   focusedBorder: OutlineInputBorder(
@@ -814,6 +824,7 @@ class _MakeDateState extends State<MakeDate> {
                                   prefixIcon: Icon(
                                     Icons.event_available,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   border: const OutlineInputBorder(),
                                   focusedBorder: OutlineInputBorder(
@@ -876,6 +887,7 @@ class _MakeDateState extends State<MakeDate> {
                                   prefixIcon: Icon(
                                     Icons.access_time_outlined,
                                     color: Theme.of(context).primaryColor,
+                                    size: 30,
                                   ),
                                   border: const OutlineInputBorder(),
                                   focusedBorder: OutlineInputBorder(
