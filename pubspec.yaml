@@ -31,7 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_colorpicker: ^1.0.3
-  flutter_launcher_icons: ^0.9.3
+  flutter_launcher_icons: ^0.10.0
   flutter_native_splash: ^2.2.7
   font_awesome_flutter: ^10.1.0
   get: ^4.6.5
@@ -41,11 +41,11 @@ dependencies:
   intl_phone_field: ^3.1.0
   path_provider: ^2.0.11
   permission_handler: ^10.0.0
-  qr_code_scanner: ^1.0.0
+  qr_code_scanner: ^1.0.1
   qr_flutter: ^4.0.0
   rename: ^2.0.1
   screenshot: ^1.2.3
-  share_plus: ^4.0.10
+  share_plus: ^4.0.10+1
   shared_preferences: ^2.0.15
   url_launcher: ^6.1.5
   validators: ^3.0.0
