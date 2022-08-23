@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
@@ -28,9 +30,11 @@ class StyleShareSaveHistoryQrCode extends StatefulWidget {
 
 class _StyleShareSaveHistoryQrCodeState
     extends State<StyleShareSaveHistoryQrCode> {
+  String? logo;
   double logoSize = 40;
   bool gapSwitch = false;
   bool logoSwitch = true;
+  bool editQrCode = false;
   bool eyesSwitch = false;
   bool dataSwitch = false;
   bool logoPadding = true;
@@ -145,7 +149,7 @@ class _StyleShareSaveHistoryQrCodeState
                                         : 0,
                                   ),
                                   Image.asset(
-                                    widget.image,
+                                    logo ?? widget.image,
                                     width: logoSwitch ? logoSize : 0,
                                     height: logoSwitch ? logoSize : 0,
                                   ),
@@ -164,479 +168,754 @@ class _StyleShareSaveHistoryQrCodeState
                             Card(
                               child: SizedBox(
                                 width: isScreenWidth(context) ? 250 : 410,
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 20,
-                                    vertical: isScreenWidth(context) ? 5 : 10,
+                                child: ElevatedButton.icon(
+                                  onPressed: () {
+                                    setState(() {
+                                      editQrCode = !editQrCode;
+                                    });
+                                  },
+                                  label: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 18),
+                                    child: Text(
+                                      'Edit QR Code',
+                                      style: (isScreenWidth(context))
+                                          ? Theme.of(context)
+                                              .textTheme
+                                              .headline3
+                                          : Theme.of(context)
+                                              .textTheme
+                                              .headline2,
+                                    ),
                                   ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Gap',
-                                        style: (isScreenWidth(context))
-                                            ? Theme.of(context)
-                                                .textTheme
-                                                .headline3
-                                            : Theme.of(context)
-                                                .textTheme
-                                                .headline2,
-                                      ),
-                                      Switch(
-                                        value: gapSwitch,
-                                        onChanged: (value) {
-                                          setState(
-                                            () {
-                                              gapSwitch = value;
-                                            },
-                                          );
-                                        },
-                                        activeColor: Colors.white,
-                                        inactiveTrackColor:
-                                            Colors.grey.shade900,
-                                      ),
-                                    ],
+                                  icon: Icon(
+                                    Icons.edit,
+                                    size: (isScreenWidth(context)) ? 30 : 35,
                                   ),
                                 ),
                               ),
                             ),
-                            Card(
-                              child: SizedBox(
-                                width: isScreenWidth(context) ? 250 : 410,
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 20,
-                                    vertical: isScreenWidth(context) ? 5 : 10,
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                            editQrCode
+                                ? Column(
                                     children: [
-                                      Text(
-                                        'Eyes',
-                                        style: (isScreenWidth(context))
-                                            ? Theme.of(context)
-                                                .textTheme
-                                                .headline3
-                                            : Theme.of(context)
-                                                .textTheme
-                                                .headline2,
-                                      ),
-                                      Switch(
-                                        value: eyesSwitch,
-                                        onChanged: (value) {
-                                          setState(
-                                            () {
-                                              eyesSwitch = value;
-                                            },
-                                          );
-                                        },
-                                        activeColor: Colors.white,
-                                        inactiveTrackColor:
-                                            Colors.grey.shade900,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Card(
-                              child: SizedBox(
-                                width: isScreenWidth(context) ? 250 : 410,
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 20,
-                                    vertical: isScreenWidth(context) ? 5 : 10,
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Data',
-                                        style: (isScreenWidth(context))
-                                            ? Theme.of(context)
-                                                .textTheme
-                                                .headline3
-                                            : Theme.of(context)
-                                                .textTheme
-                                                .headline2,
-                                      ),
-                                      Switch(
-                                        value: dataSwitch,
-                                        onChanged: (value) {
-                                          setState(
-                                            () {
-                                              dataSwitch = value;
-                                            },
-                                          );
-                                        },
-                                        activeColor: Colors.white,
-                                        inactiveTrackColor:
-                                            Colors.grey.shade900,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Card(
-                              child: SizedBox(
-                                width: isScreenWidth(context) ? 250 : 410,
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 20,
-                                    vertical: isScreenWidth(context) ? 5 : 10,
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Logo',
-                                        style: (isScreenWidth(context))
-                                            ? Theme.of(context)
-                                                .textTheme
-                                                .headline3
-                                            : Theme.of(context)
-                                                .textTheme
-                                                .headline2,
-                                      ),
-                                      Switch(
-                                        value: logoSwitch,
-                                        onChanged: (value) {
-                                          setState(
-                                            () {
-                                              logoSwitch = value;
-                                            },
-                                          );
-                                        },
-                                        activeColor: Colors.white,
-                                        inactiveTrackColor:
-                                            Colors.grey.shade900,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Card(
-                              child: SizedBox(
-                                width: isScreenWidth(context) ? 250 : 410,
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 20,
-                                    vertical: isScreenWidth(context) ? 5 : 10,
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Logo Padding',
-                                        style: (isScreenWidth(context))
-                                            ? Theme.of(context)
-                                                .textTheme
-                                                .headline3
-                                            : Theme.of(context)
-                                                .textTheme
-                                                .headline2,
-                                      ),
-                                      Switch(
-                                        value: logoPadding,
-                                        onChanged: logoSwitch
-                                            ? (value) {
-                                                setState(
-                                                  () {
-                                                    logoPadding = value;
+                                      Card(
+                                        child: SizedBox(
+                                          width: isScreenWidth(context)
+                                              ? 250
+                                              : 410,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 20,
+                                              vertical: isScreenWidth(context)
+                                                  ? 5
+                                                  : 10,
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  'Gap',
+                                                  style:
+                                                      (isScreenWidth(context))
+                                                          ? Theme.of(context)
+                                                              .textTheme
+                                                              .headline3
+                                                          : Theme.of(context)
+                                                              .textTheme
+                                                              .headline2,
+                                                ),
+                                                Switch(
+                                                  value: gapSwitch,
+                                                  onChanged: (value) {
+                                                    setState(
+                                                      () {
+                                                        gapSwitch = value;
+                                                      },
+                                                    );
                                                   },
-                                                );
-                                              }
-                                            : null,
-                                        activeColor: Colors.white,
-                                        inactiveTrackColor: logoSwitch
-                                            ? Colors.grey.shade900
-                                            : Colors.black38,
-                                        inactiveThumbColor: logoSwitch
-                                            ? Colors.white
-                                            : Colors.grey.shade500,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Card(
-                              child: SizedBox(
-                                width: isScreenWidth(context) ? 250 : 410,
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 20,
-                                    vertical: isScreenWidth(context) ? 5 : 10,
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Logo Size',
-                                        style: (isScreenWidth(context))
-                                            ? Theme.of(context)
-                                                .textTheme
-                                                .headline3
-                                            : Theme.of(context)
-                                                .textTheme
-                                                .headline2,
-                                      ),
-                                      SizedBox(
-                                        width:
-                                            isScreenWidth(context) ? 120 : 200,
-                                        child: Slider(
-                                          min: 20.0,
-                                          max: isScreenWidth(context)
-                                              ? 45.0
-                                              : 70.0,
-                                          value: logoSize,
-                                          onChanged: logoSwitch
-                                              ? ((value) {
-                                                  setState(() {
-                                                    logoSize = value;
-                                                  });
-                                                })
-                                              : null,
+                                                  activeColor: Colors.white,
+                                                  inactiveTrackColor:
+                                                      Colors.grey.shade900,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
                                         ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Card(
-                              child: SizedBox(
-                                width: isScreenWidth(context) ? 250 : 410,
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 20,
-                                    vertical: isScreenWidth(context) ? 5 : 10,
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Eyes Color',
-                                        style: (isScreenWidth(context))
-                                            ? Theme.of(context)
-                                                .textTheme
-                                                .headline3
-                                            : Theme.of(context)
-                                                .textTheme
-                                                .headline2,
                                       ),
-                                      IconButton(
-                                        onPressed: () {
-                                          showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) =>
-                                                AlertDialog(
-                                              content: SingleChildScrollView(
-                                                child: ColorPicker(
-                                                  hexInputBar: true,
-                                                  labelTypes: const [],
-                                                  pickerColor: eyesColor,
-                                                  colorPickerWidth:
-                                                      isScreenWidth(context)
-                                                          ? 220
-                                                          : 400,
-                                                  pickerAreaBorderRadius:
-                                                      const BorderRadius.all(
-                                                    Radius.circular(5),
+                                      Card(
+                                        child: SizedBox(
+                                          width: isScreenWidth(context)
+                                              ? 250
+                                              : 410,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 20,
+                                              vertical: isScreenWidth(context)
+                                                  ? 5
+                                                  : 10,
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  'Eyes',
+                                                  style:
+                                                      (isScreenWidth(context))
+                                                          ? Theme.of(context)
+                                                              .textTheme
+                                                              .headline3
+                                                          : Theme.of(context)
+                                                              .textTheme
+                                                              .headline2,
+                                                ),
+                                                Switch(
+                                                  value: eyesSwitch,
+                                                  onChanged: (value) {
+                                                    setState(
+                                                      () {
+                                                        eyesSwitch = value;
+                                                      },
+                                                    );
+                                                  },
+                                                  activeColor: Colors.white,
+                                                  inactiveTrackColor:
+                                                      Colors.grey.shade900,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Card(
+                                        child: SizedBox(
+                                          width: isScreenWidth(context)
+                                              ? 250
+                                              : 410,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 20,
+                                              vertical: isScreenWidth(context)
+                                                  ? 5
+                                                  : 10,
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  'Data',
+                                                  style:
+                                                      (isScreenWidth(context))
+                                                          ? Theme.of(context)
+                                                              .textTheme
+                                                              .headline3
+                                                          : Theme.of(context)
+                                                              .textTheme
+                                                              .headline2,
+                                                ),
+                                                Switch(
+                                                  value: dataSwitch,
+                                                  onChanged: (value) {
+                                                    setState(
+                                                      () {
+                                                        dataSwitch = value;
+                                                      },
+                                                    );
+                                                  },
+                                                  activeColor: Colors.white,
+                                                  inactiveTrackColor:
+                                                      Colors.grey.shade900,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Card(
+                                        child: SizedBox(
+                                          width: isScreenWidth(context)
+                                              ? 250
+                                              : 410,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 20,
+                                              vertical: isScreenWidth(context)
+                                                  ? 5
+                                                  : 10,
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  'Logo',
+                                                  style:
+                                                      (isScreenWidth(context))
+                                                          ? Theme.of(context)
+                                                              .textTheme
+                                                              .headline3
+                                                          : Theme.of(context)
+                                                              .textTheme
+                                                              .headline2,
+                                                ),
+                                                Switch(
+                                                  value: logoSwitch,
+                                                  onChanged: (value) {
+                                                    setState(
+                                                      () {
+                                                        logoSwitch = value;
+                                                      },
+                                                    );
+                                                  },
+                                                  activeColor: Colors.white,
+                                                  inactiveTrackColor:
+                                                      Colors.grey.shade900,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      logoSwitch
+                                          ? Card(
+                                              child: SizedBox(
+                                                width: isScreenWidth(context)
+                                                    ? 250
+                                                    : 410,
+                                                child: Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                    horizontal: 20,
+                                                    vertical:
+                                                        isScreenWidth(context)
+                                                            ? 5
+                                                            : 10,
                                                   ),
-                                                  paletteType: PaletteType.hsl,
-                                                  pickerAreaHeightPercent: 1.0,
-                                                  onColorChanged:
-                                                      (Color color) => setState(
-                                                    () {
-                                                      eyesColor = color;
-                                                    },
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        'Library',
+                                                        style: (isScreenWidth(
+                                                                context))
+                                                            ? Theme.of(context)
+                                                                .textTheme
+                                                                .headline3
+                                                            : Theme.of(context)
+                                                                .textTheme
+                                                                .headline2,
+                                                      ),
+                                                      IconButton(
+                                                        onPressed: () async {
+                                                          try {
+                                                            final image =
+                                                                await ImagePicker()
+                                                                    .pickImage(
+                                                                        source:
+                                                                            ImageSource.gallery);
+                                                            if (image == null)
+                                                              return;
+                                                            setState(() {
+                                                              logo = image.path;
+                                                            });
+                                                          } on PlatformException catch (e) {
+                                                            print(
+                                                                'Failed to pick image: $e');
+                                                          }
+                                                        },
+                                                        icon: Icon(
+                                                          Icons
+                                                              .add_photo_alternate,
+                                                          size: (isScreenWidth(
+                                                                  context))
+                                                              ? 30
+                                                              : 35,
+                                                          color: Colors.white,
+                                                        ),
+                                                      )
+                                                    ],
                                                   ),
                                                 ),
                                               ),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () {
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: const Text('Select'),
-                                                )
-                                              ],
+                                            )
+                                          : const SizedBox(
+                                              height: 0,
                                             ),
-                                          );
-                                        },
-                                        icon: Icon(
-                                          Icons.color_lens,
-                                          size: (isScreenWidth(context))
-                                              ? 30
-                                              : 35,
-                                          color: eyesColor,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Card(
-                              child: SizedBox(
-                                width: isScreenWidth(context) ? 250 : 410,
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 20,
-                                    vertical: isScreenWidth(context) ? 5 : 10,
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Data Color',
-                                        style: (isScreenWidth(context))
-                                            ? Theme.of(context)
-                                                .textTheme
-                                                .headline3
-                                            : Theme.of(context)
-                                                .textTheme
-                                                .headline2,
-                                      ),
-                                      IconButton(
-                                        onPressed: () {
-                                          showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) =>
-                                                AlertDialog(
-                                              content: SingleChildScrollView(
-                                                child: ColorPicker(
-                                                  hexInputBar: true,
-                                                  labelTypes: const [],
-                                                  pickerColor: dataColor,
-                                                  colorPickerWidth:
-                                                      isScreenWidth(context)
-                                                          ? 220
-                                                          : 400,
-                                                  pickerAreaBorderRadius:
-                                                      const BorderRadius.all(
-                                                    Radius.circular(5),
+                                      logoSwitch
+                                          ? Card(
+                                              child: SizedBox(
+                                                width: isScreenWidth(context)
+                                                    ? 250
+                                                    : 410,
+                                                child: Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                    horizontal: 20,
+                                                    vertical:
+                                                        isScreenWidth(context)
+                                                            ? 5
+                                                            : 10,
                                                   ),
-                                                  paletteType: PaletteType.hsl,
-                                                  pickerAreaHeightPercent: 1.0,
-                                                  onColorChanged:
-                                                      (Color color) => setState(
-                                                    () {
-                                                      dataColor = color;
-                                                    },
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        'Camera',
+                                                        style: (isScreenWidth(
+                                                                context))
+                                                            ? Theme.of(context)
+                                                                .textTheme
+                                                                .headline3
+                                                            : Theme.of(context)
+                                                                .textTheme
+                                                                .headline2,
+                                                      ),
+                                                      IconButton(
+                                                        onPressed: () async {
+                                                          try {
+                                                            final image =
+                                                                await ImagePicker()
+                                                                    .pickImage(
+                                                                        source:
+                                                                            ImageSource.camera);
+                                                            if (image == null)
+                                                              return;
+                                                            setState(() {
+                                                              logo = image.path;
+                                                            });
+                                                          } on PlatformException catch (e) {
+                                                            print(
+                                                                'Failed to pick image: $e');
+                                                          }
+                                                        },
+                                                        icon: Icon(
+                                                          Icons.add_a_photo,
+                                                          size: (isScreenWidth(
+                                                                  context))
+                                                              ? 30
+                                                              : 35,
+                                                          color: Colors.white,
+                                                        ),
+                                                      )
+                                                    ],
                                                   ),
                                                 ),
                                               ),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () {
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: const Text('Select'),
-                                                )
-                                              ],
+                                            )
+                                          : const SizedBox(
+                                              height: 0,
                                             ),
-                                          );
-                                        },
-                                        icon: Icon(
-                                          Icons.color_lens,
-                                          size: (isScreenWidth(context))
-                                              ? 30
-                                              : 35,
-                                          color: dataColor,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Card(
-                              child: SizedBox(
-                                width: isScreenWidth(context) ? 250 : 410,
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 20,
-                                    vertical: isScreenWidth(context) ? 5 : 10,
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Background',
-                                        style: (isScreenWidth(context))
-                                            ? Theme.of(context)
-                                                .textTheme
-                                                .headline3
-                                            : Theme.of(context)
-                                                .textTheme
-                                                .headline2,
-                                      ),
-                                      IconButton(
-                                        onPressed: () {
-                                          showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) =>
-                                                AlertDialog(
-                                              content: SingleChildScrollView(
-                                                child: ColorPicker(
-                                                  hexInputBar: true,
-                                                  labelTypes: const [],
-                                                  pickerColor: backgroundColor,
-                                                  colorPickerWidth:
-                                                      isScreenWidth(context)
-                                                          ? 220
-                                                          : 400,
-                                                  pickerAreaBorderRadius:
-                                                      const BorderRadius.all(
-                                                    Radius.circular(5),
+                                      logoSwitch
+                                          ? Card(
+                                              child: SizedBox(
+                                                width: isScreenWidth(context)
+                                                    ? 250
+                                                    : 410,
+                                                child: Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                    horizontal: 20,
+                                                    vertical:
+                                                        isScreenWidth(context)
+                                                            ? 5
+                                                            : 10,
                                                   ),
-                                                  paletteType: PaletteType.hsl,
-                                                  pickerAreaHeightPercent: 1.0,
-                                                  onColorChanged:
-                                                      (Color color) => setState(
-                                                    () {
-                                                      backgroundColor = color;
-                                                    },
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        'Padding',
+                                                        style: (isScreenWidth(
+                                                                context))
+                                                            ? Theme.of(context)
+                                                                .textTheme
+                                                                .headline3
+                                                            : Theme.of(context)
+                                                                .textTheme
+                                                                .headline2,
+                                                      ),
+                                                      Switch(
+                                                        value: logoPadding,
+                                                        onChanged: (value) {
+                                                          setState(
+                                                            () {
+                                                              logoPadding =
+                                                                  value;
+                                                            },
+                                                          );
+                                                        },
+                                                        activeColor:
+                                                            Colors.white,
+                                                        inactiveTrackColor:
+                                                            Colors
+                                                                .grey.shade900,
+                                                        inactiveThumbColor:
+                                                            Colors.white,
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
                                               ),
-                                              actions: [
-                                                TextButton(
+                                            )
+                                          : const SizedBox(
+                                              height: 0,
+                                            ),
+                                      logoSwitch
+                                          ? Card(
+                                              child: SizedBox(
+                                                width: isScreenWidth(context)
+                                                    ? 250
+                                                    : 410,
+                                                child: Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                    horizontal: 20,
+                                                    vertical:
+                                                        isScreenWidth(context)
+                                                            ? 5
+                                                            : 10,
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        'Logo Size',
+                                                        style: (isScreenWidth(
+                                                                context))
+                                                            ? Theme.of(context)
+                                                                .textTheme
+                                                                .headline3
+                                                            : Theme.of(context)
+                                                                .textTheme
+                                                                .headline2,
+                                                      ),
+                                                      SizedBox(
+                                                        width: isScreenWidth(
+                                                                context)
+                                                            ? 120
+                                                            : 200,
+                                                        child: Slider(
+                                                          min: 20.0,
+                                                          max: isScreenWidth(
+                                                                  context)
+                                                              ? 45.0
+                                                              : 70.0,
+                                                          value: logoSize,
+                                                          onChanged: ((value) {
+                                                            setState(
+                                                              () {
+                                                                logoSize =
+                                                                    value;
+                                                              },
+                                                            );
+                                                          }),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                          : const SizedBox(
+                                              height: 0,
+                                            ),
+                                      Card(
+                                        child: SizedBox(
+                                          width: isScreenWidth(context)
+                                              ? 250
+                                              : 410,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 20,
+                                              vertical: isScreenWidth(context)
+                                                  ? 5
+                                                  : 10,
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  'Eyes Color',
+                                                  style:
+                                                      (isScreenWidth(context))
+                                                          ? Theme.of(context)
+                                                              .textTheme
+                                                              .headline3
+                                                          : Theme.of(context)
+                                                              .textTheme
+                                                              .headline2,
+                                                ),
+                                                IconButton(
                                                   onPressed: () {
-                                                    Navigator.pop(context);
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (BuildContext
+                                                              context) =>
+                                                          AlertDialog(
+                                                        content:
+                                                            SingleChildScrollView(
+                                                          child: ColorPicker(
+                                                            hexInputBar: true,
+                                                            labelTypes: const [],
+                                                            pickerColor:
+                                                                eyesColor,
+                                                            colorPickerWidth:
+                                                                isScreenWidth(
+                                                                        context)
+                                                                    ? 220
+                                                                    : 400,
+                                                            pickerAreaBorderRadius:
+                                                                const BorderRadius
+                                                                    .all(
+                                                              Radius.circular(
+                                                                  5),
+                                                            ),
+                                                            paletteType:
+                                                                PaletteType.hsl,
+                                                            pickerAreaHeightPercent:
+                                                                1.0,
+                                                            onColorChanged:
+                                                                (Color color) =>
+                                                                    setState(
+                                                              () {
+                                                                eyesColor =
+                                                                    color;
+                                                              },
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            child: const Text(
+                                                                'Select'),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    );
                                                   },
-                                                  child: const Text('Select'),
+                                                  icon: Icon(
+                                                    Icons.color_lens,
+                                                    size:
+                                                        (isScreenWidth(context))
+                                                            ? 30
+                                                            : 35,
+                                                    color: eyesColor,
+                                                  ),
                                                 )
                                               ],
                                             ),
-                                          );
-                                        },
-                                        icon: Icon(
-                                          Icons.color_lens,
-                                          size: (isScreenWidth(context))
-                                              ? 30
-                                              : 35,
-                                          color: backgroundColor,
+                                          ),
                                         ),
-                                      )
+                                      ),
+                                      Card(
+                                        child: SizedBox(
+                                          width: isScreenWidth(context)
+                                              ? 250
+                                              : 410,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 20,
+                                              vertical: isScreenWidth(context)
+                                                  ? 5
+                                                  : 10,
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  'Data Color',
+                                                  style:
+                                                      (isScreenWidth(context))
+                                                          ? Theme.of(context)
+                                                              .textTheme
+                                                              .headline3
+                                                          : Theme.of(context)
+                                                              .textTheme
+                                                              .headline2,
+                                                ),
+                                                IconButton(
+                                                  onPressed: () {
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (BuildContext
+                                                              context) =>
+                                                          AlertDialog(
+                                                        content:
+                                                            SingleChildScrollView(
+                                                          child: ColorPicker(
+                                                            hexInputBar: true,
+                                                            labelTypes: const [],
+                                                            pickerColor:
+                                                                dataColor,
+                                                            colorPickerWidth:
+                                                                isScreenWidth(
+                                                                        context)
+                                                                    ? 220
+                                                                    : 400,
+                                                            pickerAreaBorderRadius:
+                                                                const BorderRadius
+                                                                    .all(
+                                                              Radius.circular(
+                                                                  5),
+                                                            ),
+                                                            paletteType:
+                                                                PaletteType.hsl,
+                                                            pickerAreaHeightPercent:
+                                                                1.0,
+                                                            onColorChanged:
+                                                                (Color color) =>
+                                                                    setState(
+                                                              () {
+                                                                dataColor =
+                                                                    color;
+                                                              },
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            child: const Text(
+                                                                'Select'),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    );
+                                                  },
+                                                  icon: Icon(
+                                                    Icons.color_lens,
+                                                    size:
+                                                        (isScreenWidth(context))
+                                                            ? 30
+                                                            : 35,
+                                                    color: dataColor,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Card(
+                                        child: SizedBox(
+                                          width: isScreenWidth(context)
+                                              ? 250
+                                              : 410,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 20,
+                                              vertical: isScreenWidth(context)
+                                                  ? 5
+                                                  : 10,
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  'Background',
+                                                  style:
+                                                      (isScreenWidth(context))
+                                                          ? Theme.of(context)
+                                                              .textTheme
+                                                              .headline3
+                                                          : Theme.of(context)
+                                                              .textTheme
+                                                              .headline2,
+                                                ),
+                                                IconButton(
+                                                  onPressed: () {
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (BuildContext
+                                                              context) =>
+                                                          AlertDialog(
+                                                        content:
+                                                            SingleChildScrollView(
+                                                          child: ColorPicker(
+                                                            hexInputBar: true,
+                                                            labelTypes: const [],
+                                                            pickerColor:
+                                                                backgroundColor,
+                                                            colorPickerWidth:
+                                                                isScreenWidth(
+                                                                        context)
+                                                                    ? 220
+                                                                    : 400,
+                                                            pickerAreaBorderRadius:
+                                                                const BorderRadius
+                                                                    .all(
+                                                              Radius.circular(
+                                                                  5),
+                                                            ),
+                                                            paletteType:
+                                                                PaletteType.hsl,
+                                                            pickerAreaHeightPercent:
+                                                                1.0,
+                                                            onColorChanged:
+                                                                (Color color) =>
+                                                                    setState(
+                                                              () {
+                                                                backgroundColor =
+                                                                    color;
+                                                              },
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            child: const Text(
+                                                                'Select'),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    );
+                                                  },
+                                                  icon: Icon(
+                                                    Icons.color_lens,
+                                                    size:
+                                                        (isScreenWidth(context))
+                                                            ? 30
+                                                            : 35,
+                                                    color: backgroundColor,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
                                     ],
+                                  )
+                                : const SizedBox(
+                                    height: 0,
                                   ),
-                                ),
-                              ),
-                            ),
                             GetBuilder<SaveQrCodeController>(
                               init: SaveQrCodeController(),
                               builder:
@@ -858,7 +1137,7 @@ class _StyleShareSaveHistoryQrCodeState
                                     height: logoPadding ? logoSize + 10 : 0,
                                   ),
                                   Image.asset(
-                                    widget.image,
+                                    logo ?? widget.image,
                                     width: logoSwitch ? logoSize : 0,
                                     height: logoSwitch ? logoSize : 0,
                                   ),
@@ -877,419 +1156,616 @@ class _StyleShareSaveHistoryQrCodeState
                             Card(
                               child: SizedBox(
                                 width: 410,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 10),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Gap',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline2,
-                                      ),
-                                      Switch(
-                                        value: gapSwitch,
-                                        onChanged: (value) {
-                                          setState(
-                                            () {
-                                              gapSwitch = value;
-                                            },
-                                          );
-                                        },
-                                        activeColor: Colors.white,
-                                        inactiveTrackColor:
-                                            Colors.grey.shade900,
-                                      ),
-                                    ],
+                                child: ElevatedButton.icon(
+                                  onPressed: () {
+                                    setState(() {
+                                      editQrCode = !editQrCode;
+                                    });
+                                  },
+                                  label: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 18),
+                                    child: Text(
+                                      'Edit QR Code',
+                                      style:
+                                          Theme.of(context).textTheme.headline2,
+                                    ),
+                                  ),
+                                  icon: const Icon(
+                                    Icons.edit,
+                                    size: 35,
                                   ),
                                 ),
                               ),
                             ),
-                            Card(
-                              child: SizedBox(
-                                width: 410,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 10),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                            editQrCode
+                                ? Column(
                                     children: [
-                                      Text(
-                                        'Eyes',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline2,
-                                      ),
-                                      Switch(
-                                        value: eyesSwitch,
-                                        onChanged: (value) {
-                                          setState(
-                                            () {
-                                              eyesSwitch = value;
-                                            },
-                                          );
-                                        },
-                                        activeColor: Colors.white,
-                                        inactiveTrackColor:
-                                            Colors.grey.shade900,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Card(
-                              child: SizedBox(
-                                width: 410,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 10),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Data',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline2,
-                                      ),
-                                      Switch(
-                                        value: dataSwitch,
-                                        onChanged: (value) {
-                                          setState(
-                                            () {
-                                              dataSwitch = value;
-                                            },
-                                          );
-                                        },
-                                        activeColor: Colors.white,
-                                        inactiveTrackColor:
-                                            Colors.grey.shade900,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Card(
-                              child: SizedBox(
-                                width: 410,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 10),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Logo',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline2,
-                                      ),
-                                      Switch(
-                                        value: logoSwitch,
-                                        onChanged: (value) {
-                                          setState(
-                                            () {
-                                              logoSwitch = value;
-                                            },
-                                          );
-                                        },
-                                        activeColor: Colors.white,
-                                        inactiveTrackColor:
-                                            Colors.grey.shade900,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Card(
-                              child: SizedBox(
-                                width: 410,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 10),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Logo Padding',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline2,
-                                      ),
-                                      Switch(
-                                        value: logoPadding,
-                                        onChanged: logoSwitch
-                                            ? (value) {
-                                                setState(
-                                                  () {
-                                                    logoPadding = value;
+                                      Card(
+                                        child: SizedBox(
+                                          width: 410,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 20, vertical: 10),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  'Gap',
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .headline2,
+                                                ),
+                                                Switch(
+                                                  value: gapSwitch,
+                                                  onChanged: (value) {
+                                                    setState(
+                                                      () {
+                                                        gapSwitch = value;
+                                                      },
+                                                    );
                                                   },
-                                                );
-                                              }
-                                            : null,
-                                        activeColor: Colors.white,
-                                        inactiveTrackColor: logoSwitch
-                                            ? Colors.grey.shade900
-                                            : Colors.black38,
-                                        inactiveThumbColor: logoSwitch
-                                            ? Colors.white
-                                            : Colors.grey.shade500,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Card(
-                              child: SizedBox(
-                                width: 410,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 10),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Logo Size',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline2,
-                                      ),
-                                      SizedBox(
-                                        width: 200,
-                                        child: Slider(
-                                          min: 20.0,
-                                          max: 70.0,
-                                          value: logoSize,
-                                          onChanged: logoSwitch
-                                              ? ((value) {
-                                                  setState(() {
-                                                    logoSize = value;
-                                                  });
-                                                })
-                                              : null,
+                                                  activeColor: Colors.white,
+                                                  inactiveTrackColor:
+                                                      Colors.grey.shade900,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
                                         ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Card(
-                              child: SizedBox(
-                                width: 410,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 10),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Eyes Color',
-                                        style: (isScreenWidth(context))
-                                            ? Theme.of(context)
-                                                .textTheme
-                                                .headline3
-                                            : Theme.of(context)
-                                                .textTheme
-                                                .headline2,
                                       ),
-                                      IconButton(
-                                        onPressed: () {
-                                          showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) =>
-                                                AlertDialog(
-                                              content: SingleChildScrollView(
-                                                child: ColorPicker(
-                                                  hexInputBar: true,
-                                                  labelTypes: const [],
-                                                  pickerColor: eyesColor,
-                                                  colorPickerWidth: 400,
-                                                  pickerAreaBorderRadius:
-                                                      const BorderRadius.all(
-                                                    Radius.circular(5),
+                                      Card(
+                                        child: SizedBox(
+                                          width: 410,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 20, vertical: 10),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  'Eyes',
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .headline2,
+                                                ),
+                                                Switch(
+                                                  value: eyesSwitch,
+                                                  onChanged: (value) {
+                                                    setState(
+                                                      () {
+                                                        eyesSwitch = value;
+                                                      },
+                                                    );
+                                                  },
+                                                  activeColor: Colors.white,
+                                                  inactiveTrackColor:
+                                                      Colors.grey.shade900,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Card(
+                                        child: SizedBox(
+                                          width: 410,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 20, vertical: 10),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  'Data',
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .headline2,
+                                                ),
+                                                Switch(
+                                                  value: dataSwitch,
+                                                  onChanged: (value) {
+                                                    setState(
+                                                      () {
+                                                        dataSwitch = value;
+                                                      },
+                                                    );
+                                                  },
+                                                  activeColor: Colors.white,
+                                                  inactiveTrackColor:
+                                                      Colors.grey.shade900,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Card(
+                                        child: SizedBox(
+                                          width: 410,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 20, vertical: 10),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  'Logo',
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .headline2,
+                                                ),
+                                                Switch(
+                                                  value: logoSwitch,
+                                                  onChanged: (value) {
+                                                    setState(
+                                                      () {
+                                                        logoSwitch = value;
+                                                      },
+                                                    );
+                                                  },
+                                                  activeColor: Colors.white,
+                                                  inactiveTrackColor:
+                                                      Colors.grey.shade900,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      logoSwitch
+                                          ? Card(
+                                              child: SizedBox(
+                                                width: 410,
+                                                child: Padding(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                    horizontal: 20,
+                                                    vertical: 10,
                                                   ),
-                                                  paletteType: PaletteType.hsl,
-                                                  pickerAreaHeightPercent: 1.0,
-                                                  onColorChanged:
-                                                      (Color color) => setState(
-                                                    () {
-                                                      eyesColor = color;
-                                                    },
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        'Library',
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .headline2,
+                                                      ),
+                                                      IconButton(
+                                                        onPressed: () async {
+                                                          try {
+                                                            final image =
+                                                                await ImagePicker()
+                                                                    .pickImage(
+                                                                        source:
+                                                                            ImageSource.gallery);
+                                                            if (image == null)
+                                                              return;
+                                                            setState(() {
+                                                              logo = image.path;
+                                                            });
+                                                          } on PlatformException catch (e) {
+                                                            print(
+                                                                'Failed to pick image: $e');
+                                                          }
+                                                        },
+                                                        icon: const Icon(
+                                                          Icons
+                                                              .add_photo_alternate,
+                                                          size: 35,
+                                                          color: Colors.white,
+                                                        ),
+                                                      )
+                                                    ],
                                                   ),
                                                 ),
                                               ),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () {
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: const Text('Select'),
-                                                )
-                                              ],
+                                            )
+                                          : const SizedBox(
+                                              height: 0,
                                             ),
-                                          );
-                                        },
-                                        icon: Icon(
-                                          Icons.color_lens,
-                                          size: 35,
-                                          color: eyesColor,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Card(
-                              child: SizedBox(
-                                width: 410,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 10),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Data Color',
-                                        style: (isScreenWidth(context))
-                                            ? Theme.of(context)
-                                                .textTheme
-                                                .headline3
-                                            : Theme.of(context)
-                                                .textTheme
-                                                .headline2,
-                                      ),
-                                      IconButton(
-                                        onPressed: () {
-                                          showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) =>
-                                                AlertDialog(
-                                              content: SingleChildScrollView(
-                                                child: ColorPicker(
-                                                  hexInputBar: true,
-                                                  labelTypes: const [],
-                                                  pickerColor: dataColor,
-                                                  colorPickerWidth: 400,
-                                                  pickerAreaBorderRadius:
-                                                      const BorderRadius.all(
-                                                    Radius.circular(5),
+                                      logoSwitch
+                                          ? Card(
+                                              child: SizedBox(
+                                                width: 410,
+                                                child: Padding(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                    horizontal: 20,
+                                                    vertical: 10,
                                                   ),
-                                                  paletteType: PaletteType.hsl,
-                                                  pickerAreaHeightPercent: 1.0,
-                                                  onColorChanged:
-                                                      (Color color) => setState(
-                                                    () {
-                                                      dataColor = color;
-                                                    },
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        'Camera',
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .headline2,
+                                                      ),
+                                                      IconButton(
+                                                        onPressed: () async {
+                                                          try {
+                                                            final image =
+                                                                await ImagePicker()
+                                                                    .pickImage(
+                                                                        source:
+                                                                            ImageSource.camera);
+                                                            if (image == null)
+                                                              return;
+                                                            setState(() {
+                                                              logo = image.path;
+                                                            });
+                                                          } on PlatformException catch (e) {
+                                                            print(
+                                                                'Failed to pick image: $e');
+                                                          }
+                                                        },
+                                                        icon: const Icon(
+                                                          Icons.add_a_photo,
+                                                          size: 35,
+                                                          color: Colors.white,
+                                                        ),
+                                                      )
+                                                    ],
                                                   ),
                                                 ),
                                               ),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () {
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: const Text('Select'),
-                                                )
-                                              ],
+                                            )
+                                          : const SizedBox(
+                                              height: 0,
                                             ),
-                                          );
-                                        },
-                                        icon: Icon(
-                                          Icons.color_lens,
-                                          size: 35,
-                                          color: dataColor,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Card(
-                              child: SizedBox(
-                                width: 410,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 10),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Background',
-                                        style: (isScreenWidth(context))
-                                            ? Theme.of(context)
-                                                .textTheme
-                                                .headline3
-                                            : Theme.of(context)
-                                                .textTheme
-                                                .headline2,
-                                      ),
-                                      IconButton(
-                                        onPressed: () {
-                                          showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) =>
-                                                AlertDialog(
-                                              content: SingleChildScrollView(
-                                                child: ColorPicker(
-                                                  hexInputBar: true,
-                                                  labelTypes: const [],
-                                                  pickerColor: backgroundColor,
-                                                  colorPickerWidth: 400,
-                                                  pickerAreaBorderRadius:
-                                                      const BorderRadius.all(
-                                                    Radius.circular(5),
-                                                  ),
-                                                  paletteType: PaletteType.hsl,
-                                                  pickerAreaHeightPercent: 1.0,
-                                                  onColorChanged:
-                                                      (Color color) => setState(
-                                                    () {
-                                                      backgroundColor = color;
-                                                    },
+                                      logoSwitch
+                                          ? Card(
+                                              child: SizedBox(
+                                                width: 410,
+                                                child: Padding(
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      horizontal: 20,
+                                                      vertical: 10),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        'Logo Padding',
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .headline2,
+                                                      ),
+                                                      Switch(
+                                                        value: logoPadding,
+                                                        onChanged: (value) {
+                                                          setState(
+                                                            () {
+                                                              logoPadding =
+                                                                  value;
+                                                            },
+                                                          );
+                                                        },
+                                                        activeColor:
+                                                            Colors.white,
+                                                        inactiveTrackColor:
+                                                            Colors
+                                                                .grey.shade900,
+                                                        inactiveThumbColor:
+                                                            Colors.white,
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
                                               ),
-                                              actions: [
-                                                TextButton(
+                                            )
+                                          : const SizedBox(
+                                              height: 0,
+                                            ),
+                                      logoSwitch
+                                          ? Card(
+                                              child: SizedBox(
+                                                width: 410,
+                                                child: Padding(
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      horizontal: 20,
+                                                      vertical: 10),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        'Logo Size',
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .headline2,
+                                                      ),
+                                                      SizedBox(
+                                                        width: 200,
+                                                        child: Slider(
+                                                          min: 20.0,
+                                                          max: 70.0,
+                                                          value: logoSize,
+                                                          onChanged: ((value) {
+                                                            setState(
+                                                              () {
+                                                                logoSize =
+                                                                    value;
+                                                              },
+                                                            );
+                                                          }),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                          : const SizedBox(
+                                              height: 0,
+                                            ),
+                                      Card(
+                                        child: SizedBox(
+                                          width: 410,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 20,
+                                              vertical: 10,
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  'Eyes Color',
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .headline2,
+                                                ),
+                                                IconButton(
                                                   onPressed: () {
-                                                    Navigator.pop(context);
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (BuildContext
+                                                              context) =>
+                                                          AlertDialog(
+                                                        content:
+                                                            SingleChildScrollView(
+                                                          child: ColorPicker(
+                                                            hexInputBar: true,
+                                                            labelTypes: const [],
+                                                            pickerColor:
+                                                                eyesColor,
+                                                            colorPickerWidth:
+                                                                400,
+                                                            pickerAreaBorderRadius:
+                                                                const BorderRadius
+                                                                    .all(
+                                                              Radius.circular(
+                                                                  5),
+                                                            ),
+                                                            paletteType:
+                                                                PaletteType.hsl,
+                                                            pickerAreaHeightPercent:
+                                                                1.0,
+                                                            onColorChanged:
+                                                                (Color color) =>
+                                                                    setState(
+                                                              () {
+                                                                eyesColor =
+                                                                    color;
+                                                              },
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            child: const Text(
+                                                                'Select'),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    );
                                                   },
-                                                  child: const Text('Select'),
+                                                  icon: Icon(
+                                                    Icons.color_lens,
+                                                    size: 35,
+                                                    color: eyesColor,
+                                                  ),
                                                 )
                                               ],
                                             ),
-                                          );
-                                        },
-                                        icon: Icon(
-                                          Icons.color_lens,
-                                          size: 35,
-                                          color: backgroundColor,
+                                          ),
                                         ),
-                                      )
+                                      ),
+                                      Card(
+                                        child: SizedBox(
+                                          width: 410,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 20, vertical: 10),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  'Data Color',
+                                                  style:
+                                                      (isScreenWidth(context))
+                                                          ? Theme.of(context)
+                                                              .textTheme
+                                                              .headline3
+                                                          : Theme.of(context)
+                                                              .textTheme
+                                                              .headline2,
+                                                ),
+                                                IconButton(
+                                                  onPressed: () {
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (BuildContext
+                                                              context) =>
+                                                          AlertDialog(
+                                                        content:
+                                                            SingleChildScrollView(
+                                                          child: ColorPicker(
+                                                            hexInputBar: true,
+                                                            labelTypes: const [],
+                                                            pickerColor:
+                                                                dataColor,
+                                                            colorPickerWidth:
+                                                                400,
+                                                            pickerAreaBorderRadius:
+                                                                const BorderRadius
+                                                                    .all(
+                                                              Radius.circular(
+                                                                  5),
+                                                            ),
+                                                            paletteType:
+                                                                PaletteType.hsl,
+                                                            pickerAreaHeightPercent:
+                                                                1.0,
+                                                            onColorChanged:
+                                                                (Color color) =>
+                                                                    setState(
+                                                              () {
+                                                                dataColor =
+                                                                    color;
+                                                              },
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            child: const Text(
+                                                                'Select'),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    );
+                                                  },
+                                                  icon: Icon(
+                                                    Icons.color_lens,
+                                                    size: 35,
+                                                    color: dataColor,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Card(
+                                        child: SizedBox(
+                                          width: 410,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 20, vertical: 10),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  'Background',
+                                                  style:
+                                                      (isScreenWidth(context))
+                                                          ? Theme.of(context)
+                                                              .textTheme
+                                                              .headline3
+                                                          : Theme.of(context)
+                                                              .textTheme
+                                                              .headline2,
+                                                ),
+                                                IconButton(
+                                                  onPressed: () {
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (BuildContext
+                                                              context) =>
+                                                          AlertDialog(
+                                                        content:
+                                                            SingleChildScrollView(
+                                                          child: ColorPicker(
+                                                            hexInputBar: true,
+                                                            labelTypes: const [],
+                                                            pickerColor:
+                                                                backgroundColor,
+                                                            colorPickerWidth:
+                                                                400,
+                                                            pickerAreaBorderRadius:
+                                                                const BorderRadius
+                                                                    .all(
+                                                              Radius.circular(
+                                                                  5),
+                                                            ),
+                                                            paletteType:
+                                                                PaletteType.hsl,
+                                                            pickerAreaHeightPercent:
+                                                                1.0,
+                                                            onColorChanged:
+                                                                (Color color) =>
+                                                                    setState(
+                                                              () {
+                                                                backgroundColor =
+                                                                    color;
+                                                              },
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            child: const Text(
+                                                                'Select'),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    );
+                                                  },
+                                                  icon: Icon(
+                                                    Icons.color_lens,
+                                                    size: 35,
+                                                    color: backgroundColor,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
                                     ],
+                                  )
+                                : const SizedBox(
+                                    height: 0,
                                   ),
-                                ),
-                              ),
-                            ),
                             GetBuilder<SaveQrCodeController>(
                               init: SaveQrCodeController(),
                               builder: (SaveQrCodeController controller) =>
