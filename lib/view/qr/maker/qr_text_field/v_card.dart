@@ -7,7 +7,7 @@ import 'package:intl_phone_field/phone_number.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
-import 'package:qr_maker_app/view/qr/maker/style_share_save_history_qr_code.dart';
+import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
 
 class MakeVCard extends StatefulWidget {
   const MakeVCard({Key? key}) : super(key: key);
@@ -894,7 +894,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                               "END:VCARD",
                                             ].join("\r\n");
                                             Get.to(() =>
-                                                StyleShareSaveHistoryQrCode(
+                                                StyleShareSaveFavoriteQrCode(
                                                   valueQr: valueQr,
                                                   image: 'images/v-card.png',
                                                   versionValueWithLogo:
@@ -1743,7 +1743,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                               "END:VCARD",
                                             ].join("\r\n");
                                             Get.to(() =>
-                                                StyleShareSaveHistoryQrCode(
+                                                StyleShareSaveFavoriteQrCode(
                                                   valueQr: valueQr,
                                                   image: 'images/v-card.png',
                                                   versionValueWithLogo:

@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:validators/validators.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
-import 'package:qr_maker_app/view/qr/maker/style_share_save_history_qr_code.dart';
+import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
 
 class MakeTwitter extends StatefulWidget {
   const MakeTwitter({Key? key}) : super(key: key);
@@ -126,12 +126,12 @@ class _MakeTwitterState extends State<MakeTwitter> {
                                         () {
                                           valueQr =
                                               twitterController.text.toString();
-                                          Get.to(
-                                              () => StyleShareSaveHistoryQrCode(
-                                                    valueQr: valueQr,
-                                                    image: 'images/twitter.png',
-                                                    versionValueWithLogo: 6,
-                                                  ));
+                                          Get.to(() =>
+                                              StyleShareSaveFavoriteQrCode(
+                                                valueQr: valueQr,
+                                                image: 'images/twitter.png',
+                                                versionValueWithLogo: 6,
+                                              ));
                                         },
                                       );
                                     }
@@ -246,12 +246,12 @@ class _MakeTwitterState extends State<MakeTwitter> {
                                         () {
                                           valueQr =
                                               twitterController.text.toString();
-                                          Get.to(
-                                              () => StyleShareSaveHistoryQrCode(
-                                                    valueQr: valueQr,
-                                                    image: 'images/twitter.png',
-                                                    versionValueWithLogo: 6,
-                                                  ));
+                                          Get.to(() =>
+                                              StyleShareSaveFavoriteQrCode(
+                                                valueQr: valueQr,
+                                                image: 'images/twitter.png',
+                                                versionValueWithLogo: 6,
+                                              ));
                                         },
                                       );
                                     }

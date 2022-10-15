@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:validators/validators.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
-import 'package:qr_maker_app/view/qr/maker/style_share_save_history_qr_code.dart';
+import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
 
 class MakeUrl extends StatefulWidget {
   const MakeUrl({Key? key}) : super(key: key);
@@ -128,7 +128,7 @@ class _MakeUrlState extends State<MakeUrl> {
                                           valueQr =
                                               urlController.text.toString();
                                           Get.to(
-                                            () => StyleShareSaveHistoryQrCode(
+                                            () => StyleShareSaveFavoriteQrCode(
                                               valueQr: valueQr,
                                               image: 'images/url.png',
                                               versionValueWithLogo:
@@ -249,13 +249,13 @@ class _MakeUrlState extends State<MakeUrl> {
                                         () {
                                           valueQr =
                                               urlController.text.toString();
-                                          Get.to(
-                                              () => StyleShareSaveHistoryQrCode(
-                                                    valueQr: valueQr,
-                                                    image: 'images/url.png',
-                                                    versionValueWithLogo:
-                                                        QrVersions.auto,
-                                                  ));
+                                          Get.to(() =>
+                                              StyleShareSaveFavoriteQrCode(
+                                                valueQr: valueQr,
+                                                image: 'images/url.png',
+                                                versionValueWithLogo:
+                                                    QrVersions.auto,
+                                              ));
                                         },
                                       );
                                     }
