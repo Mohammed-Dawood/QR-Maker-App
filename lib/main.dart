@@ -7,10 +7,13 @@ import 'package:qr_maker_app/view/qr/main_qr.dart';
 import 'package:qr_maker_app/themes/dark_theme.dart';
 import 'package:qr_maker_app/themes/light_theme.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 // import 'package:qr_maker_app/view/registration/main_sign_in.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(
+      widgetsBinding: WidgetsFlutterBinding.ensureInitialized());
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
       overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top]);
   SystemChrome.setPreferredOrientations(
@@ -22,7 +25,8 @@ void main() async {
 }
 
 Future initialization(BuildContext? context) async {
-  await Future.delayed(const Duration(seconds: 1));
+  // await Future.delayed(const Duration(seconds: 0));
+  FlutterNativeSplash.remove();
 }
 
 final navigatorKey = GlobalKey<NavigatorState>();
