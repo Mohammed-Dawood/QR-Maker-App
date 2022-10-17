@@ -5,26 +5,26 @@ class LightTheme {
     primaryColor: Colors.blue.shade500,
     scaffoldBackgroundColor: Colors.white,
     textTheme: const TextTheme(
-      headline1: TextStyle(
+      displayLarge: TextStyle(
         color: Colors.white,
         fontSize: 30,
       ),
-      headline2: TextStyle(
+      displayMedium: TextStyle(
         color: Colors.white,
         fontSize: 25,
         fontWeight: FontWeight.bold,
       ),
-      headline3: TextStyle(
+      displaySmall: TextStyle(
         color: Colors.white,
         fontSize: 18,
         fontWeight: FontWeight.bold,
       ),
-      headline4: TextStyle(
+      headlineMedium: TextStyle(
         color: Colors.black54,
         fontSize: 18,
         fontWeight: FontWeight.bold,
       ),
-      headline5: TextStyle(
+      headlineSmall: TextStyle(
         color: Colors.blue,
         fontSize: 18,
         fontWeight: FontWeight.bold,

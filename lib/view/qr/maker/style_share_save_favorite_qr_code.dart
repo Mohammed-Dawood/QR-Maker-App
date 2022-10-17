@@ -184,10 +184,10 @@ class _StyleShareSaveFavoriteQrCodeState
                                       style: (isScreenWidth(context))
                                           ? Theme.of(context)
                                               .textTheme
-                                              .headline3
+                                              .displaySmall
                                           : Theme.of(context)
                                               .textTheme
-                                              .headline2,
+                                              .displayMedium,
                                     ),
                                   ),
                                   icon: Icon(
@@ -217,10 +217,10 @@ class _StyleShareSaveFavoriteQrCodeState
                                           style: (isScreenWidth(context))
                                               ? Theme.of(context)
                                                   .textTheme
-                                                  .headline3
+                                                  .displaySmall
                                               : Theme.of(context)
                                                   .textTheme
-                                                  .headline2,
+                                                  .displayMedium,
                                         ),
                                         Switch(
                                           value: gapSwitch,
@@ -261,10 +261,10 @@ class _StyleShareSaveFavoriteQrCodeState
                                           style: (isScreenWidth(context))
                                               ? Theme.of(context)
                                                   .textTheme
-                                                  .headline3
+                                                  .displaySmall
                                               : Theme.of(context)
                                                   .textTheme
-                                                  .headline2,
+                                                  .displayMedium,
                                         ),
                                         Switch(
                                           value: eyesSwitch,
@@ -305,10 +305,10 @@ class _StyleShareSaveFavoriteQrCodeState
                                           style: (isScreenWidth(context))
                                               ? Theme.of(context)
                                                   .textTheme
-                                                  .headline3
+                                                  .displaySmall
                                               : Theme.of(context)
                                                   .textTheme
-                                                  .headline2,
+                                                  .displayMedium,
                                         ),
                                         Switch(
                                           value: dataSwitch,
@@ -349,10 +349,10 @@ class _StyleShareSaveFavoriteQrCodeState
                                           style: (isScreenWidth(context))
                                               ? Theme.of(context)
                                                   .textTheme
-                                                  .headline3
+                                                  .displaySmall
                                               : Theme.of(context)
                                                   .textTheme
-                                                  .headline2,
+                                                  .displayMedium,
                                         ),
                                         Switch(
                                           value: logoSwitch,
@@ -396,10 +396,10 @@ class _StyleShareSaveFavoriteQrCodeState
                                                 style: (isScreenWidth(context))
                                                     ? Theme.of(context)
                                                         .textTheme
-                                                        .headline3
+                                                        .displaySmall
                                                     : Theme.of(context)
                                                         .textTheme
-                                                        .headline2,
+                                                        .displayMedium,
                                               ),
                                               IconButton(
                                                 onPressed: () async {
@@ -459,10 +459,10 @@ class _StyleShareSaveFavoriteQrCodeState
                                                 style: (isScreenWidth(context))
                                                     ? Theme.of(context)
                                                         .textTheme
-                                                        .headline3
+                                                        .displaySmall
                                                     : Theme.of(context)
                                                         .textTheme
-                                                        .headline2,
+                                                        .displayMedium,
                                               ),
                                               IconButton(
                                                 onPressed: () async {
@@ -522,10 +522,10 @@ class _StyleShareSaveFavoriteQrCodeState
                                                 style: (isScreenWidth(context))
                                                     ? Theme.of(context)
                                                         .textTheme
-                                                        .headline3
+                                                        .displaySmall
                                                     : Theme.of(context)
                                                         .textTheme
-                                                        .headline2,
+                                                        .displayMedium,
                                               ),
                                               Switch(
                                                 value: logoPadding,
@@ -574,10 +574,10 @@ class _StyleShareSaveFavoriteQrCodeState
                                                 style: (isScreenWidth(context))
                                                     ? Theme.of(context)
                                                         .textTheme
-                                                        .headline3
+                                                        .displaySmall
                                                     : Theme.of(context)
                                                         .textTheme
-                                                        .headline2,
+                                                        .displayMedium,
                                               ),
                                               SizedBox(
                                                 width: isScreenWidth(context)
@@ -627,10 +627,10 @@ class _StyleShareSaveFavoriteQrCodeState
                                           style: (isScreenWidth(context))
                                               ? Theme.of(context)
                                                   .textTheme
-                                                  .headline3
+                                                  .displaySmall
                                               : Theme.of(context)
                                                   .textTheme
-                                                  .headline2,
+                                                  .displayMedium,
                                         ),
                                         IconButton(
                                           onPressed: () {
@@ -709,10 +709,10 @@ class _StyleShareSaveFavoriteQrCodeState
                                           style: (isScreenWidth(context))
                                               ? Theme.of(context)
                                                   .textTheme
-                                                  .headline3
+                                                  .displaySmall
                                               : Theme.of(context)
                                                   .textTheme
-                                                  .headline2,
+                                                  .displayMedium,
                                         ),
                                         IconButton(
                                           onPressed: () {
@@ -791,10 +791,10 @@ class _StyleShareSaveFavoriteQrCodeState
                                           style: (isScreenWidth(context))
                                               ? Theme.of(context)
                                                   .textTheme
-                                                  .headline3
+                                                  .displaySmall
                                               : Theme.of(context)
                                                   .textTheme
-                                                  .headline2,
+                                                  .displayMedium,
                                         ),
                                         IconButton(
                                           onPressed: () {
@@ -880,10 +880,10 @@ class _StyleShareSaveFavoriteQrCodeState
                                           style: (isScreenWidth(context))
                                               ? Theme.of(context)
                                                   .textTheme
-                                                  .headline3
+                                                  .displaySmall
                                               : Theme.of(context)
                                                   .textTheme
-                                                  .headline2,
+                                                  .displayMedium,
                                         ),
                                       ),
                                       icon: Icon(
@@ -921,10 +921,10 @@ class _StyleShareSaveFavoriteQrCodeState
                                           style: (isScreenWidth(context))
                                               ? Theme.of(context)
                                                   .textTheme
-                                                  .headline3
+                                                  .displaySmall
                                               : Theme.of(context)
                                                   .textTheme
-                                                  .headline2,
+                                                  .displayMedium,
                                         ),
                                       ),
                                       icon: Icon(
@@ -960,10 +960,10 @@ class _StyleShareSaveFavoriteQrCodeState
                                         style: (isScreenWidth(context))
                                             ? Theme.of(context)
                                                 .textTheme
-                                                .headline3
+                                                .displaySmall
                                             : Theme.of(context)
                                                 .textTheme
-                                                .headline2,
+                                                .displayMedium,
                                       ),
                                     ),
                                     icon: Icon(
@@ -1106,8 +1106,9 @@ class _StyleShareSaveFavoriteQrCodeState
                                         vertical: 18),
                                     child: Text(
                                       'Edit QR Code',
-                                      style:
-                                          Theme.of(context).textTheme.headline2,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .displayMedium,
                                     ),
                                   ),
                                   icon: const Icon(
@@ -1136,7 +1137,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           'Gap',
                                           style: Theme.of(context)
                                               .textTheme
-                                              .headline2,
+                                              .displayMedium,
                                         ),
                                         Switch(
                                           value: gapSwitch,
@@ -1176,7 +1177,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           'Eyes',
                                           style: Theme.of(context)
                                               .textTheme
-                                              .headline2,
+                                              .displayMedium,
                                         ),
                                         Switch(
                                           value: eyesSwitch,
@@ -1216,7 +1217,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           'Data',
                                           style: Theme.of(context)
                                               .textTheme
-                                              .headline2,
+                                              .displayMedium,
                                         ),
                                         Switch(
                                           value: dataSwitch,
@@ -1256,7 +1257,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           'Logo',
                                           style: Theme.of(context)
                                               .textTheme
-                                              .headline2,
+                                              .displayMedium,
                                         ),
                                         Switch(
                                           value: logoSwitch,
@@ -1297,7 +1298,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                                 'Library',
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .headline2,
+                                                    .displayMedium,
                                               ),
                                               IconButton(
                                                 onPressed: () async {
@@ -1352,7 +1353,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                                 'Camera',
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .headline2,
+                                                    .displayMedium,
                                               ),
                                               IconButton(
                                                 onPressed: () async {
@@ -1407,7 +1408,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                                 'Padding',
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .headline2,
+                                                    .displayMedium,
                                               ),
                                               Switch(
                                                 value: logoPadding,
@@ -1453,7 +1454,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                                 'Logo Size',
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .headline2,
+                                                    .displayMedium,
                                               ),
                                               SizedBox(
                                                 width: 200,
@@ -1498,7 +1499,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           'Eyes Color',
                                           style: Theme.of(context)
                                               .textTheme
-                                              .headline2,
+                                              .displayMedium,
                                         ),
                                         IconButton(
                                           onPressed: () {
@@ -1571,7 +1572,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           'Data Color',
                                           style: Theme.of(context)
                                               .textTheme
-                                              .headline2,
+                                              .displayMedium,
                                         ),
                                         IconButton(
                                           onPressed: () {
@@ -1644,7 +1645,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           'Background',
                                           style: Theme.of(context)
                                               .textTheme
-                                              .headline2,
+                                              .displayMedium,
                                         ),
                                         IconButton(
                                           onPressed: () {
@@ -1723,7 +1724,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           'Save QR Code',
                                           style: Theme.of(context)
                                               .textTheme
-                                              .headline2,
+                                              .displayMedium,
                                         ),
                                       ),
                                       icon: const Icon(
@@ -1759,7 +1760,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           'Share QR Code',
                                           style: Theme.of(context)
                                               .textTheme
-                                              .headline2,
+                                              .displayMedium,
                                         ),
                                       ),
                                       icon: const Icon(
@@ -1793,7 +1794,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                         'Add To Favorite',
                                         style: Theme.of(context)
                                             .textTheme
-                                            .headline2,
+                                            .displayMedium,
                                       ),
                                     ),
                                     icon: const Icon(

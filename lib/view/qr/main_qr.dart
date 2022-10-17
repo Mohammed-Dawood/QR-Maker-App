@@ -120,8 +120,12 @@ class _MainQrState extends State<MainQr> {
                                   Text(
                                     'Dark Theme',
                                     style: (isScreenWidth(context))
-                                        ? Theme.of(context).textTheme.headline3
-                                        : Theme.of(context).textTheme.headline2,
+                                        ? Theme.of(context)
+                                            .textTheme
+                                            .displaySmall
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .displayMedium,
                                   ),
                                   Switch(
                                     value: themeController.initValue,
@@ -149,8 +153,12 @@ class _MainQrState extends State<MainQr> {
                                   Text(
                                     'Vibration',
                                     style: (isScreenWidth(context))
-                                        ? Theme.of(context).textTheme.headline3
-                                        : Theme.of(context).textTheme.headline2,
+                                        ? Theme.of(context)
+                                            .textTheme
+                                            .displaySmall
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .displayMedium,
                                   ),
                                   GetBuilder<VibrationController>(
                                     init: VibrationController(),
@@ -341,8 +349,9 @@ class _MainQrState extends State<MainQr> {
                                 children: [
                                   Text(
                                     'Dark Theme',
-                                    style:
-                                        Theme.of(context).textTheme.headline2,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .displayMedium,
                                   ),
                                   Switch(
                                     value: themeController.initValue,
@@ -369,8 +378,9 @@ class _MainQrState extends State<MainQr> {
                                 children: [
                                   Text(
                                     'Vibration',
-                                    style:
-                                        Theme.of(context).textTheme.headline2,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .displayMedium,
                                   ),
                                   GetBuilder<VibrationController>(
                                     init: VibrationController(),

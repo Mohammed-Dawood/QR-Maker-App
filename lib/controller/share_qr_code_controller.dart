@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -14,8 +15,14 @@ class ShareQrCodeController extends GetxController {
     final path = '${directory.path}/image.jpg';
     File(path).writeAsBytesSync(image);
 
-    await Share.shareFiles(
-      [path],
+    // await Share.shareFiles(
+    //   [path],
+    //   text: 'QR Maker App',
+    //   subject: 'QR Maker App',
+    // );
+
+    await Share.shareXFiles(
+      [XFile(path)],
       text: 'QR Maker App',
       subject: 'QR Maker App',
     );

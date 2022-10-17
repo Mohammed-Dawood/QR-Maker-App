@@ -63,8 +63,8 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                             title: Text(
                               'Write QR Code Name',
                               style: (isScreenWidth(context))
-                                  ? Theme.of(context).textTheme.headline3
-                                  : Theme.of(context).textTheme.headline2,
+                                  ? Theme.of(context).textTheme.displaySmall
+                                  : Theme.of(context).textTheme.displayMedium,
                             ),
                             content: SingleChildScrollView(
                               child: TextFormField(
@@ -183,10 +183,10 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                       style: (isScreenWidth(context))
                                           ? Theme.of(context)
                                               .textTheme
-                                              .headline3
+                                              .displaySmall
                                           : Theme.of(context)
                                               .textTheme
-                                              .headline2,
+                                              .displayMedium,
                                     ),
                                   ),
                                 ),
@@ -223,10 +223,10 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                       style: (isScreenWidth(context))
                                           ? Theme.of(context)
                                               .textTheme
-                                              .headline3
+                                              .displaySmall
                                           : Theme.of(context)
                                               .textTheme
-                                              .headline2,
+                                              .displayMedium,
                                     ),
                                   ),
                                 ),
@@ -251,10 +251,10 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                         style: (isScreenWidth(context))
                                             ? Theme.of(context)
                                                 .textTheme
-                                                .headline3
+                                                .displaySmall
                                             : Theme.of(context)
                                                 .textTheme
-                                                .headline2,
+                                                .displayMedium,
                                       ),
                                       content: const Text(
                                         'Are you sure you want to delete your QR Code? This QR Code will be deleted from favorite on your device.',
@@ -288,8 +288,12 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                   child: Text(
                                     'Delete QR Code',
                                     style: (isScreenWidth(context))
-                                        ? Theme.of(context).textTheme.headline3
-                                        : Theme.of(context).textTheme.headline2,
+                                        ? Theme.of(context)
+                                            .textTheme
+                                            .displaySmall
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .displayMedium,
                                   ),
                                 ),
                               ),
@@ -332,7 +336,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                           builder: (BuildContext context) => AlertDialog(
                             title: Text(
                               'Write QR Code Name',
-                              style: Theme.of(context).textTheme.headline2,
+                              style: Theme.of(context).textTheme.displayMedium,
                             ),
                             content: SingleChildScrollView(
                               child: TextFormField(
@@ -448,8 +452,9 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                         vertical: 18),
                                     child: Text(
                                       'Save QR Code',
-                                      style:
-                                          Theme.of(context).textTheme.headline2,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .displayMedium,
                                     ),
                                   ),
                                 ),
@@ -483,8 +488,9 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                         vertical: 18),
                                     child: Text(
                                       'Share QR Code',
-                                      style:
-                                          Theme.of(context).textTheme.headline2,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .displayMedium,
                                     ),
                                   ),
                                 ),
@@ -508,7 +514,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                         'Delete QR Code !',
                                         style: Theme.of(context)
                                             .textTheme
-                                            .headline2,
+                                            .displayMedium,
                                       ),
                                       content: const Text(
                                         'Are you sure you want to delete your QR Code? This QR Code will be deleted from favorite on your device.',
@@ -541,8 +547,9 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                       const EdgeInsets.symmetric(vertical: 18),
                                   child: Text(
                                     'Delete QR Code',
-                                    style:
-                                        Theme.of(context).textTheme.headline2,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .displayMedium,
                                   ),
                                 ),
                               ),
