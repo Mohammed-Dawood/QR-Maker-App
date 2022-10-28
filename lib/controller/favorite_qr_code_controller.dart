@@ -57,7 +57,7 @@ class FavoriteQrCodeController extends GetxController {
     );
   }
 
-  Future<void> getQrImageListFromSahrePref() async {
+  Future<void> getQrImageListFromSharePref() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     favoriteQrCodeImageList = prefs.getStringList('newQrCodeImageList')!;
   }

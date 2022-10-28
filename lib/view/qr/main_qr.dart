@@ -1,11 +1,12 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:rate_my_app/rate_my_app.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:qr_maker_app/view/qr/scan/main_qr_scan.dart';
 import 'package:qr_maker_app/view/qr/maker/main_qr_make.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
-import 'package:qr_maker_app/view/qr/favorite/main_favorite_qr.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
+import 'package:qr_maker_app/view/qr/favorite/main_favorite_qr.dart';
 import 'package:qr_maker_app/controller/favorite_qr_code_controller.dart';
 
 class MainQr extends StatefulWidget {
@@ -28,14 +29,63 @@ class _MainQrState extends State<MainQr> {
     const MainFavoriteQr(),
   ];
 
-  FavoriteQrCodeController historyQrCodeController = Get.put(
+  FavoriteQrCodeController favoriteQrCodeController = Get.put(
     FavoriteQrCodeController(),
     permanent: true,
   );
 
+  RateMyApp rateMyApp = RateMyApp(
+    minDays: 7,
+    remindDays: 7,
+    minLaunches: 10,
+    remindLaunches: 10,
+    appStoreIdentifier: '1623787553?uo=4',
+    googlePlayIdentifier: 'com.mohammeddawood.qr_maker_app',
+  );
+
   @override
   void initState() {
-    historyQrCodeController.getQrImageListFromSahrePref();
+    favoriteQrCodeController.getQrImageListFromSharePref();
+
+    rateMyApp.init().then(
+      (_) {
+        if (rateMyApp.shouldOpenDialog) {
+          rateMyApp.showRateDialog(
+            context,
+            title: 'Rate this app', // The dialog title.
+            message:
+                'If you like this app, please take a little bit of your time to review it !\nIt really helps us and it shouldn\'t take you more than one minute.', // The dialog message.
+            rateButton: 'RATE', // The dialog "rate" button text.
+            noButton: '', // The dialog "no" button text.
+            laterButton: 'LATER', // The dialog "later" button text.
+            listener: (button) {
+              // The button click listener (useful if you want to cancel the click event).
+              switch (button) {
+                case RateMyAppDialogButton.rate:
+                  print('Clicked on "Rate".');
+                  break;
+                case RateMyAppDialogButton.later:
+                  print('Clicked on "Later".');
+                  break;
+                case RateMyAppDialogButton.no:
+                  print('Clicked on "No".');
+                  break;
+              }
+              return true; // Return false if you want to cancel the click event.
+            },
+            ignoreNativeDialog:
+                true, // Set to false if you want to show the Apple's native app rating dialog on iOS or Google's native app rating dialog (depends on the current Platform).
+            onDismissed: () => rateMyApp.callEvent(RateMyAppEventType
+                .laterButtonPressed), // Called when the user dismissed the dialog (either by taping outside or by pressing the "back" button).
+            dialogStyle: const DialogStyle(
+              titleAlign: TextAlign.center,
+              messageAlign: TextAlign.center,
+            ),
+          );
+        }
+      },
+    );
+
     super.initState();
   }
 
