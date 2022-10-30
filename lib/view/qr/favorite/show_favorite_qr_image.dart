@@ -1,3 +1,4 @@
+import 'dart:typed_data';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:screenshot/screenshot.dart';
@@ -147,8 +148,8 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                               padding: const EdgeInsets.all(5.0),
                               child: Screenshot(
                                 controller: screenshotController,
-                                child: Image.asset(
-                                  widget.image,
+                                child: Image.memory(
+                                  Uint8List.fromList(widget.image.codeUnits),
                                 ),
                               ),
                             ),
@@ -419,8 +420,8 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                               padding: const EdgeInsets.all(5.0),
                               child: Screenshot(
                                 controller: screenshotController,
-                                child: Image.asset(
-                                  widget.image,
+                                child: Image.memory(
+                                  Uint8List.fromList(widget.image.codeUnits),
                                 ),
                               ),
                             ),

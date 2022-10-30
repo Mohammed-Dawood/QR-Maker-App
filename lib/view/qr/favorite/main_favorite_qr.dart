@@ -1,8 +1,9 @@
+import 'dart:typed_data';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
-import 'package:qr_maker_app/view/qr/favorite/show_favorite_qr_image.dart';
 import 'package:qr_maker_app/controller/favorite_qr_code_controller.dart';
+import 'package:qr_maker_app/view/qr/favorite/show_favorite_qr_image.dart';
 
 class MainFavoriteQr extends StatefulWidget {
   const MainFavoriteQr({Key? key}) : super(key: key);
@@ -60,8 +61,9 @@ class _MainFavoriteQrState extends State<MainFavoriteQr> {
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(5.0),
-                              child: Image.asset(
-                                controller.favoriteQrCodeImageList[index],
+                              child: Image.memory(
+                                Uint8List.fromList(controller
+                                    .favoriteQrCodeImageList[index].codeUnits),
                               ),
                             ),
                           ),
@@ -116,8 +118,9 @@ class _MainFavoriteQrState extends State<MainFavoriteQr> {
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(5.0),
-                              child: Image.asset(
-                                controller.favoriteQrCodeImageList[index],
+                              child: Image.memory(
+                                Uint8List.fromList(controller
+                                    .favoriteQrCodeImageList[index].codeUnits),
                               ),
                             ),
                           ),

@@ -1,10 +1,8 @@
-import 'dart:io';
 import 'dart:async';
 import 'dart:typed_data';
 import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FavoriteQrCodeController extends GetxController {
@@ -13,28 +11,9 @@ class FavoriteQrCodeController extends GetxController {
   Future<void> addQrCodeImageToFavorite(
     Uint8List qrImage,
   ) async {
-    final Directory directoryQrCodeImage =
-        await getApplicationDocumentsDirectory();
+    String qrCodeImageString = String.fromCharCodes(qrImage);
 
-    final String pathQrCodeImage = directoryQrCodeImage.path;
-
-    final String time = DateTime.now()
-        .toIso8601String()
-        .replaceAll('.', '-')
-        .replaceAll(':', '-');
-
-    String nameQrCodeImage = 'QRMakerApp_$time.txt';
-
-    var fileQr = File('$pathQrCodeImage/$nameQrCodeImage');
-
-    fileQr.writeAsBytes(
-      qrImage.buffer.asInt8List(
-        qrImage.offsetInBytes,
-        qrImage.lengthInBytes,
-      ),
-    );
-
-    favoriteQrCodeImageList.add('$pathQrCodeImage/$nameQrCodeImage');
+    favoriteQrCodeImageList.add(qrCodeImageString);
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -59,6 +38,7 @@ class FavoriteQrCodeController extends GetxController {
 
   Future<void> getQrImageListFromSharePref() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
+
     favoriteQrCodeImageList = prefs.getStringList('newQrCodeImageList')!;
   }
 
