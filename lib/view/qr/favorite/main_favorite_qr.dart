@@ -53,8 +53,6 @@ class _MainFavoriteQrState extends State<MainFavoriteQr> {
                             onTap: () {
                               Get.to(
                                 () => ShowFavoriteQrImage(
-                                  image:
-                                      controller.favoriteQrCodeImageList[index],
                                   index: index,
                                 ),
                               );
@@ -110,8 +108,6 @@ class _MainFavoriteQrState extends State<MainFavoriteQr> {
                             onTap: () {
                               Get.to(
                                 () => ShowFavoriteQrImage(
-                                  image:
-                                      controller.favoriteQrCodeImageList[index],
                                   index: index,
                                 ),
                               );

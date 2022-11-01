@@ -13,26 +13,27 @@ class ShowFavoriteQrImage extends StatefulWidget {
   const ShowFavoriteQrImage({
     Key? key,
     required this.index,
-    required this.image,
   }) : super(key: key);
 
   final int index;
-  final String image;
 
   @override
   State<ShowFavoriteQrImage> createState() => _ShowFavoriteQrImageState();
 }
 
 class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
-  FavoriteQrCodeController historyQrCodeController = Get.find();
+  int? qrIndex;
+  FavoriteQrCodeController favoriteQrCodeController = Get.find();
   ScreenshotController screenshotController = ScreenshotController();
-  TextEditingController qrCodeNameController = TextEditingController();
+  TextEditingController textEditingController = TextEditingController();
 
   bool isScreenWidth(BuildContext context) =>
       MediaQuery.of(context).size.width < 600;
 
   @override
   Widget build(BuildContext context) {
+    qrIndex = qrIndex ?? widget.index;
+
     return MediaQuery.of(context).orientation == Orientation.portrait
         ? GetBuilder<ThemeController>(
             init: ThemeController(),
@@ -49,89 +50,103 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
-                  title: Text(
-                    GetStorage().read(widget.image) ?? 'Change QR Code Name',
-                    style: TextStyle(
-                      fontSize: (isScreenWidth(context)) ? 20 : 28,
+                  title: GetBuilder<FavoriteQrCodeController>(
+                    init: FavoriteQrCodeController(),
+                    builder: (FavoriteQrCodeController controller) => Text(
+                      GetStorage().read(
+                            controller.favoriteQrCodeImageList[qrIndex!],
+                          ) ??
+                          'Change QR Code Name',
+                      style: TextStyle(
+                        fontSize: (isScreenWidth(context)) ? 20 : 28,
+                      ),
                     ),
                   ),
                   actions: [
-                    IconButton(
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) => AlertDialog(
-                            title: Text(
-                              'Write QR Code Name',
-                              style: (isScreenWidth(context))
-                                  ? Theme.of(context).textTheme.displaySmall
-                                  : Theme.of(context).textTheme.displayMedium,
-                            ),
-                            content: SingleChildScrollView(
-                              child: TextFormField(
-                                maxLines: 1,
-                                cursorWidth: 3,
-                                controller: qrCodeNameController,
-                                keyboardType: TextInputType.name,
-                                textInputAction: TextInputAction.next,
-                                cursorColor: Theme.of(context).primaryColor,
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                decoration: InputDecoration(
-                                  hintText: 'QR Code Name',
-                                  filled: true,
-                                  fillColor: Colors.white,
-                                  prefixIcon: Icon(
-                                    Icons.qr_code,
-                                    color: Theme.of(context).primaryColor,
+                    GetBuilder<FavoriteQrCodeController>(
+                      init: FavoriteQrCodeController(),
+                      builder: (FavoriteQrCodeController controller) =>
+                          IconButton(
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                              title: Text(
+                                'Write QR Code Name',
+                                style: (isScreenWidth(context))
+                                    ? Theme.of(context).textTheme.displaySmall
+                                    : Theme.of(context).textTheme.displayMedium,
+                              ),
+                              content: SingleChildScrollView(
+                                child: TextFormField(
+                                  maxLines: 1,
+                                  cursorWidth: 3,
+                                  controller: textEditingController,
+                                  keyboardType: TextInputType.name,
+                                  textInputAction: TextInputAction.next,
+                                  cursorColor: Theme.of(context).primaryColor,
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                  suffixIcon: qrCodeNameController.text.isEmpty
-                                      ? Container(
-                                          width: 0,
-                                        )
-                                      : IconButton(
-                                          onPressed: () =>
-                                              qrCodeNameController.clear(),
-                                          icon: Icon(
-                                            Icons.close,
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                          ),
-                                        ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
+                                  decoration: InputDecoration(
+                                    hintText: 'QR Code Name',
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    prefixIcon: Icon(
+                                      Icons.qr_code,
                                       color: Theme.of(context).primaryColor,
-                                      width: 3,
+                                    ),
+                                    suffixIcon: textEditingController
+                                            .text.isEmpty
+                                        ? Container(
+                                            width: 0,
+                                          )
+                                        : IconButton(
+                                            onPressed: () =>
+                                                textEditingController.clear(),
+                                            icon: Icon(
+                                              Icons.close,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                          ),
+                                    border: const OutlineInputBorder(),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Theme.of(context).primaryColor,
+                                        width: 3,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Get.back();
+                                  },
+                                  child: const Text('Cancel'),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      GetStorage().write(
+                                        controller
+                                            .favoriteQrCodeImageList[qrIndex!],
+                                        textEditingController.text,
+                                      );
+                                    });
+                                    Get.back();
+                                  },
+                                  child: const Text('OK'),
+                                ),
+                              ],
                             ),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  Get.back();
-                                },
-                                child: const Text('Cancel'),
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  setState(() {
-                                    GetStorage().write(widget.image,
-                                        qrCodeNameController.text);
-                                  });
-                                  Get.back();
-                                },
-                                child: const Text('OK'),
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                      icon: const Icon(Icons.edit),
+                          );
+                        },
+                        icon: const Icon(Icons.edit),
+                      ),
                     ),
                   ],
                 ),
@@ -140,18 +155,131 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Card(
-                          child: SizedBox(
-                            height: (isScreenWidth(context)) ? 300 : 400,
-                            width: (isScreenWidth(context)) ? 300 : 400,
-                            child: Padding(
-                              padding: const EdgeInsets.all(5.0),
-                              child: Screenshot(
-                                controller: screenshotController,
-                                child: Image.memory(
-                                  Uint8List.fromList(widget.image.codeUnits),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            bottom: isScreenWidth(context) ? 20 : 60,
+                          ),
+                          child: Card(
+                            child: SizedBox(
+                              height: (isScreenWidth(context)) ? 250 : 410,
+                              width: (isScreenWidth(context)) ? 250 : 410,
+                              child: Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Screenshot(
+                                  controller: screenshotController,
+                                  child: GetBuilder<FavoriteQrCodeController>(
+                                    init: FavoriteQrCodeController(),
+                                    builder:
+                                        (FavoriteQrCodeController controller) =>
+                                            Image.memory(
+                                      Uint8List.fromList(
+                                        controller
+                                            .favoriteQrCodeImageList[qrIndex!]
+                                            .codeUnits,
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
+                            ),
+                          ),
+                        ),
+                        Card(
+                          color: Colors.transparent,
+                          shadowColor: Colors.transparent,
+                          child: SizedBox(
+                            width: (isScreenWidth(context)) ? 250 : 410,
+                            child: Row(
+                              children: [
+                                GetBuilder<FavoriteQrCodeController>(
+                                  init: FavoriteQrCodeController(),
+                                  builder:
+                                      (FavoriteQrCodeController controller) =>
+                                          Expanded(
+                                    child: ElevatedButton.icon(
+                                      onPressed: () {
+                                        setState(() {
+                                          if (qrIndex! > 0) {
+                                            qrIndex = qrIndex! - 1;
+                                          } else {
+                                            qrIndex = controller
+                                                    .favoriteQrCodeImageList
+                                                    .length -
+                                                1;
+                                          }
+                                        });
+                                      },
+                                      icon: Icon(
+                                        Icons.arrow_back_ios,
+                                        size:
+                                            (isScreenWidth(context)) ? 30 : 35,
+                                      ),
+                                      label: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 18),
+                                        child: Text(
+                                          'prev',
+                                          style: (isScreenWidth(context))
+                                              ? Theme.of(context)
+                                                  .textTheme
+                                                  .displaySmall
+                                              : Theme.of(context)
+                                                  .textTheme
+                                                  .displayMedium,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                GetBuilder<FavoriteQrCodeController>(
+                                  init: FavoriteQrCodeController(),
+                                  builder:
+                                      (FavoriteQrCodeController controller) =>
+                                          Expanded(
+                                    child: Directionality(
+                                      textDirection: TextDirection.rtl,
+                                      child: ElevatedButton.icon(
+                                        onPressed: () {
+                                          setState(() {
+                                            if ((qrIndex!) <
+                                                controller
+                                                        .favoriteQrCodeImageList
+                                                        .length -
+                                                    1) {
+                                              qrIndex = qrIndex! + 1;
+                                            } else {
+                                              qrIndex = 0;
+                                            }
+                                          });
+                                        },
+                                        icon: Icon(
+                                          Icons.arrow_back_ios,
+                                          size: (isScreenWidth(context))
+                                              ? 30
+                                              : 35,
+                                        ),
+                                        label: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 18),
+                                          child: Text(
+                                            'Next',
+                                            style: (isScreenWidth(context))
+                                                ? Theme.of(context)
+                                                    .textTheme
+                                                    .displaySmall
+                                                : Theme.of(context)
+                                                    .textTheme
+                                                    .displayMedium,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -164,7 +292,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                 (VibrationController vibrationController) =>
                                     Card(
                               child: SizedBox(
-                                width: (isScreenWidth(context)) ? 300 : 400,
+                                width: (isScreenWidth(context)) ? 250 : 410,
                                 child: ElevatedButton.icon(
                                   onPressed: () async {
                                     final image =
@@ -204,7 +332,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                 (VibrationController vibrationController) =>
                                     Card(
                               child: SizedBox(
-                                width: (isScreenWidth(context)) ? 300 : 400,
+                                width: (isScreenWidth(context)) ? 250 : 410,
                                 child: ElevatedButton.icon(
                                   onPressed: () async {
                                     final image =
@@ -240,7 +368,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                           builder: (VibrationController vibrationController) =>
                               Card(
                             child: SizedBox(
-                              width: (isScreenWidth(context)) ? 300 : 400,
+                              width: (isScreenWidth(context)) ? 250 : 410,
                               child: ElevatedButton.icon(
                                 onPressed: () {
                                   showDialog(
@@ -267,7 +395,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                         ),
                                         TextButton(
                                           onPressed: () async {
-                                            historyQrCodeController
+                                            favoriteQrCodeController
                                                 .deleteItemFromQrCodeImageList(
                                               widget.index,
                                             );
@@ -323,87 +451,101 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
-                  title: Text(
-                    GetStorage().read(widget.image) ?? 'Change QR Code Name',
-                    style: const TextStyle(
-                      fontSize: 28,
+                  title: GetBuilder<FavoriteQrCodeController>(
+                    init: FavoriteQrCodeController(),
+                    builder: (FavoriteQrCodeController controller) => Text(
+                      GetStorage().read(
+                            controller.favoriteQrCodeImageList[qrIndex!],
+                          ) ??
+                          'Change QR Code Name',
+                      style: const TextStyle(
+                        fontSize: 28,
+                      ),
                     ),
                   ),
                   actions: [
-                    IconButton(
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) => AlertDialog(
-                            title: Text(
-                              'Write QR Code Name',
-                              style: Theme.of(context).textTheme.displayMedium,
-                            ),
-                            content: SingleChildScrollView(
-                              child: TextFormField(
-                                maxLines: 1,
-                                cursorWidth: 3,
-                                controller: qrCodeNameController,
-                                keyboardType: TextInputType.name,
-                                textInputAction: TextInputAction.next,
-                                cursorColor: Theme.of(context).primaryColor,
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                decoration: InputDecoration(
-                                  hintText: 'QR Code Name',
-                                  filled: true,
-                                  fillColor: Colors.white,
-                                  prefixIcon: Icon(
-                                    Icons.qr_code,
-                                    color: Theme.of(context).primaryColor,
+                    GetBuilder<FavoriteQrCodeController>(
+                      init: FavoriteQrCodeController(),
+                      builder: (FavoriteQrCodeController controller) =>
+                          IconButton(
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                              title: Text(
+                                'Write QR Code Name',
+                                style:
+                                    Theme.of(context).textTheme.displayMedium,
+                              ),
+                              content: SingleChildScrollView(
+                                child: TextFormField(
+                                  maxLines: 1,
+                                  cursorWidth: 3,
+                                  controller: textEditingController,
+                                  keyboardType: TextInputType.name,
+                                  textInputAction: TextInputAction.next,
+                                  cursorColor: Theme.of(context).primaryColor,
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                  suffixIcon: qrCodeNameController.text.isEmpty
-                                      ? Container(
-                                          width: 0,
-                                        )
-                                      : IconButton(
-                                          onPressed: () =>
-                                              qrCodeNameController.clear(),
-                                          icon: Icon(
-                                            Icons.close,
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                          ),
-                                        ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
+                                  decoration: InputDecoration(
+                                    hintText: 'QR Code Name',
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    prefixIcon: Icon(
+                                      Icons.qr_code,
                                       color: Theme.of(context).primaryColor,
-                                      width: 3,
+                                    ),
+                                    suffixIcon: textEditingController
+                                            .text.isEmpty
+                                        ? Container(
+                                            width: 0,
+                                          )
+                                        : IconButton(
+                                            onPressed: () =>
+                                                textEditingController.clear(),
+                                            icon: Icon(
+                                              Icons.close,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                          ),
+                                    border: const OutlineInputBorder(),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Theme.of(context).primaryColor,
+                                        width: 3,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Get.back();
+                                  },
+                                  child: const Text('Cancel'),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      GetStorage().write(
+                                          controller.favoriteQrCodeImageList[
+                                              qrIndex!],
+                                          textEditingController.text);
+                                    });
+                                    Get.back();
+                                  },
+                                  child: const Text('OK'),
+                                ),
+                              ],
                             ),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  Get.back();
-                                },
-                                child: const Text('Cancel'),
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  setState(() {
-                                    GetStorage().write(widget.image,
-                                        qrCodeNameController.text);
-                                  });
-                                  Get.back();
-                                },
-                                child: const Text('OK'),
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                      icon: const Icon(Icons.edit),
+                          );
+                        },
+                        icon: const Icon(Icons.edit),
+                      ),
                     ),
                   ],
                 ),
@@ -412,18 +554,123 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Card(
-                          child: SizedBox(
-                            height: 400,
-                            width: 400,
-                            child: Padding(
-                              padding: const EdgeInsets.all(5.0),
-                              child: Screenshot(
-                                controller: screenshotController,
-                                child: Image.memory(
-                                  Uint8List.fromList(widget.image.codeUnits),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            bottom: 20,
+                          ),
+                          child: Card(
+                            child: SizedBox(
+                              height: 410,
+                              width: 410,
+                              child: Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Screenshot(
+                                  controller: screenshotController,
+                                  child: GetBuilder<FavoriteQrCodeController>(
+                                    init: FavoriteQrCodeController(),
+                                    builder:
+                                        (FavoriteQrCodeController controller) =>
+                                            Image.memory(
+                                      Uint8List.fromList(
+                                        controller
+                                            .favoriteQrCodeImageList[qrIndex!]
+                                            .codeUnits,
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
+                            ),
+                          ),
+                        ),
+                        Card(
+                          color: Colors.transparent,
+                          shadowColor: Colors.transparent,
+                          child: SizedBox(
+                            width: 410,
+                            child: Row(
+                              children: [
+                                GetBuilder<FavoriteQrCodeController>(
+                                  init: FavoriteQrCodeController(),
+                                  builder:
+                                      (FavoriteQrCodeController controller) =>
+                                          Expanded(
+                                    child: ElevatedButton.icon(
+                                      onPressed: () {
+                                        setState(() {
+                                          if (qrIndex! > 0) {
+                                            qrIndex = qrIndex! - 1;
+                                          } else {
+                                            qrIndex = controller
+                                                    .favoriteQrCodeImageList
+                                                    .length -
+                                                1;
+                                          }
+                                        });
+                                      },
+                                      icon: Icon(
+                                        Icons.arrow_back_ios,
+                                        size:
+                                            (isScreenWidth(context)) ? 30 : 35,
+                                      ),
+                                      label: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 18),
+                                        child: Text(
+                                          'Prev',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .displayMedium,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                GetBuilder<FavoriteQrCodeController>(
+                                  init: FavoriteQrCodeController(),
+                                  builder:
+                                      (FavoriteQrCodeController controller) =>
+                                          Expanded(
+                                    child: Directionality(
+                                      textDirection: TextDirection.rtl,
+                                      child: ElevatedButton.icon(
+                                        onPressed: () {
+                                          setState(() {
+                                            if (qrIndex! <
+                                                controller
+                                                        .favoriteQrCodeImageList
+                                                        .length -
+                                                    1) {
+                                              qrIndex = qrIndex! + 1;
+                                            } else {
+                                              qrIndex = 0;
+                                            }
+                                          });
+                                        },
+                                        icon: Icon(
+                                          Icons.arrow_back_ios,
+                                          size: (isScreenWidth(context))
+                                              ? 30
+                                              : 35,
+                                        ),
+                                        label: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 18),
+                                          child: Text(
+                                            'Next',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .displayMedium,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -436,7 +683,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                 (VibrationController vibrationController) =>
                                     Card(
                               child: SizedBox(
-                                width: 400,
+                                width: 410,
                                 child: ElevatedButton.icon(
                                   onPressed: () async {
                                     final image =
@@ -472,7 +719,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                 (VibrationController vibrationController) =>
                                     Card(
                               child: SizedBox(
-                                width: 400,
+                                width: 410,
                                 child: ElevatedButton.icon(
                                   onPressed: () async {
                                     final image =
@@ -504,7 +751,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                           builder: (VibrationController vibrationController) =>
                               Card(
                             child: SizedBox(
-                              width: 400,
+                              width: 410,
                               child: ElevatedButton.icon(
                                 onPressed: () {
                                   showDialog(
@@ -527,7 +774,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                         ),
                                         TextButton(
                                           onPressed: () async {
-                                            historyQrCodeController
+                                            favoriteQrCodeController
                                                 .deleteItemFromQrCodeImageList(
                                               widget.index,
                                             );
