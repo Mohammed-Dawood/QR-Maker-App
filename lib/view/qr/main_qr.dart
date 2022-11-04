@@ -135,161 +135,187 @@ class _MainQrState extends State<MainQr> {
                       ),
                     ),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        // Card(
-                        //   child: SizedBox(
-                        //     width: double.infinity,
-                        //     height: 50,
-                        //     child: Center(
-                        //       child: Text(
-                        //         '${FirebaseAuth.instance.currentUser?.email}',
-                        //         overflow: TextOverflow.ellipsis,
-                        //         maxLines: 1,
-                        //         style: const TextStyle(
-                        //           color: Colors.white,
-                        //           fontSize: 18,
-                        //           fontWeight: FontWeight.bold,
-                        //         ),
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
-                        Card(
-                          child: SizedBox(
-                            width: double.infinity,
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 20,
-                                vertical: isScreenWidth(context) ? 5 : 10,
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'Dark Theme',
-                                    style: (isScreenWidth(context))
-                                        ? Theme.of(context)
-                                            .textTheme
-                                            .displaySmall
-                                        : Theme.of(context)
-                                            .textTheme
-                                            .displayMedium,
-                                  ),
-                                  Switch(
-                                    value: themeController.initValue,
-                                    onChanged: themeController.switchTheme,
-                                    activeTrackColor: Colors.white54,
-                                    inactiveTrackColor: Colors.grey.shade900,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        Card(
-                          child: SizedBox(
-                            width: double.infinity,
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 20,
-                                vertical: isScreenWidth(context) ? 5 : 10,
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'Vibration',
-                                    style: (isScreenWidth(context))
-                                        ? Theme.of(context)
-                                            .textTheme
-                                            .displaySmall
-                                        : Theme.of(context)
-                                            .textTheme
-                                            .displayMedium,
-                                  ),
-                                  GetBuilder<VibrationController>(
-                                    init: VibrationController(),
-                                    builder: (VibrationController
-                                            vibrationController) =>
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              // Card(
+                              //   child: SizedBox(
+                              //     width: double.infinity,
+                              //     height: 50,
+                              //     child: Center(
+                              //       child: Text(
+                              //         '${FirebaseAuth.instance.currentUser?.email}',
+                              //         overflow: TextOverflow.ellipsis,
+                              //         maxLines: 1,
+                              //         style: const TextStyle(
+                              //           color: Colors.white,
+                              //           fontSize: 18,
+                              //           fontWeight: FontWeight.bold,
+                              //         ),
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
+                              Card(
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 20,
+                                      vertical: isScreenWidth(context) ? 5 : 10,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Dark Theme',
+                                          style: (isScreenWidth(context))
+                                              ? Theme.of(context)
+                                                  .textTheme
+                                                  .displaySmall
+                                              : Theme.of(context)
+                                                  .textTheme
+                                                  .displayMedium,
+                                        ),
                                         Switch(
-                                      value: vibrationController.initValue,
-                                      onChanged:
-                                          vibrationController.switchVibration,
-                                      activeTrackColor: Colors.white54,
-                                      inactiveTrackColor: Colors.grey.shade900,
+                                          value: themeController.initValue,
+                                          onChanged:
+                                              themeController.switchTheme,
+                                          activeTrackColor: Colors.white54,
+                                          inactiveTrackColor:
+                                              Colors.grey.shade900,
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                ],
+                                ),
                               ),
+                              Card(
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 20,
+                                      vertical: isScreenWidth(context) ? 5 : 10,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Vibration',
+                                          style: (isScreenWidth(context))
+                                              ? Theme.of(context)
+                                                  .textTheme
+                                                  .displaySmall
+                                              : Theme.of(context)
+                                                  .textTheme
+                                                  .displayMedium,
+                                        ),
+                                        GetBuilder<VibrationController>(
+                                          init: VibrationController(),
+                                          builder: (VibrationController
+                                                  vibrationController) =>
+                                              Switch(
+                                            value:
+                                                vibrationController.initValue,
+                                            onChanged: vibrationController
+                                                .switchVibration,
+                                            activeTrackColor: Colors.white54,
+                                            inactiveTrackColor:
+                                                Colors.grey.shade900,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              // Card(
+                              //   child: SizedBox(
+                              //     width: double.infinity,
+                              //     height: 50,
+                              //     child: ElevatedButton.icon(
+                              //       onPressed: () {
+                              //         FirebaseAuth.instance.signOut();
+                              //       },
+                              //       icon: const Icon(Icons.lock_outline),
+                              //       label: const Align(
+                              //         alignment: Alignment.centerLeft,
+                              //         child: Text(
+                              //           'Sign Out',
+                              //         ),
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
+                              // Card(
+                              //   child: SizedBox(
+                              //     width: double.infinity,
+                              //     height: 50,
+                              //     child: ElevatedButton.icon(
+                              //       onPressed: () {
+                              //         showDialog(
+                              //           context: context,
+                              //           builder: (BuildContext context) => AlertDialog(
+                              //             title: Text(
+                              //               'Delete QR Maker Account !',
+                              //               style: (isScreenWidth(context))
+                              //                   ? Theme.of(context).textTheme.headline3
+                              //                   : Theme.of(context).textTheme.headline2,
+                              //             ),
+                              //             content: const Text(
+                              //               'Are you sure you want to delete your account? This will permanently erase your account.',
+                              //             ),
+                              //             actions: [
+                              //               TextButton(
+                              //                 onPressed: () => Get.back(),
+                              //                 child: const Text('Cancel'),
+                              //               ),
+                              //               TextButton(
+                              //                 onPressed: () async {
+                              //                   await FirebaseAuth.instance.currentUser
+                              //                       ?.delete();
+                              //                   Get.back();
+                              //                 },
+                              //                 child: const Text('Delete'),
+                              //               ),
+                              //             ],
+                              //           ),
+                              //         );
+                              //       },
+                              //       icon: const Icon(Icons.delete),
+                              //       label: const Align(
+                              //         alignment: Alignment.centerLeft,
+                              //         child: Text(
+                              //           'Delete Account',
+                              //         ),
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
+                            ],
+                          ),
+                        ),
+                        Divider(
+                          thickness: 1,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        SizedBox(
+                          width: double.infinity,
+                          height: 50,
+                          child: Center(
+                            child: Text(
+                              'App Version 1.8.1',
+                              style: (isScreenWidth(context))
+                                  ? Theme.of(context).textTheme.titleSmall
+                                  : Theme.of(context).textTheme.titleMedium,
                             ),
                           ),
                         ),
-                        // Card(
-                        //   child: SizedBox(
-                        //     width: double.infinity,
-                        //     height: 50,
-                        //     child: ElevatedButton.icon(
-                        //       onPressed: () {
-                        //         FirebaseAuth.instance.signOut();
-                        //       },
-                        //       icon: const Icon(Icons.lock_outline),
-                        //       label: const Align(
-                        //         alignment: Alignment.centerLeft,
-                        //         child: Text(
-                        //           'Sign Out',
-                        //         ),
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
-                        // Card(
-                        //   child: SizedBox(
-                        //     width: double.infinity,
-                        //     height: 50,
-                        //     child: ElevatedButton.icon(
-                        //       onPressed: () {
-                        //         showDialog(
-                        //           context: context,
-                        //           builder: (BuildContext context) => AlertDialog(
-                        //             title: Text(
-                        //               'Delete QR Maker Account !',
-                        //               style: (isScreenWidth(context))
-                        //                   ? Theme.of(context).textTheme.headline3
-                        //                   : Theme.of(context).textTheme.headline2,
-                        //             ),
-                        //             content: const Text(
-                        //               'Are you sure you want to delete your account? This will permanently erase your account.',
-                        //             ),
-                        //             actions: [
-                        //               TextButton(
-                        //                 onPressed: () => Get.back(),
-                        //                 child: const Text('Cancel'),
-                        //               ),
-                        //               TextButton(
-                        //                 onPressed: () async {
-                        //                   await FirebaseAuth.instance.currentUser
-                        //                       ?.delete();
-                        //                   Get.back();
-                        //                 },
-                        //                 child: const Text('Delete'),
-                        //               ),
-                        //             ],
-                        //           ),
-                        //         );
-                        //       },
-                        //       icon: const Icon(Icons.delete),
-                        //       label: const Align(
-                        //         alignment: Alignment.centerLeft,
-                        //         child: Text(
-                        //           'Delete Account',
-                        //         ),
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),
@@ -365,153 +391,177 @@ class _MainQrState extends State<MainQr> {
                       ),
                     ),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        // Card(
-                        //   child: SizedBox(
-                        //     width: double.infinity,
-                        //     height: 50,
-                        //     child: Center(
-                        //       child: Text(
-                        //         '${FirebaseAuth.instance.currentUser?.email}',
-                        //         overflow: TextOverflow.ellipsis,
-                        //         maxLines: 1,
-                        //         style: const TextStyle(
-                        //           color: Colors.white,
-                        //           fontSize: 18,
-                        //           fontWeight: FontWeight.bold,
-                        //         ),
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
-                        Card(
-                          child: SizedBox(
-                            width: double.infinity,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 20,
-                                vertical: 10,
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'Dark Theme',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .displayMedium,
-                                  ),
-                                  Switch(
-                                    value: themeController.initValue,
-                                    onChanged: themeController.switchTheme,
-                                    activeTrackColor: Colors.white54,
-                                    inactiveTrackColor: Colors.grey.shade900,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        Card(
-                          child: SizedBox(
-                            width: double.infinity,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 20,
-                                vertical: 10,
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'Vibration',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .displayMedium,
-                                  ),
-                                  GetBuilder<VibrationController>(
-                                    init: VibrationController(),
-                                    builder: (VibrationController
-                                            vibrationController) =>
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              // Card(
+                              //   child: SizedBox(
+                              //     width: double.infinity,
+                              //     height: 50,
+                              //     child: Center(
+                              //       child: Text(
+                              //         '${FirebaseAuth.instance.currentUser?.email}',
+                              //         overflow: TextOverflow.ellipsis,
+                              //         maxLines: 1,
+                              //         style: const TextStyle(
+                              //           color: Colors.white,
+                              //           fontSize: 18,
+                              //           fontWeight: FontWeight.bold,
+                              //         ),
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
+                              Card(
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 20,
+                                      vertical: 10,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Dark Theme',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .displayMedium,
+                                        ),
                                         Switch(
-                                      value: vibrationController.initValue,
-                                      onChanged:
-                                          vibrationController.switchVibration,
-                                      activeTrackColor: Colors.white54,
-                                      inactiveTrackColor: Colors.grey.shade900,
+                                          value: themeController.initValue,
+                                          onChanged:
+                                              themeController.switchTheme,
+                                          activeTrackColor: Colors.white54,
+                                          inactiveTrackColor:
+                                              Colors.grey.shade900,
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                ],
+                                ),
                               ),
+                              Card(
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 20,
+                                      vertical: 10,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Vibration',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .displayMedium,
+                                        ),
+                                        GetBuilder<VibrationController>(
+                                          init: VibrationController(),
+                                          builder: (VibrationController
+                                                  vibrationController) =>
+                                              Switch(
+                                            value:
+                                                vibrationController.initValue,
+                                            onChanged: vibrationController
+                                                .switchVibration,
+                                            activeTrackColor: Colors.white54,
+                                            inactiveTrackColor:
+                                                Colors.grey.shade900,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              // Card(
+                              //   child: SizedBox(
+                              //     width: double.infinity,
+                              //     height: 50,
+                              //     child: ElevatedButton.icon(
+                              //       onPressed: () {
+                              //         FirebaseAuth.instance.signOut();
+                              //       },
+                              //       icon: const Icon(Icons.lock_outline),
+                              //       label: const Align(
+                              //         alignment: Alignment.centerLeft,
+                              //         child: Text(
+                              //           'Sign Out',
+                              //         ),
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
+                              // Card(
+                              //   child: SizedBox(
+                              //     width: double.infinity,
+                              //     height: 50,
+                              //     child: ElevatedButton.icon(
+                              //       onPressed: () {
+                              //         showDialog(
+                              //           context: context,
+                              //           builder: (BuildContext context) => AlertDialog(
+                              //             title: Text(
+                              //               'Delete QR Maker Account !',
+                              //               style: (isScreenWidth(context))
+                              //                   ? Theme.of(context).textTheme.headline3
+                              //                   : Theme.of(context).textTheme.headline2,
+                              //             ),
+                              //             content: const Text(
+                              //               'Are you sure you want to delete your account? This will permanently erase your account.',
+                              //             ),
+                              //             actions: [
+                              //               TextButton(
+                              //                 onPressed: () => Get.back(),
+                              //                 child: const Text('Cancel'),
+                              //               ),
+                              //               TextButton(
+                              //                 onPressed: () async {
+                              //                   await FirebaseAuth.instance.currentUser
+                              //                       ?.delete();
+                              //                   Get.back();
+                              //                 },
+                              //                 child: const Text('Delete'),
+                              //               ),
+                              //             ],
+                              //           ),
+                              //         );
+                              //       },
+                              //       icon: const Icon(Icons.delete),
+                              //       label: const Align(
+                              //         alignment: Alignment.centerLeft,
+                              //         child: Text(
+                              //           'Delete Account',
+                              //         ),
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
+                            ],
+                          ),
+                        ),
+                        Divider(
+                          thickness: 1,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        SizedBox(
+                          width: double.infinity,
+                          height: 50,
+                          child: Center(
+                            child: Text(
+                              'App Version 1.8.1',
+                              style: Theme.of(context).textTheme.titleMedium,
                             ),
                           ),
                         ),
-                        // Card(
-                        //   child: SizedBox(
-                        //     width: double.infinity,
-                        //     height: 50,
-                        //     child: ElevatedButton.icon(
-                        //       onPressed: () {
-                        //         FirebaseAuth.instance.signOut();
-                        //       },
-                        //       icon: const Icon(Icons.lock_outline),
-                        //       label: const Align(
-                        //         alignment: Alignment.centerLeft,
-                        //         child: Text(
-                        //           'Sign Out',
-                        //         ),
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
-                        // Card(
-                        //   child: SizedBox(
-                        //     width: double.infinity,
-                        //     height: 50,
-                        //     child: ElevatedButton.icon(
-                        //       onPressed: () {
-                        //         showDialog(
-                        //           context: context,
-                        //           builder: (BuildContext context) => AlertDialog(
-                        //             title: Text(
-                        //               'Delete QR Maker Account !',
-                        //               style: (isScreenWidth(context))
-                        //                   ? Theme.of(context).textTheme.headline3
-                        //                   : Theme.of(context).textTheme.headline2,
-                        //             ),
-                        //             content: const Text(
-                        //               'Are you sure you want to delete your account? This will permanently erase your account.',
-                        //             ),
-                        //             actions: [
-                        //               TextButton(
-                        //                 onPressed: () => Get.back(),
-                        //                 child: const Text('Cancel'),
-                        //               ),
-                        //               TextButton(
-                        //                 onPressed: () async {
-                        //                   await FirebaseAuth.instance.currentUser
-                        //                       ?.delete();
-                        //                   Get.back();
-                        //                 },
-                        //                 child: const Text('Delete'),
-                        //               ),
-                        //             ],
-                        //           ),
-                        //         );
-                        //       },
-                        //       icon: const Icon(Icons.delete),
-                        //       label: const Align(
-                        //         alignment: Alignment.centerLeft,
-                        //         child: Text(
-                        //           'Delete Account',
-                        //         ),
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),

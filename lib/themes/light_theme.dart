@@ -4,28 +4,38 @@ class LightTheme {
   static final lightTheme = ThemeData.light().copyWith(
     primaryColor: Colors.blue.shade500,
     scaffoldBackgroundColor: Colors.white,
-    textTheme: const TextTheme(
-      displayLarge: TextStyle(
+    textTheme: TextTheme(
+      displayLarge: const TextStyle(
         color: Colors.white,
         fontSize: 30,
       ),
-      displayMedium: TextStyle(
+      displayMedium: const TextStyle(
         color: Colors.white,
         fontSize: 25,
         fontWeight: FontWeight.bold,
       ),
-      displaySmall: TextStyle(
+      displaySmall: const TextStyle(
         color: Colors.white,
         fontSize: 18,
         fontWeight: FontWeight.bold,
       ),
-      headlineMedium: TextStyle(
+      headlineMedium: const TextStyle(
         color: Colors.black54,
         fontSize: 18,
         fontWeight: FontWeight.bold,
       ),
-      headlineSmall: TextStyle(
+      headlineSmall: const TextStyle(
         color: Colors.blue,
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+      ),
+      titleMedium: TextStyle(
+        color: Colors.blue.shade500,
+        fontSize: 25,
+        fontWeight: FontWeight.bold,
+      ),
+      titleSmall: TextStyle(
+        color: Colors.blue.shade500,
         fontSize: 18,
         fontWeight: FontWeight.bold,
       ),

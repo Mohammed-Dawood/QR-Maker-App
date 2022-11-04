@@ -29,6 +29,16 @@ class DarkTheme {
         fontSize: 18,
         fontWeight: FontWeight.bold,
       ),
+      titleMedium: TextStyle(
+        color: Colors.white,
+        fontSize: 25,
+        fontWeight: FontWeight.bold,
+      ),
+      titleSmall: TextStyle(
+        color: Colors.white,
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+      ),
     ),
     appBarTheme: AppBarTheme(
       centerTitle: true,
