@@ -91,15 +91,12 @@ class _MakeSMSState extends State<MakeSMS> {
                                 cursorColor: Theme.of(context).primaryColor,
                                 flagsButtonPadding:
                                     const EdgeInsets.only(left: 10),
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                dropdownTextStyle: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
+                                style: (isScreenWidth(context))
+                                    ? Theme.of(context).textTheme.titleSmall
+                                    : Theme.of(context).textTheme.titleMedium,
+                                dropdownTextStyle: (isScreenWidth(context))
+                                    ? Theme.of(context).textTheme.titleSmall
+                                    : Theme.of(context).textTheme.titleMedium,
                                 pickerDialogStyle: PickerDialogStyle(
                                   width: isScreenWidth(context)
                                       ? double.infinity
@@ -145,6 +142,9 @@ class _MakeSMSState extends State<MakeSMS> {
                                             Icons.close,
                                             color:
                                                 Theme.of(context).primaryColor,
+                                            size: (isScreenWidth(context))
+                                                ? 24
+                                                : 30,
                                           ),
                                         ),
                                   border: const OutlineInputBorder(),
@@ -169,10 +169,9 @@ class _MakeSMSState extends State<MakeSMS> {
                                 keyboardType: TextInputType.multiline,
                                 textInputAction: TextInputAction.newline,
                                 cursorColor: Theme.of(context).primaryColor,
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style: (isScreenWidth(context))
+                                    ? Theme.of(context).textTheme.titleSmall
+                                    : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'Message',
                                   filled: true,
@@ -180,7 +179,7 @@ class _MakeSMSState extends State<MakeSMS> {
                                   prefixIcon: Icon(
                                     Icons.message,
                                     color: Theme.of(context).primaryColor,
-                                    size: 30,
+                                    size: (isScreenWidth(context)) ? 24 : 30,
                                   ),
                                   suffixIcon: messageController.text.isEmpty
                                       ? Container(
@@ -193,6 +192,9 @@ class _MakeSMSState extends State<MakeSMS> {
                                             Icons.close,
                                             color:
                                                 Theme.of(context).primaryColor,
+                                            size: (isScreenWidth(context))
+                                                ? 24
+                                                : 30,
                                           ),
                                         ),
                                   border: const OutlineInputBorder(),
@@ -208,7 +210,7 @@ class _MakeSMSState extends State<MakeSMS> {
                             Card(
                               child: SizedBox(
                                 width: double.infinity,
-                                child: ElevatedButton(
+                                child: ElevatedButton.icon(
                                   onPressed: () {
                                     if (validateKey.currentState!.validate()) {
                                       setState(
@@ -225,9 +227,23 @@ class _MakeSMSState extends State<MakeSMS> {
                                       );
                                     }
                                   },
-                                  child: const Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 18),
-                                    child: Text('Create QR Code'),
+                                  icon: Icon(
+                                    Icons.touch_app,
+                                    size: (isScreenWidth(context)) ? 24 : 30,
+                                  ),
+                                  label: Padding(
+                                    padding: (isScreenWidth(context))
+                                        ? const EdgeInsets.symmetric(
+                                            vertical: 18)
+                                        : const EdgeInsets.symmetric(
+                                            vertical: 20),
+                                    child: Text(
+                                      'Create QR Code',
+                                      style: TextStyle(
+                                          fontSize: (isScreenWidth(context))
+                                              ? 18
+                                              : 26),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -293,15 +309,9 @@ class _MakeSMSState extends State<MakeSMS> {
                                 cursorColor: Theme.of(context).primaryColor,
                                 flagsButtonPadding:
                                     const EdgeInsets.only(left: 10),
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                dropdownTextStyle: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
+                                style: Theme.of(context).textTheme.titleMedium,
+                                dropdownTextStyle:
+                                    Theme.of(context).textTheme.titleMedium,
                                 pickerDialogStyle: PickerDialogStyle(
                                   width: 500,
                                   searchFieldCursorColor: Colors.white,
@@ -345,6 +355,9 @@ class _MakeSMSState extends State<MakeSMS> {
                                             Icons.close,
                                             color:
                                                 Theme.of(context).primaryColor,
+                                            size: (isScreenWidth(context))
+                                                ? 24
+                                                : 30,
                                           ),
                                         ),
                                   border: const OutlineInputBorder(),
@@ -369,10 +382,7 @@ class _MakeSMSState extends State<MakeSMS> {
                                 keyboardType: TextInputType.multiline,
                                 textInputAction: TextInputAction.newline,
                                 cursorColor: Theme.of(context).primaryColor,
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'Message',
                                   filled: true,
@@ -393,6 +403,7 @@ class _MakeSMSState extends State<MakeSMS> {
                                             Icons.close,
                                             color:
                                                 Theme.of(context).primaryColor,
+                                            size: 30,
                                           ),
                                         ),
                                   border: const OutlineInputBorder(),
@@ -408,7 +419,7 @@ class _MakeSMSState extends State<MakeSMS> {
                             Card(
                               child: SizedBox(
                                 width: double.infinity,
-                                child: ElevatedButton(
+                                child: ElevatedButton.icon(
                                   onPressed: () {
                                     if (validateKey.currentState!.validate()) {
                                       setState(
@@ -425,9 +436,18 @@ class _MakeSMSState extends State<MakeSMS> {
                                       );
                                     }
                                   },
-                                  child: const Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 18),
-                                    child: Text('Create QR Code'),
+                                  icon: const Icon(
+                                    Icons.touch_app,
+                                    size: 30,
+                                  ),
+                                  label: const Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 20),
+                                    child: Text(
+                                      'Create QR Code',
+                                      style: TextStyle(
+                                        fontSize: 26,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),

@@ -81,10 +81,9 @@ class _MakeUrlState extends State<MakeUrl> {
                                 keyboardType: TextInputType.url,
                                 textInputAction: TextInputAction.next,
                                 cursorColor: Theme.of(context).primaryColor,
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style: (isScreenWidth(context))
+                                    ? Theme.of(context).textTheme.titleSmall
+                                    : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'https://www.example.com',
                                   filled: true,
@@ -92,7 +91,7 @@ class _MakeUrlState extends State<MakeUrl> {
                                   prefixIcon: Icon(
                                     Icons.link,
                                     color: Theme.of(context).primaryColor,
-                                    size: 30,
+                                    size: (isScreenWidth(context)) ? 24 : 30,
                                   ),
                                   suffixIcon: urlController.text.isEmpty
                                       ? Container(
@@ -103,6 +102,9 @@ class _MakeUrlState extends State<MakeUrl> {
                                               urlController.clear(),
                                           icon: Icon(
                                             Icons.close,
+                                            size: (isScreenWidth(context))
+                                                ? 24
+                                                : 30,
                                             color:
                                                 Theme.of(context).primaryColor,
                                           ),
@@ -120,7 +122,7 @@ class _MakeUrlState extends State<MakeUrl> {
                             Card(
                               child: SizedBox(
                                 width: double.infinity,
-                                child: ElevatedButton(
+                                child: ElevatedButton.icon(
                                   onPressed: () {
                                     if (validateKey.currentState!.validate()) {
                                       setState(
@@ -139,9 +141,23 @@ class _MakeUrlState extends State<MakeUrl> {
                                       );
                                     }
                                   },
-                                  child: const Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 18),
-                                    child: Text('Create QR Code'),
+                                  icon: Icon(
+                                    Icons.touch_app,
+                                    size: (isScreenWidth(context)) ? 24 : 30,
+                                  ),
+                                  label: Padding(
+                                    padding: (isScreenWidth(context))
+                                        ? const EdgeInsets.symmetric(
+                                            vertical: 18)
+                                        : const EdgeInsets.symmetric(
+                                            vertical: 20),
+                                    child: Text(
+                                      'Create QR Code',
+                                      style: TextStyle(
+                                          fontSize: (isScreenWidth(context))
+                                              ? 18
+                                              : 26),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -203,10 +219,7 @@ class _MakeUrlState extends State<MakeUrl> {
                                 keyboardType: TextInputType.url,
                                 textInputAction: TextInputAction.next,
                                 cursorColor: Theme.of(context).primaryColor,
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'https://www.example.com',
                                   filled: true,
@@ -225,6 +238,7 @@ class _MakeUrlState extends State<MakeUrl> {
                                               urlController.clear(),
                                           icon: Icon(
                                             Icons.close,
+                                            size: 30,
                                             color:
                                                 Theme.of(context).primaryColor,
                                           ),
@@ -242,7 +256,7 @@ class _MakeUrlState extends State<MakeUrl> {
                             Card(
                               child: SizedBox(
                                 width: double.infinity,
-                                child: ElevatedButton(
+                                child: ElevatedButton.icon(
                                   onPressed: () {
                                     if (validateKey.currentState!.validate()) {
                                       setState(
@@ -260,9 +274,18 @@ class _MakeUrlState extends State<MakeUrl> {
                                       );
                                     }
                                   },
-                                  child: const Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 18),
-                                    child: Text('Create QR Code'),
+                                  icon: const Icon(
+                                    Icons.touch_app,
+                                    size: 30,
+                                  ),
+                                  label: const Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 20),
+                                    child: Text(
+                                      'Create QR Code',
+                                      style: TextStyle(
+                                        fontSize: 26,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),

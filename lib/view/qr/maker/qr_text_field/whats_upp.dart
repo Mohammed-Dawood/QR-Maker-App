@@ -88,15 +88,12 @@ class _MakeWhatsUppState extends State<MakeWhatsUpp> {
                                 cursorColor: Theme.of(context).primaryColor,
                                 flagsButtonPadding:
                                     const EdgeInsets.only(left: 10),
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                dropdownTextStyle: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
+                                style: (isScreenWidth(context))
+                                    ? Theme.of(context).textTheme.titleSmall
+                                    : Theme.of(context).textTheme.titleMedium,
+                                dropdownTextStyle: (isScreenWidth(context))
+                                    ? Theme.of(context).textTheme.titleSmall
+                                    : Theme.of(context).textTheme.titleMedium,
                                 pickerDialogStyle: PickerDialogStyle(
                                   width: isScreenWidth(context)
                                       ? double.infinity
@@ -105,10 +102,10 @@ class _MakeWhatsUppState extends State<MakeWhatsUpp> {
                                   searchFieldInputDecoration: InputDecoration(
                                     filled: true,
                                     fillColor: Theme.of(context).primaryColor,
-                                    suffixIcon: const Icon(
+                                    suffixIcon: Icon(
                                       Icons.search,
                                       color: Colors.white,
-                                      size: 30,
+                                      size: (isScreenWidth(context)) ? 24 : 30,
                                     ),
                                     label: const Text('Search country'),
                                     labelStyle: const TextStyle(
@@ -160,7 +157,7 @@ class _MakeWhatsUppState extends State<MakeWhatsUpp> {
                             Card(
                               child: SizedBox(
                                 width: double.infinity,
-                                child: ElevatedButton(
+                                child: ElevatedButton.icon(
                                   onPressed: () {
                                     if (validateKey.currentState!.validate()) {
                                       setState(
@@ -177,9 +174,23 @@ class _MakeWhatsUppState extends State<MakeWhatsUpp> {
                                       );
                                     }
                                   },
-                                  child: const Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 18),
-                                    child: Text('Create QR Code'),
+                                  icon: Icon(
+                                    Icons.touch_app,
+                                    size: (isScreenWidth(context)) ? 24 : 30,
+                                  ),
+                                  label: Padding(
+                                    padding: (isScreenWidth(context))
+                                        ? const EdgeInsets.symmetric(
+                                            vertical: 18)
+                                        : const EdgeInsets.symmetric(
+                                            vertical: 20),
+                                    child: Text(
+                                      'Create QR Code',
+                                      style: TextStyle(
+                                          fontSize: (isScreenWidth(context))
+                                              ? 18
+                                              : 26),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -245,15 +256,9 @@ class _MakeWhatsUppState extends State<MakeWhatsUpp> {
                                 cursorColor: Theme.of(context).primaryColor,
                                 flagsButtonPadding:
                                     const EdgeInsets.only(left: 10),
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                dropdownTextStyle: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
+                                style: Theme.of(context).textTheme.titleMedium,
+                                dropdownTextStyle:
+                                    Theme.of(context).textTheme.titleMedium,
                                 pickerDialogStyle: PickerDialogStyle(
                                   width: 500,
                                   searchFieldCursorColor: Colors.white,
@@ -297,6 +302,7 @@ class _MakeWhatsUppState extends State<MakeWhatsUpp> {
                                             Icons.close,
                                             color:
                                                 Theme.of(context).primaryColor,
+                                            size: 30,
                                           ),
                                         ),
                                   border: const OutlineInputBorder(),
@@ -315,7 +321,7 @@ class _MakeWhatsUppState extends State<MakeWhatsUpp> {
                             Card(
                               child: SizedBox(
                                 width: double.infinity,
-                                child: ElevatedButton(
+                                child: ElevatedButton.icon(
                                   onPressed: () {
                                     if (validateKey.currentState!.validate()) {
                                       setState(
@@ -332,9 +338,18 @@ class _MakeWhatsUppState extends State<MakeWhatsUpp> {
                                       );
                                     }
                                   },
-                                  child: const Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 18),
-                                    child: Text('Create QR Code'),
+                                  icon: const Icon(
+                                    Icons.touch_app,
+                                    size: 30,
+                                  ),
+                                  label: const Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 20),
+                                    child: Text(
+                                      'Create QR Code',
+                                      style: TextStyle(
+                                        fontSize: 26,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),

@@ -37,9 +37,9 @@ class MainQrScan extends StatelessWidget {
                         onPressed: () => Get.to(
                           () => const ScanningQRByCamera(),
                         ),
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.qr_code_scanner,
-                          size: 30,
+                          size: (isScreenWidth(context)) ? 24 : 30,
                         ),
                         label: Padding(
                           padding: (isScreenWidth(context))
@@ -48,7 +48,8 @@ class MainQrScan extends StatelessWidget {
                           child: Text(
                             'Get Started',
                             style: TextStyle(
-                                fontSize: (isScreenWidth(context)) ? 18 : 25),
+                              fontSize: (isScreenWidth(context)) ? 18 : 26,
+                            ),
                           ),
                         ),
                       ),
@@ -92,7 +93,7 @@ class MainQrScan extends StatelessWidget {
                           child: Text(
                             'Get Started',
                             style: TextStyle(
-                              fontSize: 25,
+                              fontSize: 26,
                             ),
                           ),
                         ),

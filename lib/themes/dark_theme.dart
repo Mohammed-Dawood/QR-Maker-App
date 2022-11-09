@@ -2,41 +2,38 @@ import 'package:flutter/material.dart';
 
 class DarkTheme {
   static final darkTheme = ThemeData.dark().copyWith(
+    hintColor: Colors.black45,
     primaryColor: Colors.grey.shade800,
     scaffoldBackgroundColor: Colors.grey.shade900,
     textTheme: const TextTheme(
-      displayLarge: TextStyle(
+      displaySmall: TextStyle(
+        fontSize: 18,
         color: Colors.white,
-        fontSize: 30,
+        fontWeight: FontWeight.bold,
       ),
       displayMedium: TextStyle(
+        fontSize: 26,
         color: Colors.white,
-        fontSize: 25,
-        fontWeight: FontWeight.bold,
-      ),
-      displaySmall: TextStyle(
-        color: Colors.white,
-        fontSize: 18,
-        fontWeight: FontWeight.bold,
-      ),
-      headlineMedium: TextStyle(
-        color: Colors.white54,
-        fontSize: 18,
-        fontWeight: FontWeight.bold,
-      ),
-      headlineSmall: TextStyle(
-        color: Colors.red,
-        fontSize: 18,
-        fontWeight: FontWeight.bold,
-      ),
-      titleMedium: TextStyle(
-        color: Colors.white,
-        fontSize: 25,
         fontWeight: FontWeight.bold,
       ),
       titleSmall: TextStyle(
-        color: Colors.white,
         fontSize: 18,
+        color: Colors.black,
+        fontWeight: FontWeight.bold,
+      ),
+      titleMedium: TextStyle(
+        fontSize: 26,
+        color: Colors.black,
+        fontWeight: FontWeight.bold,
+      ),
+      bodySmall: TextStyle(
+        fontSize: 18,
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+      ),
+      bodyMedium: TextStyle(
+        fontSize: 26,
+        color: Colors.white,
         fontWeight: FontWeight.bold,
       ),
     ),
@@ -50,35 +47,33 @@ class DarkTheme {
       ),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: Colors.grey.shade800,
       selectedItemColor: Colors.white,
       unselectedItemColor: Colors.black45,
+      backgroundColor: Colors.grey.shade800,
       selectedLabelStyle: const TextStyle(
+        fontSize: 18,
         color: Colors.white,
-        fontSize: 16,
         fontWeight: FontWeight.bold,
       ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(Colors.grey.shade800),
+        foregroundColor: MaterialStateProperty.all(Colors.white),
         elevation: MaterialStateProperty.all(10),
         textStyle: MaterialStateProperty.all(
           const TextStyle(
-            color: Colors.white,
-            fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
         ),
       ),
     ),
-    drawerTheme: DrawerThemeData(
-      backgroundColor: Colors.grey.shade900,
+    drawerTheme: const DrawerThemeData(
       elevation: 10,
     ),
     cardTheme: CardTheme(
-      color: Colors.grey.shade800,
       elevation: 10,
+      color: Colors.grey.shade800,
       margin: const EdgeInsets.all(10),
     ),
     switchTheme: SwitchThemeData(
@@ -101,19 +96,14 @@ class DarkTheme {
         foregroundColor: Colors.white,
         textStyle: const TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 16,
         ), // button text color
       ),
     ),
-    hintColor: Colors.black45,
     dialogTheme: DialogTheme(
       backgroundColor: Colors.grey.shade500,
     ),
     timePickerTheme: TimePickerThemeData(
       backgroundColor: Colors.grey.shade500,
-    ),
-    floatingActionButtonTheme: const FloatingActionButtonThemeData(
-      backgroundColor: Colors.red,
     ),
   );
 }

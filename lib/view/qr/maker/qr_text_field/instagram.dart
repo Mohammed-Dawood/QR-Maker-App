@@ -80,10 +80,9 @@ class _MakeInstagramState extends State<MakeInstagram> {
                                 keyboardType: TextInputType.url,
                                 textInputAction: TextInputAction.next,
                                 cursorColor: Theme.of(context).primaryColor,
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style: (isScreenWidth(context))
+                                    ? Theme.of(context).textTheme.titleSmall
+                                    : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'https://www.instagram.com/...',
                                   filled: true,
@@ -91,7 +90,7 @@ class _MakeInstagramState extends State<MakeInstagram> {
                                   prefixIcon: Icon(
                                     Icons.photo_camera_outlined,
                                     color: Theme.of(context).primaryColor,
-                                    size: 30,
+                                    size: (isScreenWidth(context)) ? 24 : 30,
                                   ),
                                   suffixIcon: instagramController.text.isEmpty
                                       ? Container(
@@ -104,6 +103,9 @@ class _MakeInstagramState extends State<MakeInstagram> {
                                             Icons.close,
                                             color:
                                                 Theme.of(context).primaryColor,
+                                            size: (isScreenWidth(context))
+                                                ? 24
+                                                : 30,
                                           ),
                                         ),
                                   border: const OutlineInputBorder(),
@@ -119,7 +121,7 @@ class _MakeInstagramState extends State<MakeInstagram> {
                             Card(
                               child: SizedBox(
                                 width: double.infinity,
-                                child: ElevatedButton(
+                                child: ElevatedButton.icon(
                                   onPressed: () {
                                     if (validateKey.currentState!.validate()) {
                                       setState(
@@ -136,9 +138,23 @@ class _MakeInstagramState extends State<MakeInstagram> {
                                       );
                                     }
                                   },
-                                  child: const Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 18),
-                                    child: Text('Create QR Code'),
+                                  icon: Icon(
+                                    Icons.touch_app,
+                                    size: (isScreenWidth(context)) ? 24 : 30,
+                                  ),
+                                  label: Padding(
+                                    padding: (isScreenWidth(context))
+                                        ? const EdgeInsets.symmetric(
+                                            vertical: 18)
+                                        : const EdgeInsets.symmetric(
+                                            vertical: 20),
+                                    child: Text(
+                                      'Create QR Code',
+                                      style: TextStyle(
+                                          fontSize: (isScreenWidth(context))
+                                              ? 18
+                                              : 26),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -200,10 +216,7 @@ class _MakeInstagramState extends State<MakeInstagram> {
                                 keyboardType: TextInputType.url,
                                 textInputAction: TextInputAction.next,
                                 cursorColor: Theme.of(context).primaryColor,
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'https://www.instagram.com/...',
                                   filled: true,
@@ -224,6 +237,7 @@ class _MakeInstagramState extends State<MakeInstagram> {
                                             Icons.close,
                                             color:
                                                 Theme.of(context).primaryColor,
+                                            size: 30,
                                           ),
                                         ),
                                   border: const OutlineInputBorder(),
@@ -239,7 +253,7 @@ class _MakeInstagramState extends State<MakeInstagram> {
                             Card(
                               child: SizedBox(
                                 width: double.infinity,
-                                child: ElevatedButton(
+                                child: ElevatedButton.icon(
                                   onPressed: () {
                                     if (validateKey.currentState!.validate()) {
                                       setState(
@@ -256,9 +270,18 @@ class _MakeInstagramState extends State<MakeInstagram> {
                                       );
                                     }
                                   },
-                                  child: const Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 18),
-                                    child: Text('Create QR Code'),
+                                  icon: const Icon(
+                                    Icons.touch_app,
+                                    size: 30,
+                                  ),
+                                  label: const Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 20),
+                                    child: Text(
+                                      'Create QR Code',
+                                      style: TextStyle(
+                                        fontSize: 26,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),

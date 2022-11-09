@@ -162,10 +162,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_native_splash
-      sha256: dc64aa215301ab22ef9ab14f9e87cb0175f937173d68de7971ba2ec5a4840195
+      sha256: "13e50afa9e94912f319ec0944182c55843ce32ebce9bb857a2ee4f8b9f19bb26"
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.13"
+    version: "2.2.14"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -801,10 +801,10 @@ packages:
     dependency: transitive
     description:
       name: win32
-      sha256: "9555cd63283445e101f0df32105862fdc0b30adb9b84fd0553e9433b3e074d4c"
+      sha256: d13ac5deea7327f027b3b97ee19ee210f68256ecf3f1a304bcfb992ee947637c
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.1"
+    version: "3.1.1"
   xdg_directories:
     dependency: transitive
     description:
@@ -817,10 +817,10 @@ packages:
     dependency: transitive
     description:
       name: xml
-      sha256: "1a235945f0831980f690291fe7744e440d73acb20fc18b923cea373f391a2837"
+      sha256: "0be2cc68212206ab22f700a706782f79a303fb7d4b51279ac394bcc5545f273f"
       url: "https://pub.dev"
     source: hosted
-    version: "6.2.0"
+    version: "6.2.1"
   yaml:
     dependency: transitive
     description:

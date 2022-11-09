@@ -158,41 +158,7 @@ class _MainQrState extends State<MainQr> {
                               //     ),
                               //   ),
                               // ),
-                              Card(
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 20,
-                                      vertical: isScreenWidth(context) ? 5 : 10,
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'Dark Theme',
-                                          style: (isScreenWidth(context))
-                                              ? Theme.of(context)
-                                                  .textTheme
-                                                  .displaySmall
-                                              : Theme.of(context)
-                                                  .textTheme
-                                                  .displayMedium,
-                                        ),
-                                        Switch(
-                                          value: themeController.initValue,
-                                          onChanged:
-                                              themeController.switchTheme,
-                                          activeTrackColor: Colors.white54,
-                                          inactiveTrackColor:
-                                              Colors.grey.shade900,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
+
                               Card(
                                 child: SizedBox(
                                   width: double.infinity,
@@ -228,6 +194,41 @@ class _MainQrState extends State<MainQr> {
                                             inactiveTrackColor:
                                                 Colors.grey.shade900,
                                           ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Card(
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 20,
+                                      vertical: isScreenWidth(context) ? 5 : 10,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Dark Theme',
+                                          style: (isScreenWidth(context))
+                                              ? Theme.of(context)
+                                                  .textTheme
+                                                  .displaySmall
+                                              : Theme.of(context)
+                                                  .textTheme
+                                                  .displayMedium,
+                                        ),
+                                        Switch(
+                                          value: themeController.initValue,
+                                          onChanged:
+                                              themeController.switchTheme,
+                                          activeTrackColor: Colors.white54,
+                                          inactiveTrackColor:
+                                              Colors.grey.shade900,
                                         ),
                                       ],
                                     ),
@@ -309,10 +310,10 @@ class _MainQrState extends State<MainQr> {
                           height: 50,
                           child: Center(
                             child: Text(
-                              'App Version 1.8.1',
+                              'App Version 1.8.2',
                               style: (isScreenWidth(context))
-                                  ? Theme.of(context).textTheme.titleSmall
-                                  : Theme.of(context).textTheme.titleMedium,
+                                  ? Theme.of(context).textTheme.bodySmall
+                                  : Theme.of(context).textTheme.bodyMedium,
                             ),
                           ),
                         ),
@@ -329,20 +330,25 @@ class _MainQrState extends State<MainQr> {
                       },
                     );
                   },
-                  items: const [
+                  items: [
                     BottomNavigationBarItem(
                       icon: Icon(
                         Icons.qr_code_scanner,
+                        size: (isScreenWidth(context)) ? 24 : 30,
                       ),
                       label: 'Scan',
                     ),
                     BottomNavigationBarItem(
-                      icon: Icon(Icons.qr_code),
+                      icon: Icon(
+                        Icons.qr_code,
+                        size: (isScreenWidth(context)) ? 24 : 30,
+                      ),
                       label: 'Make',
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(
                         Icons.favorite,
+                        size: (isScreenWidth(context)) ? 24 : 30,
                       ),
                       label: 'Favorite',
                     ),
@@ -414,37 +420,7 @@ class _MainQrState extends State<MainQr> {
                               //     ),
                               //   ),
                               // ),
-                              Card(
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 20,
-                                      vertical: 10,
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'Dark Theme',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .displayMedium,
-                                        ),
-                                        Switch(
-                                          value: themeController.initValue,
-                                          onChanged:
-                                              themeController.switchTheme,
-                                          activeTrackColor: Colors.white54,
-                                          inactiveTrackColor:
-                                              Colors.grey.shade900,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
+
                               Card(
                                 child: SizedBox(
                                   width: double.infinity,
@@ -476,6 +452,37 @@ class _MainQrState extends State<MainQr> {
                                             inactiveTrackColor:
                                                 Colors.grey.shade900,
                                           ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Card(
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 20,
+                                      vertical: 10,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Dark Theme',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .displayMedium,
+                                        ),
+                                        Switch(
+                                          value: themeController.initValue,
+                                          onChanged:
+                                              themeController.switchTheme,
+                                          activeTrackColor: Colors.white54,
+                                          inactiveTrackColor:
+                                              Colors.grey.shade900,
                                         ),
                                       ],
                                     ),
@@ -557,8 +564,8 @@ class _MainQrState extends State<MainQr> {
                           height: 50,
                           child: Center(
                             child: Text(
-                              'App Version 1.8.1',
-                              style: Theme.of(context).textTheme.titleMedium,
+                              'App Version 1.8.2',
+                              style: Theme.of(context).textTheme.bodyMedium,
                             ),
                           ),
                         ),
@@ -579,16 +586,21 @@ class _MainQrState extends State<MainQr> {
                     BottomNavigationBarItem(
                       icon: Icon(
                         Icons.qr_code_scanner,
+                        size: 30,
                       ),
                       label: 'Scan',
                     ),
                     BottomNavigationBarItem(
-                      icon: Icon(Icons.qr_code),
+                      icon: Icon(
+                        Icons.qr_code,
+                        size: 30,
+                      ),
                       label: 'Make',
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(
                         Icons.favorite,
+                        size: 30,
                       ),
                       label: 'Favorite',
                     ),

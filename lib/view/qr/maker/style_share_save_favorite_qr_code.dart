@@ -176,23 +176,23 @@ class _StyleShareSaveFavoriteQrCodeState
                                       editQrCode = !editQrCode;
                                     });
                                   },
-                                  label: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 18),
-                                    child: Text(
-                                      'Edit QR Code',
-                                      style: (isScreenWidth(context))
-                                          ? Theme.of(context)
-                                              .textTheme
-                                              .displaySmall
-                                          : Theme.of(context)
-                                              .textTheme
-                                              .displayMedium,
-                                    ),
-                                  ),
                                   icon: Icon(
                                     Icons.edit,
-                                    size: (isScreenWidth(context)) ? 30 : 35,
+                                    size: (isScreenWidth(context)) ? 24 : 30,
+                                  ),
+                                  label: Padding(
+                                    padding: (isScreenWidth(context))
+                                        ? const EdgeInsets.symmetric(
+                                            vertical: 18)
+                                        : const EdgeInsets.symmetric(
+                                            vertical: 20),
+                                    child: Text(
+                                      'Edit QR Code',
+                                      style: TextStyle(
+                                        fontSize:
+                                            (isScreenWidth(context)) ? 18 : 26,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -422,8 +422,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                                 icon: Icon(
                                                   Icons.add_photo_alternate,
                                                   size: (isScreenWidth(context))
-                                                      ? 30
-                                                      : 35,
+                                                      ? 24
+                                                      : 30,
                                                   color: Colors.white,
                                                 ),
                                               )
@@ -485,8 +485,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                                 icon: Icon(
                                                   Icons.add_a_photo,
                                                   size: (isScreenWidth(context))
-                                                      ? 30
-                                                      : 35,
+                                                      ? 24
+                                                      : 30,
                                                   color: Colors.white,
                                                 ),
                                               )
@@ -669,8 +669,18 @@ class _StyleShareSaveFavoriteQrCodeState
                                                     onPressed: () {
                                                       Navigator.pop(context);
                                                     },
-                                                    child: const Text('Select'),
-                                                  )
+                                                    child: Text(
+                                                      'Select',
+                                                      style: (isScreenWidth(
+                                                              context))
+                                                          ? Theme.of(context)
+                                                              .textTheme
+                                                              .displaySmall
+                                                          : Theme.of(context)
+                                                              .textTheme
+                                                              .displayMedium,
+                                                    ),
+                                                  ),
                                                 ],
                                               ),
                                             );
@@ -678,8 +688,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                           icon: Icon(
                                             Icons.color_lens,
                                             size: (isScreenWidth(context))
-                                                ? 30
-                                                : 35,
+                                                ? 24
+                                                : 30,
                                             color: eyesColor,
                                           ),
                                         )
@@ -751,7 +761,17 @@ class _StyleShareSaveFavoriteQrCodeState
                                                     onPressed: () {
                                                       Navigator.pop(context);
                                                     },
-                                                    child: const Text('Select'),
+                                                    child: Text(
+                                                      'Select',
+                                                      style: (isScreenWidth(
+                                                              context))
+                                                          ? Theme.of(context)
+                                                              .textTheme
+                                                              .displaySmall
+                                                          : Theme.of(context)
+                                                              .textTheme
+                                                              .displayMedium,
+                                                    ),
                                                   )
                                                 ],
                                               ),
@@ -760,8 +780,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                           icon: Icon(
                                             Icons.color_lens,
                                             size: (isScreenWidth(context))
-                                                ? 30
-                                                : 35,
+                                                ? 24
+                                                : 30,
                                             color: dataColor,
                                           ),
                                         )
@@ -834,7 +854,17 @@ class _StyleShareSaveFavoriteQrCodeState
                                                     onPressed: () {
                                                       Navigator.pop(context);
                                                     },
-                                                    child: const Text('Select'),
+                                                    child: Text(
+                                                      'Select',
+                                                      style: (isScreenWidth(
+                                                              context))
+                                                          ? Theme.of(context)
+                                                              .textTheme
+                                                              .displaySmall
+                                                          : Theme.of(context)
+                                                              .textTheme
+                                                              .displayMedium,
+                                                    ),
                                                   )
                                                 ],
                                               ),
@@ -843,8 +873,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                           icon: Icon(
                                             Icons.color_lens,
                                             size: (isScreenWidth(context))
-                                                ? 30
-                                                : 35,
+                                                ? 24
+                                                : 30,
                                             color: backgroundColor,
                                           ),
                                         )
@@ -872,24 +902,25 @@ class _StyleShareSaveFavoriteQrCodeState
                                         saveQrCodeController.saveQrCode(image!);
                                         vibrationController.vibration();
                                       },
-                                      label: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 18),
-                                        child: Text(
-                                          'Save QR Code',
-                                          style: (isScreenWidth(context))
-                                              ? Theme.of(context)
-                                                  .textTheme
-                                                  .displaySmall
-                                              : Theme.of(context)
-                                                  .textTheme
-                                                  .displayMedium,
-                                        ),
-                                      ),
                                       icon: Icon(
                                         Icons.save,
                                         size:
-                                            (isScreenWidth(context)) ? 30 : 35,
+                                            (isScreenWidth(context)) ? 24 : 30,
+                                      ),
+                                      label: Padding(
+                                        padding: (isScreenWidth(context))
+                                            ? const EdgeInsets.symmetric(
+                                                vertical: 18)
+                                            : const EdgeInsets.symmetric(
+                                                vertical: 20),
+                                        child: Text(
+                                          'Save QR Code',
+                                          style: TextStyle(
+                                            fontSize: (isScreenWidth(context))
+                                                ? 18
+                                                : 26,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -913,24 +944,25 @@ class _StyleShareSaveFavoriteQrCodeState
                                         controller.shareQrCode(image!);
                                         vibrationController.vibration();
                                       },
-                                      label: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 18),
-                                        child: Text(
-                                          'Share QR Code',
-                                          style: (isScreenWidth(context))
-                                              ? Theme.of(context)
-                                                  .textTheme
-                                                  .displaySmall
-                                              : Theme.of(context)
-                                                  .textTheme
-                                                  .displayMedium,
-                                        ),
-                                      ),
                                       icon: Icon(
                                         Icons.share,
                                         size:
-                                            (isScreenWidth(context)) ? 30 : 35,
+                                            (isScreenWidth(context)) ? 24 : 30,
+                                      ),
+                                      label: Padding(
+                                        padding: (isScreenWidth(context))
+                                            ? const EdgeInsets.symmetric(
+                                                vertical: 18)
+                                            : const EdgeInsets.symmetric(
+                                                vertical: 20),
+                                        child: Text(
+                                          'Share QR Code',
+                                          style: TextStyle(
+                                            fontSize: (isScreenWidth(context))
+                                                ? 18
+                                                : 26,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -952,23 +984,24 @@ class _StyleShareSaveFavoriteQrCodeState
                                           .addQrCodeImageToFavorite(image!);
                                       vibrationController.vibration();
                                     },
-                                    label: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 18),
-                                      child: Text(
-                                        'Add To Favorite',
-                                        style: (isScreenWidth(context))
-                                            ? Theme.of(context)
-                                                .textTheme
-                                                .displaySmall
-                                            : Theme.of(context)
-                                                .textTheme
-                                                .displayMedium,
-                                      ),
-                                    ),
                                     icon: Icon(
                                       Icons.favorite,
-                                      size: (isScreenWidth(context)) ? 30 : 35,
+                                      size: (isScreenWidth(context)) ? 24 : 30,
+                                    ),
+                                    label: Padding(
+                                      padding: (isScreenWidth(context))
+                                          ? const EdgeInsets.symmetric(
+                                              vertical: 18)
+                                          : const EdgeInsets.symmetric(
+                                              vertical: 20),
+                                      child: Text(
+                                        'Add To Favorite',
+                                        style: TextStyle(
+                                          fontSize: (isScreenWidth(context))
+                                              ? 18
+                                              : 26,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -1101,19 +1134,20 @@ class _StyleShareSaveFavoriteQrCodeState
                                       editQrCode = !editQrCode;
                                     });
                                   },
-                                  label: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 18),
-                                    child: Text(
-                                      'Edit QR Code',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .displayMedium,
-                                    ),
-                                  ),
                                   icon: const Icon(
                                     Icons.edit,
-                                    size: 35,
+                                    size: 30,
+                                  ),
+                                  label: const Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: 20,
+                                    ),
+                                    child: Text(
+                                      'Edit QR Code',
+                                      style: TextStyle(
+                                        fontSize: 26,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -1320,7 +1354,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                                 },
                                                 icon: const Icon(
                                                   Icons.add_photo_alternate,
-                                                  size: 35,
+                                                  size: 30,
                                                   color: Colors.white,
                                                 ),
                                               )
@@ -1375,7 +1409,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                                 },
                                                 icon: const Icon(
                                                   Icons.add_a_photo,
-                                                  size: 35,
+                                                  size: 30,
                                                   color: Colors.white,
                                                 ),
                                               )
@@ -1535,7 +1569,12 @@ class _StyleShareSaveFavoriteQrCodeState
                                                     onPressed: () {
                                                       Navigator.pop(context);
                                                     },
-                                                    child: const Text('Select'),
+                                                    child: Text(
+                                                      'Select',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .displayMedium,
+                                                    ),
                                                   )
                                                 ],
                                               ),
@@ -1543,7 +1582,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           },
                                           icon: Icon(
                                             Icons.color_lens,
-                                            size: 35,
+                                            size: 30,
                                             color: eyesColor,
                                           ),
                                         )
@@ -1608,7 +1647,12 @@ class _StyleShareSaveFavoriteQrCodeState
                                                     onPressed: () {
                                                       Navigator.pop(context);
                                                     },
-                                                    child: const Text('Select'),
+                                                    child: Text(
+                                                      'Select',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .displayMedium,
+                                                    ),
                                                   )
                                                 ],
                                               ),
@@ -1616,7 +1660,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           },
                                           icon: Icon(
                                             Icons.color_lens,
-                                            size: 35,
+                                            size: 30,
                                             color: dataColor,
                                           ),
                                         )
@@ -1682,7 +1726,12 @@ class _StyleShareSaveFavoriteQrCodeState
                                                     onPressed: () {
                                                       Navigator.pop(context);
                                                     },
-                                                    child: const Text('Select'),
+                                                    child: Text(
+                                                      'Select',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .displayMedium,
+                                                    ),
                                                   )
                                                 ],
                                               ),
@@ -1690,7 +1739,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           },
                                           icon: Icon(
                                             Icons.color_lens,
-                                            size: 35,
+                                            size: 30,
                                             color: backgroundColor,
                                           ),
                                         )
@@ -1717,19 +1766,20 @@ class _StyleShareSaveFavoriteQrCodeState
                                         controller.saveQrCode(image!);
                                         vibrationController.vibration();
                                       },
-                                      label: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 18),
-                                        child: Text(
-                                          'Save QR Code',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .displayMedium,
-                                        ),
-                                      ),
                                       icon: const Icon(
                                         Icons.save,
-                                        size: 35,
+                                        size: 30,
+                                      ),
+                                      label: const Padding(
+                                        padding: EdgeInsets.symmetric(
+                                          vertical: 20,
+                                        ),
+                                        child: Text(
+                                          'Save QR Code',
+                                          style: TextStyle(
+                                            fontSize: 26,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -1753,19 +1803,20 @@ class _StyleShareSaveFavoriteQrCodeState
                                         controller.shareQrCode(image!);
                                         vibrationController.vibration();
                                       },
-                                      label: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 18),
-                                        child: Text(
-                                          'Share QR Code',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .displayMedium,
-                                        ),
-                                      ),
                                       icon: const Icon(
                                         Icons.share,
-                                        size: 35,
+                                        size: 30,
+                                      ),
+                                      label: const Padding(
+                                        padding: EdgeInsets.symmetric(
+                                          vertical: 20,
+                                        ),
+                                        child: Text(
+                                          'Share QR Code',
+                                          style: TextStyle(
+                                            fontSize: 26,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -1787,19 +1838,20 @@ class _StyleShareSaveFavoriteQrCodeState
                                           .addQrCodeImageToFavorite(image!);
                                       vibrationController.vibration();
                                     },
-                                    label: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 18),
-                                      child: Text(
-                                        'Add To Favorite',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .displayMedium,
-                                      ),
-                                    ),
                                     icon: const Icon(
                                       Icons.favorite,
-                                      size: 35,
+                                      size: 30,
+                                    ),
+                                    label: const Padding(
+                                      padding: EdgeInsets.symmetric(
+                                        vertical: 20,
+                                      ),
+                                      child: Text(
+                                        'Add To Favorite',
+                                        style: TextStyle(
+                                          fontSize: 26,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),

@@ -117,10 +117,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   keyboardType: TextInputType.name,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Theme.of(context).primaryColor,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.titleSmall
+                                      : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'Full Name ',
                                     filled: true,
@@ -128,7 +127,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.person,
                                       color: Theme.of(context).primaryColor,
-                                      size: 30,
+                                      size: (isScreenWidth(context)) ? 24 : 30,
                                     ),
                                     suffixIcon: nameController.text.isEmpty
                                         ? Container(
@@ -141,6 +140,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: (isScreenWidth(context))
+                                                  ? 26
+                                                  : 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -160,10 +162,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   keyboardType: TextInputType.emailAddress,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Theme.of(context).primaryColor,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.titleSmall
+                                      : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'name@mail.com',
                                     filled: true,
@@ -171,7 +172,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.email,
                                       color: Theme.of(context).primaryColor,
-                                      size: 30,
+                                      size: (isScreenWidth(context)) ? 24 : 30,
                                     ),
                                     suffixIcon: emailController.text.isEmpty
                                         ? Container(
@@ -184,6 +185,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: (isScreenWidth(context))
+                                                  ? 24
+                                                  : 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -216,15 +220,12 @@ class _MakeVCardState extends State<MakeVCard> {
                                   flagsButtonPadding: const EdgeInsets.only(
                                     left: 10,
                                   ),
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  dropdownTextStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
+                                  style: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.titleSmall
+                                      : Theme.of(context).textTheme.titleMedium,
+                                  dropdownTextStyle: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.titleSmall
+                                      : Theme.of(context).textTheme.titleMedium,
                                   pickerDialogStyle: PickerDialogStyle(
                                     width: isScreenWidth(context)
                                         ? double.infinity
@@ -270,6 +271,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: (isScreenWidth(context))
+                                                  ? 24
+                                                  : 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -306,15 +310,12 @@ class _MakeVCardState extends State<MakeVCard> {
                                   flagsButtonPadding: const EdgeInsets.only(
                                     left: 10,
                                   ),
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  dropdownTextStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
+                                  style: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.titleSmall
+                                      : Theme.of(context).textTheme.titleMedium,
+                                  dropdownTextStyle: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.titleSmall
+                                      : Theme.of(context).textTheme.titleMedium,
                                   pickerDialogStyle: PickerDialogStyle(
                                     width: isScreenWidth(context)
                                         ? double.infinity
@@ -360,6 +361,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: (isScreenWidth(context))
+                                                  ? 24
+                                                  : 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -396,15 +400,12 @@ class _MakeVCardState extends State<MakeVCard> {
                                   flagsButtonPadding: const EdgeInsets.only(
                                     left: 10,
                                   ),
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  dropdownTextStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
+                                  style: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.titleSmall
+                                      : Theme.of(context).textTheme.titleMedium,
+                                  dropdownTextStyle: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.titleSmall
+                                      : Theme.of(context).textTheme.titleMedium,
                                   pickerDialogStyle: PickerDialogStyle(
                                     width: isScreenWidth(context)
                                         ? double.infinity
@@ -450,6 +451,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: (isScreenWidth(context))
+                                                  ? 24
+                                                  : 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -486,15 +490,12 @@ class _MakeVCardState extends State<MakeVCard> {
                                   flagsButtonPadding: const EdgeInsets.only(
                                     left: 10,
                                   ),
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  dropdownTextStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
+                                  style: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.titleSmall
+                                      : Theme.of(context).textTheme.titleMedium,
+                                  dropdownTextStyle: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.titleSmall
+                                      : Theme.of(context).textTheme.titleMedium,
                                   pickerDialogStyle: PickerDialogStyle(
                                     width: isScreenWidth(context)
                                         ? double.infinity
@@ -540,6 +541,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: (isScreenWidth(context))
+                                                  ? 24
+                                                  : 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -563,10 +567,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   keyboardType: TextInputType.datetime,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Theme.of(context).primaryColor,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.titleSmall
+                                      : Theme.of(context).textTheme.titleMedium,
                                   onTap: () async {
                                     // Below line stops keyboard from appearing
                                     FocusScope.of(context)
@@ -600,7 +603,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.date_range,
                                       color: Theme.of(context).primaryColor,
-                                      size: 30,
+                                      size: (isScreenWidth(context)) ? 24 : 30,
                                     ),
                                     border: const OutlineInputBorder(),
                                     focusedBorder: OutlineInputBorder(
@@ -619,10 +622,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   keyboardType: TextInputType.url,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Theme.of(context).primaryColor,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.titleSmall
+                                      : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'https://www.example.com/',
                                     filled: true,
@@ -630,7 +632,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.link,
                                       color: Theme.of(context).primaryColor,
-                                      size: 30,
+                                      size: (isScreenWidth(context)) ? 24 : 30,
                                     ),
                                     suffixIcon: urlController.text.isEmpty
                                         ? Container(
@@ -643,6 +645,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: (isScreenWidth(context))
+                                                  ? 24
+                                                  : 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -662,10 +667,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   keyboardType: TextInputType.streetAddress,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Theme.of(context).primaryColor,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.titleSmall
+                                      : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'Street address',
                                     filled: true,
@@ -673,7 +677,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
-                                      size: 30,
+                                      size: (isScreenWidth(context)) ? 24 : 30,
                                     ),
                                     suffixIcon: streetController.text.isEmpty
                                         ? Container(
@@ -686,6 +690,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: (isScreenWidth(context))
+                                                  ? 24
+                                                  : 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -705,10 +712,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   keyboardType: TextInputType.streetAddress,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Theme.of(context).primaryColor,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.titleSmall
+                                      : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'Zip code',
                                     filled: true,
@@ -716,7 +722,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
-                                      size: 30,
+                                      size: (isScreenWidth(context)) ? 24 : 30,
                                     ),
                                     suffixIcon: zipController.text.isEmpty
                                         ? Container(
@@ -729,6 +735,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: (isScreenWidth(context))
+                                                  ? 24
+                                                  : 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -748,10 +757,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   keyboardType: TextInputType.streetAddress,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Theme.of(context).primaryColor,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.titleSmall
+                                      : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'City',
                                     filled: true,
@@ -759,7 +767,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
-                                      size: 30,
+                                      size: (isScreenWidth(context)) ? 24 : 30,
                                     ),
                                     suffixIcon: cityController.text.isEmpty
                                         ? Container(
@@ -772,6 +780,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: (isScreenWidth(context))
+                                                  ? 24
+                                                  : 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -791,10 +802,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   keyboardType: TextInputType.streetAddress,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Theme.of(context).primaryColor,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.titleSmall
+                                      : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'State',
                                     filled: true,
@@ -802,7 +812,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
-                                      size: 30,
+                                      size: (isScreenWidth(context)) ? 24 : 30,
                                     ),
                                     suffixIcon: stateController.text.isEmpty
                                         ? Container(
@@ -815,6 +825,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: (isScreenWidth(context))
+                                                  ? 24
+                                                  : 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -834,10 +847,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   keyboardType: TextInputType.streetAddress,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Theme.of(context).primaryColor,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.titleSmall
+                                      : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'Country',
                                     filled: true,
@@ -845,7 +857,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
-                                      size: 30,
+                                      size: (isScreenWidth(context)) ? 24 : 30,
                                     ),
                                     suffixIcon: countryController.text.isEmpty
                                         ? Container(
@@ -858,6 +870,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: (isScreenWidth(context))
+                                                  ? 24
+                                                  : 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -873,7 +888,7 @@ class _MakeVCardState extends State<MakeVCard> {
                               Card(
                                 child: SizedBox(
                                   width: double.infinity,
-                                  child: ElevatedButton(
+                                  child: ElevatedButton.icon(
                                     onPressed: () {
                                       if (validateKey.currentState!
                                           .validate()) {
@@ -904,10 +919,23 @@ class _MakeVCardState extends State<MakeVCard> {
                                         );
                                       }
                                     },
-                                    child: const Padding(
-                                      padding:
-                                          EdgeInsets.symmetric(vertical: 18),
-                                      child: Text('Create QR Code'),
+                                    icon: Icon(
+                                      Icons.touch_app,
+                                      size: (isScreenWidth(context)) ? 24 : 30,
+                                    ),
+                                    label: Padding(
+                                      padding: (isScreenWidth(context))
+                                          ? const EdgeInsets.symmetric(
+                                              vertical: 18)
+                                          : const EdgeInsets.symmetric(
+                                              vertical: 20),
+                                      child: Text(
+                                        'Create QR Code',
+                                        style: TextStyle(
+                                            fontSize: (isScreenWidth(context))
+                                                ? 18
+                                                : 26),
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -974,10 +1002,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                   keyboardType: TextInputType.name,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Theme.of(context).primaryColor,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'Full Name ',
                                     filled: true,
@@ -998,6 +1024,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -1017,10 +1044,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                   keyboardType: TextInputType.emailAddress,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Theme.of(context).primaryColor,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'name@mail.com',
                                     filled: true,
@@ -1041,6 +1066,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -1073,15 +1099,10 @@ class _MakeVCardState extends State<MakeVCard> {
                                   flagsButtonPadding: const EdgeInsets.only(
                                     left: 10,
                                   ),
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  dropdownTextStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
+                                  dropdownTextStyle:
+                                      Theme.of(context).textTheme.titleMedium,
                                   pickerDialogStyle: PickerDialogStyle(
                                     width: 500,
                                     searchFieldCursorColor: Colors.white,
@@ -1125,6 +1146,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -1161,15 +1183,10 @@ class _MakeVCardState extends State<MakeVCard> {
                                   flagsButtonPadding: const EdgeInsets.only(
                                     left: 10,
                                   ),
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  dropdownTextStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
+                                  dropdownTextStyle:
+                                      Theme.of(context).textTheme.titleMedium,
                                   pickerDialogStyle: PickerDialogStyle(
                                     width: 500,
                                     searchFieldCursorColor: Colors.white,
@@ -1213,6 +1230,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -1249,15 +1267,10 @@ class _MakeVCardState extends State<MakeVCard> {
                                   flagsButtonPadding: const EdgeInsets.only(
                                     left: 10,
                                   ),
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  dropdownTextStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
+                                  dropdownTextStyle:
+                                      Theme.of(context).textTheme.titleMedium,
                                   pickerDialogStyle: PickerDialogStyle(
                                     width: 500,
                                     searchFieldCursorColor: Colors.white,
@@ -1301,6 +1314,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -1337,15 +1351,10 @@ class _MakeVCardState extends State<MakeVCard> {
                                   flagsButtonPadding: const EdgeInsets.only(
                                     left: 10,
                                   ),
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  dropdownTextStyle: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
+                                  dropdownTextStyle:
+                                      Theme.of(context).textTheme.titleMedium,
                                   pickerDialogStyle: PickerDialogStyle(
                                     width: 500,
                                     searchFieldCursorColor: Colors.white,
@@ -1389,6 +1398,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -1412,10 +1422,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                   keyboardType: TextInputType.datetime,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Theme.of(context).primaryColor,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
                                   onTap: () async {
                                     // Below line stops keyboard from appearing
                                     FocusScope.of(context)
@@ -1468,10 +1476,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                   keyboardType: TextInputType.url,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Theme.of(context).primaryColor,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'https://www.example.com/',
                                     filled: true,
@@ -1492,6 +1498,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -1511,10 +1518,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                   keyboardType: TextInputType.streetAddress,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Theme.of(context).primaryColor,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'Street address',
                                     filled: true,
@@ -1535,6 +1540,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -1554,10 +1560,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                   keyboardType: TextInputType.streetAddress,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Theme.of(context).primaryColor,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'Zip code',
                                     filled: true,
@@ -1578,6 +1582,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -1597,10 +1602,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                   keyboardType: TextInputType.streetAddress,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Theme.of(context).primaryColor,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'City',
                                     filled: true,
@@ -1621,6 +1624,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -1640,10 +1644,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                   keyboardType: TextInputType.streetAddress,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Theme.of(context).primaryColor,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'State',
                                     filled: true,
@@ -1664,6 +1666,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -1683,10 +1686,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                   keyboardType: TextInputType.streetAddress,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Theme.of(context).primaryColor,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'Country',
                                     filled: true,
@@ -1707,6 +1708,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                               Icons.close,
                                               color: Theme.of(context)
                                                   .primaryColor,
+                                              size: 30,
                                             ),
                                           ),
                                     border: const OutlineInputBorder(),
@@ -1722,7 +1724,7 @@ class _MakeVCardState extends State<MakeVCard> {
                               Card(
                                 child: SizedBox(
                                   width: double.infinity,
-                                  child: ElevatedButton(
+                                  child: ElevatedButton.icon(
                                     onPressed: () {
                                       if (validateKey.currentState!
                                           .validate()) {
@@ -1753,10 +1755,19 @@ class _MakeVCardState extends State<MakeVCard> {
                                         );
                                       }
                                     },
-                                    child: const Padding(
+                                    icon: const Icon(
+                                      Icons.touch_app,
+                                      size: 30,
+                                    ),
+                                    label: const Padding(
                                       padding:
-                                          EdgeInsets.symmetric(vertical: 18),
-                                      child: Text('Create QR Code'),
+                                          EdgeInsets.symmetric(vertical: 20),
+                                      child: Text(
+                                        'Create QR Code',
+                                        style: TextStyle(
+                                          fontSize: 26,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),

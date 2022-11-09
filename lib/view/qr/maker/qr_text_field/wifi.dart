@@ -83,10 +83,9 @@ class _MakeWifiState extends State<MakeWifi> {
                                 keyboardType: TextInputType.text,
                                 textInputAction: TextInputAction.next,
                                 cursorColor: Theme.of(context).primaryColor,
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style: (isScreenWidth(context))
+                                    ? Theme.of(context).textTheme.titleSmall
+                                    : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'Wifi Name',
                                   filled: true,
@@ -94,7 +93,7 @@ class _MakeWifiState extends State<MakeWifi> {
                                   prefixIcon: Icon(
                                     Icons.wifi,
                                     color: Theme.of(context).primaryColor,
-                                    size: 30,
+                                    size: (isScreenWidth(context)) ? 24 : 30,
                                   ),
                                   suffixIcon: nameNetController.text.isEmpty
                                       ? Container(
@@ -107,6 +106,9 @@ class _MakeWifiState extends State<MakeWifi> {
                                             Icons.close,
                                             color:
                                                 Theme.of(context).primaryColor,
+                                            size: (isScreenWidth(context))
+                                                ? 24
+                                                : 30,
                                           ),
                                         ),
                                   border: const OutlineInputBorder(),
@@ -134,10 +136,9 @@ class _MakeWifiState extends State<MakeWifi> {
                                 textInputAction: TextInputAction.next,
                                 keyboardType: TextInputType.visiblePassword,
                                 cursorColor: Theme.of(context).primaryColor,
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style: (isScreenWidth(context))
+                                    ? Theme.of(context).textTheme.titleSmall
+                                    : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'Wifi Password',
                                   filled: true,
@@ -145,7 +146,7 @@ class _MakeWifiState extends State<MakeWifi> {
                                   prefixIcon: Icon(
                                     Icons.wifi_password,
                                     color: Theme.of(context).primaryColor,
-                                    size: 30,
+                                    size: (isScreenWidth(context)) ? 24 : 30,
                                   ),
                                   suffixIcon: passNetController.text.isEmpty
                                       ? Container(
@@ -158,6 +159,9 @@ class _MakeWifiState extends State<MakeWifi> {
                                             Icons.close,
                                             color:
                                                 Theme.of(context).primaryColor,
+                                            size: (isScreenWidth(context))
+                                                ? 24
+                                                : 30,
                                           ),
                                         ),
                                   border: const OutlineInputBorder(),
@@ -188,7 +192,8 @@ class _MakeWifiState extends State<MakeWifi> {
                                       child: Icon(
                                         Icons.security,
                                         color: Theme.of(context).primaryColor,
-                                        size: 30,
+                                        size:
+                                            (isScreenWidth(context)) ? 24 : 30,
                                       ),
                                     ),
                                     Expanded(
@@ -224,10 +229,13 @@ class _MakeWifiState extends State<MakeWifi> {
                                               value: value,
                                               child: Text(
                                                 value,
-                                                style: const TextStyle(
-                                                  color: Colors.black,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
+                                                style: (isScreenWidth(context))
+                                                    ? Theme.of(context)
+                                                        .textTheme
+                                                        .titleSmall
+                                                    : Theme.of(context)
+                                                        .textTheme
+                                                        .titleMedium,
                                               ),
                                             );
                                           },
@@ -241,7 +249,7 @@ class _MakeWifiState extends State<MakeWifi> {
                             Card(
                               child: SizedBox(
                                 width: double.infinity,
-                                child: ElevatedButton(
+                                child: ElevatedButton.icon(
                                   onPressed: () {
                                     if (validateKey.currentState!.validate()) {
                                       setState(
@@ -265,9 +273,23 @@ class _MakeWifiState extends State<MakeWifi> {
                                       );
                                     }
                                   },
-                                  child: const Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 18),
-                                    child: Text('Create QR Code'),
+                                  icon: Icon(
+                                    Icons.touch_app,
+                                    size: (isScreenWidth(context)) ? 24 : 30,
+                                  ),
+                                  label: Padding(
+                                    padding: (isScreenWidth(context))
+                                        ? const EdgeInsets.symmetric(
+                                            vertical: 18)
+                                        : const EdgeInsets.symmetric(
+                                            vertical: 20),
+                                    child: Text(
+                                      'Create QR Code',
+                                      style: TextStyle(
+                                          fontSize: (isScreenWidth(context))
+                                              ? 18
+                                              : 26),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -329,10 +351,7 @@ class _MakeWifiState extends State<MakeWifi> {
                                 keyboardType: TextInputType.text,
                                 textInputAction: TextInputAction.next,
                                 cursorColor: Theme.of(context).primaryColor,
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'Wifi Name',
                                   filled: true,
@@ -353,6 +372,7 @@ class _MakeWifiState extends State<MakeWifi> {
                                             Icons.close,
                                             color:
                                                 Theme.of(context).primaryColor,
+                                            size: 30,
                                           ),
                                         ),
                                   border: const OutlineInputBorder(),
@@ -380,10 +400,7 @@ class _MakeWifiState extends State<MakeWifi> {
                                 textInputAction: TextInputAction.next,
                                 keyboardType: TextInputType.visiblePassword,
                                 cursorColor: Theme.of(context).primaryColor,
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'Wifi Password',
                                   filled: true,
@@ -404,6 +421,7 @@ class _MakeWifiState extends State<MakeWifi> {
                                             Icons.close,
                                             color:
                                                 Theme.of(context).primaryColor,
+                                            size: 30,
                                           ),
                                         ),
                                   border: const OutlineInputBorder(),
@@ -470,10 +488,9 @@ class _MakeWifiState extends State<MakeWifi> {
                                               value: value,
                                               child: Text(
                                                 value,
-                                                style: const TextStyle(
-                                                  color: Colors.black,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleMedium,
                                               ),
                                             );
                                           },
@@ -487,7 +504,7 @@ class _MakeWifiState extends State<MakeWifi> {
                             Card(
                               child: SizedBox(
                                 width: double.infinity,
-                                child: ElevatedButton(
+                                child: ElevatedButton.icon(
                                   onPressed: () {
                                     if (validateKey.currentState!.validate()) {
                                       setState(
@@ -511,9 +528,18 @@ class _MakeWifiState extends State<MakeWifi> {
                                       );
                                     }
                                   },
-                                  child: const Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 18),
-                                    child: Text('Create QR Code'),
+                                  icon: const Icon(
+                                    Icons.touch_app,
+                                    size: 30,
+                                  ),
+                                  label: const Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 20),
+                                    child: Text(
+                                      'Create QR Code',
+                                      style: TextStyle(
+                                        fontSize: 26,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),

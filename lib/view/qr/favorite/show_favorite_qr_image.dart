@@ -85,16 +85,16 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                   keyboardType: TextInputType.name,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Theme.of(context).primaryColor,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.titleSmall
+                                      : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'QR Code Name',
                                     filled: true,
                                     fillColor: Colors.white,
                                     prefixIcon: Icon(
                                       Icons.qr_code,
+                                      size: (isScreenWidth(context)) ? 24 : 30,
                                       color: Theme.of(context).primaryColor,
                                     ),
                                     suffixIcon: textEditingController
@@ -126,7 +126,16 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                   onPressed: () {
                                     Get.back();
                                   },
-                                  child: const Text('Cancel'),
+                                  child: Text(
+                                    'Cancel',
+                                    style: (isScreenWidth(context))
+                                        ? Theme.of(context)
+                                            .textTheme
+                                            .displaySmall
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .displayMedium,
+                                  ),
                                 ),
                                 TextButton(
                                   onPressed: () {
@@ -139,7 +148,16 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                     });
                                     Get.back();
                                   },
-                                  child: const Text('OK'),
+                                  child: Text(
+                                    'OK',
+                                    style: (isScreenWidth(context))
+                                        ? Theme.of(context)
+                                            .textTheme
+                                            .displaySmall
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .displayMedium,
+                                  ),
                                 ),
                               ],
                             ),
@@ -212,20 +230,21 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                       icon: Icon(
                                         Icons.arrow_back_ios,
                                         size:
-                                            (isScreenWidth(context)) ? 30 : 35,
+                                            (isScreenWidth(context)) ? 24 : 30,
                                       ),
                                       label: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 18),
+                                        padding: (isScreenWidth(context))
+                                            ? const EdgeInsets.symmetric(
+                                                vertical: 18)
+                                            : const EdgeInsets.symmetric(
+                                                vertical: 20),
                                         child: Text(
                                           'prev',
-                                          style: (isScreenWidth(context))
-                                              ? Theme.of(context)
-                                                  .textTheme
-                                                  .displaySmall
-                                              : Theme.of(context)
-                                                  .textTheme
-                                                  .displayMedium,
+                                          style: TextStyle(
+                                            fontSize: (isScreenWidth(context))
+                                                ? 18
+                                                : 26,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -258,21 +277,22 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                         icon: Icon(
                                           Icons.arrow_back_ios,
                                           size: (isScreenWidth(context))
-                                              ? 30
-                                              : 35,
+                                              ? 24
+                                              : 30,
                                         ),
                                         label: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              vertical: 18),
+                                          padding: (isScreenWidth(context))
+                                              ? const EdgeInsets.symmetric(
+                                                  vertical: 18)
+                                              : const EdgeInsets.symmetric(
+                                                  vertical: 20),
                                           child: Text(
                                             'Next',
-                                            style: (isScreenWidth(context))
-                                                ? Theme.of(context)
-                                                    .textTheme
-                                                    .displaySmall
-                                                : Theme.of(context)
-                                                    .textTheme
-                                                    .displayMedium,
+                                            style: TextStyle(
+                                              fontSize: (isScreenWidth(context))
+                                                  ? 18
+                                                  : 26,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -302,20 +322,20 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                   },
                                   icon: Icon(
                                     Icons.save,
-                                    size: (isScreenWidth(context)) ? 30 : 35,
+                                    size: (isScreenWidth(context)) ? 24 : 30,
                                   ),
                                   label: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 18),
+                                    padding: (isScreenWidth(context))
+                                        ? const EdgeInsets.symmetric(
+                                            vertical: 18)
+                                        : const EdgeInsets.symmetric(
+                                            vertical: 20),
                                     child: Text(
                                       'Save QR Code',
-                                      style: (isScreenWidth(context))
-                                          ? Theme.of(context)
-                                              .textTheme
-                                              .displaySmall
-                                          : Theme.of(context)
-                                              .textTheme
-                                              .displayMedium,
+                                      style: TextStyle(
+                                        fontSize:
+                                            (isScreenWidth(context)) ? 18 : 26,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -342,20 +362,20 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                   },
                                   icon: Icon(
                                     Icons.share,
-                                    size: (isScreenWidth(context)) ? 30 : 35,
+                                    size: (isScreenWidth(context)) ? 24 : 30,
                                   ),
                                   label: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 18),
+                                    padding: (isScreenWidth(context))
+                                        ? const EdgeInsets.symmetric(
+                                            vertical: 18)
+                                        : const EdgeInsets.symmetric(
+                                            vertical: 20),
                                     child: Text(
                                       'Share QR Code',
-                                      style: (isScreenWidth(context))
-                                          ? Theme.of(context)
-                                              .textTheme
-                                              .displaySmall
-                                          : Theme.of(context)
-                                              .textTheme
-                                              .displayMedium,
+                                      style: TextStyle(
+                                        fontSize:
+                                            (isScreenWidth(context)) ? 18 : 26,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -409,20 +429,19 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                 },
                                 icon: Icon(
                                   Icons.delete,
-                                  size: (isScreenWidth(context)) ? 30 : 35,
+                                  size: (isScreenWidth(context)) ? 24 : 30,
                                 ),
                                 label: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 18),
+                                  padding: (isScreenWidth(context))
+                                      ? const EdgeInsets.symmetric(vertical: 18)
+                                      : const EdgeInsets.symmetric(
+                                          vertical: 20),
                                   child: Text(
                                     'Delete QR Code',
-                                    style: (isScreenWidth(context))
-                                        ? Theme.of(context)
-                                            .textTheme
-                                            .displaySmall
-                                        : Theme.of(context)
-                                            .textTheme
-                                            .displayMedium,
+                                    style: TextStyle(
+                                      fontSize:
+                                          (isScreenWidth(context)) ? 18 : 26,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -485,16 +504,15 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                   keyboardType: TextInputType.name,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Theme.of(context).primaryColor,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'QR Code Name',
                                     filled: true,
                                     fillColor: Colors.white,
                                     prefixIcon: Icon(
                                       Icons.qr_code,
+                                      size: 30,
                                       color: Theme.of(context).primaryColor,
                                     ),
                                     suffixIcon: textEditingController
@@ -526,7 +544,12 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                   onPressed: () {
                                     Get.back();
                                   },
-                                  child: const Text('Cancel'),
+                                  child: Text(
+                                    'Cancel',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .displayMedium,
+                                  ),
                                 ),
                                 TextButton(
                                   onPressed: () {
@@ -538,7 +561,12 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                     });
                                     Get.back();
                                   },
-                                  child: const Text('OK'),
+                                  child: Text(
+                                    'OK',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .displayMedium,
+                                  ),
                                 ),
                               ],
                             ),
@@ -608,19 +636,19 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                           }
                                         });
                                       },
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.arrow_back_ios,
-                                        size:
-                                            (isScreenWidth(context)) ? 30 : 35,
+                                        size: 30,
                                       ),
-                                      label: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 18),
+                                      label: const Padding(
+                                        padding: EdgeInsets.symmetric(
+                                          vertical: 20,
+                                        ),
                                         child: Text(
                                           'Prev',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .displayMedium,
+                                          style: TextStyle(
+                                            fontSize: 26,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -650,20 +678,19 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                             }
                                           });
                                         },
-                                        icon: Icon(
+                                        icon: const Icon(
                                           Icons.arrow_back_ios,
-                                          size: (isScreenWidth(context))
-                                              ? 30
-                                              : 35,
+                                          size: 30,
                                         ),
-                                        label: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              vertical: 18),
+                                        label: const Padding(
+                                          padding: EdgeInsets.symmetric(
+                                            vertical: 20,
+                                          ),
                                           child: Text(
                                             'Next',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .displayMedium,
+                                            style: TextStyle(
+                                              fontSize: 26,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -693,16 +720,17 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                   },
                                   icon: const Icon(
                                     Icons.save,
-                                    size: 35,
+                                    size: 30,
                                   ),
-                                  label: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 18),
+                                  label: const Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: 20,
+                                    ),
                                     child: Text(
                                       'Save QR Code',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .displayMedium,
+                                      style: TextStyle(
+                                        fontSize: 26,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -729,16 +757,17 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                   },
                                   icon: const Icon(
                                     Icons.share,
-                                    size: 35,
+                                    size: 30,
                                   ),
-                                  label: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 18),
+                                  label: const Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: 20,
+                                    ),
                                     child: Text(
                                       'Share QR Code',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .displayMedium,
+                                      style: TextStyle(
+                                        fontSize: 26,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -788,16 +817,17 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                 },
                                 icon: const Icon(
                                   Icons.delete,
-                                  size: 35,
+                                  size: 30,
                                 ),
-                                label: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 18),
+                                label: const Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: 20,
+                                  ),
                                   child: Text(
                                     'Delete QR Code',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .displayMedium,
+                                    style: TextStyle(
+                                      fontSize: 26,
+                                    ),
                                   ),
                                 ),
                               ),

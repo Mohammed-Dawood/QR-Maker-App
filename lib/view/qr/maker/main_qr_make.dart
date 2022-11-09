@@ -191,6 +191,10 @@ class MainQrMake extends StatelessWidget {
                         goToLink: () => Get.to(() => const MakeDate()),
                         assetName: 'images/date.png',
                       ),
+                      LinkToTextField(
+                        goToLink: () => Get.to(() => const MakeLinkedIn()),
+                        assetName: 'images/linkedin.png',
+                      ),
                     ],
                   ),
                 ),
