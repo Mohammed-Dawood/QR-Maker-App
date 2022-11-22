@@ -5,9 +5,11 @@ import 'package:get_storage/get_storage.dart';
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:qr_maker_app/view/qr/main_qr.dart';
 import 'package:qr_maker_app/themes/dark_theme.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:qr_maker_app/themes/light_theme.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 // import 'package:qr_maker_app/view/registration/main_sign_in.dart';
 
 void main() async {
@@ -16,12 +18,6 @@ void main() async {
       widgetsBinding: WidgetsFlutterBinding.ensureInitialized());
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
       overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top]);
-  // SystemChrome.setPreferredOrientations([
-  //   DeviceOrientation.portraitUp,
-  //   DeviceOrientation.portraitDown,
-  //   DeviceOrientation.landscapeLeft,
-  //   DeviceOrientation.landscapeRight,
-  // ]);
   await initialization(null);
   await GetStorage.init();
   // await Firebase.initializeApp();
@@ -29,7 +25,7 @@ void main() async {
 }
 
 Future initialization(BuildContext? context) async {
-  // await Future.delayed(const Duration(seconds: 0));
+  // await Future.delayed(const Duration(seconds: 3));
   FlutterNativeSplash.remove();
 }
 
@@ -47,7 +43,18 @@ class MyApp extends StatelessWidget {
       darkTheme: DarkTheme.darkTheme,
       themeMode: ThemeController().theme,
       // home: const MainSignIn(),
-      home: const MainQr(),
+      home: AnimatedSplashScreen(
+        centered: true,
+        duration: 1000,
+        splashIconSize: 150,
+        curve: Curves.elasticOut,
+        nextScreen: const MainQr(),
+        splash: 'images/ios_dark_splash.png',
+        backgroundColor: const Color(0xFF212121),
+        pageTransitionType: PageTransitionType.fade,
+        animationDuration: const Duration(milliseconds: 4000),
+        splashTransition: SplashTransition.rotationTransition,
+      ),
     );
   }
 }
