@@ -96,39 +96,39 @@ class _MakePhoneState extends State<MakePhone> {
                                     ? Theme.of(context).textTheme.titleSmall
                                     : Theme.of(context).textTheme.titleMedium,
                                 pickerDialogStyle: PickerDialogStyle(
+                                  countryCodeStyle: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.displaySmall
+                                      : Theme.of(context)
+                                          .textTheme
+                                          .displayMedium,
+                                  countryNameStyle: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.displaySmall
+                                      : Theme.of(context)
+                                          .textTheme
+                                          .displayMedium,
+                                  searchFieldCursorColor:
+                                      Theme.of(context).primaryColor,
+                                  searchFieldInputDecoration: InputDecoration(
+                                    hintText: 'Search Country',
+                                    hintStyle: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize:
+                                          (isScreenWidth(context) ? 18 : 26),
+                                    ),
+                                    isCollapsed: false,
+                                    isDense: true,
+                                    suffixIcon: Icon(
+                                      Icons.search,
+                                      color: Theme.of(context).primaryColor,
+                                      size: (isScreenWidth(context)) ? 24 : 30,
+                                    ),
+                                  ),
                                   width: isScreenWidth(context)
                                       ? double.infinity
                                       : 500,
-                                  searchFieldCursorColor: Colors.white,
-                                  searchFieldInputDecoration: InputDecoration(
-                                    filled: true,
-                                    fillColor: Theme.of(context).primaryColor,
-                                    label: const Text('Search country'),
-                                    labelStyle: const TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    suffixIcon: const Icon(
-                                      Icons.search,
-                                      color: Colors.white,
-                                      size: 30,
-                                    ),
-                                    floatingLabelStyle: const TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 2,
-                                      ),
-                                    ),
-                                  ),
                                 ),
                                 decoration: InputDecoration(
                                   hintText: 'Phone Number',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   suffixIcon: phoneController.text.isEmpty
                                       ? Container(
                                           width: 0,
@@ -145,13 +145,6 @@ class _MakePhoneState extends State<MakePhone> {
                                                 : 30,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                                 onChanged: (PhoneNumber phone) {
                                   completePhoneNumber = phone.completeNumber;
@@ -264,37 +257,30 @@ class _MakePhoneState extends State<MakePhone> {
                                 dropdownTextStyle:
                                     Theme.of(context).textTheme.titleMedium,
                                 pickerDialogStyle: PickerDialogStyle(
-                                  width: 500,
-                                  searchFieldCursorColor: Colors.white,
+                                  countryCodeStyle:
+                                      Theme.of(context).textTheme.displayMedium,
+                                  countryNameStyle:
+                                      Theme.of(context).textTheme.displayMedium,
+                                  searchFieldCursorColor:
+                                      Theme.of(context).primaryColor,
                                   searchFieldInputDecoration: InputDecoration(
-                                    filled: true,
-                                    fillColor: Theme.of(context).primaryColor,
-                                    label: const Text('Search country'),
-                                    labelStyle: const TextStyle(
-                                      color: Colors.white,
+                                    hintText: 'Search Country',
+                                    hintStyle: const TextStyle(
                                       fontWeight: FontWeight.bold,
+                                      fontSize: 26,
                                     ),
-                                    suffixIcon: const Icon(
+                                    isCollapsed: false,
+                                    isDense: true,
+                                    suffixIcon: Icon(
                                       Icons.search,
-                                      color: Colors.white,
+                                      color: Theme.of(context).primaryColor,
                                       size: 30,
                                     ),
-                                    floatingLabelStyle: const TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 2,
-                                      ),
-                                    ),
                                   ),
+                                  width: 500,
                                 ),
                                 decoration: InputDecoration(
                                   hintText: 'Phone Number',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   suffixIcon: phoneController.text.isEmpty
                                       ? Container(
                                           width: 0,
@@ -309,13 +295,6 @@ class _MakePhoneState extends State<MakePhone> {
                                             size: 30,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                                 onChanged: (PhoneNumber phone) {
                                   completePhoneNumber = phone.completeNumber;

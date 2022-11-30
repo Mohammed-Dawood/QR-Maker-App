@@ -85,8 +85,6 @@ class _MakeInstagramState extends State<MakeInstagram> {
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'https://www.instagram.com/...',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.photo_camera_outlined,
                                     color: Theme.of(context).primaryColor,
@@ -108,13 +106,6 @@ class _MakeInstagramState extends State<MakeInstagram> {
                                                 : 30,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                               ),
                             ),
@@ -219,8 +210,6 @@ class _MakeInstagramState extends State<MakeInstagram> {
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'https://www.instagram.com/...',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.photo_camera_outlined,
                                     color: Theme.of(context).primaryColor,
@@ -240,13 +229,6 @@ class _MakeInstagramState extends State<MakeInstagram> {
                                             size: 30,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                               ),
                             ),

@@ -85,8 +85,6 @@ class _MakeTwitterState extends State<MakeTwitter> {
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'https://twitter.com/...',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.link,
                                     color: Theme.of(context).primaryColor,
@@ -108,13 +106,6 @@ class _MakeTwitterState extends State<MakeTwitter> {
                                                 : 30,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                               ),
                             ),
@@ -219,8 +210,6 @@ class _MakeTwitterState extends State<MakeTwitter> {
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'https://twitter.com/...',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.link,
                                     color: Theme.of(context).primaryColor,
@@ -240,13 +229,6 @@ class _MakeTwitterState extends State<MakeTwitter> {
                                             size: 30,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                               ),
                             ),

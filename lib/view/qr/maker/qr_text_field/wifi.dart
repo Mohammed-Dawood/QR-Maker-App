@@ -88,8 +88,6 @@ class _MakeWifiState extends State<MakeWifi> {
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'Wifi Name',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.wifi,
                                     color: Theme.of(context).primaryColor,
@@ -111,13 +109,6 @@ class _MakeWifiState extends State<MakeWifi> {
                                                 : 30,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                               ),
                             ),
@@ -141,8 +132,6 @@ class _MakeWifiState extends State<MakeWifi> {
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'Wifi Password',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.wifi_password,
                                     color: Theme.of(context).primaryColor,
@@ -164,85 +153,61 @@ class _MakeWifiState extends State<MakeWifi> {
                                                 : 30,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                               ),
                             ),
                             Card(
-                              shape: const OutlineInputBorder(
+                              shape: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: Colors.black54,
+                                  color: Theme.of(context).primaryColor,
+                                  width: 3,
                                 ),
                               ),
-                              color: Colors.white,
+                              color: Theme.of(context).primaryColor,
                               child: Padding(
-                                padding: const EdgeInsets.all(5.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Expanded(
-                                      flex: 1,
-                                      child: Icon(
-                                        Icons.security,
-                                        color: Theme.of(context).primaryColor,
-                                        size:
-                                            (isScreenWidth(context)) ? 24 : 30,
-                                      ),
-                                    ),
-                                    Expanded(
-                                      flex: 7,
-                                      child: DropdownButton<String>(
-                                        hint: const Text(
-                                          ' Select Wifi Security Type',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                padding: EdgeInsets.only(
+                                  left: isScreenWidth(context) ? 10 : 20,
+                                  right: isScreenWidth(context) ? 10 : 20,
+                                ),
+                                child: DropdownButton<String>(
+                                  items: <String>['WPA/WPA2', 'WEP']
+                                      .map<DropdownMenuItem<String>>(
+                                    (String value) {
+                                      return DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Text(
+                                          value,
+                                          style: (isScreenWidth(context))
+                                              ? Theme.of(context)
+                                                  .textTheme
+                                                  .displaySmall
+                                              : Theme.of(context)
+                                                  .textTheme
+                                                  .displayMedium,
                                         ),
-                                        borderRadius: BorderRadius.circular(5),
-                                        iconSize: 36,
-                                        icon: const Icon(
-                                          Icons.arrow_drop_down,
-                                          color: Colors.black,
-                                        ),
-                                        underline: Container(
-                                          height: 0,
-                                        ),
-                                        value: dropValue,
-                                        onChanged: (newValue) {
-                                          setState(
-                                            () {
-                                              dropValue = newValue!;
-                                            },
-                                          );
-                                        },
-                                        items: <String>['WPA/WPA2', 'WEP']
-                                            .map<DropdownMenuItem<String>>(
-                                          (String value) {
-                                            return DropdownMenuItem<String>(
-                                              value: value,
-                                              child: Text(
-                                                value,
-                                                style: (isScreenWidth(context))
-                                                    ? Theme.of(context)
-                                                        .textTheme
-                                                        .titleSmall
-                                                    : Theme.of(context)
-                                                        .textTheme
-                                                        .titleMedium,
-                                              ),
-                                            );
-                                          },
-                                        ).toList(),
-                                      ),
-                                    ),
-                                  ],
+                                      );
+                                    },
+                                  ).toList(),
+                                  value: dropValue,
+                                  onChanged: (newValue) {
+                                    setState(
+                                      () {
+                                        dropValue = newValue!;
+                                      },
+                                    );
+                                  },
+                                  underline: Container(
+                                    height: 0,
+                                  ),
+                                  icon: const Icon(
+                                    Icons.arrow_drop_down,
+                                    color: Colors.white,
+                                  ),
+                                  iconSize: 36,
+                                  isExpanded: true,
+                                  itemHeight: isScreenWidth(context) ? 60 : 70,
+                                  dropdownColor: Theme.of(context).primaryColor,
+                                  borderRadius: BorderRadius.circular(5),
                                 ),
                               ),
                             ),
@@ -354,8 +319,6 @@ class _MakeWifiState extends State<MakeWifi> {
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'Wifi Name',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.wifi,
                                     color: Theme.of(context).primaryColor,
@@ -375,13 +338,6 @@ class _MakeWifiState extends State<MakeWifi> {
                                             size: 30,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                               ),
                             ),
@@ -403,8 +359,6 @@ class _MakeWifiState extends State<MakeWifi> {
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'Wifi Password',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.wifi_password,
                                     color: Theme.of(context).primaryColor,
@@ -424,80 +378,57 @@ class _MakeWifiState extends State<MakeWifi> {
                                             size: 30,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                               ),
                             ),
                             Card(
-                              shape: const OutlineInputBorder(
+                              shape: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: Colors.black54,
+                                  color: Theme.of(context).primaryColor,
+                                  width: 3,
                                 ),
                               ),
-                              color: Colors.white,
+                              color: Theme.of(context).primaryColor,
                               child: Padding(
-                                padding: const EdgeInsets.all(5.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Expanded(
-                                      flex: 1,
-                                      child: Icon(
-                                        Icons.security,
-                                        color: Theme.of(context).primaryColor,
-                                        size: 30,
-                                      ),
-                                    ),
-                                    Expanded(
-                                      flex: 7,
-                                      child: DropdownButton<String>(
-                                        hint: const Text(
-                                          ' Select Wifi Security Type',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                padding: const EdgeInsets.only(
+                                  left: 20,
+                                  right: 20,
+                                ),
+                                child: DropdownButton<String>(
+                                  items: <String>['WPA/WPA2', 'WEP']
+                                      .map<DropdownMenuItem<String>>(
+                                    (String value) {
+                                      return DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Text(
+                                          value,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .displayMedium,
                                         ),
-                                        borderRadius: BorderRadius.circular(5),
-                                        iconSize: 36,
-                                        icon: const Icon(
-                                          Icons.arrow_drop_down,
-                                          color: Colors.black,
-                                        ),
-                                        underline: Container(
-                                          height: 0,
-                                        ),
-                                        value: dropValue,
-                                        onChanged: (newValue) {
-                                          setState(
-                                            () {
-                                              dropValue = newValue!;
-                                            },
-                                          );
-                                        },
-                                        items: <String>['WPA/WPA2', 'WEP']
-                                            .map<DropdownMenuItem<String>>(
-                                          (String value) {
-                                            return DropdownMenuItem<String>(
-                                              value: value,
-                                              child: Text(
-                                                value,
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .titleMedium,
-                                              ),
-                                            );
-                                          },
-                                        ).toList(),
-                                      ),
-                                    ),
-                                  ],
+                                      );
+                                    },
+                                  ).toList(),
+                                  value: dropValue,
+                                  onChanged: (newValue) {
+                                    setState(
+                                      () {
+                                        dropValue = newValue!;
+                                      },
+                                    );
+                                  },
+                                  underline: Container(
+                                    height: 0,
+                                  ),
+                                  icon: const Icon(
+                                    Icons.arrow_drop_down,
+                                    color: Colors.white,
+                                  ),
+                                  iconSize: 36,
+                                  isExpanded: true,
+                                  itemHeight: 70,
+                                  dropdownColor: Theme.of(context).primaryColor,
+                                  borderRadius: BorderRadius.circular(5),
                                 ),
                               ),
                             ),

@@ -310,7 +310,7 @@ class _MainQrState extends State<MainQr> {
                           height: 50,
                           child: Center(
                             child: Text(
-                              'App Version 1.8.2',
+                              'App Version 1.9.1',
                               style: (isScreenWidth(context))
                                   ? Theme.of(context).textTheme.bodySmall
                                   : Theme.of(context).textTheme.bodyMedium,
@@ -564,7 +564,7 @@ class _MainQrState extends State<MainQr> {
                           height: 50,
                           child: Center(
                             child: Text(
-                              'App Version 1.8.2',
+                              'App Version 1.9.1',
                               style: Theme.of(context).textTheme.bodyMedium,
                             ),
                           ),

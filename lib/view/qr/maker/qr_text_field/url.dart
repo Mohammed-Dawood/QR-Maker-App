@@ -86,8 +86,6 @@ class _MakeUrlState extends State<MakeUrl> {
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'https://www.example.com',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.link,
                                     color: Theme.of(context).primaryColor,
@@ -109,13 +107,6 @@ class _MakeUrlState extends State<MakeUrl> {
                                                 Theme.of(context).primaryColor,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                               ),
                             ),
@@ -222,8 +213,6 @@ class _MakeUrlState extends State<MakeUrl> {
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'https://www.example.com',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.link,
                                     color: Theme.of(context).primaryColor,
@@ -243,13 +232,6 @@ class _MakeUrlState extends State<MakeUrl> {
                                                 Theme.of(context).primaryColor,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                               ),
                             ),

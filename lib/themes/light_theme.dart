@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class LightTheme {
   static final lightTheme = ThemeData.light().copyWith(
-    hintColor: Colors.black45,
+    hintColor: Colors.blue.shade200,
     primaryColor: Colors.blue.shade500,
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
@@ -82,7 +82,7 @@ class LightTheme {
     colorScheme: ColorScheme.light(
       primary: Colors.blue.shade500,
       onPrimary: Colors.white,
-      onSurface: Colors.black,
+      onSurface: Colors.white,
     ),
     sliderTheme: SliderThemeData(
       thumbColor: Colors.white,
@@ -100,10 +100,30 @@ class LightTheme {
       ),
     ),
     dialogTheme: DialogTheme(
-      backgroundColor: Colors.blue.shade200,
+      backgroundColor: Colors.blue.shade500,
     ),
     timePickerTheme: TimePickerThemeData(
-      backgroundColor: Colors.blue.shade200,
+      dialTextColor: Colors.black,
+      hourMinuteColor: Colors.white,
+      entryModeIconColor: Colors.white,
+      dialBackgroundColor: Colors.white,
+      hourMinuteTextColor: Colors.black,
+      dialHandColor: Colors.blue.shade200,
+      backgroundColor: Colors.blue.shade500,
+    ),
+    textSelectionTheme: const TextSelectionThemeData(
+      cursorColor: Colors.white,
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: Colors.white,
+      border: const OutlineInputBorder(),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.blue.shade200,
+          width: 3,
+        ),
+      ),
     ),
   );
 }

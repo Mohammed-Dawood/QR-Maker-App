@@ -82,7 +82,7 @@ class DarkTheme {
     colorScheme: ColorScheme.light(
       primary: Colors.grey.shade800,
       onPrimary: Colors.white,
-      onSurface: Colors.black,
+      onSurface: Colors.white,
     ),
     sliderTheme: SliderThemeData(
       thumbColor: Colors.white,
@@ -100,10 +100,30 @@ class DarkTheme {
       ),
     ),
     dialogTheme: DialogTheme(
-      backgroundColor: Colors.grey.shade500,
+      backgroundColor: Colors.grey.shade800,
     ),
     timePickerTheme: TimePickerThemeData(
-      backgroundColor: Colors.grey.shade500,
+      dialTextColor: Colors.black,
+      dialHandColor: Colors.black45,
+      hourMinuteColor: Colors.white,
+      entryModeIconColor: Colors.white,
+      dialBackgroundColor: Colors.white,
+      hourMinuteTextColor: Colors.black,
+      backgroundColor: Colors.grey.shade800,
+    ),
+    textSelectionTheme: const TextSelectionThemeData(
+      cursorColor: Colors.white,
+    ),
+    inputDecorationTheme: const InputDecorationTheme(
+      filled: true,
+      fillColor: Colors.white,
+      border: OutlineInputBorder(),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.black45,
+          width: 3,
+        ),
+      ),
     ),
   );
 }

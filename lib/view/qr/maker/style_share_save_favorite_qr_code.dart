@@ -640,7 +640,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                                   AlertDialog(
                                                 content: SingleChildScrollView(
                                                   child: ColorPicker(
-                                                    hexInputBar: true,
+                                                    hexInputBar: false,
                                                     labelTypes: const [],
                                                     pickerColor: eyesColor,
                                                     colorPickerWidth:
@@ -732,7 +732,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                                   AlertDialog(
                                                 content: SingleChildScrollView(
                                                   child: ColorPicker(
-                                                    hexInputBar: true,
+                                                    hexInputBar: false,
                                                     labelTypes: const [],
                                                     pickerColor: dataColor,
                                                     colorPickerWidth:
@@ -824,7 +824,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                                   AlertDialog(
                                                 content: SingleChildScrollView(
                                                   child: ColorPicker(
-                                                    hexInputBar: true,
+                                                    hexInputBar: false,
                                                     labelTypes: const [],
                                                     pickerColor:
                                                         backgroundColor,
@@ -1543,7 +1543,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                                   AlertDialog(
                                                 content: SingleChildScrollView(
                                                   child: ColorPicker(
-                                                    hexInputBar: true,
+                                                    hexInputBar: false,
                                                     labelTypes: const [],
                                                     pickerColor: eyesColor,
                                                     colorPickerWidth: 400,
@@ -1621,7 +1621,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                                   AlertDialog(
                                                 content: SingleChildScrollView(
                                                   child: ColorPicker(
-                                                    hexInputBar: true,
+                                                    hexInputBar: false,
                                                     labelTypes: const [],
                                                     pickerColor: dataColor,
                                                     colorPickerWidth: 400,
@@ -1699,7 +1699,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                                   AlertDialog(
                                                 content: SingleChildScrollView(
                                                   child: ColorPicker(
-                                                    hexInputBar: true,
+                                                    hexInputBar: false,
                                                     labelTypes: const [],
                                                     pickerColor:
                                                         backgroundColor,

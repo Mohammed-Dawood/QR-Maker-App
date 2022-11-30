@@ -90,8 +90,6 @@ class _MakeEmailState extends State<MakeEmail> {
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'name@mail.com',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.email,
                                     color: Theme.of(context).primaryColor,
@@ -113,13 +111,6 @@ class _MakeEmailState extends State<MakeEmail> {
                                                 : 30,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                               ),
                             ),
@@ -135,8 +126,6 @@ class _MakeEmailState extends State<MakeEmail> {
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'Subject',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.subject,
                                     color: Theme.of(context).primaryColor,
@@ -158,13 +147,6 @@ class _MakeEmailState extends State<MakeEmail> {
                                                 : 30,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                               ),
                             ),
@@ -182,8 +164,6 @@ class _MakeEmailState extends State<MakeEmail> {
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'Message',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.message,
                                     color: Theme.of(context).primaryColor,
@@ -205,13 +185,6 @@ class _MakeEmailState extends State<MakeEmail> {
                                                 : 30,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                               ),
                             ),
@@ -317,8 +290,6 @@ class _MakeEmailState extends State<MakeEmail> {
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'name@mail.com',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.email,
                                     color: Theme.of(context).primaryColor,
@@ -338,13 +309,6 @@ class _MakeEmailState extends State<MakeEmail> {
                                             size: 30,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                               ),
                             ),
@@ -358,8 +322,6 @@ class _MakeEmailState extends State<MakeEmail> {
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'Subject',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.subject,
                                     color: Theme.of(context).primaryColor,
@@ -379,13 +341,6 @@ class _MakeEmailState extends State<MakeEmail> {
                                             size: 30,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                               ),
                             ),
@@ -401,8 +356,6 @@ class _MakeEmailState extends State<MakeEmail> {
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'Message',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.message,
                                     color: Theme.of(context).primaryColor,
@@ -422,13 +375,6 @@ class _MakeEmailState extends State<MakeEmail> {
                                             size: 30,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                               ),
                             ),

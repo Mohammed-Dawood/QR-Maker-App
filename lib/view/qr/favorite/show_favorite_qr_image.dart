@@ -90,8 +90,6 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                       : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'QR Code Name',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     prefixIcon: Icon(
                                       Icons.qr_code,
                                       size: (isScreenWidth(context)) ? 24 : 30,
@@ -111,13 +109,6 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                                   .primaryColor,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                 ),
                               ),
@@ -508,8 +499,6 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                       Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'QR Code Name',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     prefixIcon: Icon(
                                       Icons.qr_code,
                                       size: 30,
@@ -529,13 +518,6 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                                   .primaryColor,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                 ),
                               ),

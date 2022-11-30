@@ -122,8 +122,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                       : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'Full Name ',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     prefixIcon: Icon(
                                       Icons.person,
                                       color: Theme.of(context).primaryColor,
@@ -145,13 +143,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                                   : 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                 ),
                               ),
@@ -167,8 +158,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                       : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'name@mail.com',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     prefixIcon: Icon(
                                       Icons.email,
                                       color: Theme.of(context).primaryColor,
@@ -190,13 +179,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                                   : 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                 ),
                               ),
@@ -227,39 +209,43 @@ class _MakeVCardState extends State<MakeVCard> {
                                       ? Theme.of(context).textTheme.titleSmall
                                       : Theme.of(context).textTheme.titleMedium,
                                   pickerDialogStyle: PickerDialogStyle(
+                                    countryCodeStyle: (isScreenWidth(context))
+                                        ? Theme.of(context)
+                                            .textTheme
+                                            .displaySmall
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .displayMedium,
+                                    countryNameStyle: (isScreenWidth(context))
+                                        ? Theme.of(context)
+                                            .textTheme
+                                            .displaySmall
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .displayMedium,
+                                    searchFieldCursorColor:
+                                        Theme.of(context).primaryColor,
+                                    searchFieldInputDecoration: InputDecoration(
+                                      hintText: 'Search Country',
+                                      hintStyle: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize:
+                                            (isScreenWidth(context) ? 18 : 26),
+                                      ),
+                                      isCollapsed: false,
+                                      isDense: true,
+                                      suffixIcon: Icon(
+                                        Icons.search,
+                                        color: Theme.of(context).primaryColor,
+                                        size:
+                                            (isScreenWidth(context)) ? 24 : 30,
+                                      ),
+                                    ),
                                     width: isScreenWidth(context)
                                         ? double.infinity
                                         : 500,
-                                    searchFieldCursorColor: Colors.white,
-                                    searchFieldInputDecoration: InputDecoration(
-                                      filled: true,
-                                      fillColor: Theme.of(context).primaryColor,
-                                      label: const Text('Search country'),
-                                      labelStyle: const TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      suffixIcon: const Icon(
-                                        Icons.search,
-                                        color: Colors.white,
-                                        size: 30,
-                                      ),
-                                      floatingLabelStyle: const TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Theme.of(context).primaryColor,
-                                          width: 2,
-                                        ),
-                                      ),
-                                    ),
                                   ),
                                   decoration: InputDecoration(
-                                    hintText: 'Phone(Mobile)',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     suffixIcon: mobileController.text.isEmpty
                                         ? Container(
                                             width: 0,
@@ -276,13 +262,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                                   : 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                   onChanged: (PhoneNumber phone) {
                                     completePhoneNumberMobil =
@@ -317,39 +296,44 @@ class _MakeVCardState extends State<MakeVCard> {
                                       ? Theme.of(context).textTheme.titleSmall
                                       : Theme.of(context).textTheme.titleMedium,
                                   pickerDialogStyle: PickerDialogStyle(
+                                    countryCodeStyle: (isScreenWidth(context))
+                                        ? Theme.of(context)
+                                            .textTheme
+                                            .displaySmall
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .displayMedium,
+                                    countryNameStyle: (isScreenWidth(context))
+                                        ? Theme.of(context)
+                                            .textTheme
+                                            .displaySmall
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .displayMedium,
+                                    searchFieldCursorColor:
+                                        Theme.of(context).primaryColor,
+                                    searchFieldInputDecoration: InputDecoration(
+                                      hintText: 'Search Country',
+                                      hintStyle: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize:
+                                            (isScreenWidth(context) ? 18 : 26),
+                                      ),
+                                      isCollapsed: false,
+                                      isDense: true,
+                                      suffixIcon: Icon(
+                                        Icons.search,
+                                        color: Theme.of(context).primaryColor,
+                                        size:
+                                            (isScreenWidth(context)) ? 24 : 30,
+                                      ),
+                                    ),
                                     width: isScreenWidth(context)
                                         ? double.infinity
                                         : 500,
-                                    searchFieldCursorColor: Colors.white,
-                                    searchFieldInputDecoration: InputDecoration(
-                                      filled: true,
-                                      fillColor: Theme.of(context).primaryColor,
-                                      label: const Text('Search country'),
-                                      labelStyle: const TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      suffixIcon: const Icon(
-                                        Icons.search,
-                                        color: Colors.white,
-                                        size: 30,
-                                      ),
-                                      floatingLabelStyle: const TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Theme.of(context).primaryColor,
-                                          width: 2,
-                                        ),
-                                      ),
-                                    ),
                                   ),
                                   decoration: InputDecoration(
                                     hintText: 'Phone(Work)',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     suffixIcon: workController.text.isEmpty
                                         ? Container(
                                             width: 0,
@@ -366,13 +350,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                                   : 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                   onChanged: (PhoneNumber phone) {
                                     completePhoneNumberWork =
@@ -407,39 +384,44 @@ class _MakeVCardState extends State<MakeVCard> {
                                       ? Theme.of(context).textTheme.titleSmall
                                       : Theme.of(context).textTheme.titleMedium,
                                   pickerDialogStyle: PickerDialogStyle(
+                                    countryCodeStyle: (isScreenWidth(context))
+                                        ? Theme.of(context)
+                                            .textTheme
+                                            .displaySmall
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .displayMedium,
+                                    countryNameStyle: (isScreenWidth(context))
+                                        ? Theme.of(context)
+                                            .textTheme
+                                            .displaySmall
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .displayMedium,
+                                    searchFieldCursorColor:
+                                        Theme.of(context).primaryColor,
+                                    searchFieldInputDecoration: InputDecoration(
+                                      hintText: 'Search Country',
+                                      hintStyle: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize:
+                                            (isScreenWidth(context) ? 18 : 26),
+                                      ),
+                                      isCollapsed: false,
+                                      isDense: true,
+                                      suffixIcon: Icon(
+                                        Icons.search,
+                                        color: Theme.of(context).primaryColor,
+                                        size:
+                                            (isScreenWidth(context)) ? 24 : 30,
+                                      ),
+                                    ),
                                     width: isScreenWidth(context)
                                         ? double.infinity
                                         : 500,
-                                    searchFieldCursorColor: Colors.white,
-                                    searchFieldInputDecoration: InputDecoration(
-                                      filled: true,
-                                      fillColor: Theme.of(context).primaryColor,
-                                      label: const Text('Search country'),
-                                      labelStyle: const TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      suffixIcon: const Icon(
-                                        Icons.search,
-                                        color: Colors.white,
-                                        size: 30,
-                                      ),
-                                      floatingLabelStyle: const TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Theme.of(context).primaryColor,
-                                          width: 2,
-                                        ),
-                                      ),
-                                    ),
                                   ),
                                   decoration: InputDecoration(
                                     hintText: 'Phone(Home)',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     suffixIcon: homeController.text.isEmpty
                                         ? Container(
                                             width: 0,
@@ -456,13 +438,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                                   : 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                   onChanged: (PhoneNumber phone) {
                                     completePhoneNumberHome =
@@ -497,39 +472,44 @@ class _MakeVCardState extends State<MakeVCard> {
                                       ? Theme.of(context).textTheme.titleSmall
                                       : Theme.of(context).textTheme.titleMedium,
                                   pickerDialogStyle: PickerDialogStyle(
+                                    countryCodeStyle: (isScreenWidth(context))
+                                        ? Theme.of(context)
+                                            .textTheme
+                                            .displaySmall
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .displayMedium,
+                                    countryNameStyle: (isScreenWidth(context))
+                                        ? Theme.of(context)
+                                            .textTheme
+                                            .displaySmall
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .displayMedium,
+                                    searchFieldCursorColor:
+                                        Theme.of(context).primaryColor,
+                                    searchFieldInputDecoration: InputDecoration(
+                                      hintText: 'Search Country',
+                                      hintStyle: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize:
+                                            (isScreenWidth(context) ? 18 : 26),
+                                      ),
+                                      isCollapsed: false,
+                                      isDense: true,
+                                      suffixIcon: Icon(
+                                        Icons.search,
+                                        color: Theme.of(context).primaryColor,
+                                        size:
+                                            (isScreenWidth(context)) ? 24 : 30,
+                                      ),
+                                    ),
                                     width: isScreenWidth(context)
                                         ? double.infinity
                                         : 500,
-                                    searchFieldCursorColor: Colors.white,
-                                    searchFieldInputDecoration: InputDecoration(
-                                      filled: true,
-                                      fillColor: Theme.of(context).primaryColor,
-                                      label: const Text('Search country'),
-                                      labelStyle: const TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      suffixIcon: const Icon(
-                                        Icons.search,
-                                        color: Colors.white,
-                                        size: 30,
-                                      ),
-                                      floatingLabelStyle: const TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Theme.of(context).primaryColor,
-                                          width: 2,
-                                        ),
-                                      ),
-                                    ),
                                   ),
                                   decoration: InputDecoration(
                                     hintText: 'Fax',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     suffixIcon: faxController.text.isEmpty
                                         ? Container(
                                             width: 0,
@@ -546,13 +526,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                                   : 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                   onChanged: (PhoneNumber phone) {
                                     completePhoneNumberFax =
@@ -598,19 +571,10 @@ class _MakeVCardState extends State<MakeVCard> {
                                   },
                                   decoration: InputDecoration(
                                     hintText: 'Date of birth',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     prefixIcon: Icon(
                                       Icons.date_range,
                                       color: Theme.of(context).primaryColor,
                                       size: (isScreenWidth(context)) ? 24 : 30,
-                                    ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
                                     ),
                                   ),
                                 ),
@@ -627,8 +591,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                       : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'https://www.example.com/',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     prefixIcon: Icon(
                                       Icons.link,
                                       color: Theme.of(context).primaryColor,
@@ -650,13 +612,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                                   : 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                 ),
                               ),
@@ -672,8 +627,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                       : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'Street address',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
@@ -695,13 +648,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                                   : 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                 ),
                               ),
@@ -717,8 +663,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                       : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'Zip code',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
@@ -740,13 +684,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                                   : 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                 ),
                               ),
@@ -762,8 +699,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                       : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'City',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
@@ -785,13 +720,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                                   : 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                 ),
                               ),
@@ -807,8 +735,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                       : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'State',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
@@ -830,13 +756,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                                   : 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                 ),
                               ),
@@ -852,8 +771,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                       : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'Country',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
@@ -875,13 +792,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                                   : 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                 ),
                               ),
@@ -1006,8 +916,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                       Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'Full Name ',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     prefixIcon: Icon(
                                       Icons.person,
                                       color: Theme.of(context).primaryColor,
@@ -1027,13 +935,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                               size: 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                 ),
                               ),
@@ -1048,8 +949,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                       Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'name@mail.com',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     prefixIcon: Icon(
                                       Icons.email,
                                       color: Theme.of(context).primaryColor,
@@ -1069,13 +968,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                               size: 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                 ),
                               ),
@@ -1104,37 +996,32 @@ class _MakeVCardState extends State<MakeVCard> {
                                   dropdownTextStyle:
                                       Theme.of(context).textTheme.titleMedium,
                                   pickerDialogStyle: PickerDialogStyle(
-                                    width: 500,
-                                    searchFieldCursorColor: Colors.white,
+                                    countryCodeStyle: Theme.of(context)
+                                        .textTheme
+                                        .displayMedium,
+                                    countryNameStyle: Theme.of(context)
+                                        .textTheme
+                                        .displayMedium,
+                                    searchFieldCursorColor:
+                                        Theme.of(context).primaryColor,
                                     searchFieldInputDecoration: InputDecoration(
-                                      filled: true,
-                                      fillColor: Theme.of(context).primaryColor,
-                                      label: const Text('Search country'),
-                                      labelStyle: const TextStyle(
-                                        color: Colors.white,
+                                      hintText: 'Search Country',
+                                      hintStyle: const TextStyle(
                                         fontWeight: FontWeight.bold,
+                                        fontSize: 26,
                                       ),
-                                      suffixIcon: const Icon(
+                                      isCollapsed: false,
+                                      isDense: true,
+                                      suffixIcon: Icon(
                                         Icons.search,
-                                        color: Colors.white,
+                                        color: Theme.of(context).primaryColor,
                                         size: 30,
                                       ),
-                                      floatingLabelStyle: const TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Theme.of(context).primaryColor,
-                                          width: 2,
-                                        ),
-                                      ),
                                     ),
+                                    width: 500,
                                   ),
                                   decoration: InputDecoration(
                                     hintText: 'Phone(Mobile)',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     suffixIcon: mobileController.text.isEmpty
                                         ? Container(
                                             width: 0,
@@ -1149,13 +1036,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                               size: 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                   onChanged: (PhoneNumber phone) {
                                     completePhoneNumberMobil =
@@ -1188,37 +1068,32 @@ class _MakeVCardState extends State<MakeVCard> {
                                   dropdownTextStyle:
                                       Theme.of(context).textTheme.titleMedium,
                                   pickerDialogStyle: PickerDialogStyle(
-                                    width: 500,
-                                    searchFieldCursorColor: Colors.white,
+                                    countryCodeStyle: Theme.of(context)
+                                        .textTheme
+                                        .displayMedium,
+                                    countryNameStyle: Theme.of(context)
+                                        .textTheme
+                                        .displayMedium,
+                                    searchFieldCursorColor:
+                                        Theme.of(context).primaryColor,
                                     searchFieldInputDecoration: InputDecoration(
-                                      filled: true,
-                                      fillColor: Theme.of(context).primaryColor,
-                                      label: const Text('Search country'),
-                                      labelStyle: const TextStyle(
-                                        color: Colors.white,
+                                      hintText: 'Search Country',
+                                      hintStyle: const TextStyle(
                                         fontWeight: FontWeight.bold,
+                                        fontSize: 26,
                                       ),
-                                      suffixIcon: const Icon(
+                                      isCollapsed: false,
+                                      isDense: true,
+                                      suffixIcon: Icon(
                                         Icons.search,
-                                        color: Colors.white,
+                                        color: Theme.of(context).primaryColor,
                                         size: 30,
                                       ),
-                                      floatingLabelStyle: const TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Theme.of(context).primaryColor,
-                                          width: 2,
-                                        ),
-                                      ),
                                     ),
+                                    width: 500,
                                   ),
                                   decoration: InputDecoration(
                                     hintText: 'Phone(Work)',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     suffixIcon: workController.text.isEmpty
                                         ? Container(
                                             width: 0,
@@ -1233,13 +1108,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                               size: 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                   onChanged: (PhoneNumber phone) {
                                     completePhoneNumberWork =
@@ -1272,37 +1140,32 @@ class _MakeVCardState extends State<MakeVCard> {
                                   dropdownTextStyle:
                                       Theme.of(context).textTheme.titleMedium,
                                   pickerDialogStyle: PickerDialogStyle(
-                                    width: 500,
-                                    searchFieldCursorColor: Colors.white,
+                                    countryCodeStyle: Theme.of(context)
+                                        .textTheme
+                                        .displayMedium,
+                                    countryNameStyle: Theme.of(context)
+                                        .textTheme
+                                        .displayMedium,
+                                    searchFieldCursorColor:
+                                        Theme.of(context).primaryColor,
                                     searchFieldInputDecoration: InputDecoration(
-                                      filled: true,
-                                      fillColor: Theme.of(context).primaryColor,
-                                      label: const Text('Search country'),
-                                      labelStyle: const TextStyle(
-                                        color: Colors.white,
+                                      hintText: 'Search Country',
+                                      hintStyle: const TextStyle(
                                         fontWeight: FontWeight.bold,
+                                        fontSize: 26,
                                       ),
-                                      suffixIcon: const Icon(
+                                      isCollapsed: false,
+                                      isDense: true,
+                                      suffixIcon: Icon(
                                         Icons.search,
-                                        color: Colors.white,
+                                        color: Theme.of(context).primaryColor,
                                         size: 30,
                                       ),
-                                      floatingLabelStyle: const TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Theme.of(context).primaryColor,
-                                          width: 2,
-                                        ),
-                                      ),
                                     ),
+                                    width: 500,
                                   ),
                                   decoration: InputDecoration(
                                     hintText: 'Phone(Home)',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     suffixIcon: homeController.text.isEmpty
                                         ? Container(
                                             width: 0,
@@ -1317,13 +1180,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                               size: 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                   onChanged: (PhoneNumber phone) {
                                     completePhoneNumberHome =
@@ -1356,37 +1212,32 @@ class _MakeVCardState extends State<MakeVCard> {
                                   dropdownTextStyle:
                                       Theme.of(context).textTheme.titleMedium,
                                   pickerDialogStyle: PickerDialogStyle(
-                                    width: 500,
-                                    searchFieldCursorColor: Colors.white,
+                                    countryCodeStyle: Theme.of(context)
+                                        .textTheme
+                                        .displayMedium,
+                                    countryNameStyle: Theme.of(context)
+                                        .textTheme
+                                        .displayMedium,
+                                    searchFieldCursorColor:
+                                        Theme.of(context).primaryColor,
                                     searchFieldInputDecoration: InputDecoration(
-                                      filled: true,
-                                      fillColor: Theme.of(context).primaryColor,
-                                      label: const Text('Search country'),
-                                      labelStyle: const TextStyle(
-                                        color: Colors.white,
+                                      hintText: 'Search Country',
+                                      hintStyle: const TextStyle(
                                         fontWeight: FontWeight.bold,
+                                        fontSize: 26,
                                       ),
-                                      suffixIcon: const Icon(
+                                      isCollapsed: false,
+                                      isDense: true,
+                                      suffixIcon: Icon(
                                         Icons.search,
-                                        color: Colors.white,
+                                        color: Theme.of(context).primaryColor,
                                         size: 30,
                                       ),
-                                      floatingLabelStyle: const TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Theme.of(context).primaryColor,
-                                          width: 2,
-                                        ),
-                                      ),
                                     ),
+                                    width: 500,
                                   ),
                                   decoration: InputDecoration(
                                     hintText: 'Fax',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     suffixIcon: faxController.text.isEmpty
                                         ? Container(
                                             width: 0,
@@ -1401,13 +1252,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                               size: 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                   onChanged: (PhoneNumber phone) {
                                     completePhoneNumberFax =
@@ -1452,19 +1296,10 @@ class _MakeVCardState extends State<MakeVCard> {
                                   },
                                   decoration: InputDecoration(
                                     hintText: 'Date of birth',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     prefixIcon: Icon(
                                       Icons.date_range,
                                       color: Theme.of(context).primaryColor,
                                       size: 30,
-                                    ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
                                     ),
                                   ),
                                 ),
@@ -1480,8 +1315,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                       Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'https://www.example.com/',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     prefixIcon: Icon(
                                       Icons.link,
                                       color: Theme.of(context).primaryColor,
@@ -1501,13 +1334,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                               size: 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                 ),
                               ),
@@ -1522,8 +1348,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                       Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'Street address',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
@@ -1543,13 +1367,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                               size: 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                 ),
                               ),
@@ -1564,8 +1381,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                       Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'Zip code',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
@@ -1585,13 +1400,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                               size: 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                 ),
                               ),
@@ -1606,8 +1414,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                       Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'City',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
@@ -1627,13 +1433,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                               size: 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                 ),
                               ),
@@ -1648,8 +1447,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                       Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'State',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
@@ -1669,13 +1466,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                               size: 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                 ),
                               ),
@@ -1690,8 +1480,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                       Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
                                     hintText: 'Country',
-                                    filled: true,
-                                    fillColor: Colors.white,
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
@@ -1711,13 +1499,6 @@ class _MakeVCardState extends State<MakeVCard> {
                                               size: 30,
                                             ),
                                           ),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3,
-                                      ),
-                                    ),
                                   ),
                                 ),
                               ),

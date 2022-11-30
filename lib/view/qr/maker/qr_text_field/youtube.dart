@@ -85,8 +85,6 @@ class _MakeYoutubeState extends State<MakeYoutube> {
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'https://www.youtube.com/...',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.youtube_searched_for,
                                     color: Theme.of(context).primaryColor,
@@ -108,13 +106,6 @@ class _MakeYoutubeState extends State<MakeYoutube> {
                                                 : 30,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                               ),
                             ),
@@ -219,8 +210,6 @@ class _MakeYoutubeState extends State<MakeYoutube> {
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'https://www.youtube.com/...',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.youtube_searched_for,
                                     color: Theme.of(context).primaryColor,
@@ -240,13 +229,6 @@ class _MakeYoutubeState extends State<MakeYoutube> {
                                             size: 30,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                               ),
                             ),

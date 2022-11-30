@@ -98,8 +98,6 @@ class _MakeDateState extends State<MakeDate> {
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'Event Title',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.event_note,
                                     color: Theme.of(context).primaryColor,
@@ -121,13 +119,6 @@ class _MakeDateState extends State<MakeDate> {
                                                 : 30,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                               ),
                             ),
@@ -151,8 +142,6 @@ class _MakeDateState extends State<MakeDate> {
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'Event Address',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.location_on,
                                     color: Theme.of(context).primaryColor,
@@ -175,13 +164,6 @@ class _MakeDateState extends State<MakeDate> {
                                                 : 30,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                               ),
                             ),
@@ -239,19 +221,10 @@ class _MakeDateState extends State<MakeDate> {
                                 },
                                 decoration: InputDecoration(
                                   hintText: 'Event Date Start',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.event_available,
                                     color: Theme.of(context).primaryColor,
                                     size: (isScreenWidth(context)) ? 24 : 30,
-                                  ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
                                   ),
                                 ),
                               ),
@@ -302,19 +275,10 @@ class _MakeDateState extends State<MakeDate> {
                                 },
                                 decoration: InputDecoration(
                                   hintText: 'Event Time Start',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.access_time_outlined,
                                     color: Theme.of(context).primaryColor,
                                     size: (isScreenWidth(context)) ? 24 : 30,
-                                  ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
                                   ),
                                 ),
                               ),
@@ -371,19 +335,10 @@ class _MakeDateState extends State<MakeDate> {
                                 },
                                 decoration: InputDecoration(
                                   hintText: 'Event Date End',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.event_available,
                                     color: Theme.of(context).primaryColor,
                                     size: (isScreenWidth(context)) ? 24 : 30,
-                                  ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
                                   ),
                                 ),
                               ),
@@ -433,19 +388,10 @@ class _MakeDateState extends State<MakeDate> {
                                 },
                                 decoration: InputDecoration(
                                   hintText: 'Event Time End',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.access_time_outlined,
                                     color: Theme.of(context).primaryColor,
                                     size: (isScreenWidth(context)) ? 24 : 30,
-                                  ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
                                   ),
                                 ),
                               ),
@@ -559,8 +505,6 @@ class _MakeDateState extends State<MakeDate> {
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'Event Title',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.event_note,
                                     color: Theme.of(context).primaryColor,
@@ -580,13 +524,6 @@ class _MakeDateState extends State<MakeDate> {
                                             size: 30,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                               ),
                             ),
@@ -608,8 +545,6 @@ class _MakeDateState extends State<MakeDate> {
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: 'Event Address',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.location_on,
                                     color: Theme.of(context).primaryColor,
@@ -630,13 +565,6 @@ class _MakeDateState extends State<MakeDate> {
                                             size: 30,
                                           ),
                                         ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
-                                  ),
                                 ),
                               ),
                             ),
@@ -692,19 +620,10 @@ class _MakeDateState extends State<MakeDate> {
                                 },
                                 decoration: InputDecoration(
                                   hintText: 'Event Date Start',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.event_available,
                                     color: Theme.of(context).primaryColor,
                                     size: 30,
-                                  ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
                                   ),
                                 ),
                               ),
@@ -753,19 +672,10 @@ class _MakeDateState extends State<MakeDate> {
                                 },
                                 decoration: InputDecoration(
                                   hintText: 'Event Time Start',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.access_time_outlined,
                                     color: Theme.of(context).primaryColor,
                                     size: 30,
-                                  ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
                                   ),
                                 ),
                               ),
@@ -820,19 +730,10 @@ class _MakeDateState extends State<MakeDate> {
                                 },
                                 decoration: InputDecoration(
                                   hintText: 'Event Date End',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.event_available,
                                     color: Theme.of(context).primaryColor,
                                     size: 30,
-                                  ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
                                   ),
                                 ),
                               ),
@@ -880,19 +781,10 @@ class _MakeDateState extends State<MakeDate> {
                                 },
                                 decoration: InputDecoration(
                                   hintText: 'Event Time End',
-                                  filled: true,
-                                  fillColor: Colors.white,
                                   prefixIcon: Icon(
                                     Icons.access_time_outlined,
                                     color: Theme.of(context).primaryColor,
                                     size: 30,
-                                  ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Theme.of(context).primaryColor,
-                                      width: 3,
-                                    ),
                                   ),
                                 ),
                               ),
