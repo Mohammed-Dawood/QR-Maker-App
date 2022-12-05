@@ -77,9 +77,16 @@ class _MainQrState extends State<MainQr> {
                 true, // Set to false if you want to show the Apple's native app rating dialog on iOS or Google's native app rating dialog (depends on the current Platform).
             onDismissed: () => rateMyApp.callEvent(RateMyAppEventType
                 .laterButtonPressed), // Called when the user dismissed the dialog (either by taping outside or by pressing the "back" button).
-            dialogStyle: const DialogStyle(
+            dialogStyle: DialogStyle(
               titleAlign: TextAlign.center,
-              messageAlign: TextAlign.center,
+              titleStyle: TextStyle(
+                fontSize: (MediaQuery.of(context).size.width < 600) ? 20 : 28,
+              ),
+              messageAlign: TextAlign.start,
+              messageStyle: TextStyle(
+                color: Colors.white,
+                fontSize: (MediaQuery.of(context).size.width < 600) ? 18 : 26,
+              ),
             ),
           );
         }
@@ -310,7 +317,7 @@ class _MainQrState extends State<MainQr> {
                           height: 50,
                           child: Center(
                             child: Text(
-                              'App Version 1.9.1',
+                              'App Version 1.9.2',
                               style: (isScreenWidth(context))
                                   ? Theme.of(context).textTheme.bodySmall
                                   : Theme.of(context).textTheme.bodyMedium,
@@ -564,7 +571,7 @@ class _MainQrState extends State<MainQr> {
                           height: 50,
                           child: Center(
                             child: Text(
-                              'App Version 1.9.1',
+                              'App Version 1.9.2',
                               style: Theme.of(context).textTheme.bodyMedium,
                             ),
                           ),
