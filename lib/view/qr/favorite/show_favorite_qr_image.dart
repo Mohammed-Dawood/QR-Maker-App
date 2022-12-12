@@ -396,8 +396,15 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                                 .textTheme
                                                 .displayMedium,
                                       ),
-                                      content: const Text(
+                                      content: Text(
                                         'Are you sure you want to delete your QR Code? This QR Code will be deleted from favorite on your device.',
+                                        style: (isScreenWidth(context))
+                                            ? Theme.of(context)
+                                                .textTheme
+                                                .displaySmall
+                                            : Theme.of(context)
+                                                .textTheme
+                                                .displayMedium,
                                       ),
                                       actions: [
                                         TextButton(
@@ -775,8 +782,11 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                             .textTheme
                                             .displayMedium,
                                       ),
-                                      content: const Text(
+                                      content: Text(
                                         'Are you sure you want to delete your QR Code? This QR Code will be deleted from favorite on your device.',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .displayMedium,
                                       ),
                                       actions: [
                                         TextButton(
