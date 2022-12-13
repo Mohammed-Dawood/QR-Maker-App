@@ -63,72 +63,70 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                     ),
                   ),
                   actions: [
-                    GetBuilder<FavoriteQrCodeController>(
-                      init: FavoriteQrCodeController(),
-                      builder: (FavoriteQrCodeController controller) =>
-                          IconButton(
-                        onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) => AlertDialog(
-                              title: Text(
-                                'Write QR Code Name',
+                    IconButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                            title: Text(
+                              'Write QR Code Name',
+                              style: (isScreenWidth(context))
+                                  ? Theme.of(context).textTheme.displaySmall
+                                  : Theme.of(context).textTheme.displayMedium,
+                            ),
+                            content: SingleChildScrollView(
+                              child: TextFormField(
+                                maxLines: 1,
+                                cursorWidth: 3,
+                                controller: textEditingController,
+                                keyboardType: TextInputType.name,
+                                textInputAction: TextInputAction.next,
+                                cursorColor: Theme.of(context).primaryColor,
                                 style: (isScreenWidth(context))
-                                    ? Theme.of(context).textTheme.displaySmall
-                                    : Theme.of(context).textTheme.displayMedium,
-                              ),
-                              content: SingleChildScrollView(
-                                child: TextFormField(
-                                  maxLines: 1,
-                                  cursorWidth: 3,
-                                  controller: textEditingController,
-                                  keyboardType: TextInputType.name,
-                                  textInputAction: TextInputAction.next,
-                                  cursorColor: Theme.of(context).primaryColor,
-                                  style: (isScreenWidth(context))
-                                      ? Theme.of(context).textTheme.titleSmall
-                                      : Theme.of(context).textTheme.titleMedium,
-                                  decoration: InputDecoration(
-                                    hintText: 'QR Code Name',
-                                    prefixIcon: Icon(
-                                      Icons.qr_code,
-                                      size: (isScreenWidth(context)) ? 24 : 30,
-                                      color: Theme.of(context).primaryColor,
-                                    ),
-                                    suffixIcon: textEditingController
-                                            .text.isEmpty
-                                        ? Container(
-                                            width: 0,
-                                          )
-                                        : IconButton(
-                                            onPressed: () =>
-                                                textEditingController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                            ),
+                                    ? Theme.of(context).textTheme.titleSmall
+                                    : Theme.of(context).textTheme.titleMedium,
+                                decoration: InputDecoration(
+                                  hintText: 'QR Code Name',
+                                  prefixIcon: Icon(
+                                    Icons.qr_code,
+                                    size: (isScreenWidth(context)) ? 24 : 30,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  suffixIcon: textEditingController.text.isEmpty
+                                      ? Container(
+                                          width: 0,
+                                        )
+                                      : IconButton(
+                                          onPressed: () =>
+                                              textEditingController.clear(),
+                                          icon: Icon(
+                                            Icons.close,
+                                            color:
+                                                Theme.of(context).primaryColor,
                                           ),
-                                  ),
+                                        ),
                                 ),
                               ),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Get.back();
-                                  },
-                                  child: Text(
-                                    'Cancel',
-                                    style: (isScreenWidth(context))
-                                        ? Theme.of(context)
-                                            .textTheme
-                                            .displaySmall
-                                        : Theme.of(context)
-                                            .textTheme
-                                            .displayMedium,
-                                  ),
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Get.back();
+                                },
+                                child: Text(
+                                  'Cancel',
+                                  style: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.displaySmall
+                                      : Theme.of(context)
+                                          .textTheme
+                                          .displayMedium,
                                 ),
-                                TextButton(
+                              ),
+                              GetBuilder<FavoriteQrCodeController>(
+                                init: FavoriteQrCodeController(),
+                                builder:
+                                    (FavoriteQrCodeController controller) =>
+                                        TextButton(
                                   onPressed: () {
                                     setState(() {
                                       GetStorage().write(
@@ -150,12 +148,12 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                             .displayMedium,
                                   ),
                                 ),
-                              ],
-                            ),
-                          );
-                        },
-                        icon: const Icon(Icons.edit),
-                      ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                      icon: const Icon(Icons.edit),
                     ),
                   ],
                 ),
@@ -411,14 +409,24 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                           onPressed: () => Get.back(),
                                           child: const Text('Cancel'),
                                         ),
-                                        TextButton(
-                                          onPressed: () async {
-                                            favoriteQrCodeController
-                                                .deleteItemFromQrCodeImageList(
-                                              widget.index,
-                                            );
-                                          },
-                                          child: const Text('Delete'),
+                                        GetBuilder<FavoriteQrCodeController>(
+                                          init: FavoriteQrCodeController(),
+                                          builder: (FavoriteQrCodeController
+                                                  controller) =>
+                                              TextButton(
+                                            onPressed: () async {
+                                              GetStorage().remove(
+                                                controller
+                                                        .favoriteQrCodeImageList[
+                                                    qrIndex!],
+                                              );
+                                              controller
+                                                  .deleteItemFromQrCodeImageList(
+                                                qrIndex!,
+                                              );
+                                            },
+                                            child: const Text('Delete'),
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -481,66 +489,63 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                     ),
                   ),
                   actions: [
-                    GetBuilder<FavoriteQrCodeController>(
-                      init: FavoriteQrCodeController(),
-                      builder: (FavoriteQrCodeController controller) =>
-                          IconButton(
-                        onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) => AlertDialog(
-                              title: Text(
-                                'Write QR Code Name',
-                                style:
-                                    Theme.of(context).textTheme.displayMedium,
-                              ),
-                              content: SingleChildScrollView(
-                                child: TextFormField(
-                                  maxLines: 1,
-                                  cursorWidth: 3,
-                                  controller: textEditingController,
-                                  keyboardType: TextInputType.name,
-                                  textInputAction: TextInputAction.next,
-                                  cursorColor: Theme.of(context).primaryColor,
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                  decoration: InputDecoration(
-                                    hintText: 'QR Code Name',
-                                    prefixIcon: Icon(
-                                      Icons.qr_code,
-                                      size: 30,
-                                      color: Theme.of(context).primaryColor,
-                                    ),
-                                    suffixIcon: textEditingController
-                                            .text.isEmpty
-                                        ? Container(
-                                            width: 0,
-                                          )
-                                        : IconButton(
-                                            onPressed: () =>
-                                                textEditingController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                            ),
+                    IconButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                            title: Text(
+                              'Write QR Code Name',
+                              style: Theme.of(context).textTheme.displayMedium,
+                            ),
+                            content: SingleChildScrollView(
+                              child: TextFormField(
+                                maxLines: 1,
+                                cursorWidth: 3,
+                                controller: textEditingController,
+                                keyboardType: TextInputType.name,
+                                textInputAction: TextInputAction.next,
+                                cursorColor: Theme.of(context).primaryColor,
+                                style: Theme.of(context).textTheme.titleMedium,
+                                decoration: InputDecoration(
+                                  hintText: 'QR Code Name',
+                                  prefixIcon: Icon(
+                                    Icons.qr_code,
+                                    size: 30,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  suffixIcon: textEditingController.text.isEmpty
+                                      ? Container(
+                                          width: 0,
+                                        )
+                                      : IconButton(
+                                          onPressed: () =>
+                                              textEditingController.clear(),
+                                          icon: Icon(
+                                            Icons.close,
+                                            color:
+                                                Theme.of(context).primaryColor,
                                           ),
-                                  ),
+                                        ),
                                 ),
                               ),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Get.back();
-                                  },
-                                  child: Text(
-                                    'Cancel',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .displayMedium,
-                                  ),
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Get.back();
+                                },
+                                child: Text(
+                                  'Cancel',
+                                  style:
+                                      Theme.of(context).textTheme.displayMedium,
                                 ),
-                                TextButton(
+                              ),
+                              GetBuilder<FavoriteQrCodeController>(
+                                init: FavoriteQrCodeController(),
+                                builder:
+                                    (FavoriteQrCodeController controller) =>
+                                        TextButton(
                                   onPressed: () {
                                     setState(() {
                                       GetStorage().write(
@@ -557,12 +562,12 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                         .displayMedium,
                                   ),
                                 ),
-                              ],
-                            ),
-                          );
-                        },
-                        icon: const Icon(Icons.edit),
-                      ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                      icon: const Icon(Icons.edit),
                     ),
                   ],
                 ),
@@ -793,14 +798,24 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                           onPressed: () => Get.back(),
                                           child: const Text('Cancel'),
                                         ),
-                                        TextButton(
-                                          onPressed: () async {
-                                            favoriteQrCodeController
-                                                .deleteItemFromQrCodeImageList(
-                                              widget.index,
-                                            );
-                                          },
-                                          child: const Text('Delete'),
+                                        GetBuilder<FavoriteQrCodeController>(
+                                          init: FavoriteQrCodeController(),
+                                          builder: (FavoriteQrCodeController
+                                                  controller) =>
+                                              TextButton(
+                                            onPressed: () async {
+                                              GetStorage().remove(
+                                                controller
+                                                        .favoriteQrCodeImageList[
+                                                    qrIndex!],
+                                              );
+                                              controller
+                                                  .deleteItemFromQrCodeImageList(
+                                                qrIndex!,
+                                              );
+                                            },
+                                            child: const Text('Delete'),
+                                          ),
                                         ),
                                       ],
                                     ),

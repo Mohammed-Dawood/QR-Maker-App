@@ -13,6 +13,26 @@ class FavoriteQrCodeController extends GetxController {
   ) async {
     String qrCodeImageString = String.fromCharCodes(qrImage);
 
+    for (var index = 0; index < favoriteQrCodeImageList.length; index++) {
+      if (qrCodeImageString == favoriteQrCodeImageList[index]) {
+        Get.snackbar(
+          'QR Maker',
+          "You already have this QR Code in favorite",
+          icon: const Icon(
+            Icons.done,
+            color: Colors.green,
+            size: 30,
+          ),
+          shouldIconPulse: false,
+          padding: const EdgeInsets.all(15),
+          margin: const EdgeInsets.symmetric(
+            horizontal: 25,
+            vertical: 10,
+          ),
+        );
+        return;
+      }
+    }
     favoriteQrCodeImageList.add(qrCodeImageString);
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -21,7 +41,7 @@ class FavoriteQrCodeController extends GetxController {
 
     Get.snackbar(
       'QR Maker',
-      "The image has been added to favorite successfully",
+      "The QR Code has been added to favorite successfully",
       icon: const Icon(
         Icons.done,
         color: Colors.green,

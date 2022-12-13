@@ -16,7 +16,7 @@ class SaveQrCodeController extends GetxController {
     await ImageGallerySaver.saveImage(bytes, name: name);
     Get.snackbar(
       'QR Maker',
-      "The image has been saved successfully",
+      "The QR Code has been saved successfully",
       icon: const Icon(
         Icons.done,
         color: Colors.green,
