@@ -23,7 +23,7 @@ class ShowFavoriteQrImage extends StatefulWidget {
 
 class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
   int? qrIndex;
-  FavoriteQrCodeController favoriteQrCodeController = Get.find();
+  // FavoriteQrCodeController favoriteQrCodeController = Get.find();
   ScreenshotController screenshotController = ScreenshotController();
   TextEditingController textEditingController = TextEditingController();
 
@@ -101,6 +101,9 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                               textEditingController.clear(),
                                           icon: Icon(
                                             Icons.close,
+                                            size: (isScreenWidth(context))
+                                                ? 24
+                                                : 30,
                                             color:
                                                 Theme.of(context).primaryColor,
                                           ),
@@ -523,6 +526,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                               textEditingController.clear(),
                                           icon: Icon(
                                             Icons.close,
+                                            size: 30,
                                             color:
                                                 Theme.of(context).primaryColor,
                                           ),
