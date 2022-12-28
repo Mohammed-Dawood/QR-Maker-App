@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
@@ -70,7 +71,7 @@ class _StyleShareSaveFavoriteQrCodeState
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
                   title: Text(
-                    'QR Style',
+                    AppLocalizations.of(context)!.edit_qr_code,
                     style:
                         TextStyle(fontSize: (isScreenWidth(context)) ? 20 : 28),
                   ),
@@ -187,7 +188,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                         : const EdgeInsets.symmetric(
                                             vertical: 20),
                                     child: Text(
-                                      'Edit QR Code',
+                                      AppLocalizations.of(context)!
+                                          .edit_qr_code,
                                       style: TextStyle(
                                         fontSize:
                                             (isScreenWidth(context)) ? 18 : 26,
@@ -213,7 +215,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Gap',
+                                          AppLocalizations.of(context)!.gap,
                                           style: (isScreenWidth(context))
                                               ? Theme.of(context)
                                                   .textTheme
@@ -257,7 +259,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Eyes',
+                                          AppLocalizations.of(context)!.eyes,
                                           style: (isScreenWidth(context))
                                               ? Theme.of(context)
                                                   .textTheme
@@ -301,7 +303,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Data',
+                                          AppLocalizations.of(context)!.data,
                                           style: (isScreenWidth(context))
                                               ? Theme.of(context)
                                                   .textTheme
@@ -345,7 +347,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Logo',
+                                          AppLocalizations.of(context)!.logo,
                                           style: (isScreenWidth(context))
                                               ? Theme.of(context)
                                                   .textTheme
@@ -392,7 +394,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                'Library',
+                                                AppLocalizations.of(context)!
+                                                    .library,
                                                 style: (isScreenWidth(context))
                                                     ? Theme.of(context)
                                                         .textTheme
@@ -455,7 +458,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                'Camera',
+                                                AppLocalizations.of(context)!
+                                                    .camera,
                                                 style: (isScreenWidth(context))
                                                     ? Theme.of(context)
                                                         .textTheme
@@ -518,7 +522,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                'Padding',
+                                                AppLocalizations.of(context)!
+                                                    .padding,
                                                 style: (isScreenWidth(context))
                                                     ? Theme.of(context)
                                                         .textTheme
@@ -570,7 +575,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                'Logo Size',
+                                                AppLocalizations.of(context)!
+                                                    .logo_size,
                                                 style: (isScreenWidth(context))
                                                     ? Theme.of(context)
                                                         .textTheme
@@ -623,7 +629,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Eyes Color',
+                                          AppLocalizations.of(context)!
+                                              .eyes_color,
                                           style: (isScreenWidth(context))
                                               ? Theme.of(context)
                                                   .textTheme
@@ -670,7 +677,9 @@ class _StyleShareSaveFavoriteQrCodeState
                                                       Navigator.pop(context);
                                                     },
                                                     child: Text(
-                                                      'Select',
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .select,
                                                       style: (isScreenWidth(
                                                               context))
                                                           ? Theme.of(context)
@@ -715,7 +724,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Data Color',
+                                          AppLocalizations.of(context)!
+                                              .data_color,
                                           style: (isScreenWidth(context))
                                               ? Theme.of(context)
                                                   .textTheme
@@ -762,7 +772,9 @@ class _StyleShareSaveFavoriteQrCodeState
                                                       Navigator.pop(context);
                                                     },
                                                     child: Text(
-                                                      'Select',
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .select,
                                                       style: (isScreenWidth(
                                                               context))
                                                           ? Theme.of(context)
@@ -807,7 +819,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Background',
+                                          AppLocalizations.of(context)!
+                                              .bg_color,
                                           style: (isScreenWidth(context))
                                               ? Theme.of(context)
                                                   .textTheme
@@ -855,7 +868,9 @@ class _StyleShareSaveFavoriteQrCodeState
                                                       Navigator.pop(context);
                                                     },
                                                     child: Text(
-                                                      'Select',
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .select,
                                                       style: (isScreenWidth(
                                                               context))
                                                           ? Theme.of(context)
@@ -899,7 +914,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                       onPressed: () async {
                                         final image = await screenshotController
                                             .capture();
-                                        saveQrCodeController.saveQrCode(image!);
+                                        saveQrCodeController.saveQrCode(
+                                            image!, context);
                                         vibrationController.vibration();
                                       },
                                       icon: Icon(
@@ -914,7 +930,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                             : const EdgeInsets.symmetric(
                                                 vertical: 20),
                                         child: Text(
-                                          'Save QR Code',
+                                          AppLocalizations.of(context)!
+                                              .save_qr_code,
                                           style: TextStyle(
                                             fontSize: (isScreenWidth(context))
                                                 ? 18
@@ -956,7 +973,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                             : const EdgeInsets.symmetric(
                                                 vertical: 20),
                                         child: Text(
-                                          'Share QR Code',
+                                          AppLocalizations.of(context)!
+                                              .share_qr_code,
                                           style: TextStyle(
                                             fontSize: (isScreenWidth(context))
                                                 ? 18
@@ -981,7 +999,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                       final image =
                                           await screenshotController.capture();
                                       historyQrCodeController
-                                          .addQrCodeImageToFavorite(image!);
+                                          .addQrCodeImageToFavorite(
+                                              image!, context);
                                       vibrationController.vibration();
                                     },
                                     icon: Icon(
@@ -995,7 +1014,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                           : const EdgeInsets.symmetric(
                                               vertical: 20),
                                       child: Text(
-                                        'Add To Favorite',
+                                        AppLocalizations.of(context)!
+                                            .add_to_favorite,
                                         style: TextStyle(
                                           fontSize: (isScreenWidth(context))
                                               ? 18
@@ -1034,9 +1054,9 @@ class _StyleShareSaveFavoriteQrCodeState
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
-                  title: const Text(
-                    'QR Style',
-                    style: TextStyle(fontSize: 28),
+                  title: Text(
+                    AppLocalizations.of(context)!.edit_qr_code,
+                    style: const TextStyle(fontSize: 28),
                   ),
                   iconTheme: const IconThemeData(
                     size: 30,
@@ -1138,13 +1158,14 @@ class _StyleShareSaveFavoriteQrCodeState
                                     Icons.edit,
                                     size: 30,
                                   ),
-                                  label: const Padding(
-                                    padding: EdgeInsets.symmetric(
+                                  label: Padding(
+                                    padding: const EdgeInsets.symmetric(
                                       vertical: 20,
                                     ),
                                     child: Text(
-                                      'Edit QR Code',
-                                      style: TextStyle(
+                                      AppLocalizations.of(context)!
+                                          .edit_qr_code,
+                                      style: const TextStyle(
                                         fontSize: 26,
                                       ),
                                     ),
@@ -1168,7 +1189,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Gap',
+                                          AppLocalizations.of(context)!.gap,
                                           style: Theme.of(context)
                                               .textTheme
                                               .displayMedium,
@@ -1208,7 +1229,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Eyes',
+                                          AppLocalizations.of(context)!.eyes,
                                           style: Theme.of(context)
                                               .textTheme
                                               .displayMedium,
@@ -1248,7 +1269,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Data',
+                                          AppLocalizations.of(context)!.data,
                                           style: Theme.of(context)
                                               .textTheme
                                               .displayMedium,
@@ -1288,7 +1309,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Logo',
+                                          AppLocalizations.of(context)!.logo,
                                           style: Theme.of(context)
                                               .textTheme
                                               .displayMedium,
@@ -1329,7 +1350,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                'Library',
+                                                AppLocalizations.of(context)!
+                                                    .library,
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .displayMedium,
@@ -1384,7 +1406,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                'Camera',
+                                                AppLocalizations.of(context)!
+                                                    .camera,
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .displayMedium,
@@ -1439,7 +1462,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                'Padding',
+                                                AppLocalizations.of(context)!
+                                                    .padding,
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .displayMedium,
@@ -1485,7 +1509,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                'Logo Size',
+                                                AppLocalizations.of(context)!
+                                                    .logo_size,
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .displayMedium,
@@ -1530,7 +1555,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Eyes Color',
+                                          AppLocalizations.of(context)!
+                                              .eyes_color,
                                           style: Theme.of(context)
                                               .textTheme
                                               .displayMedium,
@@ -1570,7 +1596,9 @@ class _StyleShareSaveFavoriteQrCodeState
                                                       Navigator.pop(context);
                                                     },
                                                     child: Text(
-                                                      'Select',
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .select,
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .displayMedium,
@@ -1608,7 +1636,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Data Color',
+                                          AppLocalizations.of(context)!
+                                              .data_color,
                                           style: Theme.of(context)
                                               .textTheme
                                               .displayMedium,
@@ -1648,7 +1677,9 @@ class _StyleShareSaveFavoriteQrCodeState
                                                       Navigator.pop(context);
                                                     },
                                                     child: Text(
-                                                      'Select',
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .select,
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .displayMedium,
@@ -1686,7 +1717,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Background',
+                                          AppLocalizations.of(context)!
+                                              .bg_color,
                                           style: Theme.of(context)
                                               .textTheme
                                               .displayMedium,
@@ -1727,7 +1759,9 @@ class _StyleShareSaveFavoriteQrCodeState
                                                       Navigator.pop(context);
                                                     },
                                                     child: Text(
-                                                      'Select',
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .select,
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .displayMedium,
@@ -1763,20 +1797,21 @@ class _StyleShareSaveFavoriteQrCodeState
                                       onPressed: () async {
                                         final image = await screenshotController
                                             .capture();
-                                        controller.saveQrCode(image!);
+                                        controller.saveQrCode(image!, context);
                                         vibrationController.vibration();
                                       },
                                       icon: const Icon(
                                         Icons.save,
                                         size: 30,
                                       ),
-                                      label: const Padding(
-                                        padding: EdgeInsets.symmetric(
+                                      label: Padding(
+                                        padding: const EdgeInsets.symmetric(
                                           vertical: 20,
                                         ),
                                         child: Text(
-                                          'Save QR Code',
-                                          style: TextStyle(
+                                          AppLocalizations.of(context)!
+                                              .save_qr_code,
+                                          style: const TextStyle(
                                             fontSize: 26,
                                           ),
                                         ),
@@ -1807,13 +1842,14 @@ class _StyleShareSaveFavoriteQrCodeState
                                         Icons.share,
                                         size: 30,
                                       ),
-                                      label: const Padding(
-                                        padding: EdgeInsets.symmetric(
+                                      label: Padding(
+                                        padding: const EdgeInsets.symmetric(
                                           vertical: 20,
                                         ),
                                         child: Text(
-                                          'Share QR Code',
-                                          style: TextStyle(
+                                          AppLocalizations.of(context)!
+                                              .share_qr_code,
+                                          style: const TextStyle(
                                             fontSize: 26,
                                           ),
                                         ),
@@ -1835,20 +1871,22 @@ class _StyleShareSaveFavoriteQrCodeState
                                       final image =
                                           await screenshotController.capture();
                                       historyQrCodeController
-                                          .addQrCodeImageToFavorite(image!);
+                                          .addQrCodeImageToFavorite(
+                                              image!, context);
                                       vibrationController.vibration();
                                     },
                                     icon: const Icon(
                                       Icons.favorite,
                                       size: 30,
                                     ),
-                                    label: const Padding(
-                                      padding: EdgeInsets.symmetric(
+                                    label: Padding(
+                                      padding: const EdgeInsets.symmetric(
                                         vertical: 20,
                                       ),
                                       child: Text(
-                                        'Add To Favorite',
-                                        style: TextStyle(
+                                        AppLocalizations.of(context)!
+                                            .add_to_favorite,
+                                        style: const TextStyle(
                                           fontSize: 26,
                                         ),
                                       ),

@@ -1,0 +1,504 @@
+{
+    "language": "English",
+    "@language":{
+        "description": "The current language"
+    },
+
+    "vibration": "Vibration",
+    "@vibration":{
+        "description": "The current vibration"
+    },
+
+    "dark_theme": "Dark Theme",
+    "@dark_theme": {
+        "description": "The current theme"
+    },
+
+    "version": "App Version 1.10.0",
+    "@version": {
+        "description": "The current version"
+    },
+
+    "scan": "Scan",
+    "@scan": {
+        "description": "Scan bottomNavigationBar "
+    },
+
+    "make": "Make",
+    "@make": {
+        "description": "Make bottomNavigationBar"
+    },
+
+    "favorite": "Favorite",
+    "@favorite": {
+        "description": "Favorite bottomNavigationBar"
+    },
+
+    "scan_qr_code": "Scan QR Code",
+    "@scan_qr_code": {
+        "description": "Scan QR Code AppBar"
+    },
+
+    "make_qr_code": "Make QR Code",
+    "@make_qr_code": {
+        "description": "Make QR Code AppBar"
+    },
+
+    "favorite_qr_code": "Favorite QR Code",
+    "@favorite_qr_code": {
+        "description": "Favorite QR Code AppBar"
+    },
+
+    "start_scan": "Start Scan",
+    "@start_scan": {
+        "description": "Start scan button"
+    },
+
+    "scanner": "Scanner",
+    "@scanner": {
+        "description": "AppBar scanner by camera"
+    },
+
+    "go_to_link": "Go To Link",
+    "@go_to_link": {
+        "description": "Go To Link"
+    },
+
+    "change_qr_code_name": "Change QR Code Name",
+    "@change_qr_code_name": {
+        "description": "Change QR Code Name Text"
+    },
+
+    "prev": "Prev",
+    "@prev": {
+        "description": "Prev button"
+    },
+
+    "next": "Next",
+    "@next": {
+        "description": "Next button"
+    },
+
+    "save_qr_code": "Save QR Code",
+    "@save_qr_code": {
+        "description": "Save QR Code button"
+    },
+
+    "share_qr_code": "Share QR Code",
+    "@share_qr_code": {
+        "description": "Share QR Code button"
+    },
+
+    "add_to_favorite": "Add To Favorite",
+    "@add_to_favorite": {
+        "description": "Add To Favorite button"
+    },
+
+    "edit_qr_code": "Edit QR Code",
+    "@edit_qr_code": {
+        "description": "Edit QR Code button"
+    },
+
+    "delete_qr_code": "Delete QR Code",
+    "@delete_qr_code": {
+        "description": "Delete QR Code button"
+    },
+
+    "delete_qr_code_text": "Delete QR Code!",
+    "@delete_qr_code_text": {
+        "description": "Delete QR Code!"
+    },
+
+    "delete_qr_code_message": "Are you sure you want to delete your QR Code? This QR Code will be deleted from favorite on your device.",
+    "@delete_qr_code_message": {
+        "description": "delete_qr_code_message"
+    },
+
+
+    "cancel": "Cancel",
+    "@cancel": {
+        "description": "Cancel button"
+    },
+
+    "ok": "Ok",
+    "@ok": {
+        "description": "Ok button"
+    },
+
+    "delete": "Delete",
+    "@delete": {
+        "description": "Delete button"
+    },
+
+    "save_snackbar": "The QR Code has been saved successfully",
+    "@save_snackbar": {
+        "description": "Save snackbar"
+    },
+
+    "favorite_snackbar": "The QR Code has been added to favorite successfully",
+    "@favorite_snackbar": {
+        "description": "The QR Code has been added to favorite successfully snackbar"
+    }, 
+
+    "already_favorite_snackbar": "You already have this QR Code in favorite",
+    "@already_favorite_snackbar": {
+        "description": "You already have this QR Code in favorite snackbar"
+    },
+
+    "write_qr_code_name": "Write QR Code Name",
+    "@write_qr_code_name": {
+        "description": "Write QR Code Name"
+    },
+
+    "qr_code_name": "QR Code Name",
+    "@qr_code_name": {
+        "description": "QR Code Name hintText"
+    },
+
+    "url": "URL",
+    "@url": {
+        "description": "URL AppBar"
+    },
+
+    "create_qr_code": "Create QR Code",
+    "@create_qr_code": {
+        "description": "Create QR Code button"
+    },
+
+    "telephone": "Telephone",
+    "@telephone": {
+        "description": "Telephone AppBar"
+    },
+
+    "telephone_number": "Telephone Number",
+    "@telephone_number": {
+        "description": "Telephone Number hintText"
+    },
+
+    "please_enter_a_valid_telephone_number": "Please enter a valid telephone number",
+    "@please_enter_a_valid_telephone_number": {
+        "description": "Please enter a valid telephone number error message"
+    },
+
+    "search_country": "Search Country",
+    "@search_country": {
+        "description": "Search Country hintText"
+    },
+
+    "message": "Message",
+    "@message": {
+        "description": "Message hintText & AppBar"
+    },
+
+    "youtube": "Youtube",
+    "@youtube": {
+        "description": "Youtube AppBar"
+    },
+
+    "facebook": "Facebook",
+    "@facebook": {
+        "description": "Facebook AppBar"
+    },
+
+    "location": "Location",
+    "@location": {
+        "description": "Location AppBar"
+    },
+
+    "enter_latitude": "Enter latitude",
+    "@enter_latitude": {
+        "description": "Enter latitude AppBar"
+    },
+
+    "enter_longitude": "Enter longitude",
+    "@enter_longitude": {
+        "description": "Enter longitude AppBar"
+    },
+
+    "please_enter_a_valid_latitude": "Please enter a valid latitude",
+    "@please_enter_a_valid_latitude": {
+        "description": "Please enter a valid latitude error message"
+    },
+
+    "please_enter_a_valid_longitude": "Please enter a valid longitude",
+    "@please_enter_a_valid_longitude": {
+        "description": "Please enter a valid longitude error message"
+    },
+
+    "wifi": "Wifi",
+    "@wifi": {
+        "description": "Wifi AppBar"
+    },
+
+    "wifi_name": "Wifi Name",
+    "@wifi_name": {
+        "description": "Wifi Name hintText"
+    },
+
+    "wifi_password": "Wifi Password",
+    "@wifi_password": {
+        "description": "Wifi password hintText"
+    },
+
+    "please_enter_a_wifi_name": "Please enter a Wifi name",
+    "@please_enter_a_wifi_name": {
+        "description": "Please enter a Wifi name error message"
+    },
+
+    "please_enter_a_wifi_password": "Please enter a Wifi Password",
+    "@please_enter_a_wifi_password": {
+        "description": "Please enter a Wifi Password error message"
+    },
+
+    "whatsapp": "Whatsapp",
+    "@whatsapp": {
+        "description": "Whatsapp AppBar"
+    },
+
+    "v_card": "V-Card",
+    "@v_card": {
+        "description": "V-Card AppBar"
+    },
+
+    "please_enter_your_Name": "Please enter your Name",
+    "@please_enter_your_Name": {
+        "description": "Please enter your Name error message"
+    },
+
+    "full_name": "Full Name",
+    "@full_name": {
+        "description": "Full Name hintText"
+    },
+
+    "email": "Email",
+    "@email": {
+        "description": "Email hintText & appBar"
+    },
+    
+    "date_of_birth": "Date of birth",
+    "@date_of_birth": {
+        "description": "Date of birth hintText"
+    },
+
+    "street_address": "Street address",
+    "@street_address": {
+        "description": "Street address hintText"
+    },
+
+    "zip_code": "Zip Code",
+    "@zip_code": {
+        "description": "Zip Code hintText"
+    },
+
+    "city": "City",
+    "@city": {
+        "description": "City hintText"
+    },
+
+    "state": "State",
+    "@state": {
+        "description": "State hintText"
+    },
+
+    "country": "Country",
+    "@country": {
+        "description": "Country hintText"
+    },
+
+    "instagram": "Instagram",
+    "@instagram": {
+        "description": "Instagram hintText"
+    },
+
+    "please_enter_a_valid_link": "Please enter a valid link",
+    "@please_enter_a_valid_link": {
+        "description": "Please enter a valid link error message"
+    },
+
+    "please_enter_a_valid_emil": "Please enter a valid email",
+    "@please_enter_a_valid_emil": {
+        "description": "Please enter a valid email error message"
+    },
+
+    "subject": "Subject",
+    "@subject": {
+        "description": "Subject hintText"
+    },
+
+    "mobile": "Mobile",
+    "@mobile": {
+        "description": "Mobile hintText"
+    },
+
+    "work": "Work",
+    "@work": {
+        "description": "Work hintText"
+    },
+
+    "home": "Home",
+    "@home": {
+        "description": "Home hintText"
+    },
+
+    "fax": "Fax",
+    "@fax": {
+        "description": "Fax hintText"
+    },
+
+    "twitter": "Twitter",
+    "@twitter": {
+        "description": "Twitter appBar"
+    },
+
+    "linkedin": "Linkedin",
+    "@linkedin": {
+        "description": "Linkedin appBar"
+    },
+
+    "event": "Event",
+    "@event": {
+        "description": "Event appBar"
+    },
+
+    "event_name": "Event Name",
+    "@event_name": {
+        "description": "Event Name hintText"
+    },
+
+    "please_enter_the_event_name": "Please enter the event name",
+    "@please_enter_the_event_name": {
+        "description": "Please enter the event name error message"
+    },
+
+    "event_address": "Event Address",
+    "@event_address": {
+        "description": "Event Address hintText"
+    },
+
+    "please_enter_the_event_address": "Please enter the event address",
+    "@please_enter_the_event_address": {
+        "description": "Please enter the event address error message"
+    },
+
+    "event_date_start": "Event Date Start",
+    "@event_date_start": {
+        "description": "Event Date Start hintText"
+    },
+
+    "please_enter_the_event_date_start": "Please enter the event date start",
+    "@please_enter_the_event_date_start": {
+        "description": "Please enter the event date start error message"
+    },
+
+    "event_time_start": "Event Time Start",
+    "@event_time_start": {
+        "description": "Event Time Start hintText"
+    },
+
+    "please_enter_the_event_time_start": "Please enter the event time start",
+    "@please_enter_the_event_time_start": {
+        "description": "Please enter the event time start error message"
+    },
+
+    "event_date_end": "Event Date End",
+    "@event_date_end": {
+        "description": "Event Date End hintText"
+    },
+
+    "please_enter_the_event_date_end": "Please enter the event date end",
+    "@please_enter_the_event_date_end": {
+        "description": "Please enter the event date end error message"
+    },
+
+    "event_time_end": "Event Time End",
+    "@event_time_end": {
+        "description": "Event Time End hintText"
+    },
+
+    "please_enter_the_event_time_end": "Please enter the event time end",
+    "@please_enter_the_event_time_end": {
+        "description": "Please enter the event time end error message"
+    },
+    
+    "edit_qr_style": "Edit QR Style",
+    "@edit_qr_style": {
+        "description": "Edit QR Style AppBar"
+    },
+
+    "gap": "Gap",
+    "@gap": {
+        "description": "Gap button"
+    },
+
+    "eyes": "Eyes",
+    "@eyes": {
+        "description": "Eyes button"
+    },
+
+    "data": "Data",
+    "@data": {
+        "description": "Data button"
+    },
+
+    "logo": "Logo",
+    "@logo": {
+        "description": "Logo button"
+    },
+
+    "library": "Library",
+    "@library": {
+        "description": "Library button"
+    },
+
+    "camera": "Camera",
+    "@camera": {
+        "description": "Camera button"
+    },
+
+    "padding": "Padding",
+    "@padding": {
+        "description": "Padding button"
+    },
+    
+    "logo_size": "Logo Size",
+    "@logo_size": {
+        "description": "Logo Size button"
+    },
+
+    "eyes_color": "Eyes Color",
+    "@eyes_color": {
+        "description": "Eyes Color button"
+    },
+
+    "data_color": "Data Color",
+    "@data_color": {
+        "description": "data Color button"
+    },
+
+    "bg_color": "BG Color",
+    "@bg_color": {
+        "description": "BG Color button"
+    },
+
+    "select": "Select",
+    "@select": {
+        "description": "Select button"
+    },
+
+    "rate_app_title": "Rate this app",
+    "@rate_app_title": {
+        "description": "rate app title"
+    },
+
+    "rate_app_message": "If you like this app, please take a moment of your time to review it!\nIt really helps us and shouldn't take more than a minute.",
+    "@rate_app_message": {
+        "description": "rate app message"
+    }
+        
+}
+
+
+
+
+
+

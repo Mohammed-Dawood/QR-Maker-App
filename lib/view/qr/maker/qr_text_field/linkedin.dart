@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:validators/validators.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
 
@@ -45,7 +46,7 @@ class _MakeLinkedInState extends State<MakeLinkedIn> {
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
                   title: Text(
-                    'LinkedIn QR Code',
+                    AppLocalizations.of(context)!.linkedin,
                     style:
                         TextStyle(fontSize: (isScreenWidth(context)) ? 20 : 28),
                   ),
@@ -69,7 +70,8 @@ class _MakeLinkedInState extends State<MakeLinkedIn> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (!isURL(value)) {
-                                    return 'Please enter a valid link';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_a_valid_link;
                                   }
                                   return null;
                                 },
@@ -140,7 +142,8 @@ class _MakeLinkedInState extends State<MakeLinkedIn> {
                                         : const EdgeInsets.symmetric(
                                             vertical: 20),
                                     child: Text(
-                                      'Create QR Code',
+                                      AppLocalizations.of(context)!
+                                          .create_qr_code,
                                       style: TextStyle(
                                           fontSize: (isScreenWidth(context))
                                               ? 18
@@ -174,9 +177,9 @@ class _MakeLinkedInState extends State<MakeLinkedIn> {
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
-                  title: const Text(
-                    'LinkedIn QR Code',
-                    style: TextStyle(fontSize: 28),
+                  title: Text(
+                    AppLocalizations.of(context)!.linkedin,
+                    style: const TextStyle(fontSize: 28),
                   ),
                   iconTheme: const IconThemeData(
                     size: 30,
@@ -196,7 +199,8 @@ class _MakeLinkedInState extends State<MakeLinkedIn> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (!isURL(value)) {
-                                    return 'Please enter a valid link';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_a_valid_link;
                                   }
                                   return null;
                                 },
@@ -235,7 +239,7 @@ class _MakeLinkedInState extends State<MakeLinkedIn> {
                             Card(
                               child: SizedBox(
                                 width: double.infinity,
-                                child: ElevatedButton(
+                                child: ElevatedButton.icon(
                                   onPressed: () {
                                     if (validateKey.currentState!.validate()) {
                                       setState(
@@ -252,9 +256,20 @@ class _MakeLinkedInState extends State<MakeLinkedIn> {
                                       );
                                     }
                                   },
-                                  child: const Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 18),
-                                    child: Text('Create QR Code'),
+                                  icon: const Icon(
+                                    Icons.touch_app,
+                                    size: 30,
+                                  ),
+                                  label: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 20),
+                                    child: Text(
+                                      AppLocalizations.of(context)!
+                                          .create_qr_code,
+                                      style: const TextStyle(
+                                        fontSize: 26,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),

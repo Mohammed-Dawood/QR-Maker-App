@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
 
 class ScanningQRByCamera extends StatefulWidget {
@@ -42,7 +43,7 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
         ? Scaffold(
             appBar: AppBar(
               title: Text(
-                'Scanner',
+                AppLocalizations.of(context)!.scanner,
                 style: TextStyle(fontSize: (isScreenWidth(context)) ? 20 : 28),
               ),
               iconTheme: IconThemeData(
@@ -114,14 +115,22 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
                         }
                       },
                       icon: result != null
-                          ? const Icon(Icons.arrow_back)
-                          : const Icon(Icons.search),
+                          ? Icon(
+                              Icons.arrow_back,
+                              size: (isScreenWidth(context)) ? 24 : 30,
+                            )
+                          : Icon(
+                              Icons.search,
+                              size: (isScreenWidth(context)) ? 24 : 30,
+                            ),
                       label: Padding(
                         padding: (isScreenWidth(context))
                             ? const EdgeInsets.symmetric(vertical: 18)
                             : const EdgeInsets.symmetric(vertical: 20),
                         child: Text(
-                          result != null ? 'Go to link' : 'Scan QR Code',
+                          result != null
+                              ? AppLocalizations.of(context)!.go_to_link
+                              : AppLocalizations.of(context)!.scan_qr_code,
                           style: TextStyle(
                               fontSize: (isScreenWidth(context)) ? 18 : 25),
                           maxLines: 1,
@@ -135,9 +144,9 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
           )
         : Scaffold(
             appBar: AppBar(
-              title: const Text(
-                'Scanner',
-                style: TextStyle(fontSize: 28),
+              title: Text(
+                AppLocalizations.of(context)!.scanner,
+                style: const TextStyle(fontSize: 28),
               ),
               iconTheme: const IconThemeData(
                 size: 30,
@@ -208,12 +217,20 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
                         }
                       },
                       icon: result != null
-                          ? const Icon(Icons.arrow_back)
-                          : const Icon(Icons.search),
+                          ? const Icon(
+                              Icons.arrow_back,
+                              size: 30,
+                            )
+                          : const Icon(
+                              Icons.search,
+                              size: 30,
+                            ),
                       label: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 20),
                         child: Text(
-                          result != null ? 'Go to link' : 'Scan QR Code',
+                          result != null
+                              ? AppLocalizations.of(context)!.go_to_link
+                              : AppLocalizations.of(context)!.scan_qr_code,
                           style: const TextStyle(fontSize: 25),
                           maxLines: 1,
                         ),

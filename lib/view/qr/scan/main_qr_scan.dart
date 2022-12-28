@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/view/qr/scan/scanning_qr_by_camera.dart';
 
@@ -46,7 +47,7 @@ class MainQrScan extends StatelessWidget {
                               ? const EdgeInsets.symmetric(vertical: 18)
                               : const EdgeInsets.symmetric(vertical: 20),
                           child: Text(
-                            'Get Started',
+                            AppLocalizations.of(context)!.start_scan,
                             style: TextStyle(
                               fontSize: (isScreenWidth(context)) ? 18 : 26,
                             ),
@@ -88,11 +89,11 @@ class MainQrScan extends StatelessWidget {
                           Icons.qr_code_scanner,
                           size: 30,
                         ),
-                        label: const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 20),
+                        label: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 20),
                           child: Text(
-                            'Get Started',
-                            style: TextStyle(
+                            AppLocalizations.of(context)!.start_scan,
+                            style: const TextStyle(
                               fontSize: 26,
                             ),
                           ),

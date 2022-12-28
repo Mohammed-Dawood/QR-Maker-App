@@ -4,12 +4,14 @@ import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FavoriteQrCodeController extends GetxController {
   List<String> favoriteQrCodeImageList = [];
 
   Future<void> addQrCodeImageToFavorite(
     Uint8List qrImage,
+    BuildContext context,
   ) async {
     String qrCodeImageString = String.fromCharCodes(qrImage);
 
@@ -17,7 +19,8 @@ class FavoriteQrCodeController extends GetxController {
       if (qrCodeImageString == favoriteQrCodeImageList[index]) {
         Get.snackbar(
           'QR Maker',
-          "You already have this QR Code in favorite",
+          AppLocalizations.of(context)!.already_favorite_snackbar,
+          // "You already have this QR Code in favorite",
           icon: const Icon(
             Icons.done,
             color: Colors.green,
@@ -41,7 +44,8 @@ class FavoriteQrCodeController extends GetxController {
 
     Get.snackbar(
       'QR Maker',
-      "The QR Code has been added to favorite successfully",
+      AppLocalizations.of(context)!.favorite_snackbar,
+      // "The QR Code has been added to favorite successfully",
       icon: const Icon(
         Icons.done,
         color: Colors.green,

@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:validators/validators.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
 
@@ -46,7 +47,7 @@ class _MakeUrlState extends State<MakeUrl> {
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
                   title: Text(
-                    'URL QR Code',
+                    AppLocalizations.of(context)!.url,
                     style:
                         TextStyle(fontSize: (isScreenWidth(context)) ? 20 : 28),
                   ),
@@ -70,7 +71,8 @@ class _MakeUrlState extends State<MakeUrl> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (!isURL(value)) {
-                                    return 'Please enter a valid URL';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_a_valid_link;
                                   }
                                   return null;
                                 },
@@ -143,7 +145,8 @@ class _MakeUrlState extends State<MakeUrl> {
                                         : const EdgeInsets.symmetric(
                                             vertical: 20),
                                     child: Text(
-                                      'Create QR Code',
+                                      AppLocalizations.of(context)!
+                                          .create_qr_code,
                                       style: TextStyle(
                                           fontSize: (isScreenWidth(context))
                                               ? 18
@@ -177,9 +180,9 @@ class _MakeUrlState extends State<MakeUrl> {
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
-                  title: const Text(
-                    'URL QR Code',
-                    style: TextStyle(fontSize: 28),
+                  title: Text(
+                    AppLocalizations.of(context)!.url,
+                    style: const TextStyle(fontSize: 28),
                   ),
                   iconTheme: const IconThemeData(
                     size: 30,
@@ -199,7 +202,8 @@ class _MakeUrlState extends State<MakeUrl> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (!isURL(value)) {
-                                    return 'Please enter a valid URL';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_a_valid_link;
                                   }
                                   return null;
                                 },
@@ -260,11 +264,13 @@ class _MakeUrlState extends State<MakeUrl> {
                                     Icons.touch_app,
                                     size: 30,
                                   ),
-                                  label: const Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 20),
+                                  label: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 20),
                                     child: Text(
-                                      'Create QR Code',
-                                      style: TextStyle(
+                                      AppLocalizations.of(context)!
+                                          .create_qr_code,
+                                      style: const TextStyle(
                                         fontSize: 26,
                                       ),
                                     ),

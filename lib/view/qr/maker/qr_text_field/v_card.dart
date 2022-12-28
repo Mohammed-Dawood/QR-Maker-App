@@ -6,6 +6,7 @@ import 'package:validators/validators.dart';
 import 'package:intl_phone_field/phone_number.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
 
@@ -78,7 +79,7 @@ class _MakeVCardState extends State<MakeVCard> {
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
                   title: Text(
-                    'V-Card QR Code',
+                    AppLocalizations.of(context)!.v_card,
                     style:
                         TextStyle(fontSize: (isScreenWidth(context)) ? 20 : 28),
                   ),
@@ -106,7 +107,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                 child: TextFormField(
                                   validator: (String? name) {
                                     if (isNull(name)) {
-                                      return 'Please enter a Wifi Name';
+                                      return AppLocalizations.of(context)!
+                                          .please_enter_your_Name;
                                     }
                                     return null;
                                   },
@@ -121,7 +123,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                       ? Theme.of(context).textTheme.titleSmall
                                       : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
-                                    hintText: 'Full Name ',
+                                    hintText:
+                                        AppLocalizations.of(context)!.full_name,
                                     prefixIcon: Icon(
                                       Icons.person,
                                       color: Theme.of(context).primaryColor,
@@ -157,7 +160,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                       ? Theme.of(context).textTheme.titleSmall
                                       : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
-                                    hintText: 'name@mail.com',
+                                    hintText:
+                                        AppLocalizations.of(context)!.email,
                                     prefixIcon: Icon(
                                       Icons.email,
                                       color: Theme.of(context).primaryColor,
@@ -186,7 +190,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                 child: IntlPhoneField(
                                   validator: (PhoneNumber? phone) {
                                     if (!isLength(phone!.number, 8, 20)) {
-                                      return 'Please enter a valid Phone Number';
+                                      return AppLocalizations.of(context)!
+                                          .please_enter_a_valid_telephone_number;
                                     }
                                     return null;
                                   },
@@ -226,7 +231,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                     searchFieldCursorColor:
                                         Theme.of(context).primaryColor,
                                     searchFieldInputDecoration: InputDecoration(
-                                      hintText: 'Search Country',
+                                      hintText: AppLocalizations.of(context)!
+                                          .search_country,
                                       hintStyle: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize:
@@ -246,6 +252,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                         : 500,
                                   ),
                                   decoration: InputDecoration(
+                                    hintText:
+                                        AppLocalizations.of(context)!.mobile,
                                     suffixIcon: mobileController.text.isEmpty
                                         ? Container(
                                             width: 0,
@@ -273,7 +281,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                 child: IntlPhoneField(
                                   validator: (PhoneNumber? phone) {
                                     if (!isLength(phone!.number, 8, 20)) {
-                                      return 'Please enter a valid Phone Number';
+                                      return AppLocalizations.of(context)!
+                                          .please_enter_a_valid_telephone_number;
                                     }
                                     return null;
                                   },
@@ -313,7 +322,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                     searchFieldCursorColor:
                                         Theme.of(context).primaryColor,
                                     searchFieldInputDecoration: InputDecoration(
-                                      hintText: 'Search Country',
+                                      hintText: AppLocalizations.of(context)!
+                                          .search_country,
                                       hintStyle: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize:
@@ -333,7 +343,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                         : 500,
                                   ),
                                   decoration: InputDecoration(
-                                    hintText: 'Phone(Work)',
+                                    hintText:
+                                        AppLocalizations.of(context)!.work,
                                     suffixIcon: workController.text.isEmpty
                                         ? Container(
                                             width: 0,
@@ -361,7 +372,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                 child: IntlPhoneField(
                                   validator: (PhoneNumber? phone) {
                                     if (!isLength(phone!.number, 8, 20)) {
-                                      return 'Please enter a valid Phone Number';
+                                      return AppLocalizations.of(context)!
+                                          .please_enter_a_valid_telephone_number;
                                     }
                                     return null;
                                   },
@@ -401,7 +413,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                     searchFieldCursorColor:
                                         Theme.of(context).primaryColor,
                                     searchFieldInputDecoration: InputDecoration(
-                                      hintText: 'Search Country',
+                                      hintText: AppLocalizations.of(context)!
+                                          .search_country,
                                       hintStyle: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize:
@@ -421,7 +434,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                         : 500,
                                   ),
                                   decoration: InputDecoration(
-                                    hintText: 'Phone(Home)',
+                                    hintText:
+                                        AppLocalizations.of(context)!.home,
                                     suffixIcon: homeController.text.isEmpty
                                         ? Container(
                                             width: 0,
@@ -449,7 +463,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                 child: IntlPhoneField(
                                   validator: (PhoneNumber? phone) {
                                     if (!isLength(phone!.number, 8, 20)) {
-                                      return 'Please enter a valid Phone Number';
+                                      return AppLocalizations.of(context)!
+                                          .please_enter_a_valid_telephone_number;
                                     }
                                     return null;
                                   },
@@ -489,7 +504,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                     searchFieldCursorColor:
                                         Theme.of(context).primaryColor,
                                     searchFieldInputDecoration: InputDecoration(
-                                      hintText: 'Search Country',
+                                      hintText: AppLocalizations.of(context)!
+                                          .search_country,
                                       hintStyle: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize:
@@ -509,7 +525,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                         : 500,
                                   ),
                                   decoration: InputDecoration(
-                                    hintText: 'Fax',
+                                    hintText: AppLocalizations.of(context)!.fax,
                                     suffixIcon: faxController.text.isEmpty
                                         ? Container(
                                             width: 0,
@@ -570,7 +586,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                     }
                                   },
                                   decoration: InputDecoration(
-                                    hintText: 'Date of birth',
+                                    hintText: AppLocalizations.of(context)!
+                                        .date_of_birth,
                                     prefixIcon: Icon(
                                       Icons.date_range,
                                       color: Theme.of(context).primaryColor,
@@ -590,7 +607,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                       ? Theme.of(context).textTheme.titleSmall
                                       : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
-                                    hintText: 'https://www.example.com/',
+                                    hintText: 'https://www.example.com',
                                     prefixIcon: Icon(
                                       Icons.link,
                                       color: Theme.of(context).primaryColor,
@@ -626,7 +643,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                       ? Theme.of(context).textTheme.titleSmall
                                       : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
-                                    hintText: 'Street address',
+                                    hintText: AppLocalizations.of(context)!
+                                        .street_address,
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
@@ -662,7 +680,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                       ? Theme.of(context).textTheme.titleSmall
                                       : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
-                                    hintText: 'Zip code',
+                                    hintText:
+                                        AppLocalizations.of(context)!.zip_code,
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
@@ -698,7 +717,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                       ? Theme.of(context).textTheme.titleSmall
                                       : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
-                                    hintText: 'City',
+                                    hintText:
+                                        AppLocalizations.of(context)!.city,
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
@@ -734,7 +754,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                       ? Theme.of(context).textTheme.titleSmall
                                       : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
-                                    hintText: 'State',
+                                    hintText:
+                                        AppLocalizations.of(context)!.state,
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
@@ -770,7 +791,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                       ? Theme.of(context).textTheme.titleSmall
                                       : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
-                                    hintText: 'Country',
+                                    hintText:
+                                        AppLocalizations.of(context)!.country,
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
@@ -840,7 +862,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                           : const EdgeInsets.symmetric(
                                               vertical: 20),
                                       child: Text(
-                                        'Create QR Code',
+                                        AppLocalizations.of(context)!
+                                            .create_qr_code,
                                         style: TextStyle(
                                             fontSize: (isScreenWidth(context))
                                                 ? 18
@@ -875,9 +898,9 @@ class _MakeVCardState extends State<MakeVCard> {
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
-                  title: const Text(
-                    'V-Card QR Code',
-                    style: TextStyle(fontSize: 28),
+                  title: Text(
+                    AppLocalizations.of(context)!.v_card,
+                    style: const TextStyle(fontSize: 28),
                   ),
                   iconTheme: const IconThemeData(
                     size: 30,
@@ -901,7 +924,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                 child: TextFormField(
                                   validator: (String? name) {
                                     if (isNull(name)) {
-                                      return 'Please enter a Wifi Name';
+                                      return AppLocalizations.of(context)!
+                                          .please_enter_your_Name;
                                     }
                                     return null;
                                   },
@@ -915,7 +939,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                   style:
                                       Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
-                                    hintText: 'Full Name ',
+                                    hintText:
+                                        AppLocalizations.of(context)!.full_name,
                                     prefixIcon: Icon(
                                       Icons.person,
                                       color: Theme.of(context).primaryColor,
@@ -948,7 +973,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                   style:
                                       Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
-                                    hintText: 'name@mail.com',
+                                    hintText:
+                                        AppLocalizations.of(context)!.email,
                                     prefixIcon: Icon(
                                       Icons.email,
                                       color: Theme.of(context).primaryColor,
@@ -975,7 +1001,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                 child: IntlPhoneField(
                                   validator: (PhoneNumber? phone) {
                                     if (!isLength(phone!.number, 8, 20)) {
-                                      return 'Please enter a valid Phone Number';
+                                      return AppLocalizations.of(context)!
+                                          .please_enter_a_valid_telephone_number;
                                     }
                                     return null;
                                   },
@@ -1005,7 +1032,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                     searchFieldCursorColor:
                                         Theme.of(context).primaryColor,
                                     searchFieldInputDecoration: InputDecoration(
-                                      hintText: 'Search Country',
+                                      hintText: AppLocalizations.of(context)!
+                                          .search_country,
                                       hintStyle: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 26,
@@ -1021,7 +1049,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                     width: 500,
                                   ),
                                   decoration: InputDecoration(
-                                    hintText: 'Phone(Mobile)',
+                                    hintText:
+                                        AppLocalizations.of(context)!.mobile,
                                     suffixIcon: mobileController.text.isEmpty
                                         ? Container(
                                             width: 0,
@@ -1047,7 +1076,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                 child: IntlPhoneField(
                                   validator: (PhoneNumber? phone) {
                                     if (!isLength(phone!.number, 8, 20)) {
-                                      return 'Please enter a valid Phone Number';
+                                      return AppLocalizations.of(context)!
+                                          .please_enter_a_valid_telephone_number;
                                     }
                                     return null;
                                   },
@@ -1077,7 +1107,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                     searchFieldCursorColor:
                                         Theme.of(context).primaryColor,
                                     searchFieldInputDecoration: InputDecoration(
-                                      hintText: 'Search Country',
+                                      hintText: AppLocalizations.of(context)!
+                                          .search_country,
                                       hintStyle: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 26,
@@ -1093,7 +1124,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                     width: 500,
                                   ),
                                   decoration: InputDecoration(
-                                    hintText: 'Phone(Work)',
+                                    hintText:
+                                        AppLocalizations.of(context)!.work,
                                     suffixIcon: workController.text.isEmpty
                                         ? Container(
                                             width: 0,
@@ -1119,7 +1151,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                 child: IntlPhoneField(
                                   validator: (PhoneNumber? phone) {
                                     if (!isLength(phone!.number, 8, 20)) {
-                                      return 'Please enter a valid Phone Number';
+                                      return AppLocalizations.of(context)!
+                                          .please_enter_a_valid_telephone_number;
                                     }
                                     return null;
                                   },
@@ -1149,7 +1182,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                     searchFieldCursorColor:
                                         Theme.of(context).primaryColor,
                                     searchFieldInputDecoration: InputDecoration(
-                                      hintText: 'Search Country',
+                                      hintText: AppLocalizations.of(context)!
+                                          .search_country,
                                       hintStyle: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 26,
@@ -1165,7 +1199,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                     width: 500,
                                   ),
                                   decoration: InputDecoration(
-                                    hintText: 'Phone(Home)',
+                                    hintText:
+                                        AppLocalizations.of(context)!.home,
                                     suffixIcon: homeController.text.isEmpty
                                         ? Container(
                                             width: 0,
@@ -1191,7 +1226,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                 child: IntlPhoneField(
                                   validator: (PhoneNumber? phone) {
                                     if (!isLength(phone!.number, 8, 20)) {
-                                      return 'Please enter a valid Phone Number';
+                                      return AppLocalizations.of(context)!
+                                          .please_enter_a_valid_telephone_number;
                                     }
                                     return null;
                                   },
@@ -1221,7 +1257,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                     searchFieldCursorColor:
                                         Theme.of(context).primaryColor,
                                     searchFieldInputDecoration: InputDecoration(
-                                      hintText: 'Search Country',
+                                      hintText: AppLocalizations.of(context)!
+                                          .search_country,
                                       hintStyle: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 26,
@@ -1237,7 +1274,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                     width: 500,
                                   ),
                                   decoration: InputDecoration(
-                                    hintText: 'Fax',
+                                    hintText: AppLocalizations.of(context)!.fax,
                                     suffixIcon: faxController.text.isEmpty
                                         ? Container(
                                             width: 0,
@@ -1295,7 +1332,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                     }
                                   },
                                   decoration: InputDecoration(
-                                    hintText: 'Date of birth',
+                                    hintText: AppLocalizations.of(context)!
+                                        .date_of_birth,
                                     prefixIcon: Icon(
                                       Icons.date_range,
                                       color: Theme.of(context).primaryColor,
@@ -1314,7 +1352,7 @@ class _MakeVCardState extends State<MakeVCard> {
                                   style:
                                       Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
-                                    hintText: 'https://www.example.com/',
+                                    hintText: 'https://www.example.com',
                                     prefixIcon: Icon(
                                       Icons.link,
                                       color: Theme.of(context).primaryColor,
@@ -1347,7 +1385,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                   style:
                                       Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
-                                    hintText: 'Street address',
+                                    hintText: AppLocalizations.of(context)!
+                                        .street_address,
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
@@ -1380,7 +1419,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                   style:
                                       Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
-                                    hintText: 'Zip code',
+                                    hintText:
+                                        AppLocalizations.of(context)!.zip_code,
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
@@ -1413,7 +1453,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                   style:
                                       Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
-                                    hintText: 'City',
+                                    hintText:
+                                        AppLocalizations.of(context)!.city,
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
@@ -1446,7 +1487,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                   style:
                                       Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
-                                    hintText: 'State',
+                                    hintText:
+                                        AppLocalizations.of(context)!.state,
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
@@ -1479,7 +1521,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                   style:
                                       Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
-                                    hintText: 'Country',
+                                    hintText:
+                                        AppLocalizations.of(context)!.country,
                                     prefixIcon: Icon(
                                       Icons.location_on,
                                       color: Theme.of(context).primaryColor,
@@ -1540,12 +1583,13 @@ class _MakeVCardState extends State<MakeVCard> {
                                       Icons.touch_app,
                                       size: 30,
                                     ),
-                                    label: const Padding(
-                                      padding:
-                                          EdgeInsets.symmetric(vertical: 20),
+                                    label: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 20),
                                       child: Text(
-                                        'Create QR Code',
-                                        style: TextStyle(
+                                        AppLocalizations.of(context)!
+                                            .create_qr_code,
+                                        style: const TextStyle(
                                           fontSize: 26,
                                         ),
                                       ),

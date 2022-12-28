@@ -4,6 +4,7 @@ import 'package:validators/validators.dart';
 import 'package:intl_phone_field/phone_number.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
 
@@ -49,7 +50,7 @@ class _MakePhoneState extends State<MakePhone> {
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
                   title: Text(
-                    'Phone QR Code',
+                    AppLocalizations.of(context)!.telephone,
                     style:
                         TextStyle(fontSize: (isScreenWidth(context)) ? 20 : 28),
                   ),
@@ -73,7 +74,8 @@ class _MakePhoneState extends State<MakePhone> {
                               child: IntlPhoneField(
                                 validator: (PhoneNumber? phone) {
                                   if (!isLength(phone!.number, 8, 20)) {
-                                    return 'Please enter a valid Phone Number';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_a_valid_telephone_number;
                                   }
                                   return null;
                                 },
@@ -109,7 +111,8 @@ class _MakePhoneState extends State<MakePhone> {
                                   searchFieldCursorColor:
                                       Theme.of(context).primaryColor,
                                   searchFieldInputDecoration: InputDecoration(
-                                    hintText: 'Search Country',
+                                    hintText: AppLocalizations.of(context)!
+                                        .search_country,
                                     hintStyle: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize:
@@ -128,7 +131,8 @@ class _MakePhoneState extends State<MakePhone> {
                                       : 500,
                                 ),
                                 decoration: InputDecoration(
-                                  hintText: 'Phone Number',
+                                  hintText: AppLocalizations.of(context)!
+                                      .telephone_number,
                                   suffixIcon: phoneController.text.isEmpty
                                       ? Container(
                                           width: 0,
@@ -181,7 +185,8 @@ class _MakePhoneState extends State<MakePhone> {
                                         : const EdgeInsets.symmetric(
                                             vertical: 20),
                                     child: Text(
-                                      'Create QR Code',
+                                      AppLocalizations.of(context)!
+                                          .create_qr_code,
                                       style: TextStyle(
                                           fontSize: (isScreenWidth(context))
                                               ? 18
@@ -215,9 +220,9 @@ class _MakePhoneState extends State<MakePhone> {
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
-                  title: const Text(
-                    'Phone QR Code',
-                    style: TextStyle(fontSize: 28),
+                  title: Text(
+                    AppLocalizations.of(context)!.telephone,
+                    style: const TextStyle(fontSize: 28),
                   ),
                   iconTheme: const IconThemeData(
                     size: 30,
@@ -237,7 +242,8 @@ class _MakePhoneState extends State<MakePhone> {
                               child: IntlPhoneField(
                                 validator: (PhoneNumber? phone) {
                                   if (!isLength(phone!.number, 8, 20)) {
-                                    return 'Please enter a valid Phone Number';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_a_valid_telephone_number;
                                   }
                                   return null;
                                 },
@@ -264,7 +270,8 @@ class _MakePhoneState extends State<MakePhone> {
                                   searchFieldCursorColor:
                                       Theme.of(context).primaryColor,
                                   searchFieldInputDecoration: InputDecoration(
-                                    hintText: 'Search Country',
+                                    hintText: AppLocalizations.of(context)!
+                                        .search_country,
                                     hintStyle: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 26,
@@ -280,7 +287,8 @@ class _MakePhoneState extends State<MakePhone> {
                                   width: 500,
                                 ),
                                 decoration: InputDecoration(
-                                  hintText: 'Phone Number',
+                                  hintText: AppLocalizations.of(context)!
+                                      .telephone_number,
                                   suffixIcon: phoneController.text.isEmpty
                                       ? Container(
                                           width: 0,
@@ -324,11 +332,13 @@ class _MakePhoneState extends State<MakePhone> {
                                     Icons.touch_app,
                                     size: 30,
                                   ),
-                                  label: const Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 20),
+                                  label: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 20),
                                     child: Text(
-                                      'Create QR Code',
-                                      style: TextStyle(
+                                      AppLocalizations.of(context)!
+                                          .create_qr_code,
+                                      style: const TextStyle(
                                         fontSize: 26,
                                       ),
                                     ),

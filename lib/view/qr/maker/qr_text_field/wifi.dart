@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:validators/validators.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
 
@@ -48,7 +49,7 @@ class _MakeWifiState extends State<MakeWifi> {
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
                   title: Text(
-                    'Wifi QR Code',
+                    AppLocalizations.of(context)!.wifi,
                     style:
                         TextStyle(fontSize: (isScreenWidth(context)) ? 20 : 28),
                   ),
@@ -72,7 +73,8 @@ class _MakeWifiState extends State<MakeWifi> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (isNull(value)) {
-                                    return 'Please enter a Wifi Name';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_a_wifi_name;
                                   }
                                   return null;
                                 },
@@ -87,7 +89,8 @@ class _MakeWifiState extends State<MakeWifi> {
                                     ? Theme.of(context).textTheme.titleSmall
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'Wifi Name',
+                                  hintText:
+                                      AppLocalizations.of(context)!.wifi_name,
                                   prefixIcon: Icon(
                                     Icons.wifi,
                                     color: Theme.of(context).primaryColor,
@@ -116,7 +119,8 @@ class _MakeWifiState extends State<MakeWifi> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (isNull(value)) {
-                                    return 'Please enter a Wifi Password';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_a_wifi_password;
                                   }
                                   return null;
                                 },
@@ -131,7 +135,8 @@ class _MakeWifiState extends State<MakeWifi> {
                                     ? Theme.of(context).textTheme.titleSmall
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'Wifi Password',
+                                  hintText: AppLocalizations.of(context)!
+                                      .wifi_password,
                                   prefixIcon: Icon(
                                     Icons.wifi_password,
                                     color: Theme.of(context).primaryColor,
@@ -249,7 +254,8 @@ class _MakeWifiState extends State<MakeWifi> {
                                         : const EdgeInsets.symmetric(
                                             vertical: 20),
                                     child: Text(
-                                      'Create QR Code',
+                                      AppLocalizations.of(context)!
+                                          .create_qr_code,
                                       style: TextStyle(
                                           fontSize: (isScreenWidth(context))
                                               ? 18
@@ -283,9 +289,9 @@ class _MakeWifiState extends State<MakeWifi> {
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
-                  title: const Text(
-                    'Wifi QR Code',
-                    style: TextStyle(fontSize: 28),
+                  title: Text(
+                    AppLocalizations.of(context)!.wifi,
+                    style: const TextStyle(fontSize: 28),
                   ),
                   iconTheme: const IconThemeData(
                     size: 30,
@@ -305,7 +311,8 @@ class _MakeWifiState extends State<MakeWifi> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (isNull(value)) {
-                                    return 'Please enter a Wifi Name';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_a_wifi_name;
                                   }
                                   return null;
                                 },
@@ -318,7 +325,8 @@ class _MakeWifiState extends State<MakeWifi> {
                                 cursorColor: Theme.of(context).primaryColor,
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'Wifi Name',
+                                  hintText:
+                                      AppLocalizations.of(context)!.wifi_name,
                                   prefixIcon: Icon(
                                     Icons.wifi,
                                     color: Theme.of(context).primaryColor,
@@ -345,7 +353,8 @@ class _MakeWifiState extends State<MakeWifi> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (isNull(value)) {
-                                    return 'Please enter a Wifi Password';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_a_wifi_password;
                                   }
                                   return null;
                                 },
@@ -358,7 +367,8 @@ class _MakeWifiState extends State<MakeWifi> {
                                 cursorColor: Theme.of(context).primaryColor,
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'Wifi Password',
+                                  hintText: AppLocalizations.of(context)!
+                                      .wifi_password,
                                   prefixIcon: Icon(
                                     Icons.wifi_password,
                                     color: Theme.of(context).primaryColor,
@@ -463,11 +473,13 @@ class _MakeWifiState extends State<MakeWifi> {
                                     Icons.touch_app,
                                     size: 30,
                                   ),
-                                  label: const Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 20),
+                                  label: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 20),
                                     child: Text(
-                                      'Create QR Code',
-                                      style: TextStyle(
+                                      AppLocalizations.of(context)!
+                                          .create_qr_code,
+                                      style: const TextStyle(
                                         fontSize: 26,
                                       ),
                                     ),

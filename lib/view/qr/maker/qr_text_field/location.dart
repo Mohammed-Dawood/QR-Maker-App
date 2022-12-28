@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:validators/validators.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
 
@@ -47,7 +48,7 @@ class _MakeLocationState extends State<MakeLocation> {
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
                   title: Text(
-                    'Location QR Code',
+                    AppLocalizations.of(context)!.location,
                     style:
                         TextStyle(fontSize: (isScreenWidth(context)) ? 20 : 28),
                   ),
@@ -71,7 +72,9 @@ class _MakeLocationState extends State<MakeLocation> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (isNull(value!)) {
-                                    return 'Please enter a valid latitude';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_a_valid_latitude;
+                                    ;
                                   }
                                   return null;
                                 },
@@ -90,7 +93,8 @@ class _MakeLocationState extends State<MakeLocation> {
                                     ? Theme.of(context).textTheme.titleSmall
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'Enter latitude',
+                                  hintText: AppLocalizations.of(context)!
+                                      .enter_latitude,
                                   prefixIcon: Icon(
                                     Icons.location_on,
                                     color: Theme.of(context).primaryColor,
@@ -119,7 +123,8 @@ class _MakeLocationState extends State<MakeLocation> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (isNull(value!)) {
-                                    return 'Please enter a valid longitude';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_a_valid_longitude;
                                   }
                                   return null;
                                 },
@@ -138,7 +143,8 @@ class _MakeLocationState extends State<MakeLocation> {
                                     ? Theme.of(context).textTheme.titleSmall
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'Enter longitude',
+                                  hintText: AppLocalizations.of(context)!
+                                      .enter_longitude,
                                   prefixIcon: Icon(
                                     Icons.location_on,
                                     color: Theme.of(context).primaryColor,
@@ -196,7 +202,8 @@ class _MakeLocationState extends State<MakeLocation> {
                                         : const EdgeInsets.symmetric(
                                             vertical: 20),
                                     child: Text(
-                                      'Create QR Code',
+                                      AppLocalizations.of(context)!
+                                          .create_qr_code,
                                       style: TextStyle(
                                           fontSize: (isScreenWidth(context))
                                               ? 18
@@ -230,9 +237,9 @@ class _MakeLocationState extends State<MakeLocation> {
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
-                  title: const Text(
-                    'Location QR Code',
-                    style: TextStyle(fontSize: 28),
+                  title: Text(
+                    AppLocalizations.of(context)!.location,
+                    style: const TextStyle(fontSize: 28),
                   ),
                   iconTheme: const IconThemeData(
                     size: 30,
@@ -252,7 +259,8 @@ class _MakeLocationState extends State<MakeLocation> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (isNull(value!)) {
-                                    return 'Please enter a valid latitude';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_a_valid_latitude;
                                   }
                                   return null;
                                 },
@@ -269,7 +277,8 @@ class _MakeLocationState extends State<MakeLocation> {
                                 cursorColor: Theme.of(context).primaryColor,
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'Enter latitude',
+                                  hintText: AppLocalizations.of(context)!
+                                      .enter_latitude,
                                   prefixIcon: Icon(
                                     Icons.location_on,
                                     color: Theme.of(context).primaryColor,
@@ -296,7 +305,9 @@ class _MakeLocationState extends State<MakeLocation> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (isNull(value!)) {
-                                    return 'Please enter a valid longitude';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_a_valid_longitude;
+                                    ;
                                   }
                                   return null;
                                 },
@@ -313,7 +324,8 @@ class _MakeLocationState extends State<MakeLocation> {
                                 cursorColor: Theme.of(context).primaryColor,
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'Enter longitude',
+                                  hintText: AppLocalizations.of(context)!
+                                      .enter_longitude,
                                   prefixIcon: Icon(
                                     Icons.location_on,
                                     color: Theme.of(context).primaryColor,
@@ -362,11 +374,13 @@ class _MakeLocationState extends State<MakeLocation> {
                                     Icons.touch_app,
                                     size: 30,
                                   ),
-                                  label: const Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 20),
+                                  label: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 20),
                                     child: Text(
-                                      'Create QR Code',
-                                      style: TextStyle(
+                                      AppLocalizations.of(context)!
+                                          .create_qr_code,
+                                      style: const TextStyle(
                                         fontSize: 26,
                                       ),
                                     ),

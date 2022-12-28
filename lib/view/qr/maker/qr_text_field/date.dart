@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:validators/validators.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
 
@@ -58,7 +59,7 @@ class _MakeDateState extends State<MakeDate> {
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
                   title: Text(
-                    'Date QR Code',
+                    AppLocalizations.of(context)!.event,
                     style:
                         TextStyle(fontSize: (isScreenWidth(context)) ? 20 : 28),
                   ),
@@ -82,7 +83,8 @@ class _MakeDateState extends State<MakeDate> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (isNull(value)) {
-                                    return 'Please enter a Event Name';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_the_event_name;
                                   }
                                   return null;
                                 },
@@ -97,7 +99,8 @@ class _MakeDateState extends State<MakeDate> {
                                     ? Theme.of(context).textTheme.titleSmall
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'Event Title',
+                                  hintText:
+                                      AppLocalizations.of(context)!.event_name,
                                   prefixIcon: Icon(
                                     Icons.event_note,
                                     color: Theme.of(context).primaryColor,
@@ -126,7 +129,8 @@ class _MakeDateState extends State<MakeDate> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (isNull(value)) {
-                                    return 'Please enter a Event Address';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_the_event_address;
                                   }
                                   return null;
                                 },
@@ -141,7 +145,8 @@ class _MakeDateState extends State<MakeDate> {
                                     ? Theme.of(context).textTheme.titleSmall
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'Event Address',
+                                  hintText: AppLocalizations.of(context)!
+                                      .event_address,
                                   prefixIcon: Icon(
                                     Icons.location_on,
                                     color: Theme.of(context).primaryColor,
@@ -171,7 +176,8 @@ class _MakeDateState extends State<MakeDate> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (isNull(value)) {
-                                    return 'Please enter a Event Date';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_the_event_date_start;
                                   }
                                   return null;
                                 },
@@ -220,7 +226,8 @@ class _MakeDateState extends State<MakeDate> {
                                   }
                                 },
                                 decoration: InputDecoration(
-                                  hintText: 'Event Date Start',
+                                  hintText: AppLocalizations.of(context)!
+                                      .event_date_start,
                                   prefixIcon: Icon(
                                     Icons.event_available,
                                     color: Theme.of(context).primaryColor,
@@ -233,7 +240,8 @@ class _MakeDateState extends State<MakeDate> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (isNull(value)) {
-                                    return 'Please enter a Event Time';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_the_event_time_start;
                                   }
                                   return null;
                                 },
@@ -274,7 +282,8 @@ class _MakeDateState extends State<MakeDate> {
                                   }
                                 },
                                 decoration: InputDecoration(
-                                  hintText: 'Event Time Start',
+                                  hintText: AppLocalizations.of(context)!
+                                      .event_time_start,
                                   prefixIcon: Icon(
                                     Icons.access_time_outlined,
                                     color: Theme.of(context).primaryColor,
@@ -287,7 +296,8 @@ class _MakeDateState extends State<MakeDate> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (isNull(value)) {
-                                    return 'Please enter a Event Date';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_the_event_date_end;
                                   }
                                   return null;
                                 },
@@ -334,7 +344,8 @@ class _MakeDateState extends State<MakeDate> {
                                   }
                                 },
                                 decoration: InputDecoration(
-                                  hintText: 'Event Date End',
+                                  hintText: AppLocalizations.of(context)!
+                                      .event_date_end,
                                   prefixIcon: Icon(
                                     Icons.event_available,
                                     color: Theme.of(context).primaryColor,
@@ -347,7 +358,8 @@ class _MakeDateState extends State<MakeDate> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (isNull(value)) {
-                                    return 'Please enter a Event Time';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_the_event_time_end;
                                   }
                                   return null;
                                 },
@@ -387,7 +399,8 @@ class _MakeDateState extends State<MakeDate> {
                                   }
                                 },
                                 decoration: InputDecoration(
-                                  hintText: 'Event Time End',
+                                  hintText: AppLocalizations.of(context)!
+                                      .event_time_end,
                                   prefixIcon: Icon(
                                     Icons.access_time_outlined,
                                     color: Theme.of(context).primaryColor,
@@ -435,7 +448,8 @@ class _MakeDateState extends State<MakeDate> {
                                         : const EdgeInsets.symmetric(
                                             vertical: 20),
                                     child: Text(
-                                      'Create QR Code',
+                                      AppLocalizations.of(context)!
+                                          .create_qr_code,
                                       style: TextStyle(
                                           fontSize: (isScreenWidth(context))
                                               ? 18
@@ -469,9 +483,9 @@ class _MakeDateState extends State<MakeDate> {
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
-                  title: const Text(
-                    'Date QR Code',
-                    style: TextStyle(fontSize: 28),
+                  title: Text(
+                    AppLocalizations.of(context)!.event,
+                    style: const TextStyle(fontSize: 28),
                   ),
                   iconTheme: const IconThemeData(
                     size: 30,
@@ -491,7 +505,8 @@ class _MakeDateState extends State<MakeDate> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (isNull(value)) {
-                                    return 'Please enter a Event Name';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_the_event_name;
                                   }
                                   return null;
                                 },
@@ -504,7 +519,8 @@ class _MakeDateState extends State<MakeDate> {
                                 cursorColor: Theme.of(context).primaryColor,
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'Event Title',
+                                  hintText:
+                                      AppLocalizations.of(context)!.event_name,
                                   prefixIcon: Icon(
                                     Icons.event_note,
                                     color: Theme.of(context).primaryColor,
@@ -531,7 +547,8 @@ class _MakeDateState extends State<MakeDate> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (isNull(value)) {
-                                    return 'Please enter a Event Address';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_the_event_address;
                                   }
                                   return null;
                                 },
@@ -544,7 +561,8 @@ class _MakeDateState extends State<MakeDate> {
                                 cursorColor: Theme.of(context).primaryColor,
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'Event Address',
+                                  hintText: AppLocalizations.of(context)!
+                                      .event_address,
                                   prefixIcon: Icon(
                                     Icons.location_on,
                                     color: Theme.of(context).primaryColor,
@@ -572,7 +590,8 @@ class _MakeDateState extends State<MakeDate> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (isNull(value)) {
-                                    return 'Please enter a Event Date';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_the_event_date_start;
                                   }
                                   return null;
                                 },
@@ -619,7 +638,8 @@ class _MakeDateState extends State<MakeDate> {
                                   }
                                 },
                                 decoration: InputDecoration(
-                                  hintText: 'Event Date Start',
+                                  hintText: AppLocalizations.of(context)!
+                                      .event_date_start,
                                   prefixIcon: Icon(
                                     Icons.event_available,
                                     color: Theme.of(context).primaryColor,
@@ -632,7 +652,8 @@ class _MakeDateState extends State<MakeDate> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (isNull(value)) {
-                                    return 'Please enter a Event Time';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_the_event_time_start;
                                   }
                                   return null;
                                 },
@@ -671,7 +692,8 @@ class _MakeDateState extends State<MakeDate> {
                                   }
                                 },
                                 decoration: InputDecoration(
-                                  hintText: 'Event Time Start',
+                                  hintText: AppLocalizations.of(context)!
+                                      .event_time_start,
                                   prefixIcon: Icon(
                                     Icons.access_time_outlined,
                                     color: Theme.of(context).primaryColor,
@@ -684,7 +706,8 @@ class _MakeDateState extends State<MakeDate> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (isNull(value)) {
-                                    return 'Please enter a Event Date';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_the_event_date_end;
                                   }
                                   return null;
                                 },
@@ -729,7 +752,8 @@ class _MakeDateState extends State<MakeDate> {
                                   }
                                 },
                                 decoration: InputDecoration(
-                                  hintText: 'Event Date End',
+                                  hintText: AppLocalizations.of(context)!
+                                      .event_date_end,
                                   prefixIcon: Icon(
                                     Icons.event_available,
                                     color: Theme.of(context).primaryColor,
@@ -742,7 +766,8 @@ class _MakeDateState extends State<MakeDate> {
                               child: TextFormField(
                                 validator: (value) {
                                   if (isNull(value)) {
-                                    return 'Please enter a Event Time';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_the_event_time_end;
                                   }
                                   return null;
                                 },
@@ -780,7 +805,8 @@ class _MakeDateState extends State<MakeDate> {
                                   }
                                 },
                                 decoration: InputDecoration(
-                                  hintText: 'Event Time End',
+                                  hintText: AppLocalizations.of(context)!
+                                      .event_time_end,
                                   prefixIcon: Icon(
                                     Icons.access_time_outlined,
                                     color: Theme.of(context).primaryColor,
@@ -821,11 +847,13 @@ class _MakeDateState extends State<MakeDate> {
                                     Icons.touch_app,
                                     size: 30,
                                   ),
-                                  label: const Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 20),
+                                  label: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 20),
                                     child: Text(
-                                      'Create QR Code',
-                                      style: TextStyle(
+                                      AppLocalizations.of(context)!
+                                          .create_qr_code,
+                                      style: const TextStyle(
                                         fontSize: 26,
                                       ),
                                     ),

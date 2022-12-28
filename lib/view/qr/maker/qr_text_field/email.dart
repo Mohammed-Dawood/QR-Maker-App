@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:validators/validators.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
 
@@ -50,7 +51,7 @@ class _MakeEmailState extends State<MakeEmail> {
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
                   title: Text(
-                    'Email QR Code',
+                    AppLocalizations.of(context)!.email,
                     style:
                         TextStyle(fontSize: (isScreenWidth(context)) ? 20 : 28),
                   ),
@@ -74,7 +75,8 @@ class _MakeEmailState extends State<MakeEmail> {
                               child: TextFormField(
                                 validator: (String? email) {
                                   if (!isEmail(email!)) {
-                                    return 'Please enter a valid Email';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_a_valid_emil;
                                   }
                                   return null;
                                 },
@@ -89,7 +91,7 @@ class _MakeEmailState extends State<MakeEmail> {
                                     ? Theme.of(context).textTheme.titleSmall
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'name@mail.com',
+                                  hintText: AppLocalizations.of(context)!.email,
                                   prefixIcon: Icon(
                                     Icons.email,
                                     color: Theme.of(context).primaryColor,
@@ -125,7 +127,8 @@ class _MakeEmailState extends State<MakeEmail> {
                                     ? Theme.of(context).textTheme.titleSmall
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'Subject',
+                                  hintText:
+                                      AppLocalizations.of(context)!.subject,
                                   prefixIcon: Icon(
                                     Icons.subject,
                                     color: Theme.of(context).primaryColor,
@@ -163,7 +166,8 @@ class _MakeEmailState extends State<MakeEmail> {
                                     ? Theme.of(context).textTheme.titleSmall
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'Message',
+                                  hintText:
+                                      AppLocalizations.of(context)!.message,
                                   prefixIcon: Icon(
                                     Icons.message,
                                     color: Theme.of(context).primaryColor,
@@ -220,7 +224,8 @@ class _MakeEmailState extends State<MakeEmail> {
                                         : const EdgeInsets.symmetric(
                                             vertical: 20),
                                     child: Text(
-                                      'Create QR Code',
+                                      AppLocalizations.of(context)!
+                                          .create_qr_code,
                                       style: TextStyle(
                                           fontSize: (isScreenWidth(context))
                                               ? 18
@@ -254,9 +259,9 @@ class _MakeEmailState extends State<MakeEmail> {
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
-                  title: const Text(
-                    'Email QR Code',
-                    style: TextStyle(fontSize: 28),
+                  title: Text(
+                    AppLocalizations.of(context)!.email,
+                    style: const TextStyle(fontSize: 28),
                   ),
                   iconTheme: const IconThemeData(
                     size: 30,
@@ -276,7 +281,8 @@ class _MakeEmailState extends State<MakeEmail> {
                               child: TextFormField(
                                 validator: (String? email) {
                                   if (!isEmail(email!)) {
-                                    return 'Please enter a valid Email';
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_a_valid_emil;
                                   }
                                   return null;
                                 },
@@ -289,7 +295,7 @@ class _MakeEmailState extends State<MakeEmail> {
                                 cursorColor: Theme.of(context).primaryColor,
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'name@mail.com',
+                                  hintText: AppLocalizations.of(context)!.email,
                                   prefixIcon: Icon(
                                     Icons.email,
                                     color: Theme.of(context).primaryColor,
@@ -321,7 +327,8 @@ class _MakeEmailState extends State<MakeEmail> {
                                 cursorColor: Theme.of(context).primaryColor,
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'Subject',
+                                  hintText:
+                                      AppLocalizations.of(context)!.subject,
                                   prefixIcon: Icon(
                                     Icons.subject,
                                     color: Theme.of(context).primaryColor,
@@ -355,7 +362,8 @@ class _MakeEmailState extends State<MakeEmail> {
                                 cursorColor: Theme.of(context).primaryColor,
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'Message',
+                                  hintText:
+                                      AppLocalizations.of(context)!.message,
                                   prefixIcon: Icon(
                                     Icons.message,
                                     color: Theme.of(context).primaryColor,
@@ -403,11 +411,13 @@ class _MakeEmailState extends State<MakeEmail> {
                                     Icons.touch_app,
                                     size: 30,
                                   ),
-                                  label: const Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 20),
+                                  label: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 20),
                                     child: Text(
-                                      'Create QR Code',
-                                      style: TextStyle(
+                                      AppLocalizations.of(context)!
+                                          .create_qr_code,
+                                      style: const TextStyle(
                                         fontSize: 26,
                                       ),
                                     ),

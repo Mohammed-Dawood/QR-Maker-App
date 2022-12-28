@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
+import 'package:qr_maker_app/l10n/l10n.dart';
 import 'package:get_storage/get_storage.dart';
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:qr_maker_app/view/qr/main_qr.dart';
 import 'package:qr_maker_app/themes/dark_theme.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:qr_maker_app/themes/light_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 // import 'package:qr_maker_app/view/registration/main_sign_in.dart';
@@ -42,6 +45,13 @@ class MyApp extends StatelessWidget {
       theme: LightTheme.lightTheme,
       darkTheme: DarkTheme.darkTheme,
       themeMode: ThemeController().theme,
+      supportedLocales: L10n.all,
+      localizationsDelegates: const [
+        AppLocalizations.delegate, // Add this line
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       // home: const MainSignIn(),
       home: AnimatedSplashScreen(
         centered: true,

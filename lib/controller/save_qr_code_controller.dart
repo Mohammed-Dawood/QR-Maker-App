@@ -2,10 +2,11 @@ import 'dart:typed_data';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 
 class SaveQrCodeController extends GetxController {
-  Future<void> saveQrCode(Uint8List bytes) async {
+  Future<void> saveQrCode(Uint8List bytes, BuildContext context) async {
     await [Permission.storage].request();
     final time = DateTime.now()
         .toIso8601String()
@@ -16,7 +17,7 @@ class SaveQrCodeController extends GetxController {
     await ImageGallerySaver.saveImage(bytes, name: name);
     Get.snackbar(
       'QR Maker',
-      "The QR Code has been saved successfully",
+      AppLocalizations.of(context)!.save_snackbar,
       icon: const Icon(
         Icons.done,
         color: Colors.green,

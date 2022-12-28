@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:qr_maker_app/l10n/l10n.dart';
 import 'package:rate_my_app/rate_my_app.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/view/qr/scan/main_qr_scan.dart';
 import 'package:qr_maker_app/view/qr/maker/main_qr_make.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
@@ -18,11 +20,7 @@ class MainQr extends StatefulWidget {
 
 class _MainQrState extends State<MainQr> {
   int selectScreen = 0;
-  List<String> title = [
-    'Scan QR Code',
-    'Make QR Code',
-    'Favorite QR Code',
-  ];
+
   List<Widget> screens = [
     const MainQrScan(),
     const MainQrMake(),
@@ -35,10 +33,10 @@ class _MainQrState extends State<MainQr> {
   );
 
   RateMyApp rateMyApp = RateMyApp(
-    minDays: 7,
-    remindDays: 7,
-    minLaunches: 10,
-    remindLaunches: 10,
+    minDays: 1,
+    remindDays: 1,
+    minLaunches: 1,
+    remindLaunches: 1,
     appStoreIdentifier: '1623787553?uo=4',
     googlePlayIdentifier: 'com.mohammeddawood.qr_maker_app',
   );
@@ -52,9 +50,8 @@ class _MainQrState extends State<MainQr> {
         if (rateMyApp.shouldOpenDialog) {
           rateMyApp.showRateDialog(
             context,
-            title: 'Rate this app', // The dialog title.
-            message:
-                'If you like this app, please take a little bit of your time to review it !\nIt really helps us and it shouldn\'t take you more than one minute.', // The dialog message.
+            title: AppLocalizations.of(context)!.rate_app_title,
+            message: AppLocalizations.of(context)!.rate_app_message,
             rateButton: 'RATE', // The dialog "rate" button text.
             noButton: '', // The dialog "no" button text.
             laterButton: 'LATER', // The dialog "later" button text.
@@ -101,6 +98,13 @@ class _MainQrState extends State<MainQr> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> title = [
+      AppLocalizations.of(context)!.scan_qr_code,
+      AppLocalizations.of(context)!.make_qr_code,
+      AppLocalizations.of(context)!.favorite_qr_code,
+    ];
+    final locale = Localizations.localeOf(context);
+    final flag = L10n.getFlag(locale.languageCode);
     // final user = FirebaseAuth.instance.currentUser;
     return MediaQuery.of(context).orientation == Orientation.portrait
         ? GetBuilder<ThemeController>(
@@ -165,7 +169,6 @@ class _MainQrState extends State<MainQr> {
                               //     ),
                               //   ),
                               // ),
-
                               Card(
                                 child: SizedBox(
                                   width: double.infinity,
@@ -179,7 +182,52 @@ class _MainQrState extends State<MainQr> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Vibration',
+                                          AppLocalizations.of(context)!
+                                              .language,
+                                          style: (isScreenWidth(context))
+                                              ? Theme.of(context)
+                                                  .textTheme
+                                                  .displaySmall
+                                              : Theme.of(context)
+                                                  .textTheme
+                                                  .displayMedium,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal: 10,
+                                            vertical: (isScreenWidth(context))
+                                                ? 5
+                                                : 2,
+                                          ),
+                                          child: Text(
+                                            flag,
+                                            style: TextStyle(
+                                              fontSize: isScreenWidth(context)
+                                                  ? 30
+                                                  : 35,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Card(
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 20,
+                                      vertical: isScreenWidth(context) ? 5 : 10,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          AppLocalizations.of(context)!
+                                              .vibration,
                                           style: (isScreenWidth(context))
                                               ? Theme.of(context)
                                                   .textTheme
@@ -220,7 +268,8 @@ class _MainQrState extends State<MainQr> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Dark Theme',
+                                          AppLocalizations.of(context)!
+                                              .dark_theme,
                                           style: (isScreenWidth(context))
                                               ? Theme.of(context)
                                                   .textTheme
@@ -317,7 +366,7 @@ class _MainQrState extends State<MainQr> {
                           height: 50,
                           child: Center(
                             child: Text(
-                              'App Version 1.9.4',
+                              AppLocalizations.of(context)!.version,
                               style: (isScreenWidth(context))
                                   ? Theme.of(context).textTheme.bodySmall
                                   : Theme.of(context).textTheme.bodyMedium,
@@ -343,21 +392,21 @@ class _MainQrState extends State<MainQr> {
                         Icons.qr_code_scanner,
                         size: (isScreenWidth(context)) ? 24 : 30,
                       ),
-                      label: 'Scan',
+                      label: AppLocalizations.of(context)!.scan,
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(
                         Icons.qr_code,
                         size: (isScreenWidth(context)) ? 24 : 30,
                       ),
-                      label: 'Make',
+                      label: AppLocalizations.of(context)!.make,
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(
                         Icons.favorite,
                         size: (isScreenWidth(context)) ? 24 : 30,
                       ),
-                      label: 'Favorite',
+                      label: AppLocalizations.of(context)!.favorite,
                     ),
                   ],
                 ),
@@ -427,7 +476,6 @@ class _MainQrState extends State<MainQr> {
                               //     ),
                               //   ),
                               // ),
-
                               Card(
                                 child: SizedBox(
                                   width: double.infinity,
@@ -441,7 +489,44 @@ class _MainQrState extends State<MainQr> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Vibration',
+                                          AppLocalizations.of(context)!
+                                              .language,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .displayMedium,
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 10,
+                                            vertical: 2,
+                                          ),
+                                          child: Text(
+                                            flag,
+                                            style: const TextStyle(
+                                              fontSize: 35,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Card(
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 20,
+                                      vertical: 10,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          AppLocalizations.of(context)!
+                                              .vibration,
                                           style: Theme.of(context)
                                               .textTheme
                                               .displayMedium,
@@ -478,7 +563,8 @@ class _MainQrState extends State<MainQr> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Dark Theme',
+                                          AppLocalizations.of(context)!
+                                              .dark_theme,
                                           style: Theme.of(context)
                                               .textTheme
                                               .displayMedium,
@@ -571,7 +657,7 @@ class _MainQrState extends State<MainQr> {
                           height: 50,
                           child: Center(
                             child: Text(
-                              'App Version 1.9.4',
+                              AppLocalizations.of(context)!.version,
                               style: Theme.of(context).textTheme.bodyMedium,
                             ),
                           ),
@@ -589,27 +675,27 @@ class _MainQrState extends State<MainQr> {
                       },
                     );
                   },
-                  items: const [
+                  items: [
                     BottomNavigationBarItem(
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.qr_code_scanner,
                         size: 30,
                       ),
-                      label: 'Scan',
+                      label: AppLocalizations.of(context)!.scan,
                     ),
                     BottomNavigationBarItem(
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.qr_code,
                         size: 30,
                       ),
-                      label: 'Make',
+                      label: AppLocalizations.of(context)!.make,
                     ),
                     BottomNavigationBarItem(
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.favorite,
                         size: 30,
                       ),
-                      label: 'Favorite',
+                      label: AppLocalizations.of(context)!.favorite,
                     ),
                   ],
                 ),

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
 import 'package:qr_maker_app/controller/save_qr_code_controller.dart';
@@ -23,7 +24,6 @@ class ShowFavoriteQrImage extends StatefulWidget {
 
 class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
   int? qrIndex;
-  // FavoriteQrCodeController favoriteQrCodeController = Get.find();
   ScreenshotController screenshotController = ScreenshotController();
   TextEditingController textEditingController = TextEditingController();
 
@@ -56,7 +56,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                       GetStorage().read(
                             controller.favoriteQrCodeImageList[qrIndex!],
                           ) ??
-                          'Change QR Code Name',
+                          AppLocalizations.of(context)!.change_qr_code_name,
                       style: TextStyle(
                         fontSize: (isScreenWidth(context)) ? 20 : 28,
                       ),
@@ -69,7 +69,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                           context: context,
                           builder: (BuildContext context) => AlertDialog(
                             title: Text(
-                              'Write QR Code Name',
+                              AppLocalizations.of(context)!.write_qr_code_name,
                               style: (isScreenWidth(context))
                                   ? Theme.of(context).textTheme.displaySmall
                                   : Theme.of(context).textTheme.displayMedium,
@@ -86,7 +86,8 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                     ? Theme.of(context).textTheme.titleSmall
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'QR Code Name',
+                                  hintText: AppLocalizations.of(context)!
+                                      .qr_code_name,
                                   prefixIcon: Icon(
                                     Icons.qr_code,
                                     size: (isScreenWidth(context)) ? 24 : 30,
@@ -117,7 +118,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                   Get.back();
                                 },
                                 child: Text(
-                                  'Cancel',
+                                  AppLocalizations.of(context)!.cancel,
                                   style: (isScreenWidth(context))
                                       ? Theme.of(context).textTheme.displaySmall
                                       : Theme.of(context)
@@ -141,7 +142,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                     Get.back();
                                   },
                                   child: Text(
-                                    'OK',
+                                    AppLocalizations.of(context)!.ok,
                                     style: (isScreenWidth(context))
                                         ? Theme.of(context)
                                             .textTheme
@@ -231,7 +232,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                             : const EdgeInsets.symmetric(
                                                 vertical: 20),
                                         child: Text(
-                                          'prev',
+                                          AppLocalizations.of(context)!.prev,
                                           style: TextStyle(
                                             fontSize: (isScreenWidth(context))
                                                 ? 18
@@ -279,7 +280,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                               : const EdgeInsets.symmetric(
                                                   vertical: 20),
                                           child: Text(
-                                            'Next',
+                                            AppLocalizations.of(context)!.next,
                                             style: TextStyle(
                                               fontSize: (isScreenWidth(context))
                                                   ? 18
@@ -309,7 +310,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                   onPressed: () async {
                                     final image =
                                         await screenshotController.capture();
-                                    controller.saveQrCode(image!);
+                                    controller.saveQrCode(image!, context);
                                     vibrationController.vibration();
                                   },
                                   icon: Icon(
@@ -323,7 +324,8 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                         : const EdgeInsets.symmetric(
                                             vertical: 20),
                                     child: Text(
-                                      'Save QR Code',
+                                      AppLocalizations.of(context)!
+                                          .save_qr_code,
                                       style: TextStyle(
                                         fontSize:
                                             (isScreenWidth(context)) ? 18 : 26,
@@ -363,7 +365,8 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                         : const EdgeInsets.symmetric(
                                             vertical: 20),
                                     child: Text(
-                                      'Share QR Code',
+                                      AppLocalizations.of(context)!
+                                          .share_qr_code,
                                       style: TextStyle(
                                         fontSize:
                                             (isScreenWidth(context)) ? 18 : 26,
@@ -388,7 +391,8 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                     builder: (BuildContext context) =>
                                         AlertDialog(
                                       title: Text(
-                                        'Delete QR Code !',
+                                        AppLocalizations.of(context)!
+                                            .delete_qr_code_text,
                                         style: (isScreenWidth(context))
                                             ? Theme.of(context)
                                                 .textTheme
@@ -398,7 +402,8 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                                 .displayMedium,
                                       ),
                                       content: Text(
-                                        'Are you sure you want to delete your QR Code? This QR Code will be deleted from favorite on your device.',
+                                        AppLocalizations.of(context)!
+                                            .delete_qr_code_message,
                                         style: (isScreenWidth(context))
                                             ? Theme.of(context)
                                                 .textTheme
@@ -410,7 +415,10 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                       actions: [
                                         TextButton(
                                           onPressed: () => Get.back(),
-                                          child: const Text('Cancel'),
+                                          child: Text(
+                                            AppLocalizations.of(context)!
+                                                .cancel,
+                                          ),
                                         ),
                                         GetBuilder<FavoriteQrCodeController>(
                                           init: FavoriteQrCodeController(),
@@ -428,7 +436,10 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                                 qrIndex!,
                                               );
                                             },
-                                            child: const Text('Delete'),
+                                            child: Text(
+                                              AppLocalizations.of(context)!
+                                                  .delete,
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -446,7 +457,8 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                       : const EdgeInsets.symmetric(
                                           vertical: 20),
                                   child: Text(
-                                    'Delete QR Code',
+                                    AppLocalizations.of(context)!
+                                        .delete_qr_code,
                                     style: TextStyle(
                                       fontSize:
                                           (isScreenWidth(context)) ? 18 : 26,
@@ -485,7 +497,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                       GetStorage().read(
                             controller.favoriteQrCodeImageList[qrIndex!],
                           ) ??
-                          'Change QR Code Name',
+                          AppLocalizations.of(context)!.change_qr_code_name,
                       style: const TextStyle(
                         fontSize: 28,
                       ),
@@ -498,7 +510,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                           context: context,
                           builder: (BuildContext context) => AlertDialog(
                             title: Text(
-                              'Write QR Code Name',
+                              AppLocalizations.of(context)!.write_qr_code_name,
                               style: Theme.of(context).textTheme.displayMedium,
                             ),
                             content: SingleChildScrollView(
@@ -511,7 +523,8 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                 cursorColor: Theme.of(context).primaryColor,
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'QR Code Name',
+                                  hintText: AppLocalizations.of(context)!
+                                      .qr_code_name,
                                   prefixIcon: Icon(
                                     Icons.qr_code,
                                     size: 30,
@@ -540,7 +553,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                   Get.back();
                                 },
                                 child: Text(
-                                  'Cancel',
+                                  AppLocalizations.of(context)!.cancel,
                                   style:
                                       Theme.of(context).textTheme.displayMedium,
                                 ),
@@ -560,7 +573,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                     Get.back();
                                   },
                                   child: Text(
-                                    'OK',
+                                    AppLocalizations.of(context)!.ok,
                                     style: Theme.of(context)
                                         .textTheme
                                         .displayMedium,
@@ -638,13 +651,13 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                         Icons.arrow_back_ios,
                                         size: 30,
                                       ),
-                                      label: const Padding(
-                                        padding: EdgeInsets.symmetric(
+                                      label: Padding(
+                                        padding: const EdgeInsets.symmetric(
                                           vertical: 20,
                                         ),
                                         child: Text(
-                                          'Prev',
-                                          style: TextStyle(
+                                          AppLocalizations.of(context)!.prev,
+                                          style: const TextStyle(
                                             fontSize: 26,
                                           ),
                                         ),
@@ -680,13 +693,13 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                           Icons.arrow_back_ios,
                                           size: 30,
                                         ),
-                                        label: const Padding(
-                                          padding: EdgeInsets.symmetric(
+                                        label: Padding(
+                                          padding: const EdgeInsets.symmetric(
                                             vertical: 20,
                                           ),
                                           child: Text(
-                                            'Next',
-                                            style: TextStyle(
+                                            AppLocalizations.of(context)!.next,
+                                            style: const TextStyle(
                                               fontSize: 26,
                                             ),
                                           ),
@@ -713,20 +726,21 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                   onPressed: () async {
                                     final image =
                                         await screenshotController.capture();
-                                    controller.saveQrCode(image!);
+                                    controller.saveQrCode(image!, context);
                                     vibrationController.vibration();
                                   },
                                   icon: const Icon(
                                     Icons.save,
                                     size: 30,
                                   ),
-                                  label: const Padding(
-                                    padding: EdgeInsets.symmetric(
+                                  label: Padding(
+                                    padding: const EdgeInsets.symmetric(
                                       vertical: 20,
                                     ),
                                     child: Text(
-                                      'Save QR Code',
-                                      style: TextStyle(
+                                      AppLocalizations.of(context)!
+                                          .save_qr_code,
+                                      style: const TextStyle(
                                         fontSize: 26,
                                       ),
                                     ),
@@ -757,13 +771,14 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                     Icons.share,
                                     size: 30,
                                   ),
-                                  label: const Padding(
-                                    padding: EdgeInsets.symmetric(
+                                  label: Padding(
+                                    padding: const EdgeInsets.symmetric(
                                       vertical: 20,
                                     ),
                                     child: Text(
-                                      'Share QR Code',
-                                      style: TextStyle(
+                                      AppLocalizations.of(context)!
+                                          .share_qr_code,
+                                      style: const TextStyle(
                                         fontSize: 26,
                                       ),
                                     ),
@@ -786,13 +801,15 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                     builder: (BuildContext context) =>
                                         AlertDialog(
                                       title: Text(
-                                        'Delete QR Code !',
+                                        AppLocalizations.of(context)!
+                                            .delete_qr_code_text,
                                         style: Theme.of(context)
                                             .textTheme
                                             .displayMedium,
                                       ),
                                       content: Text(
-                                        'Are you sure you want to delete your QR Code? This QR Code will be deleted from favorite on your device.',
+                                        AppLocalizations.of(context)!
+                                            .delete_qr_code_message,
                                         style: Theme.of(context)
                                             .textTheme
                                             .displayMedium,
@@ -800,7 +817,10 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                       actions: [
                                         TextButton(
                                           onPressed: () => Get.back(),
-                                          child: const Text('Cancel'),
+                                          child: Text(
+                                            AppLocalizations.of(context)!
+                                                .cancel,
+                                          ),
                                         ),
                                         GetBuilder<FavoriteQrCodeController>(
                                           init: FavoriteQrCodeController(),
@@ -818,7 +838,10 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                                 qrIndex!,
                                               );
                                             },
-                                            child: const Text('Delete'),
+                                            child: Text(
+                                              AppLocalizations.of(context)!
+                                                  .delete,
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -830,13 +853,14 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                   Icons.delete,
                                   size: 30,
                                 ),
-                                label: const Padding(
-                                  padding: EdgeInsets.symmetric(
+                                label: Padding(
+                                  padding: const EdgeInsets.symmetric(
                                     vertical: 20,
                                   ),
                                   child: Text(
-                                    'Delete QR Code',
-                                    style: TextStyle(
+                                    AppLocalizations.of(context)!
+                                        .delete_qr_code,
+                                    style: const TextStyle(
                                       fontSize: 26,
                                     ),
                                   ),
