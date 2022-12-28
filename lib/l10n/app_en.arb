@@ -4,6 +4,11 @@
         "description": "The current language"
     },
 
+    "version": "App Version 1.10.0",
+    "@version": {
+        "description": "The current version"
+    },
+
     "vibration": "Vibration",
     "@vibration":{
         "description": "The current vibration"
@@ -12,11 +17,6 @@
     "dark_theme": "Dark Theme",
     "@dark_theme": {
         "description": "The current theme"
-    },
-
-    "version": "App Version 1.10.0",
-    "@version": {
-        "description": "The current version"
     },
 
     "scan": "Scan",
