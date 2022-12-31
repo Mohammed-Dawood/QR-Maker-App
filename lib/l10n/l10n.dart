@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 class L10n {
   static final all = [
-    const Locale('en'),
-    // const Locale('ar'),
+    const Locale('ar'),
     const Locale('sv'),
+    const Locale('en'),
   ];
 
   static String getFlag(String code) {
     switch (code) {
-      // case 'ar':
-      //   return '🇸🇦';
+      case 'ar':
+        return '🇸🇦';
       case 'sv':
         return '🇸🇪';
       case 'en':

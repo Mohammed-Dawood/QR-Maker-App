@@ -4,7 +4,7 @@
         "description": "The current language"
     },
 
-    "version": "App Version 1.10.0",
+    "version": "App Version 1.10.2",
     "@version": {
         "description": "The current version"
     },
@@ -180,14 +180,19 @@
         "description": "Please enter a valid telephone number error message"
     },
 
-    "search_country": "Search Country",
+    "search_country": "Search",
     "@search_country": {
-        "description": "Search Country hintText"
+        "description": "Search hintText"
     },
 
-    "message": "Message",
-    "@message": {
-        "description": "Message hintText & AppBar"
+    "message_app_bar": "Message",
+    "@message_app_bar": {
+        "description": "Message AppBar"
+    },
+
+    "message_hint_text": "Text",
+    "@message_hint_text": {
+        "description": "Message hintText"
     },
 
     "youtube": "Youtube",
@@ -225,29 +230,29 @@
         "description": "Please enter a valid longitude error message"
     },
 
-    "wifi": "Wifi",
+    "wifi": "Wi-Fi",
     "@wifi": {
-        "description": "Wifi AppBar"
+        "description": "Wi-Fi AppBar"
     },
 
-    "wifi_name": "Wifi Name",
+    "wifi_name": "Wi-Fi Name",
     "@wifi_name": {
-        "description": "Wifi Name hintText"
+        "description": "Wi-Fi Name hintText"
     },
 
-    "wifi_password": "Wifi Password",
+    "wifi_password": "Wi-Fi Password",
     "@wifi_password": {
-        "description": "Wifi password hintText"
+        "description": "Wi-Fi password hintText"
     },
 
-    "please_enter_a_wifi_name": "Please enter a Wifi name",
+    "please_enter_a_wifi_name": "Please enter a Wi-Fi name",
     "@please_enter_a_wifi_name": {
-        "description": "Please enter a Wifi name error message"
+        "description": "Please enter a Wi-Fi name error message"
     },
 
-    "please_enter_a_wifi_password": "Please enter a Wifi Password",
+    "please_enter_a_wifi_password": "Please enter a Wi-Fi Password",
     "@please_enter_a_wifi_password": {
-        "description": "Please enter a Wifi Password error message"
+        "description": "Please enter a Wi-Fi Password error message"
     },
 
     "whatsapp": "Whatsapp",
@@ -480,11 +485,6 @@
         "description": "BG Color button"
     },
 
-    "select": "Select",
-    "@select": {
-        "description": "Select button"
-    },
-
     "rate_app_title": "Rate this app",
     "@rate_app_title": {
         "description": "rate app title"
@@ -493,6 +493,16 @@
     "rate_app_message": "If you like this app, please take a moment of your time to review it!\nIt really helps us and shouldn't take more than a minute.",
     "@rate_app_message": {
         "description": "rate app message"
+    },
+
+    "rate_button": "Rate",
+    "@rate_button": {
+        "description": "Rate Button"
+    },
+
+    "later_button": "Later",
+    "@later_button": {
+        "description": "Later Button"
     }
         
 }

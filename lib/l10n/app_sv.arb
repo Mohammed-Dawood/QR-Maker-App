@@ -1,6 +1,6 @@
 {
     "language": "Svenska",
-    "version": "App Version 1.10.0",
+    "version": "App Version 1.10.2",
     "vibration": "Vibration",
     "dark_theme": "Mörkt Tema",
     "scan": "Skanna",
@@ -35,19 +35,20 @@
     "telephone": "Telefon",
     "telephone_number": "Telefonnummer",
     "please_enter_a_valid_telephone_number": "Vänligen ange ett giltigt telefonnummer",
-    "search_country": "Sök land",
-    "message": "Meddelande",
+    "search_country": "Sök",
+    "message_app_bar": "Meddelande",
+    "message_hint_text": "Text",
     "youtube": "Youtube",
     "location": "Plats",
     "enter_latitude": "Ange latitude",
     "enter_longitude": "Ange longitude",
     "please_enter_a_valid_latitude":"Vänligen ange en giltig latitude",
     "please_enter_a_valid_longitude": "Vänligen ange en giltig longitud",
-    "wifi": "Wifi",
-    "wifi_name": "Wifi Namn",
-    "wifi_password": "Wifi lösenord",
-    "please_enter_a_wifi_name": "Vänligen ange ett Wifi namn",
-    "please_enter_a_wifi_password": "Vänligen ange ett Wifi lösenord",
+    "wifi": "Wi-Fi",
+    "wifi_name": "Wi-Fi Namn",
+    "wifi_password": "Wi-Fi lösenord",
+    "please_enter_a_wifi_name": "Vänligen ange ett Wi-Fi namn",
+    "please_enter_a_wifi_password": "Vänligen ange ett Wi-Fi lösenord",
     "whatsapp": "Whatsapp",
     "v_card": "V-Kort",
     "please_enter_your_Name": "Vänligen ange ditt namn",
@@ -94,9 +95,9 @@
     "eyes_color": "Ögonfärg", 
     "data_color": "Datafärg", 
     "bg_color": "BG-färg", 
-    "select": "Välj",
     "rate_app_title": "Betygsätt den här appen",
-    "rate_app_message": "Om du gillar den här appen, vänligen ta en liten stund av din tid att recensera den! Det hjälper oss verkligen och det borde inte ta mer än en minut."
-    
+    "rate_app_message": "Om du gillar den här appen, vänligen ta en liten stund av din tid att recensera den! Det hjälper oss verkligen och det borde inte ta mer än en minut.",
+    "rate_button": "Betygsätta", 
+    "later_button": "Senare"
     
 }

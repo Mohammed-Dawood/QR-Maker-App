@@ -166,8 +166,8 @@ class _MakeEmailState extends State<MakeEmail> {
                                     ? Theme.of(context).textTheme.titleSmall
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText:
-                                      AppLocalizations.of(context)!.message,
+                                  hintText: AppLocalizations.of(context)!
+                                      .message_hint_text,
                                   prefixIcon: Icon(
                                     Icons.message,
                                     color: Theme.of(context).primaryColor,
@@ -362,8 +362,8 @@ class _MakeEmailState extends State<MakeEmail> {
                                 cursorColor: Theme.of(context).primaryColor,
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText:
-                                      AppLocalizations.of(context)!.message,
+                                  hintText: AppLocalizations.of(context)!
+                                      .message_hint_text,
                                   prefixIcon: Icon(
                                     Icons.message,
                                     color: Theme.of(context).primaryColor,

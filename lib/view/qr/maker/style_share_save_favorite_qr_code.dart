@@ -71,7 +71,7 @@ class _StyleShareSaveFavoriteQrCodeState
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
                   title: Text(
-                    AppLocalizations.of(context)!.edit_qr_code,
+                    AppLocalizations.of(context)!.edit_qr_style,
                     style:
                         TextStyle(fontSize: (isScreenWidth(context)) ? 20 : 28),
                   ),
@@ -679,7 +679,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                                     child: Text(
                                                       AppLocalizations.of(
                                                               context)!
-                                                          .select,
+                                                          .ok,
                                                       style: (isScreenWidth(
                                                               context))
                                                           ? Theme.of(context)
@@ -774,7 +774,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                                     child: Text(
                                                       AppLocalizations.of(
                                                               context)!
-                                                          .select,
+                                                          .ok,
                                                       style: (isScreenWidth(
                                                               context))
                                                           ? Theme.of(context)
@@ -870,7 +870,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                                     child: Text(
                                                       AppLocalizations.of(
                                                               context)!
-                                                          .select,
+                                                          .ok,
                                                       style: (isScreenWidth(
                                                               context))
                                                           ? Theme.of(context)
@@ -1055,7 +1055,7 @@ class _StyleShareSaveFavoriteQrCodeState
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
                   title: Text(
-                    AppLocalizations.of(context)!.edit_qr_code,
+                    AppLocalizations.of(context)!.edit_qr_style,
                     style: const TextStyle(fontSize: 28),
                   ),
                   iconTheme: const IconThemeData(
@@ -1598,7 +1598,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                                     child: Text(
                                                       AppLocalizations.of(
                                                               context)!
-                                                          .select,
+                                                          .ok,
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .displayMedium,
@@ -1679,7 +1679,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                                     child: Text(
                                                       AppLocalizations.of(
                                                               context)!
-                                                          .select,
+                                                          .ok,
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .displayMedium,
@@ -1761,7 +1761,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                                     child: Text(
                                                       AppLocalizations.of(
                                                               context)!
-                                                          .select,
+                                                          .ok,
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .displayMedium,

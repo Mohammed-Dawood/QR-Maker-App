@@ -53,7 +53,7 @@ class _MakeSMSState extends State<MakeSMS> {
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
                   title: Text(
-                    AppLocalizations.of(context)!.message,
+                    AppLocalizations.of(context)!.message_app_bar,
                     style:
                         TextStyle(fontSize: (isScreenWidth(context)) ? 20 : 28),
                   ),
@@ -170,8 +170,8 @@ class _MakeSMSState extends State<MakeSMS> {
                                     ? Theme.of(context).textTheme.titleSmall
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText:
-                                      AppLocalizations.of(context)!.message,
+                                  hintText: AppLocalizations.of(context)!
+                                      .message_hint_text,
                                   prefixIcon: Icon(
                                     Icons.message,
                                     color: Theme.of(context).primaryColor,
@@ -263,7 +263,7 @@ class _MakeSMSState extends State<MakeSMS> {
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
                   title: Text(
-                    AppLocalizations.of(context)!.message,
+                    AppLocalizations.of(context)!.message_app_bar,
                     style: const TextStyle(fontSize: 28),
                   ),
                   iconTheme: const IconThemeData(
@@ -363,8 +363,8 @@ class _MakeSMSState extends State<MakeSMS> {
                                 cursorColor: Theme.of(context).primaryColor,
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText:
-                                      AppLocalizations.of(context)!.message,
+                                  hintText: AppLocalizations.of(context)!
+                                      .message_hint_text,
                                   prefixIcon: Icon(
                                     Icons.message,
                                     color: Theme.of(context).primaryColor,

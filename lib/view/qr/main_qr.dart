@@ -52,9 +52,11 @@ class _MainQrState extends State<MainQr> {
             context,
             title: AppLocalizations.of(context)!.rate_app_title,
             message: AppLocalizations.of(context)!.rate_app_message,
-            rateButton: 'RATE', // The dialog "rate" button text.
+            rateButton: AppLocalizations.of(context)!
+                .rate_button, // The dialog "rate" button text.
             noButton: '', // The dialog "no" button text.
-            laterButton: 'LATER', // The dialog "later" button text.
+            laterButton: AppLocalizations.of(context)!
+                .later_button, // The dialog "later" button text.
             listener: (button) {
               // The button click listener (useful if you want to cancel the click event).
               switch (button) {
