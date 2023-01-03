@@ -39,7 +39,7 @@ class MainQrScan extends StatelessWidget {
                           () => const ScanningQRByCamera(),
                         ),
                         icon: Icon(
-                          Icons.qr_code_scanner,
+                          Icons.camera_alt,
                           size: (isScreenWidth(context)) ? 24 : 30,
                         ),
                         label: Padding(
@@ -47,7 +47,7 @@ class MainQrScan extends StatelessWidget {
                               ? const EdgeInsets.symmetric(vertical: 18)
                               : const EdgeInsets.symmetric(vertical: 20),
                           child: Text(
-                            AppLocalizations.of(context)!.start_scan,
+                            AppLocalizations.of(context)!.camera,
                             style: TextStyle(
                               fontSize: (isScreenWidth(context)) ? 18 : 26,
                             ),
@@ -86,13 +86,13 @@ class MainQrScan extends StatelessWidget {
                           () => const ScanningQRByCamera(),
                         ),
                         icon: const Icon(
-                          Icons.qr_code_scanner,
+                          Icons.camera_alt,
                           size: 30,
                         ),
                         label: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 20),
                           child: Text(
-                            AppLocalizations.of(context)!.start_scan,
+                            AppLocalizations.of(context)!.camera,
                             style: const TextStyle(
                               fontSize: 26,
                             ),

@@ -228,6 +228,41 @@ class _MainQrState extends State<MainQr> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
+                                          AppLocalizations.of(context)!.theme,
+                                          style: (isScreenWidth(context))
+                                              ? Theme.of(context)
+                                                  .textTheme
+                                                  .displaySmall
+                                              : Theme.of(context)
+                                                  .textTheme
+                                                  .displayMedium,
+                                        ),
+                                        Switch(
+                                          value: themeController.initValue,
+                                          onChanged:
+                                              themeController.switchTheme,
+                                          activeTrackColor: Colors.white54,
+                                          inactiveTrackColor:
+                                              Colors.grey.shade900,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Card(
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 20,
+                                      vertical: isScreenWidth(context) ? 5 : 10,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
                                           AppLocalizations.of(context)!
                                               .vibration,
                                           style: (isScreenWidth(context))
@@ -257,42 +292,7 @@ class _MainQrState extends State<MainQr> {
                                   ),
                                 ),
                               ),
-                              Card(
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 20,
-                                      vertical: isScreenWidth(context) ? 5 : 10,
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          AppLocalizations.of(context)!
-                                              .dark_theme,
-                                          style: (isScreenWidth(context))
-                                              ? Theme.of(context)
-                                                  .textTheme
-                                                  .displaySmall
-                                              : Theme.of(context)
-                                                  .textTheme
-                                                  .displayMedium,
-                                        ),
-                                        Switch(
-                                          value: themeController.initValue,
-                                          onChanged:
-                                              themeController.switchTheme,
-                                          activeTrackColor: Colors.white54,
-                                          inactiveTrackColor:
-                                              Colors.grey.shade900,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
+
                               // Card(
                               //   child: SizedBox(
                               //     width: double.infinity,
@@ -527,6 +527,37 @@ class _MainQrState extends State<MainQr> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
+                                          AppLocalizations.of(context)!.theme,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .displayMedium,
+                                        ),
+                                        Switch(
+                                          value: themeController.initValue,
+                                          onChanged:
+                                              themeController.switchTheme,
+                                          activeTrackColor: Colors.white54,
+                                          inactiveTrackColor:
+                                              Colors.grey.shade900,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Card(
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 20,
+                                      vertical: 10,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
                                           AppLocalizations.of(context)!
                                               .vibration,
                                           style: Theme.of(context)
@@ -552,38 +583,7 @@ class _MainQrState extends State<MainQr> {
                                   ),
                                 ),
                               ),
-                              Card(
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 20,
-                                      vertical: 10,
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          AppLocalizations.of(context)!
-                                              .dark_theme,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .displayMedium,
-                                        ),
-                                        Switch(
-                                          value: themeController.initValue,
-                                          onChanged:
-                                              themeController.switchTheme,
-                                          activeTrackColor: Colors.white54,
-                                          inactiveTrackColor:
-                                              Colors.grey.shade900,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
+
                               // Card(
                               //   child: SizedBox(
                               //     width: double.infinity,

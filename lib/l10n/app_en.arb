@@ -4,7 +4,7 @@
         "description": "The current language"
     },
 
-    "version": "App Version 1.10.2",
+    "version": "Version 1.10.3",
     "@version": {
         "description": "The current version"
     },
@@ -14,8 +14,8 @@
         "description": "The current vibration"
     },
 
-    "dark_theme": "Dark Theme",
-    "@dark_theme": {
+    "theme": "Theme",
+    "@theme": {
         "description": "The current theme"
     },
 
@@ -47,11 +47,6 @@
     "favorite_qr_code": "Favorite QR Code",
     "@favorite_qr_code": {
         "description": "Favorite QR Code AppBar"
-    },
-
-    "start_scan": "Start Scan",
-    "@start_scan": {
-        "description": "Start scan button"
     },
 
     "scanner": "Scanner",
@@ -503,8 +498,7 @@
     "later_button": "Later",
     "@later_button": {
         "description": "Later Button"
-    }
-        
+    }      
 }
 
 

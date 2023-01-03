@@ -1,15 +1,14 @@
 {
     "language": "Svenska",
-    "version": "App Version 1.10.2",
+    "version": "Version 1.10.3",
     "vibration": "Vibration",
-    "dark_theme": "Mörkt Tema",
+    "dark_theme": "Tema",
     "scan": "Skanna",
     "make": "Skapa",
     "favorite": "Favorit",
     "scan_qr_code": "Skanna QR-kod",
     "make_qr_code": "Skapa QR-kod",
     "favorite_qr_code": "Favorit QR-kod",
-    "start_scan": "Skanna",
     "scanner": "Skanner",
     "go_to_link": "Gå Till Länken",
     "change_qr_code_name": "Ändra QR-kodens namn",
@@ -98,6 +97,5 @@
     "rate_app_title": "Betygsätt den här appen",
     "rate_app_message": "Om du gillar den här appen, vänligen ta en liten stund av din tid att recensera den! Det hjälper oss verkligen och det borde inte ta mer än en minut.",
     "rate_button": "Betygsätta", 
-    "later_button": "Senare"
-    
+    "later_button": "Senare" 
 }
