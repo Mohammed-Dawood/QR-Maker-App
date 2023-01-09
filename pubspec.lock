@@ -53,10 +53,10 @@ packages:
     dependency: transitive
     description:
       name: checked_yaml
-      sha256: dd007e4fb8270916820a0d66e24f619266b60773cddd082c6439341645af2659
+      sha256: "3d1505d91afa809d177efd4eed5bb0eb65805097a1463abdd2add076effae311"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.1"
+    version: "2.0.2"
   cli_util:
     dependency: transitive
     description:
@@ -305,10 +305,10 @@ packages:
     dependency: transitive
     description:
       name: image_picker_ios
-      sha256: "84231f4a538ad48055d419e6e891848a717962af789bf7427f94e41710a45f83"
+      sha256: "356426b01c5acd493db244dd6122e9864ef712d4f97b1bfa8cf29809efc06d8b"
       url: "https://pub.dev"
     source: hosted
-    version: "0.8.6+4"
+    version: "0.8.6+5"
   image_picker_platform_interface:
     dependency: transitive
     description:
@@ -649,10 +649,10 @@ packages:
     dependency: transitive
     description:
       name: shared_preferences_macos
-      sha256: fbb94bf296576f49be37a1496d5951796211a8db0aa22cc0d68c46440dad808c
+      sha256: "81b6a60b2d27020eb0fc41f4cebc91353047309967901a79ee8203e40c42ed46"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.4"
+    version: "2.0.5"
   shared_preferences_platform_interface:
     dependency: transitive
     description:
