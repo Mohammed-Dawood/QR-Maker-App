@@ -1,12 +1,12 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:qr_maker_app/l10n/l10n.dart';
 import 'package:rate_my_app/rate_my_app.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/view/qr/scan/main_qr_scan.dart';
 import 'package:qr_maker_app/view/qr/maker/main_qr_make.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
+import 'package:qr_maker_app/controller/language_controller.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
 import 'package:qr_maker_app/view/qr/favorite/main_favorite_qr.dart';
 import 'package:qr_maker_app/controller/favorite_qr_code_controller.dart';
@@ -105,8 +105,7 @@ class _MainQrState extends State<MainQr> {
       AppLocalizations.of(context)!.make_qr_code,
       AppLocalizations.of(context)!.favorite_qr_code,
     ];
-    final locale = Localizations.localeOf(context);
-    final flag = L10n.getFlag(locale.languageCode);
+    LanguageController languageController = Get.find();
     // final user = FirebaseAuth.instance.currentUser;
     return MediaQuery.of(context).orientation == Orientation.portrait
         ? GetBuilder<ThemeController>(
@@ -198,15 +197,66 @@ class _MainQrState extends State<MainQr> {
                                           padding: EdgeInsets.symmetric(
                                             horizontal: 10,
                                             vertical: (isScreenWidth(context))
-                                                ? 5
+                                                ? 1
                                                 : 2,
                                           ),
-                                          child: Text(
-                                            flag,
-                                            style: TextStyle(
-                                              fontSize: isScreenWidth(context)
-                                                  ? 30
-                                                  : 35,
+                                          child: DropdownButtonHideUnderline(
+                                            child: DropdownButton(
+                                              value: languageController
+                                                  .displayLanguage,
+                                              icon: Container(),
+                                              items: [
+                                                DropdownMenuItem(
+                                                  value: "en",
+                                                  child: Center(
+                                                    child: Text(
+                                                      '🇺🇸',
+                                                      style: TextStyle(
+                                                        fontSize: isScreenWidth(
+                                                                context)
+                                                            ? 30
+                                                            : 35,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                DropdownMenuItem(
+                                                  value: "ar",
+                                                  child: Center(
+                                                    child: Text(
+                                                      '🇸🇦',
+                                                      style: TextStyle(
+                                                        fontSize: isScreenWidth(
+                                                                context)
+                                                            ? 30
+                                                            : 35,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                DropdownMenuItem(
+                                                  value: "sv",
+                                                  child: Center(
+                                                    child: Text(
+                                                      '🇸🇪',
+                                                      style: TextStyle(
+                                                        fontSize: isScreenWidth(
+                                                                context)
+                                                            ? 30
+                                                            : 35,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                              onChanged:
+                                                  (String? codeLanguage) {
+                                                languageController
+                                                    .changeLanguage(
+                                                        codeLanguage!);
+                                              },
+                                              dropdownColor: Theme.of(context)
+                                                  .primaryColor,
                                             ),
                                           ),
                                         ),
@@ -502,10 +552,54 @@ class _MainQrState extends State<MainQr> {
                                             horizontal: 10,
                                             vertical: 2,
                                           ),
-                                          child: Text(
-                                            flag,
-                                            style: const TextStyle(
-                                              fontSize: 35,
+                                          child: DropdownButtonHideUnderline(
+                                            child: DropdownButton(
+                                              value: languageController
+                                                  .displayLanguage,
+                                              icon: Container(),
+                                              items: const [
+                                                DropdownMenuItem(
+                                                  value: "en",
+                                                  child: Center(
+                                                    child: Text(
+                                                      '🇺🇸',
+                                                      style: TextStyle(
+                                                        fontSize: 35,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                DropdownMenuItem(
+                                                  value: "ar",
+                                                  child: Center(
+                                                    child: Text(
+                                                      '🇸🇦',
+                                                      style: TextStyle(
+                                                        fontSize: 35,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                DropdownMenuItem(
+                                                  value: "sv",
+                                                  child: Center(
+                                                    child: Text(
+                                                      '🇸🇪',
+                                                      style: TextStyle(
+                                                        fontSize: 35,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                              onChanged:
+                                                  (String? codeLanguage) {
+                                                languageController
+                                                    .changeLanguage(
+                                                        codeLanguage!);
+                                              },
+                                              dropdownColor: Theme.of(context)
+                                                  .primaryColor,
                                             ),
                                           ),
                                         ),

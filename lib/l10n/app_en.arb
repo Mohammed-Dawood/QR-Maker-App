@@ -1,5 +1,5 @@
 {
-    "language": "English",
+    "language": "Language",
     "@language":{
         "description": "The current language"
     },
