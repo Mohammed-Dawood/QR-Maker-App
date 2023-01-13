@@ -86,7 +86,8 @@ class _MakeInstagramState extends State<MakeInstagram> {
                                     ? Theme.of(context).textTheme.titleSmall
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'https://www.instagram.com/...',
+                                  hintText: AppLocalizations.of(context)!
+                                      .instagram_hint_text,
                                   prefixIcon: Icon(
                                     Icons.photo_camera_outlined,
                                     color: Theme.of(context).primaryColor,
@@ -213,7 +214,8 @@ class _MakeInstagramState extends State<MakeInstagram> {
                                 cursorColor: Theme.of(context).primaryColor,
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'https://www.instagram.com/...',
+                                  hintText: AppLocalizations.of(context)!
+                                      .instagram_hint_text,
                                   prefixIcon: Icon(
                                     Icons.photo_camera_outlined,
                                     color: Theme.of(context).primaryColor,

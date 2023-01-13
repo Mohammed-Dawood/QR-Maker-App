@@ -86,7 +86,8 @@ class _MakeTwitterState extends State<MakeTwitter> {
                                     ? Theme.of(context).textTheme.titleSmall
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'https://twitter.com/...',
+                                  hintText: AppLocalizations.of(context)!
+                                      .twitter_hint_text,
                                   prefixIcon: Icon(
                                     Icons.link,
                                     color: Theme.of(context).primaryColor,
@@ -213,7 +214,8 @@ class _MakeTwitterState extends State<MakeTwitter> {
                                 cursorColor: Theme.of(context).primaryColor,
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'https://twitter.com/...',
+                                  hintText: AppLocalizations.of(context)!
+                                      .twitter_hint_text,
                                   prefixIcon: Icon(
                                     Icons.link,
                                     color: Theme.of(context).primaryColor,

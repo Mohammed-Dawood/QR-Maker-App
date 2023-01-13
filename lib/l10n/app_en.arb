@@ -155,6 +155,11 @@
         "description": "URL AppBar"
     },
 
+    "url_hint_text": "https://www.example.com",
+    "@url_hint_text": {
+        "description": "URL hintText"
+    },
+
     "create_qr_code": "Create QR Code",
     "@create_qr_code": {
         "description": "Create QR Code button"
@@ -195,9 +200,19 @@
         "description": "Youtube AppBar"
     },
 
+    "youtube_hint_text": "https://www.youtube.com/...",
+    "@youtube_hint_text": {
+        "description": "Youtube hintText"
+    },
+
     "facebook": "Facebook",
     "@facebook": {
         "description": "Facebook AppBar"
+    },
+
+    "facebook_hint_text": "https://www.facebook.com/...",
+    "@facebook_hint_text": {
+        "description": "Facebook hintText"
     },
 
     "location": "Location",
@@ -310,6 +325,11 @@
         "description": "Instagram hintText"
     },
 
+    "instagram_hint_text": "https://www.instagram.com/...",
+    "@instagram_hint_text": {
+        "description": "Instagram hintText"
+    },
+
     "please_enter_a_valid_link": "Please enter a valid link",
     "@please_enter_a_valid_link": {
         "description": "Please enter a valid link error message"
@@ -350,9 +370,19 @@
         "description": "Twitter appBar"
     },
 
+    "twitter_hint_text": "https://twitter.com/...",
+    "@twitter_hint_text": {
+        "description": "Twitter hintText"
+    },
+
     "linkedin": "Linkedin",
     "@linkedin": {
         "description": "Linkedin appBar"
+    },
+
+    "linkedin_hint_text": "https://www.linkedin.com/...",
+    "@linkedin_hint_text": {
+        "description": "Linkedin hintText"
     },
 
     "event": "Event",

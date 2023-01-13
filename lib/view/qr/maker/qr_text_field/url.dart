@@ -87,7 +87,8 @@ class _MakeUrlState extends State<MakeUrl> {
                                     ? Theme.of(context).textTheme.titleSmall
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'https://www.example.com',
+                                  hintText: AppLocalizations.of(context)!
+                                      .url_hint_text,
                                   prefixIcon: Icon(
                                     Icons.link,
                                     color: Theme.of(context).primaryColor,
@@ -216,7 +217,8 @@ class _MakeUrlState extends State<MakeUrl> {
                                 cursorColor: Theme.of(context).primaryColor,
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'https://www.example.com',
+                                  hintText: AppLocalizations.of(context)!
+                                      .url_hint_text,
                                   prefixIcon: Icon(
                                     Icons.link,
                                     color: Theme.of(context).primaryColor,

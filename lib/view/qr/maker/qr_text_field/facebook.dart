@@ -86,7 +86,8 @@ class _MakeFacebookState extends State<MakeFacebook> {
                                     ? Theme.of(context).textTheme.titleSmall
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'https://www.facebook.com/...',
+                                  hintText: AppLocalizations.of(context)!
+                                      .facebook_hint_text,
                                   prefixIcon: Icon(
                                     Icons.facebook,
                                     color: Theme.of(context).primaryColor,
@@ -213,7 +214,8 @@ class _MakeFacebookState extends State<MakeFacebook> {
                                 cursorColor: Theme.of(context).primaryColor,
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'https://www.facebook.com/...',
+                                  hintText: AppLocalizations.of(context)!
+                                      .facebook_hint_text,
                                   prefixIcon: Icon(
                                     Icons.facebook,
                                     color: Theme.of(context).primaryColor,

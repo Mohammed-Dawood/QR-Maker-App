@@ -86,7 +86,8 @@ class _MakeLinkedInState extends State<MakeLinkedIn> {
                                     ? Theme.of(context).textTheme.titleSmall
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'https://www.linkedin.com/...',
+                                  hintText: AppLocalizations.of(context)!
+                                      .linkedin_hint_text,
                                   prefixIcon: Icon(
                                     Icons.link,
                                     color: Theme.of(context).primaryColor,
@@ -213,7 +214,8 @@ class _MakeLinkedInState extends State<MakeLinkedIn> {
                                 cursorColor: Theme.of(context).primaryColor,
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
-                                  hintText: 'https://www.linkedin.com/...',
+                                  hintText: AppLocalizations.of(context)!
+                                      .linkedin_hint_text,
                                   prefixIcon: Icon(
                                     Icons.link,
                                     color: Theme.of(context).primaryColor,

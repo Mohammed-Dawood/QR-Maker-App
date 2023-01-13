@@ -1,3 +1,4 @@
+import 'dart:ui' as ui;
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
+import 'package:qr_maker_app/controller/language_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
 
 class MakeVCard extends StatefulWidget {
@@ -24,6 +26,7 @@ class _MakeVCardState extends State<MakeVCard> {
   var completePhoneNumberHome = '';
   var completePhoneNumberMobil = '';
 
+  LanguageController languageController = Get.find();
   GlobalKey<FormState> validateKey = GlobalKey<FormState>();
   TextEditingController urlController = TextEditingController();
   TextEditingController zipController = TextEditingController();
@@ -187,366 +190,431 @@ class _MakeVCardState extends State<MakeVCard> {
                                 ),
                               ),
                               Card(
-                                child: IntlPhoneField(
-                                  validator: (PhoneNumber? phone) {
-                                    if (!isLength(phone!.number, 8, 20)) {
-                                      return AppLocalizations.of(context)!
-                                          .please_enter_a_valid_telephone_number;
-                                    }
-                                    return null;
-                                  },
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  cursorWidth: 3,
-                                  controller: mobileController,
-                                  disableLengthCheck: true,
-                                  keyboardType: TextInputType.number,
-                                  textInputAction: TextInputAction.next,
-                                  dropdownIconPosition: IconPosition.trailing,
-                                  cursorColor: Theme.of(context).primaryColor,
-                                  flagsButtonPadding: const EdgeInsets.only(
-                                    left: 10,
-                                  ),
-                                  style: (isScreenWidth(context))
-                                      ? Theme.of(context).textTheme.titleSmall
-                                      : Theme.of(context).textTheme.titleMedium,
-                                  dropdownTextStyle: (isScreenWidth(context))
-                                      ? Theme.of(context).textTheme.titleSmall
-                                      : Theme.of(context).textTheme.titleMedium,
-                                  pickerDialogStyle: PickerDialogStyle(
-                                    countryCodeStyle: (isScreenWidth(context))
-                                        ? Theme.of(context)
-                                            .textTheme
-                                            .displaySmall
-                                        : Theme.of(context)
-                                            .textTheme
-                                            .displayMedium,
-                                    countryNameStyle: (isScreenWidth(context))
-                                        ? Theme.of(context)
-                                            .textTheme
-                                            .displaySmall
-                                        : Theme.of(context)
-                                            .textTheme
-                                            .displayMedium,
-                                    searchFieldCursorColor:
-                                        Theme.of(context).primaryColor,
-                                    searchFieldInputDecoration: InputDecoration(
-                                      hintText: AppLocalizations.of(context)!
-                                          .search_country,
-                                      hintStyle: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize:
-                                            (isScreenWidth(context) ? 18 : 26),
-                                      ),
-                                      isCollapsed: false,
-                                      isDense: true,
-                                      suffixIcon: Icon(
-                                        Icons.search,
-                                        color: Theme.of(context).primaryColor,
-                                        size:
-                                            (isScreenWidth(context)) ? 24 : 30,
-                                      ),
+                                child: Directionality(
+                                  textDirection: ui.TextDirection.ltr,
+                                  child: IntlPhoneField(
+                                    validator: (PhoneNumber? phone) {
+                                      if (!isLength(phone!.number, 8, 20)) {
+                                        return AppLocalizations.of(context)!
+                                            .please_enter_a_valid_telephone_number;
+                                      }
+                                      return null;
+                                    },
+                                    autovalidateMode:
+                                        AutovalidateMode.onUserInteraction,
+                                    cursorWidth: 3,
+                                    controller: mobileController,
+                                    disableLengthCheck: true,
+                                    keyboardType: TextInputType.number,
+                                    textInputAction: TextInputAction.next,
+                                    dropdownIconPosition: IconPosition.leading,
+                                    showDropdownIcon: false,
+                                    cursorColor: Theme.of(context).primaryColor,
+                                    flagsButtonPadding: EdgeInsets.only(
+                                      left: 10,
+                                      bottom:
+                                          languageController.displayLanguage ==
+                                                  "ar"
+                                              ? (isScreenWidth(context) ? 6 : 5)
+                                              : 2,
                                     ),
-                                    width: isScreenWidth(context)
-                                        ? double.infinity
-                                        : 500,
-                                  ),
-                                  decoration: InputDecoration(
-                                    hintText:
-                                        AppLocalizations.of(context)!.mobile,
-                                    suffixIcon: mobileController.text.isEmpty
-                                        ? Container(
-                                            width: 0,
-                                          )
-                                        : IconButton(
-                                            onPressed: () =>
-                                                mobileController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: (isScreenWidth(context))
-                                                  ? 24
-                                                  : 30,
+                                    style: (isScreenWidth(context))
+                                        ? Theme.of(context).textTheme.titleSmall
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .titleMedium,
+                                    dropdownTextStyle: (isScreenWidth(context))
+                                        ? Theme.of(context).textTheme.titleSmall
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .titleMedium,
+                                    pickerDialogStyle: PickerDialogStyle(
+                                      countryCodeStyle: (isScreenWidth(context))
+                                          ? Theme.of(context)
+                                              .textTheme
+                                              .displaySmall
+                                          : Theme.of(context)
+                                              .textTheme
+                                              .displayMedium,
+                                      countryNameStyle: (isScreenWidth(context))
+                                          ? Theme.of(context)
+                                              .textTheme
+                                              .displaySmall
+                                          : Theme.of(context)
+                                              .textTheme
+                                              .displayMedium,
+                                      searchFieldCursorColor:
+                                          Theme.of(context).primaryColor,
+                                      searchFieldInputDecoration:
+                                          InputDecoration(
+                                        hintText: AppLocalizations.of(context)!
+                                            .search_country,
+                                        hintStyle: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: (isScreenWidth(context)
+                                              ? 18
+                                              : 26),
+                                        ),
+                                        isCollapsed: false,
+                                        isDense: true,
+                                        suffixIcon: Icon(
+                                          Icons.search,
+                                          color: Theme.of(context).primaryColor,
+                                          size: (isScreenWidth(context))
+                                              ? 24
+                                              : 30,
+                                        ),
+                                      ),
+                                      width: isScreenWidth(context)
+                                          ? double.infinity
+                                          : 500,
+                                    ),
+                                    decoration: InputDecoration(
+                                      hintText:
+                                          AppLocalizations.of(context)!.mobile,
+                                      suffixIcon: mobileController.text.isEmpty
+                                          ? Container(
+                                              width: 0,
+                                            )
+                                          : IconButton(
+                                              onPressed: () =>
+                                                  mobileController.clear(),
+                                              icon: Icon(
+                                                Icons.close,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                size: (isScreenWidth(context))
+                                                    ? 24
+                                                    : 30,
+                                              ),
                                             ),
-                                          ),
+                                    ),
+                                    onChanged: (PhoneNumber phone) {
+                                      completePhoneNumberMobil =
+                                          phone.completeNumber;
+                                    },
                                   ),
-                                  onChanged: (PhoneNumber phone) {
-                                    completePhoneNumberMobil =
-                                        phone.completeNumber;
-                                  },
                                 ),
                               ),
                               Card(
-                                child: IntlPhoneField(
-                                  validator: (PhoneNumber? phone) {
-                                    if (!isLength(phone!.number, 8, 20)) {
-                                      return AppLocalizations.of(context)!
-                                          .please_enter_a_valid_telephone_number;
-                                    }
-                                    return null;
-                                  },
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  cursorWidth: 3,
-                                  controller: workController,
-                                  disableLengthCheck: true,
-                                  keyboardType: TextInputType.number,
-                                  textInputAction: TextInputAction.next,
-                                  dropdownIconPosition: IconPosition.trailing,
-                                  cursorColor: Theme.of(context).primaryColor,
-                                  flagsButtonPadding: const EdgeInsets.only(
-                                    left: 10,
-                                  ),
-                                  style: (isScreenWidth(context))
-                                      ? Theme.of(context).textTheme.titleSmall
-                                      : Theme.of(context).textTheme.titleMedium,
-                                  dropdownTextStyle: (isScreenWidth(context))
-                                      ? Theme.of(context).textTheme.titleSmall
-                                      : Theme.of(context).textTheme.titleMedium,
-                                  pickerDialogStyle: PickerDialogStyle(
-                                    countryCodeStyle: (isScreenWidth(context))
-                                        ? Theme.of(context)
-                                            .textTheme
-                                            .displaySmall
-                                        : Theme.of(context)
-                                            .textTheme
-                                            .displayMedium,
-                                    countryNameStyle: (isScreenWidth(context))
-                                        ? Theme.of(context)
-                                            .textTheme
-                                            .displaySmall
-                                        : Theme.of(context)
-                                            .textTheme
-                                            .displayMedium,
-                                    searchFieldCursorColor:
-                                        Theme.of(context).primaryColor,
-                                    searchFieldInputDecoration: InputDecoration(
-                                      hintText: AppLocalizations.of(context)!
-                                          .search_country,
-                                      hintStyle: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize:
-                                            (isScreenWidth(context) ? 18 : 26),
-                                      ),
-                                      isCollapsed: false,
-                                      isDense: true,
-                                      suffixIcon: Icon(
-                                        Icons.search,
-                                        color: Theme.of(context).primaryColor,
-                                        size:
-                                            (isScreenWidth(context)) ? 24 : 30,
-                                      ),
+                                child: Directionality(
+                                  textDirection: ui.TextDirection.ltr,
+                                  child: IntlPhoneField(
+                                    validator: (PhoneNumber? phone) {
+                                      if (!isLength(phone!.number, 8, 20)) {
+                                        return AppLocalizations.of(context)!
+                                            .please_enter_a_valid_telephone_number;
+                                      }
+                                      return null;
+                                    },
+                                    autovalidateMode:
+                                        AutovalidateMode.onUserInteraction,
+                                    cursorWidth: 3,
+                                    controller: workController,
+                                    disableLengthCheck: true,
+                                    keyboardType: TextInputType.number,
+                                    textInputAction: TextInputAction.next,
+                                    dropdownIconPosition: IconPosition.leading,
+                                    showDropdownIcon: false,
+                                    cursorColor: Theme.of(context).primaryColor,
+                                    flagsButtonPadding: EdgeInsets.only(
+                                      left: 10,
+                                      bottom:
+                                          languageController.displayLanguage ==
+                                                  "ar"
+                                              ? (isScreenWidth(context) ? 6 : 5)
+                                              : 2,
                                     ),
-                                    width: isScreenWidth(context)
-                                        ? double.infinity
-                                        : 500,
-                                  ),
-                                  decoration: InputDecoration(
-                                    hintText:
-                                        AppLocalizations.of(context)!.work,
-                                    suffixIcon: workController.text.isEmpty
-                                        ? Container(
-                                            width: 0,
-                                          )
-                                        : IconButton(
-                                            onPressed: () =>
-                                                workController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: (isScreenWidth(context))
-                                                  ? 24
-                                                  : 30,
+                                    style: (isScreenWidth(context))
+                                        ? Theme.of(context).textTheme.titleSmall
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .titleMedium,
+                                    dropdownTextStyle: (isScreenWidth(context))
+                                        ? Theme.of(context).textTheme.titleSmall
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .titleMedium,
+                                    pickerDialogStyle: PickerDialogStyle(
+                                      countryCodeStyle: (isScreenWidth(context))
+                                          ? Theme.of(context)
+                                              .textTheme
+                                              .displaySmall
+                                          : Theme.of(context)
+                                              .textTheme
+                                              .displayMedium,
+                                      countryNameStyle: (isScreenWidth(context))
+                                          ? Theme.of(context)
+                                              .textTheme
+                                              .displaySmall
+                                          : Theme.of(context)
+                                              .textTheme
+                                              .displayMedium,
+                                      searchFieldCursorColor:
+                                          Theme.of(context).primaryColor,
+                                      searchFieldInputDecoration:
+                                          InputDecoration(
+                                        hintText: AppLocalizations.of(context)!
+                                            .search_country,
+                                        hintStyle: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: (isScreenWidth(context)
+                                              ? 18
+                                              : 26),
+                                        ),
+                                        isCollapsed: false,
+                                        isDense: true,
+                                        suffixIcon: Icon(
+                                          Icons.search,
+                                          color: Theme.of(context).primaryColor,
+                                          size: (isScreenWidth(context))
+                                              ? 24
+                                              : 30,
+                                        ),
+                                      ),
+                                      width: isScreenWidth(context)
+                                          ? double.infinity
+                                          : 500,
+                                    ),
+                                    decoration: InputDecoration(
+                                      hintText:
+                                          AppLocalizations.of(context)!.work,
+                                      suffixIcon: workController.text.isEmpty
+                                          ? Container(
+                                              width: 0,
+                                            )
+                                          : IconButton(
+                                              onPressed: () =>
+                                                  workController.clear(),
+                                              icon: Icon(
+                                                Icons.close,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                size: (isScreenWidth(context))
+                                                    ? 24
+                                                    : 30,
+                                              ),
                                             ),
-                                          ),
+                                    ),
+                                    onChanged: (PhoneNumber phone) {
+                                      completePhoneNumberWork =
+                                          phone.completeNumber;
+                                    },
                                   ),
-                                  onChanged: (PhoneNumber phone) {
-                                    completePhoneNumberWork =
-                                        phone.completeNumber;
-                                  },
                                 ),
                               ),
                               Card(
-                                child: IntlPhoneField(
-                                  validator: (PhoneNumber? phone) {
-                                    if (!isLength(phone!.number, 8, 20)) {
-                                      return AppLocalizations.of(context)!
-                                          .please_enter_a_valid_telephone_number;
-                                    }
-                                    return null;
-                                  },
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  cursorWidth: 3,
-                                  controller: homeController,
-                                  disableLengthCheck: true,
-                                  keyboardType: TextInputType.number,
-                                  textInputAction: TextInputAction.next,
-                                  dropdownIconPosition: IconPosition.trailing,
-                                  cursorColor: Theme.of(context).primaryColor,
-                                  flagsButtonPadding: const EdgeInsets.only(
-                                    left: 10,
-                                  ),
-                                  style: (isScreenWidth(context))
-                                      ? Theme.of(context).textTheme.titleSmall
-                                      : Theme.of(context).textTheme.titleMedium,
-                                  dropdownTextStyle: (isScreenWidth(context))
-                                      ? Theme.of(context).textTheme.titleSmall
-                                      : Theme.of(context).textTheme.titleMedium,
-                                  pickerDialogStyle: PickerDialogStyle(
-                                    countryCodeStyle: (isScreenWidth(context))
-                                        ? Theme.of(context)
-                                            .textTheme
-                                            .displaySmall
-                                        : Theme.of(context)
-                                            .textTheme
-                                            .displayMedium,
-                                    countryNameStyle: (isScreenWidth(context))
-                                        ? Theme.of(context)
-                                            .textTheme
-                                            .displaySmall
-                                        : Theme.of(context)
-                                            .textTheme
-                                            .displayMedium,
-                                    searchFieldCursorColor:
-                                        Theme.of(context).primaryColor,
-                                    searchFieldInputDecoration: InputDecoration(
-                                      hintText: AppLocalizations.of(context)!
-                                          .search_country,
-                                      hintStyle: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize:
-                                            (isScreenWidth(context) ? 18 : 26),
-                                      ),
-                                      isCollapsed: false,
-                                      isDense: true,
-                                      suffixIcon: Icon(
-                                        Icons.search,
-                                        color: Theme.of(context).primaryColor,
-                                        size:
-                                            (isScreenWidth(context)) ? 24 : 30,
-                                      ),
+                                child: Directionality(
+                                  textDirection: ui.TextDirection.ltr,
+                                  child: IntlPhoneField(
+                                    validator: (PhoneNumber? phone) {
+                                      if (!isLength(phone!.number, 8, 20)) {
+                                        return AppLocalizations.of(context)!
+                                            .please_enter_a_valid_telephone_number;
+                                      }
+                                      return null;
+                                    },
+                                    autovalidateMode:
+                                        AutovalidateMode.onUserInteraction,
+                                    cursorWidth: 3,
+                                    controller: homeController,
+                                    disableLengthCheck: true,
+                                    keyboardType: TextInputType.number,
+                                    textInputAction: TextInputAction.next,
+                                    dropdownIconPosition: IconPosition.leading,
+                                    showDropdownIcon: false,
+                                    cursorColor: Theme.of(context).primaryColor,
+                                    flagsButtonPadding: EdgeInsets.only(
+                                      left: 10,
+                                      bottom:
+                                          languageController.displayLanguage ==
+                                                  "ar"
+                                              ? (isScreenWidth(context) ? 6 : 5)
+                                              : 2,
                                     ),
-                                    width: isScreenWidth(context)
-                                        ? double.infinity
-                                        : 500,
-                                  ),
-                                  decoration: InputDecoration(
-                                    hintText:
-                                        AppLocalizations.of(context)!.home,
-                                    suffixIcon: homeController.text.isEmpty
-                                        ? Container(
-                                            width: 0,
-                                          )
-                                        : IconButton(
-                                            onPressed: () =>
-                                                homeController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: (isScreenWidth(context))
-                                                  ? 24
-                                                  : 30,
+                                    style: (isScreenWidth(context))
+                                        ? Theme.of(context).textTheme.titleSmall
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .titleMedium,
+                                    dropdownTextStyle: (isScreenWidth(context))
+                                        ? Theme.of(context).textTheme.titleSmall
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .titleMedium,
+                                    pickerDialogStyle: PickerDialogStyle(
+                                      countryCodeStyle: (isScreenWidth(context))
+                                          ? Theme.of(context)
+                                              .textTheme
+                                              .displaySmall
+                                          : Theme.of(context)
+                                              .textTheme
+                                              .displayMedium,
+                                      countryNameStyle: (isScreenWidth(context))
+                                          ? Theme.of(context)
+                                              .textTheme
+                                              .displaySmall
+                                          : Theme.of(context)
+                                              .textTheme
+                                              .displayMedium,
+                                      searchFieldCursorColor:
+                                          Theme.of(context).primaryColor,
+                                      searchFieldInputDecoration:
+                                          InputDecoration(
+                                        hintText: AppLocalizations.of(context)!
+                                            .search_country,
+                                        hintStyle: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: (isScreenWidth(context)
+                                              ? 18
+                                              : 26),
+                                        ),
+                                        isCollapsed: false,
+                                        isDense: true,
+                                        suffixIcon: Icon(
+                                          Icons.search,
+                                          color: Theme.of(context).primaryColor,
+                                          size: (isScreenWidth(context))
+                                              ? 24
+                                              : 30,
+                                        ),
+                                      ),
+                                      width: isScreenWidth(context)
+                                          ? double.infinity
+                                          : 500,
+                                    ),
+                                    decoration: InputDecoration(
+                                      hintText:
+                                          AppLocalizations.of(context)!.home,
+                                      suffixIcon: homeController.text.isEmpty
+                                          ? Container(
+                                              width: 0,
+                                            )
+                                          : IconButton(
+                                              onPressed: () =>
+                                                  homeController.clear(),
+                                              icon: Icon(
+                                                Icons.close,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                size: (isScreenWidth(context))
+                                                    ? 24
+                                                    : 30,
+                                              ),
                                             ),
-                                          ),
+                                    ),
+                                    onChanged: (PhoneNumber phone) {
+                                      completePhoneNumberHome =
+                                          phone.completeNumber;
+                                    },
                                   ),
-                                  onChanged: (PhoneNumber phone) {
-                                    completePhoneNumberHome =
-                                        phone.completeNumber;
-                                  },
                                 ),
                               ),
                               Card(
-                                child: IntlPhoneField(
-                                  validator: (PhoneNumber? phone) {
-                                    if (!isLength(phone!.number, 8, 20)) {
-                                      return AppLocalizations.of(context)!
-                                          .please_enter_a_valid_telephone_number;
-                                    }
-                                    return null;
-                                  },
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  cursorWidth: 3,
-                                  controller: faxController,
-                                  disableLengthCheck: true,
-                                  keyboardType: TextInputType.number,
-                                  textInputAction: TextInputAction.next,
-                                  dropdownIconPosition: IconPosition.trailing,
-                                  cursorColor: Theme.of(context).primaryColor,
-                                  flagsButtonPadding: const EdgeInsets.only(
-                                    left: 10,
-                                  ),
-                                  style: (isScreenWidth(context))
-                                      ? Theme.of(context).textTheme.titleSmall
-                                      : Theme.of(context).textTheme.titleMedium,
-                                  dropdownTextStyle: (isScreenWidth(context))
-                                      ? Theme.of(context).textTheme.titleSmall
-                                      : Theme.of(context).textTheme.titleMedium,
-                                  pickerDialogStyle: PickerDialogStyle(
-                                    countryCodeStyle: (isScreenWidth(context))
-                                        ? Theme.of(context)
-                                            .textTheme
-                                            .displaySmall
-                                        : Theme.of(context)
-                                            .textTheme
-                                            .displayMedium,
-                                    countryNameStyle: (isScreenWidth(context))
-                                        ? Theme.of(context)
-                                            .textTheme
-                                            .displaySmall
-                                        : Theme.of(context)
-                                            .textTheme
-                                            .displayMedium,
-                                    searchFieldCursorColor:
-                                        Theme.of(context).primaryColor,
-                                    searchFieldInputDecoration: InputDecoration(
-                                      hintText: AppLocalizations.of(context)!
-                                          .search_country,
-                                      hintStyle: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize:
-                                            (isScreenWidth(context) ? 18 : 26),
-                                      ),
-                                      isCollapsed: false,
-                                      isDense: true,
-                                      suffixIcon: Icon(
-                                        Icons.search,
-                                        color: Theme.of(context).primaryColor,
-                                        size:
-                                            (isScreenWidth(context)) ? 24 : 30,
-                                      ),
+                                child: Directionality(
+                                  textDirection: ui.TextDirection.ltr,
+                                  child: IntlPhoneField(
+                                    validator: (PhoneNumber? phone) {
+                                      if (!isLength(phone!.number, 8, 20)) {
+                                        return AppLocalizations.of(context)!
+                                            .please_enter_a_valid_telephone_number;
+                                      }
+                                      return null;
+                                    },
+                                    autovalidateMode:
+                                        AutovalidateMode.onUserInteraction,
+                                    cursorWidth: 3,
+                                    controller: faxController,
+                                    disableLengthCheck: true,
+                                    keyboardType: TextInputType.number,
+                                    textInputAction: TextInputAction.next,
+                                    dropdownIconPosition: IconPosition.leading,
+                                    showDropdownIcon: false,
+                                    cursorColor: Theme.of(context).primaryColor,
+                                    flagsButtonPadding: EdgeInsets.only(
+                                      left: 10,
+                                      bottom:
+                                          languageController.displayLanguage ==
+                                                  "ar"
+                                              ? (isScreenWidth(context) ? 6 : 5)
+                                              : 2,
                                     ),
-                                    width: isScreenWidth(context)
-                                        ? double.infinity
-                                        : 500,
-                                  ),
-                                  decoration: InputDecoration(
-                                    hintText: AppLocalizations.of(context)!.fax,
-                                    suffixIcon: faxController.text.isEmpty
-                                        ? Container(
-                                            width: 0,
-                                          )
-                                        : IconButton(
-                                            onPressed: () =>
-                                                faxController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: (isScreenWidth(context))
-                                                  ? 24
-                                                  : 30,
+                                    style: (isScreenWidth(context))
+                                        ? Theme.of(context).textTheme.titleSmall
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .titleMedium,
+                                    dropdownTextStyle: (isScreenWidth(context))
+                                        ? Theme.of(context).textTheme.titleSmall
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .titleMedium,
+                                    pickerDialogStyle: PickerDialogStyle(
+                                      countryCodeStyle: (isScreenWidth(context))
+                                          ? Theme.of(context)
+                                              .textTheme
+                                              .displaySmall
+                                          : Theme.of(context)
+                                              .textTheme
+                                              .displayMedium,
+                                      countryNameStyle: (isScreenWidth(context))
+                                          ? Theme.of(context)
+                                              .textTheme
+                                              .displaySmall
+                                          : Theme.of(context)
+                                              .textTheme
+                                              .displayMedium,
+                                      searchFieldCursorColor:
+                                          Theme.of(context).primaryColor,
+                                      searchFieldInputDecoration:
+                                          InputDecoration(
+                                        hintText: AppLocalizations.of(context)!
+                                            .search_country,
+                                        hintStyle: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: (isScreenWidth(context)
+                                              ? 18
+                                              : 26),
+                                        ),
+                                        isCollapsed: false,
+                                        isDense: true,
+                                        suffixIcon: Icon(
+                                          Icons.search,
+                                          color: Theme.of(context).primaryColor,
+                                          size: (isScreenWidth(context))
+                                              ? 24
+                                              : 30,
+                                        ),
+                                      ),
+                                      width: isScreenWidth(context)
+                                          ? double.infinity
+                                          : 500,
+                                    ),
+                                    decoration: InputDecoration(
+                                      hintText:
+                                          AppLocalizations.of(context)!.fax,
+                                      suffixIcon: faxController.text.isEmpty
+                                          ? Container(
+                                              width: 0,
+                                            )
+                                          : IconButton(
+                                              onPressed: () =>
+                                                  faxController.clear(),
+                                              icon: Icon(
+                                                Icons.close,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                size: (isScreenWidth(context))
+                                                    ? 24
+                                                    : 30,
+                                              ),
                                             ),
-                                          ),
+                                    ),
+                                    onChanged: (PhoneNumber phone) {
+                                      completePhoneNumberFax =
+                                          phone.completeNumber;
+                                    },
                                   ),
-                                  onChanged: (PhoneNumber phone) {
-                                    completePhoneNumberFax =
-                                        phone.completeNumber;
-                                  },
                                 ),
                               ),
                               Card(
@@ -607,7 +675,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                       ? Theme.of(context).textTheme.titleSmall
                                       : Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
-                                    hintText: 'https://www.example.com',
+                                    hintText: AppLocalizations.of(context)!
+                                        .url_hint_text,
                                     prefixIcon: Icon(
                                       Icons.link,
                                       color: Theme.of(context).primaryColor,
@@ -873,6 +942,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   ),
                                 ),
                               ),
+                              const SizedBox(
+                                height: 150,
+                              ),
                             ],
                           ),
                         ),
@@ -998,302 +1070,343 @@ class _MakeVCardState extends State<MakeVCard> {
                                 ),
                               ),
                               Card(
-                                child: IntlPhoneField(
-                                  validator: (PhoneNumber? phone) {
-                                    if (!isLength(phone!.number, 8, 20)) {
-                                      return AppLocalizations.of(context)!
-                                          .please_enter_a_valid_telephone_number;
-                                    }
-                                    return null;
-                                  },
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  cursorWidth: 3,
-                                  controller: mobileController,
-                                  disableLengthCheck: true,
-                                  keyboardType: TextInputType.number,
-                                  textInputAction: TextInputAction.next,
-                                  dropdownIconPosition: IconPosition.trailing,
-                                  cursorColor: Theme.of(context).primaryColor,
-                                  flagsButtonPadding: const EdgeInsets.only(
-                                    left: 10,
-                                  ),
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                  dropdownTextStyle:
-                                      Theme.of(context).textTheme.titleMedium,
-                                  pickerDialogStyle: PickerDialogStyle(
-                                    countryCodeStyle: Theme.of(context)
-                                        .textTheme
-                                        .displayMedium,
-                                    countryNameStyle: Theme.of(context)
-                                        .textTheme
-                                        .displayMedium,
-                                    searchFieldCursorColor:
-                                        Theme.of(context).primaryColor,
-                                    searchFieldInputDecoration: InputDecoration(
-                                      hintText: AppLocalizations.of(context)!
-                                          .search_country,
-                                      hintStyle: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 26,
-                                      ),
-                                      isCollapsed: false,
-                                      isDense: true,
-                                      suffixIcon: Icon(
-                                        Icons.search,
-                                        color: Theme.of(context).primaryColor,
-                                        size: 30,
-                                      ),
+                                child: Directionality(
+                                  textDirection: ui.TextDirection.ltr,
+                                  child: IntlPhoneField(
+                                    validator: (PhoneNumber? phone) {
+                                      if (!isLength(phone!.number, 8, 20)) {
+                                        return AppLocalizations.of(context)!
+                                            .please_enter_a_valid_telephone_number;
+                                      }
+                                      return null;
+                                    },
+                                    autovalidateMode:
+                                        AutovalidateMode.onUserInteraction,
+                                    cursorWidth: 3,
+                                    controller: mobileController,
+                                    disableLengthCheck: true,
+                                    keyboardType: TextInputType.number,
+                                    textInputAction: TextInputAction.next,
+                                    dropdownIconPosition: IconPosition.leading,
+                                    showDropdownIcon: false,
+                                    cursorColor: Theme.of(context).primaryColor,
+                                    flagsButtonPadding: EdgeInsets.only(
+                                      left: 10,
+                                      bottom:
+                                          languageController.displayLanguage ==
+                                                  "ar"
+                                              ? 5
+                                              : 2,
                                     ),
-                                    width: 500,
-                                  ),
-                                  decoration: InputDecoration(
-                                    hintText:
-                                        AppLocalizations.of(context)!.mobile,
-                                    suffixIcon: mobileController.text.isEmpty
-                                        ? Container(
-                                            width: 0,
-                                          )
-                                        : IconButton(
-                                            onPressed: () =>
-                                                mobileController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: 30,
+                                    style:
+                                        Theme.of(context).textTheme.titleMedium,
+                                    dropdownTextStyle:
+                                        Theme.of(context).textTheme.titleMedium,
+                                    pickerDialogStyle: PickerDialogStyle(
+                                      countryCodeStyle: Theme.of(context)
+                                          .textTheme
+                                          .displayMedium,
+                                      countryNameStyle: Theme.of(context)
+                                          .textTheme
+                                          .displayMedium,
+                                      searchFieldCursorColor:
+                                          Theme.of(context).primaryColor,
+                                      searchFieldInputDecoration:
+                                          InputDecoration(
+                                        hintText: AppLocalizations.of(context)!
+                                            .search_country,
+                                        hintStyle: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 26,
+                                        ),
+                                        isCollapsed: false,
+                                        isDense: true,
+                                        suffixIcon: Icon(
+                                          Icons.search,
+                                          color: Theme.of(context).primaryColor,
+                                          size: 30,
+                                        ),
+                                      ),
+                                      width: 500,
+                                    ),
+                                    decoration: InputDecoration(
+                                      hintText:
+                                          AppLocalizations.of(context)!.mobile,
+                                      suffixIcon: mobileController.text.isEmpty
+                                          ? Container(
+                                              width: 0,
+                                            )
+                                          : IconButton(
+                                              onPressed: () =>
+                                                  mobileController.clear(),
+                                              icon: Icon(
+                                                Icons.close,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                size: 30,
+                                              ),
                                             ),
-                                          ),
+                                    ),
+                                    onChanged: (PhoneNumber phone) {
+                                      completePhoneNumberMobil =
+                                          phone.completeNumber;
+                                    },
                                   ),
-                                  onChanged: (PhoneNumber phone) {
-                                    completePhoneNumberMobil =
-                                        phone.completeNumber;
-                                  },
                                 ),
                               ),
                               Card(
-                                child: IntlPhoneField(
-                                  validator: (PhoneNumber? phone) {
-                                    if (!isLength(phone!.number, 8, 20)) {
-                                      return AppLocalizations.of(context)!
-                                          .please_enter_a_valid_telephone_number;
-                                    }
-                                    return null;
-                                  },
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  cursorWidth: 3,
-                                  controller: workController,
-                                  disableLengthCheck: true,
-                                  keyboardType: TextInputType.number,
-                                  textInputAction: TextInputAction.next,
-                                  dropdownIconPosition: IconPosition.trailing,
-                                  cursorColor: Theme.of(context).primaryColor,
-                                  flagsButtonPadding: const EdgeInsets.only(
-                                    left: 10,
-                                  ),
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                  dropdownTextStyle:
-                                      Theme.of(context).textTheme.titleMedium,
-                                  pickerDialogStyle: PickerDialogStyle(
-                                    countryCodeStyle: Theme.of(context)
-                                        .textTheme
-                                        .displayMedium,
-                                    countryNameStyle: Theme.of(context)
-                                        .textTheme
-                                        .displayMedium,
-                                    searchFieldCursorColor:
-                                        Theme.of(context).primaryColor,
-                                    searchFieldInputDecoration: InputDecoration(
-                                      hintText: AppLocalizations.of(context)!
-                                          .search_country,
-                                      hintStyle: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 26,
-                                      ),
-                                      isCollapsed: false,
-                                      isDense: true,
-                                      suffixIcon: Icon(
-                                        Icons.search,
-                                        color: Theme.of(context).primaryColor,
-                                        size: 30,
-                                      ),
+                                child: Directionality(
+                                  textDirection: ui.TextDirection.ltr,
+                                  child: IntlPhoneField(
+                                    validator: (PhoneNumber? phone) {
+                                      if (!isLength(phone!.number, 8, 20)) {
+                                        return AppLocalizations.of(context)!
+                                            .please_enter_a_valid_telephone_number;
+                                      }
+                                      return null;
+                                    },
+                                    autovalidateMode:
+                                        AutovalidateMode.onUserInteraction,
+                                    cursorWidth: 3,
+                                    controller: workController,
+                                    disableLengthCheck: true,
+                                    keyboardType: TextInputType.number,
+                                    textInputAction: TextInputAction.next,
+                                    dropdownIconPosition: IconPosition.leading,
+                                    showDropdownIcon: false,
+                                    cursorColor: Theme.of(context).primaryColor,
+                                    flagsButtonPadding: EdgeInsets.only(
+                                      left: 10,
+                                      bottom:
+                                          languageController.displayLanguage ==
+                                                  "ar"
+                                              ? 5
+                                              : 2,
                                     ),
-                                    width: 500,
-                                  ),
-                                  decoration: InputDecoration(
-                                    hintText:
-                                        AppLocalizations.of(context)!.work,
-                                    suffixIcon: workController.text.isEmpty
-                                        ? Container(
-                                            width: 0,
-                                          )
-                                        : IconButton(
-                                            onPressed: () =>
-                                                workController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: 30,
+                                    style:
+                                        Theme.of(context).textTheme.titleMedium,
+                                    dropdownTextStyle:
+                                        Theme.of(context).textTheme.titleMedium,
+                                    pickerDialogStyle: PickerDialogStyle(
+                                      countryCodeStyle: Theme.of(context)
+                                          .textTheme
+                                          .displayMedium,
+                                      countryNameStyle: Theme.of(context)
+                                          .textTheme
+                                          .displayMedium,
+                                      searchFieldCursorColor:
+                                          Theme.of(context).primaryColor,
+                                      searchFieldInputDecoration:
+                                          InputDecoration(
+                                        hintText: AppLocalizations.of(context)!
+                                            .search_country,
+                                        hintStyle: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 26,
+                                        ),
+                                        isCollapsed: false,
+                                        isDense: true,
+                                        suffixIcon: Icon(
+                                          Icons.search,
+                                          color: Theme.of(context).primaryColor,
+                                          size: 30,
+                                        ),
+                                      ),
+                                      width: 500,
+                                    ),
+                                    decoration: InputDecoration(
+                                      hintText:
+                                          AppLocalizations.of(context)!.work,
+                                      suffixIcon: workController.text.isEmpty
+                                          ? Container(
+                                              width: 0,
+                                            )
+                                          : IconButton(
+                                              onPressed: () =>
+                                                  workController.clear(),
+                                              icon: Icon(
+                                                Icons.close,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                size: 30,
+                                              ),
                                             ),
-                                          ),
+                                    ),
+                                    onChanged: (PhoneNumber phone) {
+                                      completePhoneNumberWork =
+                                          phone.completeNumber;
+                                    },
                                   ),
-                                  onChanged: (PhoneNumber phone) {
-                                    completePhoneNumberWork =
-                                        phone.completeNumber;
-                                  },
                                 ),
                               ),
                               Card(
-                                child: IntlPhoneField(
-                                  validator: (PhoneNumber? phone) {
-                                    if (!isLength(phone!.number, 8, 20)) {
-                                      return AppLocalizations.of(context)!
-                                          .please_enter_a_valid_telephone_number;
-                                    }
-                                    return null;
-                                  },
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  cursorWidth: 3,
-                                  controller: homeController,
-                                  disableLengthCheck: true,
-                                  keyboardType: TextInputType.number,
-                                  textInputAction: TextInputAction.next,
-                                  dropdownIconPosition: IconPosition.trailing,
-                                  cursorColor: Theme.of(context).primaryColor,
-                                  flagsButtonPadding: const EdgeInsets.only(
-                                    left: 10,
-                                  ),
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                  dropdownTextStyle:
-                                      Theme.of(context).textTheme.titleMedium,
-                                  pickerDialogStyle: PickerDialogStyle(
-                                    countryCodeStyle: Theme.of(context)
-                                        .textTheme
-                                        .displayMedium,
-                                    countryNameStyle: Theme.of(context)
-                                        .textTheme
-                                        .displayMedium,
-                                    searchFieldCursorColor:
-                                        Theme.of(context).primaryColor,
-                                    searchFieldInputDecoration: InputDecoration(
-                                      hintText: AppLocalizations.of(context)!
-                                          .search_country,
-                                      hintStyle: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 26,
-                                      ),
-                                      isCollapsed: false,
-                                      isDense: true,
-                                      suffixIcon: Icon(
-                                        Icons.search,
-                                        color: Theme.of(context).primaryColor,
-                                        size: 30,
-                                      ),
+                                child: Directionality(
+                                  textDirection: ui.TextDirection.ltr,
+                                  child: IntlPhoneField(
+                                    validator: (PhoneNumber? phone) {
+                                      if (!isLength(phone!.number, 8, 20)) {
+                                        return AppLocalizations.of(context)!
+                                            .please_enter_a_valid_telephone_number;
+                                      }
+                                      return null;
+                                    },
+                                    autovalidateMode:
+                                        AutovalidateMode.onUserInteraction,
+                                    cursorWidth: 3,
+                                    controller: homeController,
+                                    disableLengthCheck: true,
+                                    keyboardType: TextInputType.number,
+                                    textInputAction: TextInputAction.next,
+                                    dropdownIconPosition: IconPosition.leading,
+                                    showDropdownIcon: false,
+                                    cursorColor: Theme.of(context).primaryColor,
+                                    flagsButtonPadding: EdgeInsets.only(
+                                      left: 10,
+                                      bottom:
+                                          languageController.displayLanguage ==
+                                                  "ar"
+                                              ? 5
+                                              : 2,
                                     ),
-                                    width: 500,
-                                  ),
-                                  decoration: InputDecoration(
-                                    hintText:
-                                        AppLocalizations.of(context)!.home,
-                                    suffixIcon: homeController.text.isEmpty
-                                        ? Container(
-                                            width: 0,
-                                          )
-                                        : IconButton(
-                                            onPressed: () =>
-                                                homeController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: 30,
+                                    style:
+                                        Theme.of(context).textTheme.titleMedium,
+                                    dropdownTextStyle:
+                                        Theme.of(context).textTheme.titleMedium,
+                                    pickerDialogStyle: PickerDialogStyle(
+                                      countryCodeStyle: Theme.of(context)
+                                          .textTheme
+                                          .displayMedium,
+                                      countryNameStyle: Theme.of(context)
+                                          .textTheme
+                                          .displayMedium,
+                                      searchFieldCursorColor:
+                                          Theme.of(context).primaryColor,
+                                      searchFieldInputDecoration:
+                                          InputDecoration(
+                                        hintText: AppLocalizations.of(context)!
+                                            .search_country,
+                                        hintStyle: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 26,
+                                        ),
+                                        isCollapsed: false,
+                                        isDense: true,
+                                        suffixIcon: Icon(
+                                          Icons.search,
+                                          color: Theme.of(context).primaryColor,
+                                          size: 30,
+                                        ),
+                                      ),
+                                      width: 500,
+                                    ),
+                                    decoration: InputDecoration(
+                                      hintText:
+                                          AppLocalizations.of(context)!.home,
+                                      suffixIcon: homeController.text.isEmpty
+                                          ? Container(
+                                              width: 0,
+                                            )
+                                          : IconButton(
+                                              onPressed: () =>
+                                                  homeController.clear(),
+                                              icon: Icon(
+                                                Icons.close,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                size: 30,
+                                              ),
                                             ),
-                                          ),
+                                    ),
+                                    onChanged: (PhoneNumber phone) {
+                                      completePhoneNumberHome =
+                                          phone.completeNumber;
+                                    },
                                   ),
-                                  onChanged: (PhoneNumber phone) {
-                                    completePhoneNumberHome =
-                                        phone.completeNumber;
-                                  },
                                 ),
                               ),
                               Card(
-                                child: IntlPhoneField(
-                                  validator: (PhoneNumber? phone) {
-                                    if (!isLength(phone!.number, 8, 20)) {
-                                      return AppLocalizations.of(context)!
-                                          .please_enter_a_valid_telephone_number;
-                                    }
-                                    return null;
-                                  },
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  cursorWidth: 3,
-                                  controller: faxController,
-                                  disableLengthCheck: true,
-                                  keyboardType: TextInputType.number,
-                                  textInputAction: TextInputAction.next,
-                                  dropdownIconPosition: IconPosition.trailing,
-                                  cursorColor: Theme.of(context).primaryColor,
-                                  flagsButtonPadding: const EdgeInsets.only(
-                                    left: 10,
-                                  ),
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                  dropdownTextStyle:
-                                      Theme.of(context).textTheme.titleMedium,
-                                  pickerDialogStyle: PickerDialogStyle(
-                                    countryCodeStyle: Theme.of(context)
-                                        .textTheme
-                                        .displayMedium,
-                                    countryNameStyle: Theme.of(context)
-                                        .textTheme
-                                        .displayMedium,
-                                    searchFieldCursorColor:
-                                        Theme.of(context).primaryColor,
-                                    searchFieldInputDecoration: InputDecoration(
-                                      hintText: AppLocalizations.of(context)!
-                                          .search_country,
-                                      hintStyle: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 26,
-                                      ),
-                                      isCollapsed: false,
-                                      isDense: true,
-                                      suffixIcon: Icon(
-                                        Icons.search,
-                                        color: Theme.of(context).primaryColor,
-                                        size: 30,
-                                      ),
+                                child: Directionality(
+                                  textDirection: ui.TextDirection.ltr,
+                                  child: IntlPhoneField(
+                                    validator: (PhoneNumber? phone) {
+                                      if (!isLength(phone!.number, 8, 20)) {
+                                        return AppLocalizations.of(context)!
+                                            .please_enter_a_valid_telephone_number;
+                                      }
+                                      return null;
+                                    },
+                                    autovalidateMode:
+                                        AutovalidateMode.onUserInteraction,
+                                    cursorWidth: 3,
+                                    controller: faxController,
+                                    disableLengthCheck: true,
+                                    keyboardType: TextInputType.number,
+                                    textInputAction: TextInputAction.next,
+                                    dropdownIconPosition: IconPosition.leading,
+                                    showDropdownIcon: false,
+                                    cursorColor: Theme.of(context).primaryColor,
+                                    flagsButtonPadding: EdgeInsets.only(
+                                      left: 10,
+                                      bottom:
+                                          languageController.displayLanguage ==
+                                                  "ar"
+                                              ? 5
+                                              : 2,
                                     ),
-                                    width: 500,
-                                  ),
-                                  decoration: InputDecoration(
-                                    hintText: AppLocalizations.of(context)!.fax,
-                                    suffixIcon: faxController.text.isEmpty
-                                        ? Container(
-                                            width: 0,
-                                          )
-                                        : IconButton(
-                                            onPressed: () =>
-                                                faxController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: 30,
+                                    style:
+                                        Theme.of(context).textTheme.titleMedium,
+                                    dropdownTextStyle:
+                                        Theme.of(context).textTheme.titleMedium,
+                                    pickerDialogStyle: PickerDialogStyle(
+                                      countryCodeStyle: Theme.of(context)
+                                          .textTheme
+                                          .displayMedium,
+                                      countryNameStyle: Theme.of(context)
+                                          .textTheme
+                                          .displayMedium,
+                                      searchFieldCursorColor:
+                                          Theme.of(context).primaryColor,
+                                      searchFieldInputDecoration:
+                                          InputDecoration(
+                                        hintText: AppLocalizations.of(context)!
+                                            .search_country,
+                                        hintStyle: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 26,
+                                        ),
+                                        isCollapsed: false,
+                                        isDense: true,
+                                        suffixIcon: Icon(
+                                          Icons.search,
+                                          color: Theme.of(context).primaryColor,
+                                          size: 30,
+                                        ),
+                                      ),
+                                      width: 500,
+                                    ),
+                                    decoration: InputDecoration(
+                                      hintText:
+                                          AppLocalizations.of(context)!.fax,
+                                      suffixIcon: faxController.text.isEmpty
+                                          ? Container(
+                                              width: 0,
+                                            )
+                                          : IconButton(
+                                              onPressed: () =>
+                                                  faxController.clear(),
+                                              icon: Icon(
+                                                Icons.close,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                size: 30,
+                                              ),
                                             ),
-                                          ),
+                                    ),
+                                    onChanged: (PhoneNumber phone) {
+                                      completePhoneNumberFax =
+                                          phone.completeNumber;
+                                    },
                                   ),
-                                  onChanged: (PhoneNumber phone) {
-                                    completePhoneNumberFax =
-                                        phone.completeNumber;
-                                  },
                                 ),
                               ),
                               Card(
@@ -1352,7 +1465,8 @@ class _MakeVCardState extends State<MakeVCard> {
                                   style:
                                       Theme.of(context).textTheme.titleMedium,
                                   decoration: InputDecoration(
-                                    hintText: 'https://www.example.com',
+                                    hintText: AppLocalizations.of(context)!
+                                        .url_hint_text,
                                     prefixIcon: Icon(
                                       Icons.link,
                                       color: Theme.of(context).primaryColor,
@@ -1596,6 +1710,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                     ),
                                   ),
                                 ),
+                              ),
+                              const SizedBox(
+                                height: 150,
                               ),
                             ],
                           ),
