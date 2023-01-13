@@ -235,6 +235,20 @@ class _MainQrState extends State<MainQr> {
                                                   ),
                                                 ),
                                                 DropdownMenuItem(
+                                                  value: "fr",
+                                                  child: Center(
+                                                    child: Text(
+                                                      '🇫🇷',
+                                                      style: TextStyle(
+                                                        fontSize: isScreenWidth(
+                                                                context)
+                                                            ? 30
+                                                            : 35,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                DropdownMenuItem(
                                                   value: "sv",
                                                   child: Center(
                                                     child: Text(
@@ -574,6 +588,17 @@ class _MainQrState extends State<MainQr> {
                                                   child: Center(
                                                     child: Text(
                                                       '🇸🇦',
+                                                      style: TextStyle(
+                                                        fontSize: 35,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                DropdownMenuItem(
+                                                  value: "fr",
+                                                  child: Center(
+                                                    child: Text(
+                                                      '🇫🇷',
                                                       style: TextStyle(
                                                         fontSize: 35,
                                                       ),
