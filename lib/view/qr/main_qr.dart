@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:rate_my_app/rate_my_app.dart';
+import 'package:url_launcher/url_launcher.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/view/qr/scan/main_qr_scan.dart';
@@ -356,6 +357,53 @@ class _MainQrState extends State<MainQr> {
                                   ),
                                 ),
                               ),
+                              Card(
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                      vertical: isScreenWidth(context) ? 5 : 10,
+                                    ),
+                                    child: TextButton(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Icon(
+                                            Icons.email,
+                                            size: isScreenWidth(context)
+                                                ? 24
+                                                : 30,
+                                          ),
+                                          const SizedBox(width: 10),
+                                          Text(
+                                            AppLocalizations.of(context)!
+                                                .contact_us,
+                                            style: (isScreenWidth(context))
+                                                ? Theme.of(context)
+                                                    .textTheme
+                                                    .displaySmall
+                                                : Theme.of(context)
+                                                    .textTheme
+                                                    .displayMedium,
+                                          ),
+                                        ],
+                                      ),
+                                      onPressed: () async {
+                                        Uri mail = Uri.parse(
+                                          "mailto:qr.maker.app@gmail.com?subject=QR Maker App&body=Hello,",
+                                        );
+                                        if (await canLaunchUrl(mail)) {
+                                          await launchUrl(mail);
+                                        } else {
+                                          throw 'Could not launch $mail';
+                                        }
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              ),
 
                               // Card(
                               //   child: SizedBox(
@@ -698,6 +746,47 @@ class _MainQrState extends State<MainQr> {
                                           ),
                                         ),
                                       ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Card(
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                      vertical: 10,
+                                    ),
+                                    child: TextButton(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          const Icon(
+                                            Icons.email,
+                                            size: 30,
+                                          ),
+                                          const SizedBox(width: 10),
+                                          Text(
+                                            AppLocalizations.of(context)!
+                                                .contact_us,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .displayMedium,
+                                          ),
+                                        ],
+                                      ),
+                                      onPressed: () async {
+                                        Uri mail = Uri.parse(
+                                          "mailto:qr.maker.app@gmail.com?subject=QR Maker App&body=Hello,",
+                                        );
+                                        if (await canLaunchUrl(mail)) {
+                                          await launchUrl(mail);
+                                        } else {
+                                          throw 'Could not launch $mail';
+                                        }
+                                      },
                                     ),
                                   ),
                                 ),

@@ -1,9 +1,10 @@
 
 {
     "language": "اللغة",
-    "version": "الإصدار 1.10.4",
+    "version": "الإصدار 1.10.5",
     "vibration": "اهتزاز",
     "theme": "المظهر",
+    "contact_us": "اتصل بنا",
     "scan": "مسح",
     "make": "إنشاء",
     "favorite": "المفضلة",
