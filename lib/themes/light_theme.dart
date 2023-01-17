@@ -5,9 +5,7 @@ class LightTheme {
     hintColor: Colors.blue.shade200,
     primaryColor: Colors.blue.shade500,
     scaffoldBackgroundColor: Colors.white,
-    iconTheme: IconThemeData(
-      color: Colors.blue.shade500,
-    ),
+    iconTheme: const IconThemeData(color: Colors.white),
     textTheme: TextTheme(
       displaySmall: const TextStyle(
         fontSize: 18,
@@ -71,8 +69,9 @@ class LightTheme {
         ),
       ),
     ),
-    drawerTheme: const DrawerThemeData(
+    drawerTheme: DrawerThemeData(
       elevation: 10,
+      backgroundColor: Colors.blue.shade500,
     ),
     cardTheme: CardTheme(
       elevation: 10,

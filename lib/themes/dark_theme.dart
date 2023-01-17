@@ -69,8 +69,9 @@ class DarkTheme {
         ),
       ),
     ),
-    drawerTheme: const DrawerThemeData(
+    drawerTheme: DrawerThemeData(
       elevation: 10,
+      backgroundColor: Colors.grey.shade800,
     ),
     cardTheme: CardTheme(
       elevation: 10,

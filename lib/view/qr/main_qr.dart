@@ -138,15 +138,9 @@ class _MainQrState extends State<MainQr> {
                 drawer: Drawer(
                   width: (isScreenWidth(context)) ? 300 : 400,
                   child: Container(
-                    padding: const EdgeInsets.all(20),
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: themeController.initValue
-                            ? const AssetImage('images/background_dark.png')
-                            : const AssetImage('images/background_light.png'),
-                        fit: BoxFit.cover,
-                      ),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 20,
+                      horizontal: 10,
                     ),
                     child: Column(
                       children: [
@@ -202,18 +196,18 @@ class _MainQrState extends State<MainQr> {
                                         style: (isScreenWidth(context))
                                             ? Theme.of(context)
                                                 .textTheme
-                                                .bodySmall
+                                                .displaySmall
                                             : Theme.of(context)
                                                 .textTheme
-                                                .bodyMedium,
+                                                .displayMedium,
                                       ),
                                     ],
                                   ),
                                 ),
                               ),
-                              Divider(
+                              const Divider(
                                 thickness: 1,
-                                color: Theme.of(context).primaryColor,
+                                color: Colors.white54,
                               ),
                               Padding(
                                 padding: EdgeInsets.symmetric(
@@ -708,9 +702,9 @@ class _MainQrState extends State<MainQr> {
                             ],
                           ),
                         ),
-                        Divider(
+                        const Divider(
                           thickness: 1,
-                          color: Theme.of(context).primaryColor,
+                          color: Colors.white54,
                         ),
                         SizedBox(
                           width: double.infinity,
@@ -719,8 +713,8 @@ class _MainQrState extends State<MainQr> {
                             child: Text(
                               AppLocalizations.of(context)!.version,
                               style: (isScreenWidth(context))
-                                  ? Theme.of(context).textTheme.bodySmall
-                                  : Theme.of(context).textTheme.bodyMedium,
+                                  ? Theme.of(context).textTheme.displaySmall
+                                  : Theme.of(context).textTheme.displayMedium,
                             ),
                           ),
                         ),
@@ -793,15 +787,9 @@ class _MainQrState extends State<MainQr> {
                 drawer: Drawer(
                   width: 400,
                   child: Container(
-                    padding: const EdgeInsets.all(20),
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: themeController.initValue
-                            ? const AssetImage('images/background_dark.png')
-                            : const AssetImage('images/background_light.png'),
-                        fit: BoxFit.cover,
-                      ),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 20,
+                      horizontal: 10,
                     ),
                     child: Column(
                       children: [
@@ -856,15 +844,15 @@ class _MainQrState extends State<MainQr> {
                                         AppLocalizations.of(context)!.settings,
                                         style: Theme.of(context)
                                             .textTheme
-                                            .bodyMedium,
+                                            .displayMedium,
                                       ),
                                     ],
                                   ),
                                 ),
                               ),
-                              Divider(
+                              const Divider(
                                 thickness: 1,
-                                color: Theme.of(context).primaryColor,
+                                color: Colors.white54,
                               ),
                               Padding(
                                 padding: const EdgeInsets.symmetric(
@@ -1304,9 +1292,9 @@ class _MainQrState extends State<MainQr> {
                             ],
                           ),
                         ),
-                        Divider(
+                        const Divider(
                           thickness: 1,
-                          color: Theme.of(context).primaryColor,
+                          color: Colors.white54,
                         ),
                         SizedBox(
                           width: double.infinity,
@@ -1314,7 +1302,7 @@ class _MainQrState extends State<MainQr> {
                           child: Center(
                             child: Text(
                               AppLocalizations.of(context)!.version,
-                              style: Theme.of(context).textTheme.bodyMedium,
+                              style: Theme.of(context).textTheme.displayMedium,
                             ),
                           ),
                         ),
