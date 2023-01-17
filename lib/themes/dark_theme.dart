@@ -5,6 +5,7 @@ class DarkTheme {
     hintColor: Colors.black45,
     primaryColor: Colors.grey.shade800,
     scaffoldBackgroundColor: Colors.grey.shade900,
+    iconTheme: const IconThemeData(color: Colors.white),
     textTheme: const TextTheme(
       displaySmall: TextStyle(
         fontSize: 18,

@@ -96,7 +96,7 @@ class _MakeWhatsUppState extends State<MakeWhatsUpp> {
                                   flagsButtonPadding: EdgeInsets.only(
                                     left: 10,
                                     bottom:
-                                        languageController.displayLanguage ==
+                                        languageController.currentLanguage ==
                                                 "ar"
                                             ? (isScreenWidth(context) ? 6 : 5)
                                             : 2,
@@ -276,7 +276,7 @@ class _MakeWhatsUppState extends State<MakeWhatsUpp> {
                                   flagsButtonPadding: EdgeInsets.only(
                                     left: 10,
                                     bottom:
-                                        languageController.displayLanguage ==
+                                        languageController.currentLanguage ==
                                                 "ar"
                                             ? 5
                                             : 2,

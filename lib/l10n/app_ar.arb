@@ -1,7 +1,8 @@
 
 {
-    "language": "اللغة",
+    "language": "العربية",
     "version": "الإصدار 1.10.5",
+    "settings": "الإعدادات",
     "vibration": "اهتزاز",
     "theme": "المظهر",
     "contact_us": "اتصل بنا",

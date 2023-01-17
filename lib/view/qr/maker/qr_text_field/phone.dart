@@ -96,7 +96,7 @@ class _MakePhoneState extends State<MakePhone> {
                                   flagsButtonPadding: EdgeInsets.only(
                                     left: 10,
                                     bottom:
-                                        languageController.displayLanguage ==
+                                        languageController.currentLanguage ==
                                                 "ar"
                                             ? (isScreenWidth(context) ? 6 : 5)
                                             : 2,
@@ -278,7 +278,7 @@ class _MakePhoneState extends State<MakePhone> {
                                   flagsButtonPadding: EdgeInsets.only(
                                     left: 10,
                                     bottom:
-                                        languageController.displayLanguage ==
+                                        languageController.currentLanguage ==
                                                 "ar"
                                             ? 5
                                             : 2,

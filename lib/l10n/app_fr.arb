@@ -1,6 +1,7 @@
 {
-    "language": "Langue",
+    "language": "Français",
     "version": "Version 1.10.5",
+    "settings": "Paramètres",
     "vibration": "Vibration",
     "dark_theme": "Thème",
     "contact_us": "Nous contacter",

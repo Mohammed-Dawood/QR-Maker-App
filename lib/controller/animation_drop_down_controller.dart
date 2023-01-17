@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AnimationEditQrCode extends StatelessWidget {
-  const AnimationEditQrCode(
+class AnimationDropDownController extends StatelessWidget {
+  const AnimationDropDownController(
       {Key? key,
       required this.changeState,
       required this.durationTime,

@@ -10,7 +10,7 @@ import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
 import 'package:qr_maker_app/controller/save_qr_code_controller.dart';
 import 'package:qr_maker_app/controller/share_qr_code_controller.dart';
-import 'package:qr_maker_app/view/qr/maker/animation_edit_qr_code.dart';
+import 'package:qr_maker_app/controller/animation_drop_down_controller.dart';
 import 'package:qr_maker_app/controller/favorite_qr_code_controller.dart';
 
 class StyleShareSaveFavoriteQrCode extends StatefulWidget {
@@ -199,7 +199,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                 ),
                               ),
                             ),
-                            AnimationEditQrCode(
+                            AnimationDropDownController(
                               changeState: editQrCode,
                               durationTime: 100,
                               firstChildeCard: Card(
@@ -243,7 +243,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                 ),
                               ),
                             ),
-                            AnimationEditQrCode(
+                            AnimationDropDownController(
                               changeState: editQrCode,
                               durationTime: 200,
                               firstChildeCard: Card(
@@ -287,7 +287,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                 ),
                               ),
                             ),
-                            AnimationEditQrCode(
+                            AnimationDropDownController(
                               changeState: editQrCode,
                               durationTime: 300,
                               firstChildeCard: Card(
@@ -331,7 +331,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                 ),
                               ),
                             ),
-                            AnimationEditQrCode(
+                            AnimationDropDownController(
                               changeState: editQrCode,
                               durationTime: 400,
                               firstChildeCard: Card(
@@ -376,7 +376,7 @@ class _StyleShareSaveFavoriteQrCodeState
                               ),
                             ),
                             editQrCode
-                                ? AnimationEditQrCode(
+                                ? AnimationDropDownController(
                                     changeState: logoSwitch,
                                     durationTime: 100,
                                     firstChildeCard: Card(
@@ -440,7 +440,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                     height: 0,
                                   ),
                             editQrCode
-                                ? AnimationEditQrCode(
+                                ? AnimationDropDownController(
                                     changeState: logoSwitch,
                                     durationTime: 200,
                                     firstChildeCard: Card(
@@ -504,7 +504,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                     height: 0,
                                   ),
                             editQrCode
-                                ? AnimationEditQrCode(
+                                ? AnimationDropDownController(
                                     changeState: logoSwitch,
                                     durationTime: 300,
                                     firstChildeCard: Card(
@@ -557,7 +557,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                     height: 0,
                                   ),
                             editQrCode
-                                ? AnimationEditQrCode(
+                                ? AnimationDropDownController(
                                     changeState: logoSwitch,
                                     durationTime: 400,
                                     firstChildeCard: Card(
@@ -613,7 +613,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                 : const SizedBox(
                                     height: 0,
                                   ),
-                            AnimationEditQrCode(
+                            AnimationDropDownController(
                               changeState: editQrCode,
                               durationTime: 500,
                               firstChildeCard: Card(
@@ -708,7 +708,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                 ),
                               ),
                             ),
-                            AnimationEditQrCode(
+                            AnimationDropDownController(
                               changeState: editQrCode,
                               durationTime: 600,
                               firstChildeCard: Card(
@@ -803,7 +803,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                 ),
                               ),
                             ),
-                            AnimationEditQrCode(
+                            AnimationDropDownController(
                               changeState: editQrCode,
                               durationTime: 700,
                               firstChildeCard: Card(
@@ -1173,7 +1173,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                 ),
                               ),
                             ),
-                            AnimationEditQrCode(
+                            AnimationDropDownController(
                               changeState: editQrCode,
                               durationTime: 100,
                               firstChildeCard: Card(
@@ -1213,7 +1213,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                 ),
                               ),
                             ),
-                            AnimationEditQrCode(
+                            AnimationDropDownController(
                               changeState: editQrCode,
                               durationTime: 200,
                               firstChildeCard: Card(
@@ -1253,7 +1253,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                 ),
                               ),
                             ),
-                            AnimationEditQrCode(
+                            AnimationDropDownController(
                               changeState: editQrCode,
                               durationTime: 300,
                               firstChildeCard: Card(
@@ -1293,7 +1293,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                 ),
                               ),
                             ),
-                            AnimationEditQrCode(
+                            AnimationDropDownController(
                               changeState: editQrCode,
                               durationTime: 400,
                               firstChildeCard: Card(
@@ -1334,7 +1334,7 @@ class _StyleShareSaveFavoriteQrCodeState
                               ),
                             ),
                             editQrCode
-                                ? AnimationEditQrCode(
+                                ? AnimationDropDownController(
                                     changeState: logoSwitch,
                                     durationTime: 100,
                                     firstChildeCard: Card(
@@ -1390,7 +1390,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                     height: 0,
                                   ),
                             editQrCode
-                                ? AnimationEditQrCode(
+                                ? AnimationDropDownController(
                                     changeState: logoSwitch,
                                     durationTime: 200,
                                     firstChildeCard: Card(
@@ -1446,7 +1446,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                     height: 0,
                                   ),
                             editQrCode
-                                ? AnimationEditQrCode(
+                                ? AnimationDropDownController(
                                     changeState: logoSwitch,
                                     durationTime: 300,
                                     firstChildeCard: Card(
@@ -1493,7 +1493,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                     height: 0,
                                   ),
                             editQrCode
-                                ? AnimationEditQrCode(
+                                ? AnimationDropDownController(
                                     changeState: logoSwitch,
                                     durationTime: 400,
                                     firstChildeCard: Card(
@@ -1539,7 +1539,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                 : const SizedBox(
                                     height: 0,
                                   ),
-                            AnimationEditQrCode(
+                            AnimationDropDownController(
                               changeState: editQrCode,
                               durationTime: 500,
                               firstChildeCard: Card(
@@ -1620,7 +1620,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                 ),
                               ),
                             ),
-                            AnimationEditQrCode(
+                            AnimationDropDownController(
                               changeState: editQrCode,
                               durationTime: 600,
                               firstChildeCard: Card(
@@ -1701,7 +1701,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                 ),
                               ),
                             ),
-                            AnimationEditQrCode(
+                            AnimationDropDownController(
                               changeState: editQrCode,
                               durationTime: 700,
                               firstChildeCard: Card(

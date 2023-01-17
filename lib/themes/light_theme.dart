@@ -5,6 +5,9 @@ class LightTheme {
     hintColor: Colors.blue.shade200,
     primaryColor: Colors.blue.shade500,
     scaffoldBackgroundColor: Colors.white,
+    iconTheme: IconThemeData(
+      color: Colors.blue.shade500,
+    ),
     textTheme: TextTheme(
       displaySmall: const TextStyle(
         fontSize: 18,

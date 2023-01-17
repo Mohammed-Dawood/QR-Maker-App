@@ -11,6 +11,7 @@ import 'package:qr_maker_app/controller/language_controller.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
 import 'package:qr_maker_app/view/qr/favorite/main_favorite_qr.dart';
 import 'package:qr_maker_app/controller/favorite_qr_code_controller.dart';
+import 'package:qr_maker_app/controller/animation_drop_down_controller.dart';
 
 class MainQr extends StatefulWidget {
   const MainQr({Key? key}) : super(key: key);
@@ -151,7 +152,7 @@ class _MainQrState extends State<MainQr> {
                       children: [
                         Expanded(
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               // Card(
                               //   child: SizedBox(
@@ -171,120 +172,250 @@ class _MainQrState extends State<MainQr> {
                               //     ),
                               //   ),
                               // ),
-                              Card(
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 20,
-                                      vertical: isScreenWidth(context) ? 5 : 10,
-                                    ),
+                              const SizedBox(
+                                height: 50,
+                              ),
+                              SizedBox(
+                                width: double.infinity,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 15,
+                                  ),
+                                  child: TextButton(
                                     child: Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.start,
                                       children: [
+                                        Icon(
+                                          Icons.settings,
+                                          size:
+                                              isScreenWidth(context) ? 24 : 30,
+                                          color:
+                                              Theme.of(context).iconTheme.color,
+                                        ),
+                                        const SizedBox(width: 10),
                                         Text(
                                           AppLocalizations.of(context)!
-                                              .language,
+                                              .settings,
                                           style: (isScreenWidth(context))
                                               ? Theme.of(context)
                                                   .textTheme
-                                                  .displaySmall
+                                                  .bodySmall
                                               : Theme.of(context)
                                                   .textTheme
-                                                  .displayMedium,
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.symmetric(
-                                            horizontal: 10,
-                                            vertical: (isScreenWidth(context))
-                                                ? 1
-                                                : 2,
-                                          ),
-                                          child: DropdownButtonHideUnderline(
-                                            child: DropdownButton(
-                                              value: languageController
-                                                  .displayLanguage,
-                                              icon: Container(),
-                                              items: [
-                                                DropdownMenuItem(
-                                                  value: "en",
-                                                  child: Center(
-                                                    child: Text(
-                                                      '🇺🇸',
-                                                      style: TextStyle(
-                                                        fontSize: isScreenWidth(
-                                                                context)
-                                                            ? 30
-                                                            : 35,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                DropdownMenuItem(
-                                                  value: "ar",
-                                                  child: Center(
-                                                    child: Text(
-                                                      '🇸🇦',
-                                                      style: TextStyle(
-                                                        fontSize: isScreenWidth(
-                                                                context)
-                                                            ? 30
-                                                            : 35,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                DropdownMenuItem(
-                                                  value: "fr",
-                                                  child: Center(
-                                                    child: Text(
-                                                      '🇫🇷',
-                                                      style: TextStyle(
-                                                        fontSize: isScreenWidth(
-                                                                context)
-                                                            ? 30
-                                                            : 35,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                DropdownMenuItem(
-                                                  value: "sv",
-                                                  child: Center(
-                                                    child: Text(
-                                                      '🇸🇪',
-                                                      style: TextStyle(
-                                                        fontSize: isScreenWidth(
-                                                                context)
-                                                            ? 30
-                                                            : 35,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                              onChanged:
-                                                  (String? codeLanguage) {
-                                                languageController
-                                                    .changeLanguage(
-                                                        codeLanguage!);
-                                              },
-                                              dropdownColor: Theme.of(context)
-                                                  .primaryColor,
-                                            ),
-                                          ),
+                                                  .bodyMedium,
                                         ),
                                       ],
                                     ),
+                                    onPressed: () {},
                                   ),
                                 ),
+                              ),
+                              Divider(
+                                thickness: 1,
+                                color: Theme.of(context).primaryColor,
                               ),
                               Card(
                                 child: SizedBox(
                                   width: double.infinity,
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                      vertical: isScreenWidth(context) ? 5 : 10,
+                                    ),
+                                    child: TextButton(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Icon(
+                                            Icons.translate,
+                                            size: isScreenWidth(context)
+                                                ? 24
+                                                : 30,
+                                          ),
+                                          const SizedBox(width: 10),
+                                          Text(
+                                            AppLocalizations.of(context)!
+                                                .language,
+                                            style: (isScreenWidth(context))
+                                                ? Theme.of(context)
+                                                    .textTheme
+                                                    .displaySmall
+                                                : Theme.of(context)
+                                                    .textTheme
+                                                    .displayMedium,
+                                          ),
+                                        ],
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          languageController
+                                              .toggleDropDownButtonLanguage();
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              languageController.currentLanguage == "ar"
+                                  ? const SizedBox(
+                                      height: 0,
+                                    )
+                                  : AnimationDropDownController(
+                                      changeState: languageController
+                                          .dropDownButtonLanguage,
+                                      durationTime: 100,
+                                      firstChildeCard: Card(
+                                        child: SizedBox(
+                                          width: double.infinity,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 10,
+                                              vertical: isScreenWidth(context)
+                                                  ? 5
+                                                  : 10,
+                                            ),
+                                            child: TextButton(
+                                              child: Text(
+                                                "العربية",
+                                                style: (isScreenWidth(context))
+                                                    ? Theme.of(context)
+                                                        .textTheme
+                                                        .displaySmall
+                                                    : Theme.of(context)
+                                                        .textTheme
+                                                        .displayMedium,
+                                              ),
+                                              onPressed: () {
+                                                languageController
+                                                    .changeLanguage("ar");
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                              languageController.currentLanguage == "en"
+                                  ? const SizedBox(
+                                      height: 0,
+                                    )
+                                  : AnimationDropDownController(
+                                      changeState: languageController
+                                          .dropDownButtonLanguage,
+                                      durationTime: 200,
+                                      firstChildeCard: Card(
+                                        child: SizedBox(
+                                          width: double.infinity,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 10,
+                                              vertical: isScreenWidth(context)
+                                                  ? 5
+                                                  : 10,
+                                            ),
+                                            child: TextButton(
+                                              child: Text(
+                                                "English",
+                                                style: (isScreenWidth(context))
+                                                    ? Theme.of(context)
+                                                        .textTheme
+                                                        .displaySmall
+                                                    : Theme.of(context)
+                                                        .textTheme
+                                                        .displayMedium,
+                                              ),
+                                              onPressed: () {
+                                                languageController
+                                                    .changeLanguage("en");
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                              languageController.currentLanguage == "fr"
+                                  ? const SizedBox(
+                                      height: 0,
+                                    )
+                                  : AnimationDropDownController(
+                                      changeState: languageController
+                                          .dropDownButtonLanguage,
+                                      durationTime: 300,
+                                      firstChildeCard: Card(
+                                        child: SizedBox(
+                                          width: double.infinity,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 10,
+                                              vertical: isScreenWidth(context)
+                                                  ? 5
+                                                  : 10,
+                                            ),
+                                            child: TextButton(
+                                              child: Text(
+                                                "Français",
+                                                style: (isScreenWidth(context))
+                                                    ? Theme.of(context)
+                                                        .textTheme
+                                                        .displaySmall
+                                                    : Theme.of(context)
+                                                        .textTheme
+                                                        .displayMedium,
+                                              ),
+                                              onPressed: () {
+                                                languageController
+                                                    .changeLanguage("fr");
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                              languageController.currentLanguage == "sv"
+                                  ? const SizedBox(
+                                      height: 0,
+                                    )
+                                  : AnimationDropDownController(
+                                      changeState: languageController
+                                          .dropDownButtonLanguage,
+                                      durationTime: 400,
+                                      firstChildeCard: Card(
+                                        child: SizedBox(
+                                          width: double.infinity,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 10,
+                                              vertical: isScreenWidth(context)
+                                                  ? 5
+                                                  : 10,
+                                            ),
+                                            child: TextButton(
+                                              child: Text(
+                                                "Svenska",
+                                                style: (isScreenWidth(context))
+                                                    ? Theme.of(context)
+                                                        .textTheme
+                                                        .displaySmall
+                                                    : Theme.of(context)
+                                                        .textTheme
+                                                        .displayMedium,
+                                              ),
+                                              onPressed: () {
+                                                languageController
+                                                    .changeLanguage("sv");
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+
+                              Card(
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
                                       horizontal: 20,
                                       vertical: isScreenWidth(context) ? 5 : 10,
                                     ),
@@ -292,15 +423,30 @@ class _MainQrState extends State<MainQr> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(
-                                          AppLocalizations.of(context)!.theme,
-                                          style: (isScreenWidth(context))
-                                              ? Theme.of(context)
-                                                  .textTheme
-                                                  .displaySmall
-                                              : Theme.of(context)
-                                                  .textTheme
-                                                  .displayMedium,
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              themeController.initValue
+                                                  ? Icons.dark_mode
+                                                  : Icons.light_mode,
+                                              size: isScreenWidth(context)
+                                                  ? 24
+                                                  : 30,
+                                              color: Colors.white,
+                                            ),
+                                            const SizedBox(width: 10),
+                                            Text(
+                                              AppLocalizations.of(context)!
+                                                  .theme,
+                                              style: (isScreenWidth(context))
+                                                  ? Theme.of(context)
+                                                      .textTheme
+                                                      .displaySmall
+                                                  : Theme.of(context)
+                                                      .textTheme
+                                                      .displayMedium,
+                                            ),
+                                          ],
                                         ),
                                         Switch(
                                           value: themeController.initValue,
@@ -323,26 +469,40 @@ class _MainQrState extends State<MainQr> {
                                       horizontal: 20,
                                       vertical: isScreenWidth(context) ? 5 : 10,
                                     ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          AppLocalizations.of(context)!
-                                              .vibration,
-                                          style: (isScreenWidth(context))
-                                              ? Theme.of(context)
-                                                  .textTheme
-                                                  .displaySmall
-                                              : Theme.of(context)
-                                                  .textTheme
-                                                  .displayMedium,
-                                        ),
-                                        GetBuilder<VibrationController>(
-                                          init: VibrationController(),
-                                          builder: (VibrationController
-                                                  vibrationController) =>
-                                              Switch(
+                                    child: GetBuilder<VibrationController>(
+                                      init: VibrationController(),
+                                      builder: (VibrationController
+                                              vibrationController) =>
+                                          Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                vibrationController.initValue
+                                                    ? Icons.notifications_active
+                                                    : Icons.notifications_off,
+                                                size: isScreenWidth(context)
+                                                    ? 24
+                                                    : 30,
+                                                color: Colors.white,
+                                              ),
+                                              const SizedBox(width: 10),
+                                              Text(
+                                                AppLocalizations.of(context)!
+                                                    .vibration,
+                                                style: (isScreenWidth(context))
+                                                    ? Theme.of(context)
+                                                        .textTheme
+                                                        .displaySmall
+                                                    : Theme.of(context)
+                                                        .textTheme
+                                                        .displayMedium,
+                                              ),
+                                            ],
+                                          ),
+                                          Switch(
                                             value:
                                                 vibrationController.initValue,
                                             onChanged: vibrationController
@@ -351,8 +511,8 @@ class _MainQrState extends State<MainQr> {
                                             inactiveTrackColor:
                                                 Colors.grey.shade900,
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -570,7 +730,7 @@ class _MainQrState extends State<MainQr> {
                       children: [
                         Expanded(
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               // Card(
                               //   child: SizedBox(
@@ -590,102 +750,214 @@ class _MainQrState extends State<MainQr> {
                               //     ),
                               //   ),
                               // ),
-                              Card(
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 20,
-                                      vertical: 10,
-                                    ),
+                              const SizedBox(
+                                height: 50,
+                              ),
+                              SizedBox(
+                                width: double.infinity,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 15,
+                                  ),
+                                  child: TextButton(
                                     child: Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.start,
                                       children: [
+                                        Icon(
+                                          Icons.settings,
+                                          size: 30,
+                                          color:
+                                              Theme.of(context).iconTheme.color,
+                                        ),
+                                        const SizedBox(width: 10),
                                         Text(
                                           AppLocalizations.of(context)!
-                                              .language,
+                                              .settings,
                                           style: Theme.of(context)
                                               .textTheme
-                                              .displayMedium,
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 10,
-                                            vertical: 2,
-                                          ),
-                                          child: DropdownButtonHideUnderline(
-                                            child: DropdownButton(
-                                              value: languageController
-                                                  .displayLanguage,
-                                              icon: Container(),
-                                              items: const [
-                                                DropdownMenuItem(
-                                                  value: "en",
-                                                  child: Center(
-                                                    child: Text(
-                                                      '🇺🇸',
-                                                      style: TextStyle(
-                                                        fontSize: 35,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                DropdownMenuItem(
-                                                  value: "ar",
-                                                  child: Center(
-                                                    child: Text(
-                                                      '🇸🇦',
-                                                      style: TextStyle(
-                                                        fontSize: 35,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                DropdownMenuItem(
-                                                  value: "fr",
-                                                  child: Center(
-                                                    child: Text(
-                                                      '🇫🇷',
-                                                      style: TextStyle(
-                                                        fontSize: 35,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                DropdownMenuItem(
-                                                  value: "sv",
-                                                  child: Center(
-                                                    child: Text(
-                                                      '🇸🇪',
-                                                      style: TextStyle(
-                                                        fontSize: 35,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                              onChanged:
-                                                  (String? codeLanguage) {
-                                                languageController
-                                                    .changeLanguage(
-                                                        codeLanguage!);
-                                              },
-                                              dropdownColor: Theme.of(context)
-                                                  .primaryColor,
-                                            ),
-                                          ),
+                                              .bodyMedium,
                                         ),
                                       ],
                                     ),
+                                    onPressed: () {},
                                   ),
                                 ),
+                              ),
+                              Divider(
+                                thickness: 1,
+                                color: Theme.of(context).primaryColor,
                               ),
                               Card(
                                 child: SizedBox(
                                   width: double.infinity,
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                      vertical: 10,
+                                    ),
+                                    child: TextButton(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          const Icon(
+                                            Icons.translate,
+                                            size: 30,
+                                          ),
+                                          const SizedBox(width: 10),
+                                          Text(
+                                            AppLocalizations.of(context)!
+                                                .language,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .displayMedium,
+                                          ),
+                                        ],
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          languageController
+                                              .toggleDropDownButtonLanguage();
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              languageController.currentLanguage == "ar"
+                                  ? const SizedBox(
+                                      height: 0,
+                                    )
+                                  : AnimationDropDownController(
+                                      changeState: languageController
+                                          .dropDownButtonLanguage,
+                                      durationTime: 100,
+                                      firstChildeCard: Card(
+                                        child: SizedBox(
+                                          width: double.infinity,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 10,
+                                              vertical: 10,
+                                            ),
+                                            child: TextButton(
+                                              child: Text(
+                                                "العربية",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .displayMedium,
+                                              ),
+                                              onPressed: () {
+                                                languageController
+                                                    .changeLanguage("ar");
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                              languageController.currentLanguage == "en"
+                                  ? const SizedBox(
+                                      height: 0,
+                                    )
+                                  : AnimationDropDownController(
+                                      changeState: languageController
+                                          .dropDownButtonLanguage,
+                                      durationTime: 200,
+                                      firstChildeCard: Card(
+                                        child: SizedBox(
+                                          width: double.infinity,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 10,
+                                              vertical: 10,
+                                            ),
+                                            child: TextButton(
+                                              child: Text(
+                                                "English",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .displayMedium,
+                                              ),
+                                              onPressed: () {
+                                                languageController
+                                                    .changeLanguage("en");
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                              languageController.currentLanguage == "fr"
+                                  ? const SizedBox(
+                                      height: 0,
+                                    )
+                                  : AnimationDropDownController(
+                                      changeState: languageController
+                                          .dropDownButtonLanguage,
+                                      durationTime: 300,
+                                      firstChildeCard: Card(
+                                        child: SizedBox(
+                                          width: double.infinity,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 10,
+                                              vertical: 10,
+                                            ),
+                                            child: TextButton(
+                                              child: Text(
+                                                "Français",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .displayMedium,
+                                              ),
+                                              onPressed: () {
+                                                languageController
+                                                    .changeLanguage("fr");
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                              languageController.currentLanguage == "sv"
+                                  ? const SizedBox(
+                                      height: 0,
+                                    )
+                                  : AnimationDropDownController(
+                                      changeState: languageController
+                                          .dropDownButtonLanguage,
+                                      durationTime: 400,
+                                      firstChildeCard: Card(
+                                        child: SizedBox(
+                                          width: double.infinity,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 10,
+                                              vertical: 10,
+                                            ),
+                                            child: TextButton(
+                                              child: Text(
+                                                "Svenska",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .displayMedium,
+                                              ),
+                                              onPressed: () {
+                                                languageController
+                                                    .changeLanguage("sv");
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                              Card(
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
                                       horizontal: 20,
                                       vertical: 10,
                                     ),
@@ -693,11 +965,24 @@ class _MainQrState extends State<MainQr> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(
-                                          AppLocalizations.of(context)!.theme,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .displayMedium,
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              themeController.initValue
+                                                  ? Icons.dark_mode
+                                                  : Icons.light_mode,
+                                              size: 30,
+                                              color: Colors.white,
+                                            ),
+                                            const SizedBox(width: 10),
+                                            Text(
+                                              AppLocalizations.of(context)!
+                                                  .theme,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .displayMedium,
+                                            ),
+                                          ],
                                         ),
                                         Switch(
                                           value: themeController.initValue,
@@ -720,22 +1005,36 @@ class _MainQrState extends State<MainQr> {
                                       horizontal: 20,
                                       vertical: 10,
                                     ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          AppLocalizations.of(context)!
-                                              .vibration,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .displayMedium,
-                                        ),
-                                        GetBuilder<VibrationController>(
-                                          init: VibrationController(),
-                                          builder: (VibrationController
-                                                  vibrationController) =>
-                                              Switch(
+                                    child: GetBuilder<VibrationController>(
+                                      init: VibrationController(),
+                                      builder: (VibrationController
+                                              vibrationController) =>
+                                          Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                vibrationController.initValue
+                                                    ? Icons.notifications_active
+                                                    : Icons.notifications_off,
+                                                size: isScreenWidth(context)
+                                                    ? 24
+                                                    : 30,
+                                                color: Colors.white,
+                                              ),
+                                              const SizedBox(width: 10),
+                                              Text(
+                                                AppLocalizations.of(context)!
+                                                    .vibration,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .displayMedium,
+                                              ),
+                                            ],
+                                          ),
+                                          Switch(
                                             value:
                                                 vibrationController.initValue,
                                             onChanged: vibrationController
@@ -744,8 +1043,8 @@ class _MainQrState extends State<MainQr> {
                                             inactiveTrackColor:
                                                 Colors.grey.shade900,
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),

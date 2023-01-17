@@ -7,12 +7,19 @@ class LanguageController extends GetxController {
       ? Get.deviceLocale
       : Locale(GetStorage().read('language'));
 
-  String displayLanguage =
+  bool dropDownButtonLanguage = false;
+
+  String currentLanguage =
       GetStorage().read('language') ?? Get.deviceLocale!.languageCode;
+
+  void toggleDropDownButtonLanguage() {
+    dropDownButtonLanguage = !dropDownButtonLanguage;
+  }
 
   Future<void> changeLanguage(String codeLanguage) async {
     Locale locale = Locale(codeLanguage);
-    displayLanguage = codeLanguage;
+    dropDownButtonLanguage = false;
+    currentLanguage = codeLanguage;
     GetStorage().write('language', codeLanguage);
     Get.updateLocale(locale);
   }
