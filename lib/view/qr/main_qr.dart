@@ -228,11 +228,12 @@ class _MainQrState extends State<MainQr> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
                                         children: [
-                                          Icon(
-                                            Icons.translate,
-                                            size: isScreenWidth(context)
-                                                ? 24
-                                                : 30,
+                                          Text(
+                                            AppLocalizations.of(context)!.flag,
+                                            style: TextStyle(
+                                                fontSize: isScreenWidth(context)
+                                                    ? 24
+                                                    : 30),
                                           ),
                                           const SizedBox(width: 10),
                                           Text(
@@ -301,11 +302,13 @@ class _MainQrState extends State<MainQr> {
                                           ),
                                           child: Row(
                                             children: [
-                                              Icon(
-                                                Icons.translate,
-                                                size: isScreenWidth(context)
-                                                    ? 24
-                                                    : 30,
+                                              Text(
+                                                '🇮🇶',
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        isScreenWidth(context)
+                                                            ? 24
+                                                            : 30),
                                               ),
                                               const SizedBox(width: 10),
                                               Text(
@@ -352,11 +355,13 @@ class _MainQrState extends State<MainQr> {
                                           ),
                                           child: Row(
                                             children: [
-                                              Icon(
-                                                Icons.translate,
-                                                size: isScreenWidth(context)
-                                                    ? 24
-                                                    : 30,
+                                              Text(
+                                                '🇺🇸',
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        isScreenWidth(context)
+                                                            ? 24
+                                                            : 30),
                                               ),
                                               const SizedBox(width: 10),
                                               Text(
@@ -403,12 +408,20 @@ class _MainQrState extends State<MainQr> {
                                           ),
                                           child: Row(
                                             children: [
-                                              Icon(
-                                                Icons.translate,
-                                                size: isScreenWidth(context)
-                                                    ? 24
-                                                    : 30,
+                                              Text(
+                                                '🇫🇷',
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        isScreenWidth(context)
+                                                            ? 24
+                                                            : 30),
                                               ),
+                                              // Icon(
+                                              //   Icons.translate,
+                                              //   size: isScreenWidth(context)
+                                              //       ? 24
+                                              //       : 30,
+                                              // ),
                                               const SizedBox(width: 10),
                                               Text(
                                                 "Français",
@@ -454,11 +467,13 @@ class _MainQrState extends State<MainQr> {
                                           ),
                                           child: Row(
                                             children: [
-                                              Icon(
-                                                Icons.translate,
-                                                size: isScreenWidth(context)
-                                                    ? 24
-                                                    : 30,
+                                              Text(
+                                                '🇸🇪',
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        isScreenWidth(context)
+                                                            ? 24
+                                                            : 30),
                                               ),
                                               const SizedBox(width: 10),
                                               Text(
@@ -873,9 +888,10 @@ class _MainQrState extends State<MainQr> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
                                         children: [
-                                          const Icon(
-                                            Icons.translate,
-                                            size: 30,
+                                          Text(
+                                            AppLocalizations.of(context)!.flag,
+                                            style:
+                                                const TextStyle(fontSize: 30),
                                           ),
                                           const SizedBox(width: 10),
                                           Text(
@@ -935,9 +951,9 @@ class _MainQrState extends State<MainQr> {
                                           ),
                                           child: Row(
                                             children: [
-                                              const Icon(
-                                                Icons.translate,
-                                                size: 30,
+                                              const Text(
+                                                '🇮🇶',
+                                                style: TextStyle(fontSize: 30),
                                               ),
                                               const SizedBox(width: 10),
                                               Text(
@@ -979,9 +995,9 @@ class _MainQrState extends State<MainQr> {
                                           ),
                                           child: Row(
                                             children: [
-                                              const Icon(
-                                                Icons.translate,
-                                                size: 30,
+                                              const Text(
+                                                '🇺🇸',
+                                                style: TextStyle(fontSize: 30),
                                               ),
                                               const SizedBox(width: 10),
                                               Text(
@@ -1023,9 +1039,9 @@ class _MainQrState extends State<MainQr> {
                                           ),
                                           child: Row(
                                             children: [
-                                              const Icon(
-                                                Icons.translate,
-                                                size: 30,
+                                              const Text(
+                                                '🇫🇷',
+                                                style: TextStyle(fontSize: 30),
                                               ),
                                               const SizedBox(width: 10),
                                               Text(
@@ -1067,9 +1083,9 @@ class _MainQrState extends State<MainQr> {
                                           ),
                                           child: Row(
                                             children: [
-                                              const Icon(
-                                                Icons.translate,
-                                                size: 30,
+                                              const Text(
+                                                '🇸🇪',
+                                                style: TextStyle(fontSize: 30),
                                               ),
                                               const SizedBox(width: 10),
                                               Text(

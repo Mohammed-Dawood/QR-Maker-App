@@ -9,6 +9,11 @@
         "description": "The current version"
     },
 
+    "flag": "🇺🇸",
+    "@flag":{
+        "description": "The flag Language"
+    },
+
     "settings": "Settings",
     "@settings":{
         "description": "Settings"
