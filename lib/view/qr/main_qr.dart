@@ -175,39 +175,39 @@ class _MainQrState extends State<MainQr> {
                               const SizedBox(
                                 height: 50,
                               ),
-                              SizedBox(
-                                width: double.infinity,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 15,
-                                  ),
-                                  child: TextButton(
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Icon(
-                                          Icons.settings,
-                                          size:
-                                              isScreenWidth(context) ? 24 : 30,
-                                          color:
-                                              Theme.of(context).iconTheme.color,
-                                        ),
-                                        const SizedBox(width: 10),
-                                        Text(
-                                          AppLocalizations.of(context)!
-                                              .settings,
-                                          style: (isScreenWidth(context))
-                                              ? Theme.of(context)
-                                                  .textTheme
-                                                  .bodySmall
-                                              : Theme.of(context)
-                                                  .textTheme
-                                                  .bodyMedium,
-                                        ),
-                                      ],
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                  vertical: isScreenWidth(context) ? 0 : 5,
+                                ),
+                                child: TextButton(
+                                  style: ButtonStyle(
+                                    padding:
+                                        MaterialStateProperty.all<EdgeInsets>(
+                                      const EdgeInsets.symmetric(horizontal: 8),
                                     ),
-                                    onPressed: () {},
+                                  ),
+                                  onPressed: () {},
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Icon(
+                                        Icons.settings,
+                                        size: isScreenWidth(context) ? 24 : 30,
+                                        color:
+                                            Theme.of(context).iconTheme.color,
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Text(
+                                        AppLocalizations.of(context)!.settings,
+                                        style: (isScreenWidth(context))
+                                            ? Theme.of(context)
+                                                .textTheme
+                                                .bodySmall
+                                            : Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium,
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
@@ -215,16 +215,22 @@ class _MainQrState extends State<MainQr> {
                                 thickness: 1,
                                 color: Theme.of(context).primaryColor,
                               ),
-                              Card(
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 10,
-                                      vertical: isScreenWidth(context) ? 5 : 10,
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                  vertical: isScreenWidth(context) ? 0 : 5,
+                                ),
+                                child: TextButton(
+                                  style: ButtonStyle(
+                                    padding:
+                                        MaterialStateProperty.all<EdgeInsets>(
+                                      const EdgeInsets.symmetric(horizontal: 8),
                                     ),
-                                    child: TextButton(
-                                      child: Row(
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
                                         children: [
@@ -248,14 +254,32 @@ class _MainQrState extends State<MainQr> {
                                           ),
                                         ],
                                       ),
-                                      onPressed: () {
-                                        setState(() {
-                                          languageController
-                                              .toggleDropDownButtonLanguage();
-                                        });
-                                      },
-                                    ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 10),
+                                        child: languageController
+                                                .dropDownButtonLanguage
+                                            ? Icon(
+                                                Icons.close,
+                                                size: isScreenWidth(context)
+                                                    ? 24
+                                                    : 30,
+                                              )
+                                            : Icon(
+                                                Icons.keyboard_arrow_down,
+                                                size: isScreenWidth(context)
+                                                    ? 30
+                                                    : 35,
+                                              ),
+                                      ),
+                                    ],
                                   ),
+                                  onPressed: () {
+                                    setState(() {
+                                      languageController
+                                          .toggleDropDownButtonLanguage();
+                                    });
+                                  },
                                 ),
                               ),
                               languageController.currentLanguage == "ar"
@@ -267,17 +291,30 @@ class _MainQrState extends State<MainQr> {
                                           .dropDownButtonLanguage,
                                       durationTime: 100,
                                       firstChildeCard: Card(
-                                        child: SizedBox(
-                                          width: double.infinity,
-                                          child: Padding(
-                                            padding: EdgeInsets.symmetric(
-                                              horizontal: 10,
-                                              vertical: isScreenWidth(context)
-                                                  ? 5
-                                                  : 10,
+                                        margin: EdgeInsets.symmetric(
+                                          vertical:
+                                              isScreenWidth(context) ? 0 : 5,
+                                          horizontal: 8,
+                                        ),
+                                        elevation: 0,
+                                        color: Colors.transparent,
+                                        child: TextButton(
+                                          style: ButtonStyle(
+                                            padding: MaterialStateProperty.all<
+                                                EdgeInsets>(
+                                              const EdgeInsets.all(0),
                                             ),
-                                            child: TextButton(
-                                              child: Text(
+                                          ),
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                Icons.translate,
+                                                size: isScreenWidth(context)
+                                                    ? 24
+                                                    : 30,
+                                              ),
+                                              const SizedBox(width: 10),
+                                              Text(
                                                 "العربية",
                                                 style: (isScreenWidth(context))
                                                     ? Theme.of(context)
@@ -287,12 +324,12 @@ class _MainQrState extends State<MainQr> {
                                                         .textTheme
                                                         .displayMedium,
                                               ),
-                                              onPressed: () {
-                                                languageController
-                                                    .changeLanguage("ar");
-                                              },
-                                            ),
+                                            ],
                                           ),
+                                          onPressed: () {
+                                            languageController
+                                                .changeLanguage("ar");
+                                          },
                                         ),
                                       ),
                                     ),
@@ -305,17 +342,30 @@ class _MainQrState extends State<MainQr> {
                                           .dropDownButtonLanguage,
                                       durationTime: 200,
                                       firstChildeCard: Card(
-                                        child: SizedBox(
-                                          width: double.infinity,
-                                          child: Padding(
-                                            padding: EdgeInsets.symmetric(
-                                              horizontal: 10,
-                                              vertical: isScreenWidth(context)
-                                                  ? 5
-                                                  : 10,
+                                        margin: EdgeInsets.symmetric(
+                                          vertical:
+                                              isScreenWidth(context) ? 0 : 5,
+                                          horizontal: 8,
+                                        ),
+                                        elevation: 0,
+                                        color: Colors.transparent,
+                                        child: TextButton(
+                                          style: ButtonStyle(
+                                            padding: MaterialStateProperty.all<
+                                                EdgeInsets>(
+                                              const EdgeInsets.all(0),
                                             ),
-                                            child: TextButton(
-                                              child: Text(
+                                          ),
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                Icons.translate,
+                                                size: isScreenWidth(context)
+                                                    ? 24
+                                                    : 30,
+                                              ),
+                                              const SizedBox(width: 10),
+                                              Text(
                                                 "English",
                                                 style: (isScreenWidth(context))
                                                     ? Theme.of(context)
@@ -325,12 +375,12 @@ class _MainQrState extends State<MainQr> {
                                                         .textTheme
                                                         .displayMedium,
                                               ),
-                                              onPressed: () {
-                                                languageController
-                                                    .changeLanguage("en");
-                                              },
-                                            ),
+                                            ],
                                           ),
+                                          onPressed: () {
+                                            languageController
+                                                .changeLanguage("en");
+                                          },
                                         ),
                                       ),
                                     ),
@@ -343,17 +393,30 @@ class _MainQrState extends State<MainQr> {
                                           .dropDownButtonLanguage,
                                       durationTime: 300,
                                       firstChildeCard: Card(
-                                        child: SizedBox(
-                                          width: double.infinity,
-                                          child: Padding(
-                                            padding: EdgeInsets.symmetric(
-                                              horizontal: 10,
-                                              vertical: isScreenWidth(context)
-                                                  ? 5
-                                                  : 10,
+                                        margin: EdgeInsets.symmetric(
+                                          vertical:
+                                              isScreenWidth(context) ? 0 : 5,
+                                          horizontal: 8,
+                                        ),
+                                        elevation: 0,
+                                        color: Colors.transparent,
+                                        child: TextButton(
+                                          style: ButtonStyle(
+                                            padding: MaterialStateProperty.all<
+                                                EdgeInsets>(
+                                              const EdgeInsets.all(0),
                                             ),
-                                            child: TextButton(
-                                              child: Text(
+                                          ),
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                Icons.translate,
+                                                size: isScreenWidth(context)
+                                                    ? 24
+                                                    : 30,
+                                              ),
+                                              const SizedBox(width: 10),
+                                              Text(
                                                 "Français",
                                                 style: (isScreenWidth(context))
                                                     ? Theme.of(context)
@@ -363,12 +426,12 @@ class _MainQrState extends State<MainQr> {
                                                         .textTheme
                                                         .displayMedium,
                                               ),
-                                              onPressed: () {
-                                                languageController
-                                                    .changeLanguage("fr");
-                                              },
-                                            ),
+                                            ],
                                           ),
+                                          onPressed: () {
+                                            languageController
+                                                .changeLanguage("fr");
+                                          },
                                         ),
                                       ),
                                     ),
@@ -381,17 +444,30 @@ class _MainQrState extends State<MainQr> {
                                           .dropDownButtonLanguage,
                                       durationTime: 400,
                                       firstChildeCard: Card(
-                                        child: SizedBox(
-                                          width: double.infinity,
-                                          child: Padding(
-                                            padding: EdgeInsets.symmetric(
-                                              horizontal: 10,
-                                              vertical: isScreenWidth(context)
-                                                  ? 5
-                                                  : 10,
+                                        margin: EdgeInsets.symmetric(
+                                          vertical:
+                                              isScreenWidth(context) ? 0 : 5,
+                                          horizontal: 8,
+                                        ),
+                                        elevation: 0,
+                                        color: Colors.transparent,
+                                        child: TextButton(
+                                          style: ButtonStyle(
+                                            padding: MaterialStateProperty.all<
+                                                EdgeInsets>(
+                                              const EdgeInsets.all(0),
                                             ),
-                                            child: TextButton(
-                                              child: Text(
+                                          ),
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                Icons.translate,
+                                                size: isScreenWidth(context)
+                                                    ? 24
+                                                    : 30,
+                                              ),
+                                              const SizedBox(width: 10),
+                                              Text(
                                                 "Svenska",
                                                 style: (isScreenWidth(context))
                                                     ? Theme.of(context)
@@ -401,24 +477,84 @@ class _MainQrState extends State<MainQr> {
                                                         .textTheme
                                                         .displayMedium,
                                               ),
-                                              onPressed: () {
-                                                languageController
-                                                    .changeLanguage("sv");
-                                              },
-                                            ),
+                                            ],
                                           ),
+                                          onPressed: () {
+                                            languageController
+                                                .changeLanguage("sv");
+                                          },
                                         ),
                                       ),
                                     ),
 
-                              Card(
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 20,
-                                      vertical: isScreenWidth(context) ? 5 : 10,
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                  vertical: isScreenWidth(context) ? 0 : 5,
+                                ),
+                                child: TextButton(
+                                  style: ButtonStyle(
+                                    padding:
+                                        MaterialStateProperty.all<EdgeInsets>(
+                                      const EdgeInsets.symmetric(horizontal: 8),
                                     ),
+                                  ),
+                                  onPressed: () {},
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Icon(
+                                            themeController.initValue
+                                                ? Icons.dark_mode
+                                                : Icons.light_mode,
+                                            size: isScreenWidth(context)
+                                                ? 24
+                                                : 30,
+                                            color: Colors.white,
+                                          ),
+                                          const SizedBox(width: 10),
+                                          Text(
+                                            AppLocalizations.of(context)!.theme,
+                                            style: (isScreenWidth(context))
+                                                ? Theme.of(context)
+                                                    .textTheme
+                                                    .displaySmall
+                                                : Theme.of(context)
+                                                    .textTheme
+                                                    .displayMedium,
+                                          ),
+                                        ],
+                                      ),
+                                      Switch(
+                                        value: themeController.initValue,
+                                        onChanged: themeController.switchTheme,
+                                        activeTrackColor: Colors.white54,
+                                        inactiveTrackColor:
+                                            Colors.grey.shade900,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                  vertical: isScreenWidth(context) ? 0 : 5,
+                                ),
+                                child: GetBuilder<VibrationController>(
+                                  init: VibrationController(),
+                                  builder: (VibrationController
+                                          vibrationController) =>
+                                      TextButton(
+                                    style: ButtonStyle(
+                                      padding:
+                                          MaterialStateProperty.all<EdgeInsets>(
+                                        const EdgeInsets.symmetric(
+                                            horizontal: 8),
+                                      ),
+                                    ),
+                                    onPressed: () {},
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -426,9 +562,9 @@ class _MainQrState extends State<MainQr> {
                                         Row(
                                           children: [
                                             Icon(
-                                              themeController.initValue
-                                                  ? Icons.dark_mode
-                                                  : Icons.light_mode,
+                                              vibrationController.initValue
+                                                  ? Icons.notifications_active
+                                                  : Icons.notifications_off,
                                               size: isScreenWidth(context)
                                                   ? 24
                                                   : 30,
@@ -437,7 +573,7 @@ class _MainQrState extends State<MainQr> {
                                             const SizedBox(width: 10),
                                             Text(
                                               AppLocalizations.of(context)!
-                                                  .theme,
+                                                  .vibration,
                                               style: (isScreenWidth(context))
                                                   ? Theme.of(context)
                                                       .textTheme
@@ -449,9 +585,9 @@ class _MainQrState extends State<MainQr> {
                                           ],
                                         ),
                                         Switch(
-                                          value: themeController.initValue,
-                                          onChanged:
-                                              themeController.switchTheme,
+                                          value: vibrationController.initValue,
+                                          onChanged: vibrationController
+                                              .switchVibration,
                                           activeTrackColor: Colors.white54,
                                           inactiveTrackColor:
                                               Colors.grey.shade900,
@@ -461,107 +597,48 @@ class _MainQrState extends State<MainQr> {
                                   ),
                                 ),
                               ),
-                              Card(
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 20,
-                                      vertical: isScreenWidth(context) ? 5 : 10,
-                                    ),
-                                    child: GetBuilder<VibrationController>(
-                                      init: VibrationController(),
-                                      builder: (VibrationController
-                                              vibrationController) =>
-                                          Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Icon(
-                                                vibrationController.initValue
-                                                    ? Icons.notifications_active
-                                                    : Icons.notifications_off,
-                                                size: isScreenWidth(context)
-                                                    ? 24
-                                                    : 30,
-                                                color: Colors.white,
-                                              ),
-                                              const SizedBox(width: 10),
-                                              Text(
-                                                AppLocalizations.of(context)!
-                                                    .vibration,
-                                                style: (isScreenWidth(context))
-                                                    ? Theme.of(context)
-                                                        .textTheme
-                                                        .displaySmall
-                                                    : Theme.of(context)
-                                                        .textTheme
-                                                        .displayMedium,
-                                              ),
-                                            ],
-                                          ),
-                                          Switch(
-                                            value:
-                                                vibrationController.initValue,
-                                            onChanged: vibrationController
-                                                .switchVibration,
-                                            activeTrackColor: Colors.white54,
-                                            inactiveTrackColor:
-                                                Colors.grey.shade900,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                  vertical: isScreenWidth(context) ? 0 : 5,
                                 ),
-                              ),
-                              Card(
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 10,
-                                      vertical: isScreenWidth(context) ? 5 : 10,
-                                    ),
-                                    child: TextButton(
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Icon(
-                                            Icons.email,
-                                            size: isScreenWidth(context)
-                                                ? 24
-                                                : 30,
-                                          ),
-                                          const SizedBox(width: 10),
-                                          Text(
-                                            AppLocalizations.of(context)!
-                                                .contact_us,
-                                            style: (isScreenWidth(context))
-                                                ? Theme.of(context)
-                                                    .textTheme
-                                                    .displaySmall
-                                                : Theme.of(context)
-                                                    .textTheme
-                                                    .displayMedium,
-                                          ),
-                                        ],
-                                      ),
-                                      onPressed: () async {
-                                        Uri mail = Uri.parse(
-                                          "mailto:qr.maker.app@gmail.com?subject=QR Maker App&body=Hello,",
-                                        );
-                                        if (await canLaunchUrl(mail)) {
-                                          await launchUrl(mail);
-                                        } else {
-                                          throw 'Could not launch $mail';
-                                        }
-                                      },
+                                child: TextButton(
+                                  style: ButtonStyle(
+                                    padding:
+                                        MaterialStateProperty.all<EdgeInsets>(
+                                      const EdgeInsets.symmetric(horizontal: 8),
                                     ),
                                   ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Icon(
+                                        Icons.email,
+                                        size: isScreenWidth(context) ? 24 : 30,
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Text(
+                                        AppLocalizations.of(context)!
+                                            .contact_us,
+                                        style: (isScreenWidth(context))
+                                            ? Theme.of(context)
+                                                .textTheme
+                                                .displaySmall
+                                            : Theme.of(context)
+                                                .textTheme
+                                                .displayMedium,
+                                      ),
+                                    ],
+                                  ),
+                                  onPressed: () async {
+                                    Uri mail = Uri.parse(
+                                      "mailto:qr.maker.app@gmail.com?subject=QR Maker App&body=Hello,",
+                                    );
+                                    if (await canLaunchUrl(mail)) {
+                                      await launchUrl(mail);
+                                    } else {
+                                      throw 'Could not launch $mail';
+                                    }
+                                  },
                                 ),
                               ),
 
@@ -753,34 +830,35 @@ class _MainQrState extends State<MainQr> {
                               const SizedBox(
                                 height: 50,
                               ),
-                              SizedBox(
-                                width: double.infinity,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 15,
-                                  ),
-                                  child: TextButton(
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Icon(
-                                          Icons.settings,
-                                          size: 30,
-                                          color:
-                                              Theme.of(context).iconTheme.color,
-                                        ),
-                                        const SizedBox(width: 10),
-                                        Text(
-                                          AppLocalizations.of(context)!
-                                              .settings,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium,
-                                        ),
-                                      ],
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 5,
+                                ),
+                                child: TextButton(
+                                  style: ButtonStyle(
+                                    padding:
+                                        MaterialStateProperty.all<EdgeInsets>(
+                                      const EdgeInsets.symmetric(horizontal: 8),
                                     ),
-                                    onPressed: () {},
+                                  ),
+                                  onPressed: () {},
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Icon(
+                                        Icons.settings,
+                                        size: 30,
+                                        color:
+                                            Theme.of(context).iconTheme.color,
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Text(
+                                        AppLocalizations.of(context)!.settings,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium,
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
@@ -788,16 +866,22 @@ class _MainQrState extends State<MainQr> {
                                 thickness: 1,
                                 color: Theme.of(context).primaryColor,
                               ),
-                              Card(
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 10,
-                                      vertical: 10,
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 5,
+                                ),
+                                child: TextButton(
+                                  style: ButtonStyle(
+                                    padding:
+                                        MaterialStateProperty.all<EdgeInsets>(
+                                      const EdgeInsets.symmetric(horizontal: 8),
                                     ),
-                                    child: TextButton(
-                                      child: Row(
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
                                         children: [
@@ -815,14 +899,28 @@ class _MainQrState extends State<MainQr> {
                                           ),
                                         ],
                                       ),
-                                      onPressed: () {
-                                        setState(() {
-                                          languageController
-                                              .toggleDropDownButtonLanguage();
-                                        });
-                                      },
-                                    ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 10),
+                                        child: languageController
+                                                .dropDownButtonLanguage
+                                            ? const Icon(
+                                                Icons.close,
+                                                size: 30,
+                                              )
+                                            : const Icon(
+                                                Icons.keyboard_arrow_down,
+                                                size: 35,
+                                              ),
+                                      ),
+                                    ],
                                   ),
+                                  onPressed: () {
+                                    setState(() {
+                                      languageController
+                                          .toggleDropDownButtonLanguage();
+                                    });
+                                  },
                                 ),
                               ),
                               languageController.currentLanguage == "ar"
@@ -834,26 +932,38 @@ class _MainQrState extends State<MainQr> {
                                           .dropDownButtonLanguage,
                                       durationTime: 100,
                                       firstChildeCard: Card(
-                                        child: SizedBox(
-                                          width: double.infinity,
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 10,
-                                              vertical: 10,
+                                        margin: const EdgeInsets.symmetric(
+                                          vertical: 5,
+                                          horizontal: 8,
+                                        ),
+                                        elevation: 0,
+                                        color: Colors.transparent,
+                                        child: TextButton(
+                                          style: ButtonStyle(
+                                            padding: MaterialStateProperty.all<
+                                                EdgeInsets>(
+                                              const EdgeInsets.all(0),
                                             ),
-                                            child: TextButton(
-                                              child: Text(
+                                          ),
+                                          child: Row(
+                                            children: [
+                                              const Icon(
+                                                Icons.translate,
+                                                size: 30,
+                                              ),
+                                              const SizedBox(width: 10),
+                                              Text(
                                                 "العربية",
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .displayMedium,
                                               ),
-                                              onPressed: () {
-                                                languageController
-                                                    .changeLanguage("ar");
-                                              },
-                                            ),
+                                            ],
                                           ),
+                                          onPressed: () {
+                                            languageController
+                                                .changeLanguage("ar");
+                                          },
                                         ),
                                       ),
                                     ),
@@ -866,26 +976,38 @@ class _MainQrState extends State<MainQr> {
                                           .dropDownButtonLanguage,
                                       durationTime: 200,
                                       firstChildeCard: Card(
-                                        child: SizedBox(
-                                          width: double.infinity,
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 10,
-                                              vertical: 10,
+                                        margin: const EdgeInsets.symmetric(
+                                          vertical: 5,
+                                          horizontal: 8,
+                                        ),
+                                        elevation: 0,
+                                        color: Colors.transparent,
+                                        child: TextButton(
+                                          style: ButtonStyle(
+                                            padding: MaterialStateProperty.all<
+                                                EdgeInsets>(
+                                              const EdgeInsets.all(0),
                                             ),
-                                            child: TextButton(
-                                              child: Text(
+                                          ),
+                                          child: Row(
+                                            children: [
+                                              const Icon(
+                                                Icons.translate,
+                                                size: 30,
+                                              ),
+                                              const SizedBox(width: 10),
+                                              Text(
                                                 "English",
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .displayMedium,
                                               ),
-                                              onPressed: () {
-                                                languageController
-                                                    .changeLanguage("en");
-                                              },
-                                            ),
+                                            ],
                                           ),
+                                          onPressed: () {
+                                            languageController
+                                                .changeLanguage("en");
+                                          },
                                         ),
                                       ),
                                     ),
@@ -898,26 +1020,38 @@ class _MainQrState extends State<MainQr> {
                                           .dropDownButtonLanguage,
                                       durationTime: 300,
                                       firstChildeCard: Card(
-                                        child: SizedBox(
-                                          width: double.infinity,
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 10,
-                                              vertical: 10,
+                                        margin: const EdgeInsets.symmetric(
+                                          vertical: 5,
+                                          horizontal: 8,
+                                        ),
+                                        elevation: 0,
+                                        color: Colors.transparent,
+                                        child: TextButton(
+                                          style: ButtonStyle(
+                                            padding: MaterialStateProperty.all<
+                                                EdgeInsets>(
+                                              const EdgeInsets.all(0),
                                             ),
-                                            child: TextButton(
-                                              child: Text(
+                                          ),
+                                          child: Row(
+                                            children: [
+                                              const Icon(
+                                                Icons.translate,
+                                                size: 30,
+                                              ),
+                                              const SizedBox(width: 10),
+                                              Text(
                                                 "Français",
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .displayMedium,
                                               ),
-                                              onPressed: () {
-                                                languageController
-                                                    .changeLanguage("fr");
-                                              },
-                                            ),
+                                            ],
                                           ),
+                                          onPressed: () {
+                                            languageController
+                                                .changeLanguage("fr");
+                                          },
                                         ),
                                       ),
                                     ),
@@ -930,37 +1064,103 @@ class _MainQrState extends State<MainQr> {
                                           .dropDownButtonLanguage,
                                       durationTime: 400,
                                       firstChildeCard: Card(
-                                        child: SizedBox(
-                                          width: double.infinity,
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 10,
-                                              vertical: 10,
+                                        margin: const EdgeInsets.symmetric(
+                                          vertical: 5,
+                                          horizontal: 8,
+                                        ),
+                                        elevation: 0,
+                                        color: Colors.transparent,
+                                        child: TextButton(
+                                          style: ButtonStyle(
+                                            padding: MaterialStateProperty.all<
+                                                EdgeInsets>(
+                                              const EdgeInsets.all(0),
                                             ),
-                                            child: TextButton(
-                                              child: Text(
+                                          ),
+                                          child: Row(
+                                            children: [
+                                              const Icon(
+                                                Icons.translate,
+                                                size: 30,
+                                              ),
+                                              const SizedBox(width: 10),
+                                              Text(
                                                 "Svenska",
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .displayMedium,
                                               ),
-                                              onPressed: () {
-                                                languageController
-                                                    .changeLanguage("sv");
-                                              },
-                                            ),
+                                            ],
                                           ),
+                                          onPressed: () {
+                                            languageController
+                                                .changeLanguage("sv");
+                                          },
                                         ),
                                       ),
                                     ),
-                              Card(
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 20,
-                                      vertical: 10,
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 5,
+                                ),
+                                child: TextButton(
+                                  style: ButtonStyle(
+                                    padding:
+                                        MaterialStateProperty.all<EdgeInsets>(
+                                      const EdgeInsets.symmetric(horizontal: 8),
                                     ),
+                                  ),
+                                  onPressed: () {},
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Icon(
+                                            themeController.initValue
+                                                ? Icons.dark_mode
+                                                : Icons.light_mode,
+                                            size: 30,
+                                            color: Colors.white,
+                                          ),
+                                          const SizedBox(width: 10),
+                                          Text(
+                                            AppLocalizations.of(context)!.theme,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .displayMedium,
+                                          ),
+                                        ],
+                                      ),
+                                      Switch(
+                                        value: themeController.initValue,
+                                        onChanged: themeController.switchTheme,
+                                        activeTrackColor: Colors.white54,
+                                        inactiveTrackColor:
+                                            Colors.grey.shade900,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 5,
+                                ),
+                                child: GetBuilder<VibrationController>(
+                                  init: VibrationController(),
+                                  builder: (VibrationController
+                                          vibrationController) =>
+                                      TextButton(
+                                    style: ButtonStyle(
+                                      padding:
+                                          MaterialStateProperty.all<EdgeInsets>(
+                                        const EdgeInsets.symmetric(
+                                            horizontal: 8),
+                                      ),
+                                    ),
+                                    onPressed: () {},
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -968,16 +1168,16 @@ class _MainQrState extends State<MainQr> {
                                         Row(
                                           children: [
                                             Icon(
-                                              themeController.initValue
-                                                  ? Icons.dark_mode
-                                                  : Icons.light_mode,
+                                              vibrationController.initValue
+                                                  ? Icons.notifications_active
+                                                  : Icons.notifications_off,
                                               size: 30,
                                               color: Colors.white,
                                             ),
                                             const SizedBox(width: 10),
                                             Text(
                                               AppLocalizations.of(context)!
-                                                  .theme,
+                                                  .vibration,
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .displayMedium,
@@ -985,9 +1185,9 @@ class _MainQrState extends State<MainQr> {
                                           ],
                                         ),
                                         Switch(
-                                          value: themeController.initValue,
-                                          onChanged:
-                                              themeController.switchTheme,
+                                          value: vibrationController.initValue,
+                                          onChanged: vibrationController
+                                              .switchVibration,
                                           activeTrackColor: Colors.white54,
                                           inactiveTrackColor:
                                               Colors.grey.shade900,
@@ -997,97 +1197,44 @@ class _MainQrState extends State<MainQr> {
                                   ),
                                 ),
                               ),
-                              Card(
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 20,
-                                      vertical: 10,
-                                    ),
-                                    child: GetBuilder<VibrationController>(
-                                      init: VibrationController(),
-                                      builder: (VibrationController
-                                              vibrationController) =>
-                                          Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Icon(
-                                                vibrationController.initValue
-                                                    ? Icons.notifications_active
-                                                    : Icons.notifications_off,
-                                                size: isScreenWidth(context)
-                                                    ? 24
-                                                    : 30,
-                                                color: Colors.white,
-                                              ),
-                                              const SizedBox(width: 10),
-                                              Text(
-                                                AppLocalizations.of(context)!
-                                                    .vibration,
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .displayMedium,
-                                              ),
-                                            ],
-                                          ),
-                                          Switch(
-                                            value:
-                                                vibrationController.initValue,
-                                            onChanged: vibrationController
-                                                .switchVibration,
-                                            activeTrackColor: Colors.white54,
-                                            inactiveTrackColor:
-                                                Colors.grey.shade900,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 5,
                                 ),
-                              ),
-                              Card(
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 10,
-                                      vertical: 10,
-                                    ),
-                                    child: TextButton(
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          const Icon(
-                                            Icons.email,
-                                            size: 30,
-                                          ),
-                                          const SizedBox(width: 10),
-                                          Text(
-                                            AppLocalizations.of(context)!
-                                                .contact_us,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .displayMedium,
-                                          ),
-                                        ],
-                                      ),
-                                      onPressed: () async {
-                                        Uri mail = Uri.parse(
-                                          "mailto:qr.maker.app@gmail.com?subject=QR Maker App&body=Hello,",
-                                        );
-                                        if (await canLaunchUrl(mail)) {
-                                          await launchUrl(mail);
-                                        } else {
-                                          throw 'Could not launch $mail';
-                                        }
-                                      },
+                                child: TextButton(
+                                  style: ButtonStyle(
+                                    padding:
+                                        MaterialStateProperty.all<EdgeInsets>(
+                                      const EdgeInsets.symmetric(horizontal: 8),
                                     ),
                                   ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      const Icon(
+                                        Icons.email,
+                                        size: 30,
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Text(
+                                        AppLocalizations.of(context)!
+                                            .contact_us,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .displayMedium,
+                                      ),
+                                    ],
+                                  ),
+                                  onPressed: () async {
+                                    Uri mail = Uri.parse(
+                                      "mailto:qr.maker.app@gmail.com?subject=QR Maker App&body=Hello,",
+                                    );
+                                    if (await canLaunchUrl(mail)) {
+                                      await launchUrl(mail);
+                                    } else {
+                                      throw 'Could not launch $mail';
+                                    }
+                                  },
                                 ),
                               ),
 
