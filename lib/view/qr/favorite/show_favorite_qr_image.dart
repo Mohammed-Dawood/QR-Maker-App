@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:qr_maker_app/controller/icons_controller.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
+import 'package:qr_maker_app/controller/labels_controller.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
 import 'package:qr_maker_app/controller/save_qr_code_controller.dart';
 import 'package:qr_maker_app/controller/share_qr_code_controller.dart';
@@ -58,9 +60,13 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                           ) ??
                           AppLocalizations.of(context)!.change_qr_code_name,
                       style: TextStyle(
-                        fontSize: (isScreenWidth(context)) ? 20 : 28,
+                        fontSize: (isScreenWidth(context)) ? 18 : 24,
                       ),
                     ),
+                  ),
+                  iconTheme: IconThemeData(
+                    size: (isScreenWidth(context)) ? 22 : 26,
+                    color: Theme.of(context).iconTheme.color,
                   ),
                   actions: [
                     IconButton(
@@ -88,10 +94,9 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                 decoration: InputDecoration(
                                   hintText: AppLocalizations.of(context)!
                                       .qr_code_name,
-                                  prefixIcon: Icon(
-                                    Icons.qr_code,
-                                    size: (isScreenWidth(context)) ? 24 : 30,
-                                    color: Theme.of(context).primaryColor,
+                                  prefixIcon: prefixIconController(
+                                    context,
+                                    icon: Icons.qr_code,
                                   ),
                                   suffixIcon: textEditingController.text.isEmpty
                                       ? Container(
@@ -100,13 +105,9 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                       : IconButton(
                                           onPressed: () =>
                                               textEditingController.clear(),
-                                          icon: Icon(
-                                            Icons.close,
-                                            size: (isScreenWidth(context))
-                                                ? 24
-                                                : 30,
-                                            color:
-                                                Theme.of(context).primaryColor,
+                                          icon: suffixIconController(
+                                            context,
+                                            icon: Icons.close,
                                           ),
                                         ),
                                 ),
@@ -157,7 +158,9 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                           ),
                         );
                       },
-                      icon: const Icon(Icons.edit),
+                      icon: const Icon(
+                        Icons.edit,
+                      ),
                     ),
                   ],
                 ),
@@ -220,25 +223,14 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                           }
                                         });
                                       },
-                                      icon: Icon(
-                                        Icons.arrow_back_ios,
-                                        size:
-                                            (isScreenWidth(context)) ? 24 : 30,
+                                      icon: iconController(
+                                        context,
+                                        icon: Icons.arrow_back_ios,
                                       ),
-                                      label: Padding(
-                                        padding: (isScreenWidth(context))
-                                            ? const EdgeInsets.symmetric(
-                                                vertical: 18)
-                                            : const EdgeInsets.symmetric(
-                                                vertical: 20),
-                                        child: Text(
-                                          AppLocalizations.of(context)!.prev,
-                                          style: TextStyle(
-                                            fontSize: (isScreenWidth(context))
-                                                ? 18
-                                                : 26,
-                                          ),
-                                        ),
+                                      label: labelController(
+                                        context,
+                                        label:
+                                            AppLocalizations.of(context)!.prev,
                                       ),
                                     ),
                                   ),
@@ -267,26 +259,14 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                             }
                                           });
                                         },
-                                        icon: Icon(
-                                          Icons.arrow_back_ios,
-                                          size: (isScreenWidth(context))
-                                              ? 24
-                                              : 30,
+                                        icon: iconController(
+                                          context,
+                                          icon: Icons.arrow_back_ios,
                                         ),
-                                        label: Padding(
-                                          padding: (isScreenWidth(context))
-                                              ? const EdgeInsets.symmetric(
-                                                  vertical: 18)
-                                              : const EdgeInsets.symmetric(
-                                                  vertical: 20),
-                                          child: Text(
-                                            AppLocalizations.of(context)!.next,
-                                            style: TextStyle(
-                                              fontSize: (isScreenWidth(context))
-                                                  ? 18
-                                                  : 26,
-                                            ),
-                                          ),
+                                        label: labelController(
+                                          context,
+                                          label: AppLocalizations.of(context)!
+                                              .next,
                                         ),
                                       ),
                                     ),
@@ -304,6 +284,8 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                             builder:
                                 (VibrationController vibrationController) =>
                                     Card(
+                              color: Colors.transparent,
+                              shadowColor: Colors.transparent,
                               child: SizedBox(
                                 width: (isScreenWidth(context)) ? 250 : 410,
                                 child: ElevatedButton.icon(
@@ -313,24 +295,14 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                     controller.saveQrCode(image!, context);
                                     vibrationController.vibration();
                                   },
-                                  icon: Icon(
-                                    Icons.save,
-                                    size: (isScreenWidth(context)) ? 24 : 30,
+                                  icon: iconController(
+                                    context,
+                                    icon: Icons.save,
                                   ),
-                                  label: Padding(
-                                    padding: (isScreenWidth(context))
-                                        ? const EdgeInsets.symmetric(
-                                            vertical: 18)
-                                        : const EdgeInsets.symmetric(
-                                            vertical: 20),
-                                    child: Text(
-                                      AppLocalizations.of(context)!
-                                          .save_qr_code,
-                                      style: TextStyle(
-                                        fontSize:
-                                            (isScreenWidth(context)) ? 18 : 26,
-                                      ),
-                                    ),
+                                  label: labelController(
+                                    context,
+                                    label: AppLocalizations.of(context)!
+                                        .save_qr_code,
                                   ),
                                 ),
                               ),
@@ -345,6 +317,8 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                             builder:
                                 (VibrationController vibrationController) =>
                                     Card(
+                              color: Colors.transparent,
+                              shadowColor: Colors.transparent,
                               child: SizedBox(
                                 width: (isScreenWidth(context)) ? 250 : 410,
                                 child: ElevatedButton.icon(
@@ -354,24 +328,14 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                     controller.shareQrCode(image!);
                                     vibrationController.vibration();
                                   },
-                                  icon: Icon(
-                                    Icons.share,
-                                    size: (isScreenWidth(context)) ? 24 : 30,
+                                  icon: iconController(
+                                    context,
+                                    icon: Icons.share,
                                   ),
-                                  label: Padding(
-                                    padding: (isScreenWidth(context))
-                                        ? const EdgeInsets.symmetric(
-                                            vertical: 18)
-                                        : const EdgeInsets.symmetric(
-                                            vertical: 20),
-                                    child: Text(
-                                      AppLocalizations.of(context)!
-                                          .share_qr_code,
-                                      style: TextStyle(
-                                        fontSize:
-                                            (isScreenWidth(context)) ? 18 : 26,
-                                      ),
-                                    ),
+                                  label: labelController(
+                                    context,
+                                    label: AppLocalizations.of(context)!
+                                        .share_qr_code,
                                   ),
                                 ),
                               ),
@@ -382,6 +346,8 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                           init: VibrationController(),
                           builder: (VibrationController vibrationController) =>
                               Card(
+                            color: Colors.transparent,
+                            shadowColor: Colors.transparent,
                             child: SizedBox(
                               width: (isScreenWidth(context)) ? 250 : 410,
                               child: ElevatedButton.icon(
@@ -405,12 +371,14 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                         AppLocalizations.of(context)!
                                             .delete_qr_code_message,
                                         style: (isScreenWidth(context))
-                                            ? Theme.of(context)
-                                                .textTheme
-                                                .displaySmall
-                                            : Theme.of(context)
-                                                .textTheme
-                                                .displayMedium,
+                                            ? const TextStyle(
+                                                fontSize: 14,
+                                                color: Colors.white,
+                                              )
+                                            : const TextStyle(
+                                                fontSize: 20,
+                                                color: Colors.white,
+                                              ),
                                       ),
                                       actions: [
                                         TextButton(
@@ -447,23 +415,14 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                   );
                                   vibrationController.vibration();
                                 },
-                                icon: Icon(
-                                  Icons.delete,
-                                  size: (isScreenWidth(context)) ? 24 : 30,
+                                icon: iconController(
+                                  context,
+                                  icon: Icons.delete,
                                 ),
-                                label: Padding(
-                                  padding: (isScreenWidth(context))
-                                      ? const EdgeInsets.symmetric(vertical: 18)
-                                      : const EdgeInsets.symmetric(
-                                          vertical: 20),
-                                  child: Text(
-                                    AppLocalizations.of(context)!
-                                        .delete_qr_code,
-                                    style: TextStyle(
-                                      fontSize:
-                                          (isScreenWidth(context)) ? 18 : 26,
-                                    ),
-                                  ),
+                                label: labelController(
+                                  context,
+                                  label: AppLocalizations.of(context)!
+                                      .delete_qr_code,
                                 ),
                               ),
                             ),
@@ -499,9 +458,13 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                           ) ??
                           AppLocalizations.of(context)!.change_qr_code_name,
                       style: const TextStyle(
-                        fontSize: 28,
+                        fontSize: 24,
                       ),
                     ),
+                  ),
+                  iconTheme: IconThemeData(
+                    size: 26,
+                    color: Theme.of(context).iconTheme.color,
                   ),
                   actions: [
                     IconButton(
@@ -525,10 +488,9 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                 decoration: InputDecoration(
                                   hintText: AppLocalizations.of(context)!
                                       .qr_code_name,
-                                  prefixIcon: Icon(
-                                    Icons.qr_code,
-                                    size: 30,
-                                    color: Theme.of(context).primaryColor,
+                                  prefixIcon: prefixIconController(
+                                    context,
+                                    icon: Icons.qr_code,
                                   ),
                                   suffixIcon: textEditingController.text.isEmpty
                                       ? Container(
@@ -537,11 +499,9 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                       : IconButton(
                                           onPressed: () =>
                                               textEditingController.clear(),
-                                          icon: Icon(
-                                            Icons.close,
-                                            size: 30,
-                                            color:
-                                                Theme.of(context).primaryColor,
+                                          icon: suffixIconController(
+                                            context,
+                                            icon: Icons.close,
                                           ),
                                         ),
                                 ),
@@ -584,7 +544,9 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                           ),
                         );
                       },
-                      icon: const Icon(Icons.edit),
+                      icon: const Icon(
+                        Icons.edit,
+                      ),
                     ),
                   ],
                 ),
@@ -647,20 +609,14 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                           }
                                         });
                                       },
-                                      icon: const Icon(
-                                        Icons.arrow_back_ios,
-                                        size: 30,
+                                      icon: iconController(
+                                        context,
+                                        icon: Icons.arrow_back_ios,
                                       ),
-                                      label: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                          vertical: 20,
-                                        ),
-                                        child: Text(
-                                          AppLocalizations.of(context)!.prev,
-                                          style: const TextStyle(
-                                            fontSize: 26,
-                                          ),
-                                        ),
+                                      label: labelController(
+                                        context,
+                                        label:
+                                            AppLocalizations.of(context)!.prev,
                                       ),
                                     ),
                                   ),
@@ -689,20 +645,14 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                             }
                                           });
                                         },
-                                        icon: const Icon(
-                                          Icons.arrow_back_ios,
-                                          size: 30,
+                                        icon: iconController(
+                                          context,
+                                          icon: Icons.arrow_back_ios,
                                         ),
-                                        label: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                            vertical: 20,
-                                          ),
-                                          child: Text(
-                                            AppLocalizations.of(context)!.next,
-                                            style: const TextStyle(
-                                              fontSize: 26,
-                                            ),
-                                          ),
+                                        label: labelController(
+                                          context,
+                                          label: AppLocalizations.of(context)!
+                                              .next,
                                         ),
                                       ),
                                     ),
@@ -720,6 +670,8 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                             builder:
                                 (VibrationController vibrationController) =>
                                     Card(
+                              color: Colors.transparent,
+                              shadowColor: Colors.transparent,
                               child: SizedBox(
                                 width: 410,
                                 child: ElevatedButton.icon(
@@ -729,21 +681,14 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                     controller.saveQrCode(image!, context);
                                     vibrationController.vibration();
                                   },
-                                  icon: const Icon(
-                                    Icons.save,
-                                    size: 30,
+                                  icon: iconController(
+                                    context,
+                                    icon: Icons.save,
                                   ),
-                                  label: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 20,
-                                    ),
-                                    child: Text(
-                                      AppLocalizations.of(context)!
-                                          .save_qr_code,
-                                      style: const TextStyle(
-                                        fontSize: 26,
-                                      ),
-                                    ),
+                                  label: labelController(
+                                    context,
+                                    label: AppLocalizations.of(context)!
+                                        .save_qr_code,
                                   ),
                                 ),
                               ),
@@ -758,6 +703,8 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                             builder:
                                 (VibrationController vibrationController) =>
                                     Card(
+                              color: Colors.transparent,
+                              shadowColor: Colors.transparent,
                               child: SizedBox(
                                 width: 410,
                                 child: ElevatedButton.icon(
@@ -767,21 +714,14 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                     controller.shareQrCode(image!);
                                     vibrationController.vibration();
                                   },
-                                  icon: const Icon(
-                                    Icons.share,
-                                    size: 30,
+                                  icon: iconController(
+                                    context,
+                                    icon: Icons.share,
                                   ),
-                                  label: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 20,
-                                    ),
-                                    child: Text(
-                                      AppLocalizations.of(context)!
-                                          .share_qr_code,
-                                      style: const TextStyle(
-                                        fontSize: 26,
-                                      ),
-                                    ),
+                                  label: labelController(
+                                    context,
+                                    label: AppLocalizations.of(context)!
+                                        .share_qr_code,
                                   ),
                                 ),
                               ),
@@ -792,6 +732,8 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                           init: VibrationController(),
                           builder: (VibrationController vibrationController) =>
                               Card(
+                            color: Colors.transparent,
+                            shadowColor: Colors.transparent,
                             child: SizedBox(
                               width: 410,
                               child: ElevatedButton.icon(
@@ -810,9 +752,10 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                       content: Text(
                                         AppLocalizations.of(context)!
                                             .delete_qr_code_message,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .displayMedium,
+                                        style: const TextStyle(
+                                          fontSize: 20,
+                                          color: Colors.white,
+                                        ),
                                       ),
                                       actions: [
                                         TextButton(
@@ -849,21 +792,14 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                   );
                                   vibrationController.vibration();
                                 },
-                                icon: const Icon(
-                                  Icons.delete,
-                                  size: 30,
+                                icon: iconController(
+                                  context,
+                                  icon: Icons.delete,
                                 ),
-                                label: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: 20,
-                                  ),
-                                  child: Text(
-                                    AppLocalizations.of(context)!
-                                        .delete_qr_code,
-                                    style: const TextStyle(
-                                      fontSize: 26,
-                                    ),
-                                  ),
+                                label: labelController(
+                                  context,
+                                  label: AppLocalizations.of(context)!
+                                      .delete_qr_code,
                                 ),
                               ),
                             ),

@@ -3,8 +3,10 @@ import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:qr_maker_app/controller/labels_controller.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:qr_maker_app/controller/icons_controller.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
 
 class ScanningQRByCamera extends StatefulWidget {
@@ -44,11 +46,11 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
             appBar: AppBar(
               title: Text(
                 AppLocalizations.of(context)!.scanner,
-                style: TextStyle(fontSize: (isScreenWidth(context)) ? 20 : 28),
+                style: TextStyle(fontSize: (isScreenWidth(context)) ? 18 : 24),
               ),
               iconTheme: IconThemeData(
-                size: (isScreenWidth(context)) ? 24 : 30,
-                color: Colors.white,
+                size: (isScreenWidth(context)) ? 22 : 26,
+                color: Theme.of(context).iconTheme.color,
               ),
               actions: [
                 IconButton(
@@ -115,27 +117,23 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
                         }
                       },
                       icon: result != null
-                          ? Icon(
-                              Icons.arrow_back,
-                              size: (isScreenWidth(context)) ? 24 : 30,
+                          ? iconController(
+                              context,
+                              icon: Icons.arrow_back,
                             )
-                          : Icon(
-                              Icons.search,
-                              size: (isScreenWidth(context)) ? 24 : 30,
+                          : iconController(
+                              context,
+                              icon: Icons.search,
                             ),
-                      label: Padding(
-                        padding: (isScreenWidth(context))
-                            ? const EdgeInsets.symmetric(vertical: 18)
-                            : const EdgeInsets.symmetric(vertical: 20),
-                        child: Text(
-                          result != null
-                              ? AppLocalizations.of(context)!.go_to_link
-                              : AppLocalizations.of(context)!.scan_qr_code,
-                          style: TextStyle(
-                              fontSize: (isScreenWidth(context)) ? 18 : 25),
-                          maxLines: 1,
-                        ),
-                      ),
+                      label: result != null
+                          ? labelController(
+                              context,
+                              label: AppLocalizations.of(context)!.go_to_link,
+                            )
+                          : labelController(
+                              context,
+                              label: AppLocalizations.of(context)!.scan_qr_code,
+                            ),
                     ),
                   ),
                 ),
@@ -146,11 +144,11 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
             appBar: AppBar(
               title: Text(
                 AppLocalizations.of(context)!.scanner,
-                style: const TextStyle(fontSize: 28),
+                style: const TextStyle(fontSize: 24),
               ),
-              iconTheme: const IconThemeData(
-                size: 30,
-                color: Colors.white,
+              iconTheme: IconThemeData(
+                size: 26,
+                color: Theme.of(context).iconTheme.color,
               ),
               actions: [
                 IconButton(
@@ -217,24 +215,23 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
                         }
                       },
                       icon: result != null
-                          ? const Icon(
-                              Icons.arrow_back,
-                              size: 30,
+                          ? iconController(
+                              context,
+                              icon: Icons.arrow_back,
                             )
-                          : const Icon(
-                              Icons.search,
-                              size: 30,
+                          : iconController(
+                              context,
+                              icon: Icons.search,
                             ),
-                      label: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 20),
-                        child: Text(
-                          result != null
-                              ? AppLocalizations.of(context)!.go_to_link
-                              : AppLocalizations.of(context)!.scan_qr_code,
-                          style: const TextStyle(fontSize: 25),
-                          maxLines: 1,
-                        ),
-                      ),
+                      label: result != null
+                          ? labelController(
+                              context,
+                              label: AppLocalizations.of(context)!.go_to_link,
+                            )
+                          : labelController(
+                              context,
+                              label: AppLocalizations.of(context)!.scan_qr_code,
+                            ),
                     ),
                   ),
                 ),

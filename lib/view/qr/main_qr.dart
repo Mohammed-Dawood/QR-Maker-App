@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:rate_my_app/rate_my_app.dart';
 import 'package:url_launcher/url_launcher.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/view/qr/scan/main_qr_scan.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/view/qr/maker/main_qr_make.dart';
+import 'package:qr_maker_app/controller/icons_controller.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/controller/language_controller.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
@@ -127,12 +128,12 @@ class _MainQrState extends State<MainQr> {
                   title: Text(
                     title[selectScreen],
                     style: TextStyle(
-                      fontSize: (isScreenWidth(context)) ? 20 : 28,
+                      fontSize: (isScreenWidth(context)) ? 18 : 24,
                     ),
                   ),
                   iconTheme: IconThemeData(
-                    size: (isScreenWidth(context)) ? 24 : 30,
-                    color: Colors.white,
+                    size: (isScreenWidth(context)) ? 24 : 28,
+                    color: Theme.of(context).iconTheme.color,
                   ),
                 ),
                 drawer: Drawer(
@@ -184,11 +185,9 @@ class _MainQrState extends State<MainQr> {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      Icon(
-                                        Icons.settings,
-                                        size: isScreenWidth(context) ? 24 : 30,
-                                        color:
-                                            Theme.of(context).iconTheme.color,
+                                      iconController(
+                                        context,
+                                        icon: Icons.settings,
                                       ),
                                       const SizedBox(width: 10),
                                       Text(
@@ -231,9 +230,10 @@ class _MainQrState extends State<MainQr> {
                                           Text(
                                             AppLocalizations.of(context)!.flag,
                                             style: TextStyle(
-                                                fontSize: isScreenWidth(context)
-                                                    ? 24
-                                                    : 30),
+                                              fontSize: isScreenWidth(context)
+                                                  ? 22
+                                                  : 26,
+                                            ),
                                           ),
                                           const SizedBox(width: 10),
                                           Text(
@@ -251,20 +251,16 @@ class _MainQrState extends State<MainQr> {
                                       ),
                                       Padding(
                                         padding:
-                                            const EdgeInsets.only(right: 10),
+                                            const EdgeInsets.only(right: 15),
                                         child: languageController
                                                 .dropDownButtonLanguage
-                                            ? Icon(
-                                                Icons.close,
-                                                size: isScreenWidth(context)
-                                                    ? 24
-                                                    : 30,
+                                            ? iconController(
+                                                context,
+                                                icon: Icons.close,
                                               )
-                                            : Icon(
-                                                Icons.keyboard_arrow_down,
-                                                size: isScreenWidth(context)
-                                                    ? 30
-                                                    : 35,
+                                            : iconController(
+                                                context,
+                                                icon: Icons.keyboard_arrow_down,
                                               ),
                                       ),
                                     ],
@@ -305,10 +301,11 @@ class _MainQrState extends State<MainQr> {
                                               Text(
                                                 '🇮🇶',
                                                 style: TextStyle(
-                                                    fontSize:
-                                                        isScreenWidth(context)
-                                                            ? 24
-                                                            : 30),
+                                                  fontSize:
+                                                      isScreenWidth(context)
+                                                          ? 22
+                                                          : 26,
+                                                ),
                                               ),
                                               const SizedBox(width: 10),
                                               Text(
@@ -358,10 +355,11 @@ class _MainQrState extends State<MainQr> {
                                               Text(
                                                 '🇺🇸',
                                                 style: TextStyle(
-                                                    fontSize:
-                                                        isScreenWidth(context)
-                                                            ? 24
-                                                            : 30),
+                                                  fontSize:
+                                                      isScreenWidth(context)
+                                                          ? 22
+                                                          : 26,
+                                                ),
                                               ),
                                               const SizedBox(width: 10),
                                               Text(
@@ -411,17 +409,12 @@ class _MainQrState extends State<MainQr> {
                                               Text(
                                                 '🇫🇷',
                                                 style: TextStyle(
-                                                    fontSize:
-                                                        isScreenWidth(context)
-                                                            ? 24
-                                                            : 30),
+                                                  fontSize:
+                                                      isScreenWidth(context)
+                                                          ? 22
+                                                          : 26,
+                                                ),
                                               ),
-                                              // Icon(
-                                              //   Icons.translate,
-                                              //   size: isScreenWidth(context)
-                                              //       ? 24
-                                              //       : 30,
-                                              // ),
                                               const SizedBox(width: 10),
                                               Text(
                                                 "Français",
@@ -470,10 +463,11 @@ class _MainQrState extends State<MainQr> {
                                               Text(
                                                 '🇸🇪',
                                                 style: TextStyle(
-                                                    fontSize:
-                                                        isScreenWidth(context)
-                                                            ? 24
-                                                            : 30),
+                                                  fontSize:
+                                                      isScreenWidth(context)
+                                                          ? 22
+                                                          : 26,
+                                                ),
                                               ),
                                               const SizedBox(width: 10),
                                               Text(
@@ -514,15 +508,13 @@ class _MainQrState extends State<MainQr> {
                                     children: [
                                       Row(
                                         children: [
-                                          Icon(
-                                            themeController.initValue
-                                                ? Icons.dark_mode
-                                                : Icons.light_mode,
-                                            size: isScreenWidth(context)
-                                                ? 24
-                                                : 30,
-                                            color: Colors.white,
-                                          ),
+                                          themeController.initValue
+                                              ? iconController(context,
+                                                  icon: Icons.dark_mode)
+                                              : iconController(
+                                                  context,
+                                                  icon: Icons.light_mode,
+                                                ),
                                           const SizedBox(width: 10),
                                           Text(
                                             AppLocalizations.of(context)!.theme,
@@ -570,15 +562,15 @@ class _MainQrState extends State<MainQr> {
                                       children: [
                                         Row(
                                           children: [
-                                            Icon(
-                                              vibrationController.initValue
-                                                  ? Icons.notifications_active
-                                                  : Icons.notifications_off,
-                                              size: isScreenWidth(context)
-                                                  ? 24
-                                                  : 30,
-                                              color: Colors.white,
-                                            ),
+                                            vibrationController.initValue
+                                                ? iconController(context,
+                                                    icon: Icons
+                                                        .notifications_active)
+                                                : iconController(
+                                                    context,
+                                                    icon:
+                                                        Icons.notifications_off,
+                                                  ),
                                             const SizedBox(width: 10),
                                             Text(
                                               AppLocalizations.of(context)!
@@ -620,9 +612,9 @@ class _MainQrState extends State<MainQr> {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      Icon(
-                                        Icons.email,
-                                        size: isScreenWidth(context) ? 24 : 30,
+                                      iconController(
+                                        context,
+                                        icon: Icons.email,
                                       ),
                                       const SizedBox(width: 10),
                                       Text(
@@ -748,24 +740,16 @@ class _MainQrState extends State<MainQr> {
                   },
                   items: [
                     BottomNavigationBarItem(
-                      icon: Icon(
-                        Icons.qr_code_scanner,
-                        size: (isScreenWidth(context)) ? 24 : 30,
-                      ),
+                      icon:
+                          iconController(context, icon: Icons.qr_code_scanner),
                       label: AppLocalizations.of(context)!.scan,
                     ),
                     BottomNavigationBarItem(
-                      icon: Icon(
-                        Icons.qr_code,
-                        size: (isScreenWidth(context)) ? 24 : 30,
-                      ),
+                      icon: iconController(context, icon: Icons.qr_code),
                       label: AppLocalizations.of(context)!.make,
                     ),
                     BottomNavigationBarItem(
-                      icon: Icon(
-                        Icons.favorite,
-                        size: (isScreenWidth(context)) ? 24 : 30,
-                      ),
+                      icon: iconController(context, icon: Icons.favorite),
                       label: AppLocalizations.of(context)!.favorite,
                     ),
                   ],
@@ -791,12 +775,12 @@ class _MainQrState extends State<MainQr> {
                   title: Text(
                     title[selectScreen],
                     style: const TextStyle(
-                      fontSize: 28,
+                      fontSize: 24,
                     ),
                   ),
-                  iconTheme: const IconThemeData(
-                    size: 30,
-                    color: Colors.white,
+                  iconTheme: IconThemeData(
+                    size: 28,
+                    color: Theme.of(context).iconTheme.color,
                   ),
                 ),
                 drawer: Drawer(
@@ -848,11 +832,9 @@ class _MainQrState extends State<MainQr> {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      Icon(
-                                        Icons.settings,
-                                        size: 30,
-                                        color:
-                                            Theme.of(context).iconTheme.color,
+                                      iconController(
+                                        context,
+                                        icon: Icons.settings,
                                       ),
                                       const SizedBox(width: 10),
                                       Text(
@@ -890,8 +872,9 @@ class _MainQrState extends State<MainQr> {
                                         children: [
                                           Text(
                                             AppLocalizations.of(context)!.flag,
-                                            style:
-                                                const TextStyle(fontSize: 30),
+                                            style: const TextStyle(
+                                              fontSize: 26,
+                                            ),
                                           ),
                                           const SizedBox(width: 10),
                                           Text(
@@ -908,13 +891,13 @@ class _MainQrState extends State<MainQr> {
                                             const EdgeInsets.only(right: 10),
                                         child: languageController
                                                 .dropDownButtonLanguage
-                                            ? const Icon(
-                                                Icons.close,
-                                                size: 30,
+                                            ? iconController(
+                                                context,
+                                                icon: Icons.close,
                                               )
-                                            : const Icon(
-                                                Icons.keyboard_arrow_down,
-                                                size: 35,
+                                            : iconController(
+                                                context,
+                                                icon: Icons.keyboard_arrow_down,
                                               ),
                                       ),
                                     ],
@@ -953,7 +936,9 @@ class _MainQrState extends State<MainQr> {
                                             children: [
                                               const Text(
                                                 '🇮🇶',
-                                                style: TextStyle(fontSize: 30),
+                                                style: TextStyle(
+                                                  fontSize: 26,
+                                                ),
                                               ),
                                               const SizedBox(width: 10),
                                               Text(
@@ -997,7 +982,9 @@ class _MainQrState extends State<MainQr> {
                                             children: [
                                               const Text(
                                                 '🇺🇸',
-                                                style: TextStyle(fontSize: 30),
+                                                style: TextStyle(
+                                                  fontSize: 26,
+                                                ),
                                               ),
                                               const SizedBox(width: 10),
                                               Text(
@@ -1041,7 +1028,9 @@ class _MainQrState extends State<MainQr> {
                                             children: [
                                               const Text(
                                                 '🇫🇷',
-                                                style: TextStyle(fontSize: 30),
+                                                style: TextStyle(
+                                                  fontSize: 26,
+                                                ),
                                               ),
                                               const SizedBox(width: 10),
                                               Text(
@@ -1085,7 +1074,9 @@ class _MainQrState extends State<MainQr> {
                                             children: [
                                               const Text(
                                                 '🇸🇪',
-                                                style: TextStyle(fontSize: 30),
+                                                style: TextStyle(
+                                                  fontSize: 26,
+                                                ),
                                               ),
                                               const SizedBox(width: 10),
                                               Text(
@@ -1121,13 +1112,15 @@ class _MainQrState extends State<MainQr> {
                                     children: [
                                       Row(
                                         children: [
-                                          Icon(
-                                            themeController.initValue
-                                                ? Icons.dark_mode
-                                                : Icons.light_mode,
-                                            size: 30,
-                                            color: Colors.white,
-                                          ),
+                                          themeController.initValue
+                                              ? iconController(
+                                                  context,
+                                                  icon: Icons.dark_mode,
+                                                )
+                                              : iconController(
+                                                  context,
+                                                  icon: Icons.light_mode,
+                                                ),
                                           const SizedBox(width: 10),
                                           Text(
                                             AppLocalizations.of(context)!.theme,
@@ -1171,13 +1164,17 @@ class _MainQrState extends State<MainQr> {
                                       children: [
                                         Row(
                                           children: [
-                                            Icon(
-                                              vibrationController.initValue
-                                                  ? Icons.notifications_active
-                                                  : Icons.notifications_off,
-                                              size: 30,
-                                              color: Colors.white,
-                                            ),
+                                            vibrationController.initValue
+                                                ? iconController(
+                                                    context,
+                                                    icon: Icons
+                                                        .notifications_active,
+                                                  )
+                                                : iconController(
+                                                    context,
+                                                    icon:
+                                                        Icons.notifications_off,
+                                                  ),
                                             const SizedBox(width: 10),
                                             Text(
                                               AppLocalizations.of(context)!
@@ -1215,9 +1212,9 @@ class _MainQrState extends State<MainQr> {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      const Icon(
-                                        Icons.email,
-                                        size: 30,
+                                      iconController(
+                                        context,
+                                        icon: Icons.email,
                                       ),
                                       const SizedBox(width: 10),
                                       Text(
@@ -1337,24 +1334,16 @@ class _MainQrState extends State<MainQr> {
                   },
                   items: [
                     BottomNavigationBarItem(
-                      icon: const Icon(
-                        Icons.qr_code_scanner,
-                        size: 30,
-                      ),
+                      icon:
+                          iconController(context, icon: Icons.qr_code_scanner),
                       label: AppLocalizations.of(context)!.scan,
                     ),
                     BottomNavigationBarItem(
-                      icon: const Icon(
-                        Icons.qr_code,
-                        size: 30,
-                      ),
+                      icon: iconController(context, icon: Icons.qr_code),
                       label: AppLocalizations.of(context)!.make,
                     ),
                     BottomNavigationBarItem(
-                      icon: const Icon(
-                        Icons.favorite,
-                        size: 30,
-                      ),
+                      icon: iconController(context, icon: Icons.favorite),
                       label: AppLocalizations.of(context)!.favorite,
                     ),
                   ],

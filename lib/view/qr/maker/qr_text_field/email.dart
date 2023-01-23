@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:validators/validators.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:qr_maker_app/controller/icons_controller.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
+import 'package:qr_maker_app/controller/app_bar_controller.dart';
+import 'package:qr_maker_app/controller/labels_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
 
 class MakeEmail extends StatefulWidget {
@@ -49,16 +52,9 @@ class _MakeEmailState extends State<MakeEmail> {
               ),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
-                appBar: AppBar(
-                  title: Text(
-                    AppLocalizations.of(context)!.email,
-                    style:
-                        TextStyle(fontSize: (isScreenWidth(context)) ? 20 : 28),
-                  ),
-                  iconTheme: IconThemeData(
-                    size: (isScreenWidth(context)) ? 24 : 30,
-                    color: Colors.white,
-                  ),
+                appBar: appBarController(
+                  context,
+                  title: AppLocalizations.of(context)!.email,
                 ),
                 body: Center(
                   child: SingleChildScrollView(
@@ -92,10 +88,9 @@ class _MakeEmailState extends State<MakeEmail> {
                                     : Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: AppLocalizations.of(context)!.email,
-                                  prefixIcon: Icon(
-                                    Icons.email,
-                                    color: Theme.of(context).primaryColor,
-                                    size: (isScreenWidth(context)) ? 24 : 30,
+                                  prefixIcon: prefixIconController(
+                                    context,
+                                    icon: Icons.email,
                                   ),
                                   suffixIcon: emailController.text.isEmpty
                                       ? Container(
@@ -104,13 +99,9 @@ class _MakeEmailState extends State<MakeEmail> {
                                       : IconButton(
                                           onPressed: () =>
                                               emailController.clear(),
-                                          icon: Icon(
-                                            Icons.close,
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                            size: (isScreenWidth(context))
-                                                ? 24
-                                                : 30,
+                                          icon: suffixIconController(
+                                            context,
+                                            icon: Icons.close,
                                           ),
                                         ),
                                 ),
@@ -129,10 +120,9 @@ class _MakeEmailState extends State<MakeEmail> {
                                 decoration: InputDecoration(
                                   hintText:
                                       AppLocalizations.of(context)!.subject,
-                                  prefixIcon: Icon(
-                                    Icons.subject,
-                                    color: Theme.of(context).primaryColor,
-                                    size: (isScreenWidth(context)) ? 24 : 30,
+                                  prefixIcon: prefixIconController(
+                                    context,
+                                    icon: Icons.subject,
                                   ),
                                   suffixIcon: subjectController.text.isEmpty
                                       ? Container(
@@ -141,13 +131,9 @@ class _MakeEmailState extends State<MakeEmail> {
                                       : IconButton(
                                           onPressed: () =>
                                               subjectController.clear(),
-                                          icon: Icon(
-                                            Icons.close,
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                            size: (isScreenWidth(context))
-                                                ? 24
-                                                : 30,
+                                          icon: suffixIconController(
+                                            context,
+                                            icon: Icons.close,
                                           ),
                                         ),
                                 ),
@@ -168,10 +154,9 @@ class _MakeEmailState extends State<MakeEmail> {
                                 decoration: InputDecoration(
                                   hintText: AppLocalizations.of(context)!
                                       .message_hint_text,
-                                  prefixIcon: Icon(
-                                    Icons.message,
-                                    color: Theme.of(context).primaryColor,
-                                    size: (isScreenWidth(context)) ? 24 : 30,
+                                  prefixIcon: prefixIconController(
+                                    context,
+                                    icon: Icons.message,
                                   ),
                                   suffixIcon: messageController.text.isEmpty
                                       ? Container(
@@ -180,19 +165,17 @@ class _MakeEmailState extends State<MakeEmail> {
                                       : IconButton(
                                           onPressed: () =>
                                               messageController.clear(),
-                                          icon: Icon(
-                                            Icons.close,
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                            size: (isScreenWidth(context))
-                                                ? 24
-                                                : 30,
+                                          icon: suffixIconController(
+                                            context,
+                                            icon: Icons.close,
                                           ),
                                         ),
                                 ),
                               ),
                             ),
                             Card(
+                              color: Colors.transparent,
+                              shadowColor: Colors.transparent,
                               child: SizedBox(
                                 width: double.infinity,
                                 child: ElevatedButton.icon(
@@ -213,25 +196,11 @@ class _MakeEmailState extends State<MakeEmail> {
                                       );
                                     }
                                   },
-                                  icon: Icon(
-                                    Icons.touch_app,
-                                    size: (isScreenWidth(context)) ? 24 : 30,
+                                  icon: iconController(
+                                    context,
+                                    icon: Icons.touch_app,
                                   ),
-                                  label: Padding(
-                                    padding: (isScreenWidth(context))
-                                        ? const EdgeInsets.symmetric(
-                                            vertical: 18)
-                                        : const EdgeInsets.symmetric(
-                                            vertical: 20),
-                                    child: Text(
-                                      AppLocalizations.of(context)!
-                                          .create_qr_code,
-                                      style: TextStyle(
-                                          fontSize: (isScreenWidth(context))
-                                              ? 18
-                                              : 26),
-                                    ),
-                                  ),
+                                  label: labelCreateQRCodeController(context),
                                 ),
                               ),
                             ),
@@ -258,15 +227,9 @@ class _MakeEmailState extends State<MakeEmail> {
               ),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
-                appBar: AppBar(
-                  title: Text(
-                    AppLocalizations.of(context)!.email,
-                    style: const TextStyle(fontSize: 28),
-                  ),
-                  iconTheme: const IconThemeData(
-                    size: 30,
-                    color: Colors.white,
-                  ),
+                appBar: appBarController(
+                  context,
+                  title: AppLocalizations.of(context)!.email,
                 ),
                 body: Center(
                   child: SingleChildScrollView(
@@ -296,10 +259,9 @@ class _MakeEmailState extends State<MakeEmail> {
                                 style: Theme.of(context).textTheme.titleMedium,
                                 decoration: InputDecoration(
                                   hintText: AppLocalizations.of(context)!.email,
-                                  prefixIcon: Icon(
-                                    Icons.email,
-                                    color: Theme.of(context).primaryColor,
-                                    size: 30,
+                                  prefixIcon: prefixIconController(
+                                    context,
+                                    icon: Icons.email,
                                   ),
                                   suffixIcon: emailController.text.isEmpty
                                       ? Container(
@@ -308,11 +270,9 @@ class _MakeEmailState extends State<MakeEmail> {
                                       : IconButton(
                                           onPressed: () =>
                                               emailController.clear(),
-                                          icon: Icon(
-                                            Icons.close,
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                            size: 30,
+                                          icon: suffixIconController(
+                                            context,
+                                            icon: Icons.close,
                                           ),
                                         ),
                                 ),
@@ -329,10 +289,9 @@ class _MakeEmailState extends State<MakeEmail> {
                                 decoration: InputDecoration(
                                   hintText:
                                       AppLocalizations.of(context)!.subject,
-                                  prefixIcon: Icon(
-                                    Icons.subject,
-                                    color: Theme.of(context).primaryColor,
-                                    size: 30,
+                                  prefixIcon: prefixIconController(
+                                    context,
+                                    icon: Icons.subject,
                                   ),
                                   suffixIcon: subjectController.text.isEmpty
                                       ? Container(
@@ -341,11 +300,9 @@ class _MakeEmailState extends State<MakeEmail> {
                                       : IconButton(
                                           onPressed: () =>
                                               subjectController.clear(),
-                                          icon: Icon(
-                                            Icons.close,
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                            size: 30,
+                                          icon: suffixIconController(
+                                            context,
+                                            icon: Icons.close,
                                           ),
                                         ),
                                 ),
@@ -364,10 +321,9 @@ class _MakeEmailState extends State<MakeEmail> {
                                 decoration: InputDecoration(
                                   hintText: AppLocalizations.of(context)!
                                       .message_hint_text,
-                                  prefixIcon: Icon(
-                                    Icons.message,
-                                    color: Theme.of(context).primaryColor,
-                                    size: 30,
+                                  prefixIcon: prefixIconController(
+                                    context,
+                                    icon: Icons.message,
                                   ),
                                   suffixIcon: messageController.text.isEmpty
                                       ? Container(
@@ -376,17 +332,17 @@ class _MakeEmailState extends State<MakeEmail> {
                                       : IconButton(
                                           onPressed: () =>
                                               messageController.clear(),
-                                          icon: Icon(
-                                            Icons.close,
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                            size: 30,
+                                          icon: suffixIconController(
+                                            context,
+                                            icon: Icons.close,
                                           ),
                                         ),
                                 ),
                               ),
                             ),
                             Card(
+                              color: Colors.transparent,
+                              shadowColor: Colors.transparent,
                               child: SizedBox(
                                 width: double.infinity,
                                 child: ElevatedButton.icon(
@@ -407,21 +363,11 @@ class _MakeEmailState extends State<MakeEmail> {
                                       );
                                     }
                                   },
-                                  icon: const Icon(
-                                    Icons.touch_app,
-                                    size: 30,
+                                  icon: iconController(
+                                    context,
+                                    icon: Icons.touch_app,
                                   ),
-                                  label: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 20),
-                                    child: Text(
-                                      AppLocalizations.of(context)!
-                                          .create_qr_code,
-                                      style: const TextStyle(
-                                        fontSize: 26,
-                                      ),
-                                    ),
-                                  ),
+                                  label: labelCreateQRCodeController(context),
                                 ),
                               ),
                             ),

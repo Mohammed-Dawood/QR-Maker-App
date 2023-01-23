@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:validators/validators.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:qr_maker_app/controller/icons_controller.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
+import 'package:qr_maker_app/controller/app_bar_controller.dart';
+import 'package:qr_maker_app/controller/labels_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
 
 class MakeDate extends StatefulWidget {
@@ -57,16 +60,9 @@ class _MakeDateState extends State<MakeDate> {
               ),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
-                appBar: AppBar(
-                  title: Text(
-                    AppLocalizations.of(context)!.event,
-                    style:
-                        TextStyle(fontSize: (isScreenWidth(context)) ? 20 : 28),
-                  ),
-                  iconTheme: IconThemeData(
-                    size: (isScreenWidth(context)) ? 24 : 30,
-                    color: Colors.white,
-                  ),
+                appBar: appBarController(
+                  context,
+                  title: AppLocalizations.of(context)!.event,
                 ),
                 body: Center(
                   child: SingleChildScrollView(
@@ -113,13 +109,9 @@ class _MakeDateState extends State<MakeDate> {
                                       : IconButton(
                                           onPressed: () =>
                                               eventTitleController.clear(),
-                                          icon: Icon(
-                                            Icons.close,
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                            size: (isScreenWidth(context))
-                                                ? 24
-                                                : 30,
+                                          icon: suffixIconController(
+                                            context,
+                                            icon: Icons.close,
                                           ),
                                         ),
                                 ),
@@ -160,13 +152,9 @@ class _MakeDateState extends State<MakeDate> {
                                       : IconButton(
                                           onPressed: () =>
                                               eventAddressController.clear(),
-                                          icon: Icon(
-                                            Icons.close,
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                            size: (isScreenWidth(context))
-                                                ? 24
-                                                : 30,
+                                          icon: suffixIconController(
+                                            context,
+                                            icon: Icons.close,
                                           ),
                                         ),
                                 ),
@@ -410,6 +398,8 @@ class _MakeDateState extends State<MakeDate> {
                               ),
                             ),
                             Card(
+                              color: Colors.transparent,
+                              shadowColor: Colors.transparent,
                               child: SizedBox(
                                 width: double.infinity,
                                 child: ElevatedButton.icon(
@@ -437,25 +427,11 @@ class _MakeDateState extends State<MakeDate> {
                                       );
                                     }
                                   },
-                                  icon: Icon(
-                                    Icons.touch_app,
-                                    size: (isScreenWidth(context)) ? 24 : 30,
+                                  icon: iconController(
+                                    context,
+                                    icon: Icons.touch_app,
                                   ),
-                                  label: Padding(
-                                    padding: (isScreenWidth(context))
-                                        ? const EdgeInsets.symmetric(
-                                            vertical: 18)
-                                        : const EdgeInsets.symmetric(
-                                            vertical: 20),
-                                    child: Text(
-                                      AppLocalizations.of(context)!
-                                          .create_qr_code,
-                                      style: TextStyle(
-                                          fontSize: (isScreenWidth(context))
-                                              ? 18
-                                              : 26),
-                                    ),
-                                  ),
+                                  label: labelCreateQRCodeController(context),
                                 ),
                               ),
                             ),
@@ -482,15 +458,9 @@ class _MakeDateState extends State<MakeDate> {
               ),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
-                appBar: AppBar(
-                  title: Text(
-                    AppLocalizations.of(context)!.event,
-                    style: const TextStyle(fontSize: 28),
-                  ),
-                  iconTheme: const IconThemeData(
-                    size: 30,
-                    color: Colors.white,
-                  ),
+                appBar: appBarController(
+                  context,
+                  title: AppLocalizations.of(context)!.event,
                 ),
                 body: Center(
                   child: SingleChildScrollView(
@@ -521,10 +491,9 @@ class _MakeDateState extends State<MakeDate> {
                                 decoration: InputDecoration(
                                   hintText:
                                       AppLocalizations.of(context)!.event_name,
-                                  prefixIcon: Icon(
-                                    Icons.event_note,
-                                    color: Theme.of(context).primaryColor,
-                                    size: 30,
+                                  prefixIcon: prefixIconController(
+                                    context,
+                                    icon: Icons.event_note,
                                   ),
                                   suffixIcon: eventTitleController.text.isEmpty
                                       ? Container(
@@ -533,11 +502,9 @@ class _MakeDateState extends State<MakeDate> {
                                       : IconButton(
                                           onPressed: () =>
                                               eventTitleController.clear(),
-                                          icon: Icon(
-                                            Icons.close,
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                            size: 30,
+                                          icon: suffixIconController(
+                                            context,
+                                            icon: Icons.close,
                                           ),
                                         ),
                                 ),
@@ -563,10 +530,9 @@ class _MakeDateState extends State<MakeDate> {
                                 decoration: InputDecoration(
                                   hintText: AppLocalizations.of(context)!
                                       .event_address,
-                                  prefixIcon: Icon(
-                                    Icons.location_on,
-                                    color: Theme.of(context).primaryColor,
-                                    size: 30,
+                                  prefixIcon: prefixIconController(
+                                    context,
+                                    icon: Icons.location_on,
                                   ),
                                   suffixIcon: eventAddressController
                                           .text.isEmpty
@@ -576,11 +542,9 @@ class _MakeDateState extends State<MakeDate> {
                                       : IconButton(
                                           onPressed: () =>
                                               eventAddressController.clear(),
-                                          icon: Icon(
-                                            Icons.close,
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                            size: 30,
+                                          icon: suffixIconController(
+                                            context,
+                                            icon: Icons.close,
                                           ),
                                         ),
                                 ),
@@ -640,10 +604,9 @@ class _MakeDateState extends State<MakeDate> {
                                 decoration: InputDecoration(
                                   hintText: AppLocalizations.of(context)!
                                       .event_date_start,
-                                  prefixIcon: Icon(
-                                    Icons.event_available,
-                                    color: Theme.of(context).primaryColor,
-                                    size: 30,
+                                  prefixIcon: prefixIconController(
+                                    context,
+                                    icon: Icons.event_available,
                                   ),
                                 ),
                               ),
@@ -694,10 +657,9 @@ class _MakeDateState extends State<MakeDate> {
                                 decoration: InputDecoration(
                                   hintText: AppLocalizations.of(context)!
                                       .event_time_start,
-                                  prefixIcon: Icon(
-                                    Icons.access_time_outlined,
-                                    color: Theme.of(context).primaryColor,
-                                    size: 30,
+                                  prefixIcon: prefixIconController(
+                                    context,
+                                    icon: Icons.access_time_outlined,
                                   ),
                                 ),
                               ),
@@ -754,10 +716,9 @@ class _MakeDateState extends State<MakeDate> {
                                 decoration: InputDecoration(
                                   hintText: AppLocalizations.of(context)!
                                       .event_date_end,
-                                  prefixIcon: Icon(
-                                    Icons.event_available,
-                                    color: Theme.of(context).primaryColor,
-                                    size: 30,
+                                  prefixIcon: prefixIconController(
+                                    context,
+                                    icon: Icons.event_available,
                                   ),
                                 ),
                               ),
@@ -807,15 +768,16 @@ class _MakeDateState extends State<MakeDate> {
                                 decoration: InputDecoration(
                                   hintText: AppLocalizations.of(context)!
                                       .event_time_end,
-                                  prefixIcon: Icon(
-                                    Icons.access_time_outlined,
-                                    color: Theme.of(context).primaryColor,
-                                    size: 30,
+                                  prefixIcon: prefixIconController(
+                                    context,
+                                    icon: Icons.access_time_outlined,
                                   ),
                                 ),
                               ),
                             ),
                             Card(
+                              color: Colors.transparent,
+                              shadowColor: Colors.transparent,
                               child: SizedBox(
                                 width: double.infinity,
                                 child: ElevatedButton.icon(
@@ -843,21 +805,11 @@ class _MakeDateState extends State<MakeDate> {
                                       );
                                     }
                                   },
-                                  icon: const Icon(
-                                    Icons.touch_app,
-                                    size: 30,
+                                  icon: iconController(
+                                    context,
+                                    icon: Icons.touch_app,
                                   ),
-                                  label: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 20),
-                                    child: Text(
-                                      AppLocalizations.of(context)!
-                                          .create_qr_code,
-                                      style: const TextStyle(
-                                        fontSize: 26,
-                                      ),
-                                    ),
-                                  ),
+                                  label: labelCreateQRCodeController(context),
                                 ),
                               ),
                             ),

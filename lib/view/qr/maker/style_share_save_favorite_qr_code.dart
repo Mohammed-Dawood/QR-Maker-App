@@ -6,12 +6,15 @@ import 'package:qr_flutter/qr_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:qr_maker_app/controller/icons_controller.dart';
+import 'package:qr_maker_app/controller/labels_controller.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
+import 'package:qr_maker_app/controller/app_bar_controller.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
 import 'package:qr_maker_app/controller/save_qr_code_controller.dart';
 import 'package:qr_maker_app/controller/share_qr_code_controller.dart';
-import 'package:qr_maker_app/controller/animation_drop_down_controller.dart';
 import 'package:qr_maker_app/controller/favorite_qr_code_controller.dart';
+import 'package:qr_maker_app/controller/animation_drop_down_controller.dart';
 
 class StyleShareSaveFavoriteQrCode extends StatefulWidget {
   const StyleShareSaveFavoriteQrCode({
@@ -69,16 +72,9 @@ class _StyleShareSaveFavoriteQrCodeState
               ),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
-                appBar: AppBar(
-                  title: Text(
-                    AppLocalizations.of(context)!.edit_qr_style,
-                    style:
-                        TextStyle(fontSize: (isScreenWidth(context)) ? 20 : 28),
-                  ),
-                  iconTheme: IconThemeData(
-                    size: (isScreenWidth(context)) ? 24 : 30,
-                    color: Colors.white,
-                  ),
+                appBar: appBarController(
+                  context,
+                  title: AppLocalizations.of(context)!.edit_qr_style,
                 ),
                 body: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -168,6 +164,8 @@ class _StyleShareSaveFavoriteQrCodeState
                         child: Column(
                           children: [
                             Card(
+                              color: Colors.transparent,
+                              shadowColor: Colors.transparent,
                               child: SizedBox(
                                 width: isScreenWidth(context) ? 250 : 410,
                                 child: ElevatedButton.icon(
@@ -177,24 +175,14 @@ class _StyleShareSaveFavoriteQrCodeState
                                       editQrCode = !editQrCode;
                                     });
                                   },
-                                  icon: Icon(
-                                    Icons.edit,
-                                    size: (isScreenWidth(context)) ? 24 : 30,
+                                  icon: iconController(
+                                    context,
+                                    icon: Icons.edit,
                                   ),
-                                  label: Padding(
-                                    padding: (isScreenWidth(context))
-                                        ? const EdgeInsets.symmetric(
-                                            vertical: 18)
-                                        : const EdgeInsets.symmetric(
-                                            vertical: 20),
-                                    child: Text(
-                                      AppLocalizations.of(context)!
-                                          .edit_qr_code,
-                                      style: TextStyle(
-                                        fontSize:
-                                            (isScreenWidth(context)) ? 18 : 26,
-                                      ),
-                                    ),
+                                  label: labelController(
+                                    context,
+                                    label: AppLocalizations.of(context)!
+                                        .edit_qr_code,
                                   ),
                                 ),
                               ),
@@ -208,7 +196,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(
                                       horizontal: 20,
-                                      vertical: isScreenWidth(context) ? 5 : 10,
+                                      vertical: isScreenWidth(context) ? 3 : 8,
                                     ),
                                     child: Row(
                                       mainAxisAlignment:
@@ -252,7 +240,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(
                                       horizontal: 20,
-                                      vertical: isScreenWidth(context) ? 5 : 10,
+                                      vertical: isScreenWidth(context) ? 3 : 8,
                                     ),
                                     child: Row(
                                       mainAxisAlignment:
@@ -296,7 +284,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(
                                       horizontal: 20,
-                                      vertical: isScreenWidth(context) ? 5 : 10,
+                                      vertical: isScreenWidth(context) ? 3 : 8,
                                     ),
                                     child: Row(
                                       mainAxisAlignment:
@@ -340,7 +328,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(
                                       horizontal: 20,
-                                      vertical: isScreenWidth(context) ? 5 : 10,
+                                      vertical: isScreenWidth(context) ? 3 : 8,
                                     ),
                                     child: Row(
                                       mainAxisAlignment:
@@ -387,7 +375,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           padding: EdgeInsets.symmetric(
                                             horizontal: 20,
                                             vertical:
-                                                isScreenWidth(context) ? 5 : 10,
+                                                isScreenWidth(context) ? 3 : 8,
                                           ),
                                           child: Row(
                                             mainAxisAlignment:
@@ -451,7 +439,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           padding: EdgeInsets.symmetric(
                                             horizontal: 20,
                                             vertical:
-                                                isScreenWidth(context) ? 5 : 10,
+                                                isScreenWidth(context) ? 3 : 8,
                                           ),
                                           child: Row(
                                             mainAxisAlignment:
@@ -515,7 +503,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           padding: EdgeInsets.symmetric(
                                             horizontal: 20,
                                             vertical:
-                                                isScreenWidth(context) ? 5 : 10,
+                                                isScreenWidth(context) ? 3 : 8,
                                           ),
                                           child: Row(
                                             mainAxisAlignment:
@@ -568,7 +556,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                           padding: EdgeInsets.symmetric(
                                             horizontal: 20,
                                             vertical:
-                                                isScreenWidth(context) ? 5 : 10,
+                                                isScreenWidth(context) ? 3 : 8,
                                           ),
                                           child: Row(
                                             mainAxisAlignment:
@@ -622,7 +610,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(
                                       horizontal: 20,
-                                      vertical: isScreenWidth(context) ? 5 : 10,
+                                      vertical: isScreenWidth(context) ? 3 : 8,
                                     ),
                                     child: Row(
                                       mainAxisAlignment:
@@ -717,7 +705,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(
                                       horizontal: 20,
-                                      vertical: isScreenWidth(context) ? 5 : 10,
+                                      vertical: isScreenWidth(context) ? 3 : 8,
                                     ),
                                     child: Row(
                                       mainAxisAlignment:
@@ -812,7 +800,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(
                                       horizontal: 20,
-                                      vertical: isScreenWidth(context) ? 5 : 10,
+                                      vertical: isScreenWidth(context) ? 3 : 8,
                                     ),
                                     child: Row(
                                       mainAxisAlignment:
@@ -908,6 +896,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                 builder:
                                     (VibrationController vibrationController) =>
                                         Card(
+                                  color: Colors.transparent,
+                                  shadowColor: Colors.transparent,
                                   child: SizedBox(
                                     width: isScreenWidth(context) ? 250 : 410,
                                     child: ElevatedButton.icon(
@@ -918,26 +908,14 @@ class _StyleShareSaveFavoriteQrCodeState
                                             image!, context);
                                         vibrationController.vibration();
                                       },
-                                      icon: Icon(
-                                        Icons.save,
-                                        size:
-                                            (isScreenWidth(context)) ? 24 : 30,
+                                      icon: iconController(
+                                        context,
+                                        icon: Icons.save,
                                       ),
-                                      label: Padding(
-                                        padding: (isScreenWidth(context))
-                                            ? const EdgeInsets.symmetric(
-                                                vertical: 18)
-                                            : const EdgeInsets.symmetric(
-                                                vertical: 20),
-                                        child: Text(
-                                          AppLocalizations.of(context)!
-                                              .save_qr_code,
-                                          style: TextStyle(
-                                            fontSize: (isScreenWidth(context))
-                                                ? 18
-                                                : 26,
-                                          ),
-                                        ),
+                                      label: labelController(
+                                        context,
+                                        label: AppLocalizations.of(context)!
+                                            .save_qr_code,
                                       ),
                                     ),
                                   ),
@@ -952,6 +930,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                 builder:
                                     (VibrationController vibrationController) =>
                                         Card(
+                                  color: Colors.transparent,
+                                  shadowColor: Colors.transparent,
                                   child: SizedBox(
                                     width: isScreenWidth(context) ? 250 : 410,
                                     child: ElevatedButton.icon(
@@ -961,26 +941,14 @@ class _StyleShareSaveFavoriteQrCodeState
                                         controller.shareQrCode(image!);
                                         vibrationController.vibration();
                                       },
-                                      icon: Icon(
-                                        Icons.share,
-                                        size:
-                                            (isScreenWidth(context)) ? 24 : 30,
+                                      icon: iconController(
+                                        context,
+                                        icon: Icons.share,
                                       ),
-                                      label: Padding(
-                                        padding: (isScreenWidth(context))
-                                            ? const EdgeInsets.symmetric(
-                                                vertical: 18)
-                                            : const EdgeInsets.symmetric(
-                                                vertical: 20),
-                                        child: Text(
-                                          AppLocalizations.of(context)!
-                                              .share_qr_code,
-                                          style: TextStyle(
-                                            fontSize: (isScreenWidth(context))
-                                                ? 18
-                                                : 26,
-                                          ),
-                                        ),
+                                      label: labelController(
+                                        context,
+                                        label: AppLocalizations.of(context)!
+                                            .share_qr_code,
                                       ),
                                     ),
                                   ),
@@ -992,6 +960,8 @@ class _StyleShareSaveFavoriteQrCodeState
                               builder:
                                   (VibrationController vibrationController) =>
                                       Card(
+                                color: Colors.transparent,
+                                shadowColor: Colors.transparent,
                                 child: SizedBox(
                                   width: isScreenWidth(context) ? 250 : 410,
                                   child: ElevatedButton.icon(
@@ -1003,25 +973,12 @@ class _StyleShareSaveFavoriteQrCodeState
                                               image!, context);
                                       vibrationController.vibration();
                                     },
-                                    icon: Icon(
-                                      Icons.favorite,
-                                      size: (isScreenWidth(context)) ? 24 : 30,
-                                    ),
-                                    label: Padding(
-                                      padding: (isScreenWidth(context))
-                                          ? const EdgeInsets.symmetric(
-                                              vertical: 18)
-                                          : const EdgeInsets.symmetric(
-                                              vertical: 20),
-                                      child: Text(
-                                        AppLocalizations.of(context)!
-                                            .add_to_favorite,
-                                        style: TextStyle(
-                                          fontSize: (isScreenWidth(context))
-                                              ? 18
-                                              : 26,
-                                        ),
-                                      ),
+                                    icon: iconController(context,
+                                        icon: Icons.favorite),
+                                    label: labelController(
+                                      context,
+                                      label: AppLocalizations.of(context)!
+                                          .add_to_favorite,
                                     ),
                                   ),
                                 ),
@@ -1053,15 +1010,9 @@ class _StyleShareSaveFavoriteQrCodeState
               ),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
-                appBar: AppBar(
-                  title: Text(
-                    AppLocalizations.of(context)!.edit_qr_style,
-                    style: const TextStyle(fontSize: 28),
-                  ),
-                  iconTheme: const IconThemeData(
-                    size: 30,
-                    color: Colors.white,
-                  ),
+                appBar: appBarController(
+                  context,
+                  title: AppLocalizations.of(context)!.edit_qr_style,
                 ),
                 body: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -1145,6 +1096,8 @@ class _StyleShareSaveFavoriteQrCodeState
                         child: Column(
                           children: [
                             Card(
+                              color: Colors.transparent,
+                              shadowColor: Colors.transparent,
                               child: SizedBox(
                                 width: 410,
                                 child: ElevatedButton.icon(
@@ -1154,21 +1107,14 @@ class _StyleShareSaveFavoriteQrCodeState
                                       editQrCode = !editQrCode;
                                     });
                                   },
-                                  icon: const Icon(
-                                    Icons.edit,
-                                    size: 30,
+                                  icon: iconController(
+                                    context,
+                                    icon: Icons.edit,
                                   ),
-                                  label: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 20,
-                                    ),
-                                    child: Text(
-                                      AppLocalizations.of(context)!
-                                          .edit_qr_code,
-                                      style: const TextStyle(
-                                        fontSize: 26,
-                                      ),
-                                    ),
+                                  label: labelController(
+                                    context,
+                                    label: AppLocalizations.of(context)!
+                                        .edit_qr_code,
                                   ),
                                 ),
                               ),
@@ -1182,7 +1128,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 20,
-                                      vertical: 10,
+                                      vertical: 8,
                                     ),
                                     child: Row(
                                       mainAxisAlignment:
@@ -1222,7 +1168,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 20,
-                                      vertical: 10,
+                                      vertical: 8,
                                     ),
                                     child: Row(
                                       mainAxisAlignment:
@@ -1262,7 +1208,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 20,
-                                      vertical: 10,
+                                      vertical: 8,
                                     ),
                                     child: Row(
                                       mainAxisAlignment:
@@ -1302,7 +1248,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 20,
-                                      vertical: 10,
+                                      vertical: 8,
                                     ),
                                     child: Row(
                                       mainAxisAlignment:
@@ -1343,7 +1289,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                         child: Padding(
                                           padding: const EdgeInsets.symmetric(
                                             horizontal: 20,
-                                            vertical: 10,
+                                            vertical: 8,
                                           ),
                                           child: Row(
                                             mainAxisAlignment:
@@ -1399,7 +1345,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                         child: Padding(
                                           padding: const EdgeInsets.symmetric(
                                             horizontal: 20,
-                                            vertical: 10,
+                                            vertical: 8,
                                           ),
                                           child: Row(
                                             mainAxisAlignment:
@@ -1455,7 +1401,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                         child: Padding(
                                           padding: const EdgeInsets.symmetric(
                                             horizontal: 20,
-                                            vertical: 10,
+                                            vertical: 8,
                                           ),
                                           child: Row(
                                             mainAxisAlignment:
@@ -1502,7 +1448,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                         child: Padding(
                                           padding: const EdgeInsets.symmetric(
                                             horizontal: 20,
-                                            vertical: 10,
+                                            vertical: 8,
                                           ),
                                           child: Row(
                                             mainAxisAlignment:
@@ -1548,7 +1494,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 20,
-                                      vertical: 10,
+                                      vertical: 8,
                                     ),
                                     child: Row(
                                       mainAxisAlignment:
@@ -1629,7 +1575,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 20,
-                                      vertical: 10,
+                                      vertical: 8,
                                     ),
                                     child: Row(
                                       mainAxisAlignment:
@@ -1710,7 +1656,7 @@ class _StyleShareSaveFavoriteQrCodeState
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 20,
-                                      vertical: 10,
+                                      vertical: 8,
                                     ),
                                     child: Row(
                                       mainAxisAlignment:
@@ -1791,6 +1737,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                 builder:
                                     (VibrationController vibrationController) =>
                                         Card(
+                                  color: Colors.transparent,
+                                  shadowColor: Colors.transparent,
                                   child: SizedBox(
                                     width: 410,
                                     child: ElevatedButton.icon(
@@ -1800,21 +1748,14 @@ class _StyleShareSaveFavoriteQrCodeState
                                         controller.saveQrCode(image!, context);
                                         vibrationController.vibration();
                                       },
-                                      icon: const Icon(
-                                        Icons.save,
-                                        size: 30,
+                                      icon: iconController(
+                                        context,
+                                        icon: Icons.save,
                                       ),
-                                      label: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                          vertical: 20,
-                                        ),
-                                        child: Text(
-                                          AppLocalizations.of(context)!
-                                              .save_qr_code,
-                                          style: const TextStyle(
-                                            fontSize: 26,
-                                          ),
-                                        ),
+                                      label: labelController(
+                                        context,
+                                        label: AppLocalizations.of(context)!
+                                            .save_qr_code,
                                       ),
                                     ),
                                   ),
@@ -1829,6 +1770,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                 builder:
                                     (VibrationController vibrationController) =>
                                         Card(
+                                  color: Colors.transparent,
+                                  shadowColor: Colors.transparent,
                                   child: SizedBox(
                                     width: 410,
                                     child: ElevatedButton.icon(
@@ -1838,21 +1781,14 @@ class _StyleShareSaveFavoriteQrCodeState
                                         controller.shareQrCode(image!);
                                         vibrationController.vibration();
                                       },
-                                      icon: const Icon(
-                                        Icons.share,
-                                        size: 30,
+                                      icon: iconController(
+                                        context,
+                                        icon: Icons.share,
                                       ),
-                                      label: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                          vertical: 20,
-                                        ),
-                                        child: Text(
-                                          AppLocalizations.of(context)!
-                                              .share_qr_code,
-                                          style: const TextStyle(
-                                            fontSize: 26,
-                                          ),
-                                        ),
+                                      label: labelController(
+                                        context,
+                                        label: AppLocalizations.of(context)!
+                                            .share_qr_code,
                                       ),
                                     ),
                                   ),
@@ -1864,6 +1800,8 @@ class _StyleShareSaveFavoriteQrCodeState
                               builder:
                                   (VibrationController vibrationController) =>
                                       Card(
+                                color: Colors.transparent,
+                                shadowColor: Colors.transparent,
                                 child: SizedBox(
                                   width: 410,
                                   child: ElevatedButton.icon(
@@ -1875,21 +1813,12 @@ class _StyleShareSaveFavoriteQrCodeState
                                               image!, context);
                                       vibrationController.vibration();
                                     },
-                                    icon: const Icon(
-                                      Icons.favorite,
-                                      size: 30,
-                                    ),
-                                    label: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 20,
-                                      ),
-                                      child: Text(
-                                        AppLocalizations.of(context)!
-                                            .add_to_favorite,
-                                        style: const TextStyle(
-                                          fontSize: 26,
-                                        ),
-                                      ),
+                                    icon: iconController(context,
+                                        icon: Icons.favorite),
+                                    label: labelController(
+                                      context,
+                                      label: AppLocalizations.of(context)!
+                                          .add_to_favorite,
                                     ),
                                   ),
                                 ),

@@ -8,32 +8,32 @@ class LightTheme {
     iconTheme: const IconThemeData(color: Colors.white),
     textTheme: TextTheme(
       displaySmall: const TextStyle(
-        fontSize: 18,
+        fontSize: 16,
         color: Colors.white,
         fontWeight: FontWeight.bold,
       ),
       displayMedium: const TextStyle(
-        fontSize: 26,
+        fontSize: 22,
         color: Colors.white,
         fontWeight: FontWeight.bold,
       ),
       titleSmall: const TextStyle(
-        fontSize: 18,
+        fontSize: 16,
         color: Colors.black,
         fontWeight: FontWeight.bold,
       ),
       titleMedium: const TextStyle(
-        fontSize: 26,
+        fontSize: 22,
         color: Colors.black,
         fontWeight: FontWeight.bold,
       ),
       bodySmall: TextStyle(
-        fontSize: 18,
+        fontSize: 16,
         fontWeight: FontWeight.bold,
         color: Colors.blue.shade500,
       ),
       bodyMedium: TextStyle(
-        fontSize: 26,
+        fontSize: 22,
         fontWeight: FontWeight.bold,
         color: Colors.blue.shade500,
       ),
@@ -52,7 +52,7 @@ class LightTheme {
       unselectedItemColor: Colors.black45,
       backgroundColor: Colors.blue.shade500,
       selectedLabelStyle: const TextStyle(
-        fontSize: 18,
+        fontSize: 16,
         color: Colors.white,
         fontWeight: FontWeight.bold,
       ),

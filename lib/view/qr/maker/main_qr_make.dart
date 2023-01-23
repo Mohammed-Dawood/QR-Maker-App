@@ -49,6 +49,8 @@ class MainQrMake extends StatelessWidget {
                   child: GridView(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: (isScreenWidth(context)) ? 3 : 5,
+                      mainAxisSpacing: 5,
+                      crossAxisSpacing: 5,
                     ),
                     children: [
                       LinkToTextField(
@@ -137,6 +139,8 @@ class MainQrMake extends StatelessWidget {
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 7,
+                      mainAxisSpacing: 5,
+                      crossAxisSpacing: 5,
                     ),
                     children: [
                       LinkToTextField(

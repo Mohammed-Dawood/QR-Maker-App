@@ -8,32 +8,32 @@ class DarkTheme {
     iconTheme: const IconThemeData(color: Colors.white),
     textTheme: const TextTheme(
       displaySmall: TextStyle(
-        fontSize: 18,
+        fontSize: 16,
         color: Colors.white,
         fontWeight: FontWeight.bold,
       ),
       displayMedium: TextStyle(
-        fontSize: 26,
+        fontSize: 22,
         color: Colors.white,
         fontWeight: FontWeight.bold,
       ),
       titleSmall: TextStyle(
-        fontSize: 18,
+        fontSize: 16,
         color: Colors.black,
         fontWeight: FontWeight.bold,
       ),
       titleMedium: TextStyle(
-        fontSize: 26,
+        fontSize: 22,
         color: Colors.black,
         fontWeight: FontWeight.bold,
       ),
       bodySmall: TextStyle(
-        fontSize: 18,
+        fontSize: 16,
         color: Colors.white,
         fontWeight: FontWeight.bold,
       ),
       bodyMedium: TextStyle(
-        fontSize: 26,
+        fontSize: 22,
         color: Colors.white,
         fontWeight: FontWeight.bold,
       ),
@@ -52,7 +52,7 @@ class DarkTheme {
       unselectedItemColor: Colors.black45,
       backgroundColor: Colors.grey.shade800,
       selectedLabelStyle: const TextStyle(
-        fontSize: 18,
+        fontSize: 16,
         color: Colors.white,
         fontWeight: FontWeight.bold,
       ),

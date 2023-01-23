@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:qr_maker_app/controller/icons_controller.dart';
+import 'package:qr_maker_app/controller/labels_controller.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/view/qr/scan/scanning_qr_by_camera.dart';
 
@@ -31,27 +33,20 @@ class MainQrScan extends StatelessWidget {
                   child: Padding(
                     padding: (isScreenWidth(context))
                         ? const EdgeInsets.symmetric(horizontal: 100)
-                        : const EdgeInsets.symmetric(horizontal: 200),
+                        : const EdgeInsets.symmetric(horizontal: 300),
                     child: SizedBox(
                       width: double.infinity,
                       child: ElevatedButton.icon(
                         onPressed: () => Get.to(
                           () => const ScanningQRByCamera(),
                         ),
-                        icon: Icon(
-                          Icons.camera_alt,
-                          size: (isScreenWidth(context)) ? 24 : 30,
+                        icon: iconController(
+                          context,
+                          icon: Icons.camera_alt,
                         ),
-                        label: Padding(
-                          padding: (isScreenWidth(context))
-                              ? const EdgeInsets.symmetric(vertical: 18)
-                              : const EdgeInsets.symmetric(vertical: 20),
-                          child: Text(
-                            AppLocalizations.of(context)!.camera,
-                            style: TextStyle(
-                              fontSize: (isScreenWidth(context)) ? 18 : 26,
-                            ),
-                          ),
+                        label: labelController(
+                          context,
+                          label: AppLocalizations.of(context)!.camera,
                         ),
                       ),
                     ),
@@ -77,7 +72,7 @@ class MainQrScan extends StatelessWidget {
                 body: Center(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 300,
+                      horizontal: 400,
                     ),
                     child: SizedBox(
                       width: double.infinity,
@@ -85,18 +80,13 @@ class MainQrScan extends StatelessWidget {
                         onPressed: () => Get.to(
                           () => const ScanningQRByCamera(),
                         ),
-                        icon: const Icon(
-                          Icons.camera_alt,
-                          size: 30,
+                        icon: iconController(
+                          context,
+                          icon: Icons.camera_alt,
                         ),
-                        label: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 20),
-                          child: Text(
-                            AppLocalizations.of(context)!.camera,
-                            style: const TextStyle(
-                              fontSize: 26,
-                            ),
-                          ),
+                        label: labelController(
+                          context,
+                          label: AppLocalizations.of(context)!.camera,
                         ),
                       ),
                     ),

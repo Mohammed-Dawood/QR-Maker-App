@@ -5,8 +5,11 @@ import 'package:intl_phone_field/phone_number.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:qr_maker_app/controller/icons_controller.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
+import 'package:qr_maker_app/controller/app_bar_controller.dart';
 import 'package:qr_maker_app/controller/language_controller.dart';
+import 'package:qr_maker_app/controller/labels_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
 
 class MakePhone extends StatefulWidget {
@@ -50,16 +53,9 @@ class _MakePhoneState extends State<MakePhone> {
               ),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
-                appBar: AppBar(
-                  title: Text(
-                    AppLocalizations.of(context)!.telephone,
-                    style:
-                        TextStyle(fontSize: (isScreenWidth(context)) ? 20 : 28),
-                  ),
-                  iconTheme: IconThemeData(
-                    size: (isScreenWidth(context)) ? 24 : 30,
-                    color: Colors.white,
-                  ),
+                appBar: appBarController(
+                  context,
+                  title: AppLocalizations.of(context)!.telephone,
                 ),
                 body: Center(
                   child: SingleChildScrollView(
@@ -130,15 +126,13 @@ class _MakePhoneState extends State<MakePhone> {
                                       hintStyle: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize:
-                                            (isScreenWidth(context) ? 18 : 26),
+                                            (isScreenWidth(context) ? 14 : 20),
                                       ),
                                       isCollapsed: false,
                                       isDense: true,
-                                      suffixIcon: Icon(
-                                        Icons.search,
-                                        color: Theme.of(context).primaryColor,
-                                        size:
-                                            (isScreenWidth(context)) ? 24 : 30,
+                                      suffixIcon: suffixIconController(
+                                        context,
+                                        icon: Icons.search,
                                       ),
                                     ),
                                     width: isScreenWidth(context)
@@ -155,13 +149,9 @@ class _MakePhoneState extends State<MakePhone> {
                                         : IconButton(
                                             onPressed: () =>
                                                 phoneController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: (isScreenWidth(context))
-                                                  ? 24
-                                                  : 30,
+                                            icon: suffixIconController(
+                                              context,
+                                              icon: Icons.close,
                                             ),
                                           ),
                                   ),
@@ -172,6 +162,8 @@ class _MakePhoneState extends State<MakePhone> {
                               ),
                             ),
                             Card(
+                              color: Colors.transparent,
+                              shadowColor: Colors.transparent,
                               child: SizedBox(
                                 width: double.infinity,
                                 child: ElevatedButton.icon(
@@ -190,25 +182,11 @@ class _MakePhoneState extends State<MakePhone> {
                                       );
                                     }
                                   },
-                                  icon: Icon(
-                                    Icons.touch_app,
-                                    size: (isScreenWidth(context)) ? 24 : 30,
+                                  icon: iconController(
+                                    context,
+                                    icon: Icons.touch_app,
                                   ),
-                                  label: Padding(
-                                    padding: (isScreenWidth(context))
-                                        ? const EdgeInsets.symmetric(
-                                            vertical: 18)
-                                        : const EdgeInsets.symmetric(
-                                            vertical: 20),
-                                    child: Text(
-                                      AppLocalizations.of(context)!
-                                          .create_qr_code,
-                                      style: TextStyle(
-                                          fontSize: (isScreenWidth(context))
-                                              ? 18
-                                              : 26),
-                                    ),
-                                  ),
+                                  label: labelCreateQRCodeController(context),
                                 ),
                               ),
                             ),
@@ -235,15 +213,9 @@ class _MakePhoneState extends State<MakePhone> {
               ),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
-                appBar: AppBar(
-                  title: Text(
-                    AppLocalizations.of(context)!.telephone,
-                    style: const TextStyle(fontSize: 28),
-                  ),
-                  iconTheme: const IconThemeData(
-                    size: 30,
-                    color: Colors.white,
-                  ),
+                appBar: appBarController(
+                  context,
+                  title: AppLocalizations.of(context)!.telephone,
                 ),
                 body: Center(
                   child: SingleChildScrollView(
@@ -301,14 +273,13 @@ class _MakePhoneState extends State<MakePhone> {
                                           .search_country,
                                       hintStyle: const TextStyle(
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 26,
+                                        fontSize: 20,
                                       ),
                                       isCollapsed: false,
                                       isDense: true,
-                                      suffixIcon: Icon(
-                                        Icons.search,
-                                        color: Theme.of(context).primaryColor,
-                                        size: 30,
+                                      suffixIcon: suffixIconController(
+                                        context,
+                                        icon: Icons.search,
                                       ),
                                     ),
                                     width: 500,
@@ -323,11 +294,9 @@ class _MakePhoneState extends State<MakePhone> {
                                         : IconButton(
                                             onPressed: () =>
                                                 phoneController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: 30,
+                                            icon: suffixIconController(
+                                              context,
+                                              icon: Icons.close,
                                             ),
                                           ),
                                   ),
@@ -338,6 +307,8 @@ class _MakePhoneState extends State<MakePhone> {
                               ),
                             ),
                             Card(
+                              color: Colors.transparent,
+                              shadowColor: Colors.transparent,
                               child: SizedBox(
                                 width: double.infinity,
                                 child: ElevatedButton.icon(
@@ -356,21 +327,11 @@ class _MakePhoneState extends State<MakePhone> {
                                       );
                                     }
                                   },
-                                  icon: const Icon(
-                                    Icons.touch_app,
-                                    size: 30,
+                                  icon: iconController(
+                                    context,
+                                    icon: Icons.touch_app,
                                   ),
-                                  label: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 20),
-                                    child: Text(
-                                      AppLocalizations.of(context)!
-                                          .create_qr_code,
-                                      style: const TextStyle(
-                                        fontSize: 26,
-                                      ),
-                                    ),
-                                  ),
+                                  label: labelCreateQRCodeController(context),
                                 ),
                               ),
                             ),

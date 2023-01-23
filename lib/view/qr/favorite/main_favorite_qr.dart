@@ -46,6 +46,8 @@ class _MainFavoriteQrState extends State<MainFavoriteQr> {
                       itemCount: controller.favoriteQrCodeImageList.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: (isScreenWidth(context)) ? 3 : 5,
+                        mainAxisSpacing: 5,
+                        crossAxisSpacing: 5,
                       ),
                       itemBuilder: (BuildContext context, int index) {
                         return Card(
@@ -101,6 +103,8 @@ class _MainFavoriteQrState extends State<MainFavoriteQr> {
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 7,
+                        mainAxisSpacing: 5,
+                        crossAxisSpacing: 5,
                       ),
                       itemBuilder: (BuildContext context, int index) {
                         return Card(

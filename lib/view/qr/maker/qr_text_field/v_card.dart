@@ -6,10 +6,13 @@ import 'package:qr_flutter/qr_flutter.dart';
 import 'package:validators/validators.dart';
 import 'package:intl_phone_field/phone_number.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:intl_phone_field/country_picker_dialog.dart';
+import 'package:qr_maker_app/controller/icons_controller.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
+import 'package:qr_maker_app/controller/app_bar_controller.dart';
 import 'package:qr_maker_app/controller/language_controller.dart';
+import 'package:qr_maker_app/controller/labels_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
 
 class MakeVCard extends StatefulWidget {
@@ -80,16 +83,9 @@ class _MakeVCardState extends State<MakeVCard> {
               ),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
-                appBar: AppBar(
-                  title: Text(
-                    AppLocalizations.of(context)!.v_card,
-                    style:
-                        TextStyle(fontSize: (isScreenWidth(context)) ? 20 : 28),
-                  ),
-                  iconTheme: IconThemeData(
-                    size: (isScreenWidth(context)) ? 24 : 30,
-                    color: Colors.white,
-                  ),
+                appBar: appBarController(
+                  context,
+                  title: AppLocalizations.of(context)!.v_card,
                 ),
                 body: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
@@ -128,10 +124,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   decoration: InputDecoration(
                                     hintText:
                                         AppLocalizations.of(context)!.full_name,
-                                    prefixIcon: Icon(
-                                      Icons.person,
-                                      color: Theme.of(context).primaryColor,
-                                      size: (isScreenWidth(context)) ? 24 : 30,
+                                    prefixIcon: prefixIconController(
+                                      context,
+                                      icon: Icons.person,
                                     ),
                                     suffixIcon: nameController.text.isEmpty
                                         ? Container(
@@ -140,13 +135,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                         : IconButton(
                                             onPressed: () =>
                                                 nameController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: (isScreenWidth(context))
-                                                  ? 26
-                                                  : 30,
+                                            icon: suffixIconController(
+                                              context,
+                                              icon: Icons.close,
                                             ),
                                           ),
                                   ),
@@ -165,10 +156,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   decoration: InputDecoration(
                                     hintText:
                                         AppLocalizations.of(context)!.email,
-                                    prefixIcon: Icon(
-                                      Icons.email,
-                                      color: Theme.of(context).primaryColor,
-                                      size: (isScreenWidth(context)) ? 24 : 30,
+                                    prefixIcon: prefixIconController(
+                                      context,
+                                      icon: Icons.email,
                                     ),
                                     suffixIcon: emailController.text.isEmpty
                                         ? Container(
@@ -177,13 +167,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                         : IconButton(
                                             onPressed: () =>
                                                 emailController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: (isScreenWidth(context))
-                                                  ? 24
-                                                  : 30,
+                                            icon: suffixIconController(
+                                              context,
+                                              icon: Icons.close,
                                             ),
                                           ),
                                   ),
@@ -252,17 +238,14 @@ class _MakeVCardState extends State<MakeVCard> {
                                         hintStyle: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: (isScreenWidth(context)
-                                              ? 18
-                                              : 26),
+                                              ? 14
+                                              : 20),
                                         ),
                                         isCollapsed: false,
                                         isDense: true,
-                                        suffixIcon: Icon(
-                                          Icons.search,
-                                          color: Theme.of(context).primaryColor,
-                                          size: (isScreenWidth(context))
-                                              ? 24
-                                              : 30,
+                                        suffixIcon: suffixIconController(
+                                          context,
+                                          icon: Icons.search,
                                         ),
                                       ),
                                       width: isScreenWidth(context)
@@ -279,13 +262,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                           : IconButton(
                                               onPressed: () =>
                                                   mobileController.clear(),
-                                              icon: Icon(
-                                                Icons.close,
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                                size: (isScreenWidth(context))
-                                                    ? 24
-                                                    : 30,
+                                              icon: suffixIconController(
+                                                context,
+                                                icon: Icons.close,
                                               ),
                                             ),
                                     ),
@@ -359,17 +338,14 @@ class _MakeVCardState extends State<MakeVCard> {
                                         hintStyle: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: (isScreenWidth(context)
-                                              ? 18
-                                              : 26),
+                                              ? 14
+                                              : 20),
                                         ),
                                         isCollapsed: false,
                                         isDense: true,
-                                        suffixIcon: Icon(
-                                          Icons.search,
-                                          color: Theme.of(context).primaryColor,
-                                          size: (isScreenWidth(context))
-                                              ? 24
-                                              : 30,
+                                        suffixIcon: suffixIconController(
+                                          context,
+                                          icon: Icons.search,
                                         ),
                                       ),
                                       width: isScreenWidth(context)
@@ -386,13 +362,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                           : IconButton(
                                               onPressed: () =>
                                                   workController.clear(),
-                                              icon: Icon(
-                                                Icons.close,
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                                size: (isScreenWidth(context))
-                                                    ? 24
-                                                    : 30,
+                                              icon: suffixIconController(
+                                                context,
+                                                icon: Icons.close,
                                               ),
                                             ),
                                     ),
@@ -466,17 +438,14 @@ class _MakeVCardState extends State<MakeVCard> {
                                         hintStyle: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: (isScreenWidth(context)
-                                              ? 18
-                                              : 26),
+                                              ? 14
+                                              : 20),
                                         ),
                                         isCollapsed: false,
                                         isDense: true,
-                                        suffixIcon: Icon(
-                                          Icons.search,
-                                          color: Theme.of(context).primaryColor,
-                                          size: (isScreenWidth(context))
-                                              ? 24
-                                              : 30,
+                                        suffixIcon: suffixIconController(
+                                          context,
+                                          icon: Icons.search,
                                         ),
                                       ),
                                       width: isScreenWidth(context)
@@ -493,13 +462,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                           : IconButton(
                                               onPressed: () =>
                                                   homeController.clear(),
-                                              icon: Icon(
-                                                Icons.close,
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                                size: (isScreenWidth(context))
-                                                    ? 24
-                                                    : 30,
+                                              icon: suffixIconController(
+                                                context,
+                                                icon: Icons.close,
                                               ),
                                             ),
                                     ),
@@ -573,17 +538,14 @@ class _MakeVCardState extends State<MakeVCard> {
                                         hintStyle: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: (isScreenWidth(context)
-                                              ? 18
-                                              : 26),
+                                              ? 14
+                                              : 20),
                                         ),
                                         isCollapsed: false,
                                         isDense: true,
-                                        suffixIcon: Icon(
-                                          Icons.search,
-                                          color: Theme.of(context).primaryColor,
-                                          size: (isScreenWidth(context))
-                                              ? 24
-                                              : 30,
+                                        suffixIcon: suffixIconController(
+                                          context,
+                                          icon: Icons.search,
                                         ),
                                       ),
                                       width: isScreenWidth(context)
@@ -600,13 +562,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                           : IconButton(
                                               onPressed: () =>
                                                   faxController.clear(),
-                                              icon: Icon(
-                                                Icons.close,
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                                size: (isScreenWidth(context))
-                                                    ? 24
-                                                    : 30,
+                                              icon: suffixIconController(
+                                                context,
+                                                icon: Icons.close,
                                               ),
                                             ),
                                     ),
@@ -656,10 +614,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   decoration: InputDecoration(
                                     hintText: AppLocalizations.of(context)!
                                         .date_of_birth,
-                                    prefixIcon: Icon(
-                                      Icons.date_range,
-                                      color: Theme.of(context).primaryColor,
-                                      size: (isScreenWidth(context)) ? 24 : 30,
+                                    prefixIcon: prefixIconController(
+                                      context,
+                                      icon: Icons.date_range,
                                     ),
                                   ),
                                 ),
@@ -677,10 +634,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   decoration: InputDecoration(
                                     hintText: AppLocalizations.of(context)!
                                         .url_hint_text,
-                                    prefixIcon: Icon(
-                                      Icons.link,
-                                      color: Theme.of(context).primaryColor,
-                                      size: (isScreenWidth(context)) ? 24 : 30,
+                                    prefixIcon: prefixIconController(
+                                      context,
+                                      icon: Icons.link,
                                     ),
                                     suffixIcon: urlController.text.isEmpty
                                         ? Container(
@@ -689,13 +645,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                         : IconButton(
                                             onPressed: () =>
                                                 urlController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: (isScreenWidth(context))
-                                                  ? 24
-                                                  : 30,
+                                            icon: suffixIconController(
+                                              context,
+                                              icon: Icons.close,
                                             ),
                                           ),
                                   ),
@@ -714,10 +666,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   decoration: InputDecoration(
                                     hintText: AppLocalizations.of(context)!
                                         .street_address,
-                                    prefixIcon: Icon(
-                                      Icons.location_on,
-                                      color: Theme.of(context).primaryColor,
-                                      size: (isScreenWidth(context)) ? 24 : 30,
+                                    prefixIcon: prefixIconController(
+                                      context,
+                                      icon: Icons.location_on,
                                     ),
                                     suffixIcon: streetController.text.isEmpty
                                         ? Container(
@@ -726,13 +677,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                         : IconButton(
                                             onPressed: () =>
                                                 streetController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: (isScreenWidth(context))
-                                                  ? 24
-                                                  : 30,
+                                            icon: suffixIconController(
+                                              context,
+                                              icon: Icons.close,
                                             ),
                                           ),
                                   ),
@@ -751,10 +698,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   decoration: InputDecoration(
                                     hintText:
                                         AppLocalizations.of(context)!.zip_code,
-                                    prefixIcon: Icon(
-                                      Icons.location_on,
-                                      color: Theme.of(context).primaryColor,
-                                      size: (isScreenWidth(context)) ? 24 : 30,
+                                    prefixIcon: prefixIconController(
+                                      context,
+                                      icon: Icons.location_on,
                                     ),
                                     suffixIcon: zipController.text.isEmpty
                                         ? Container(
@@ -763,13 +709,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                         : IconButton(
                                             onPressed: () =>
                                                 zipController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: (isScreenWidth(context))
-                                                  ? 24
-                                                  : 30,
+                                            icon: suffixIconController(
+                                              context,
+                                              icon: Icons.close,
                                             ),
                                           ),
                                   ),
@@ -788,10 +730,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   decoration: InputDecoration(
                                     hintText:
                                         AppLocalizations.of(context)!.city,
-                                    prefixIcon: Icon(
-                                      Icons.location_on,
-                                      color: Theme.of(context).primaryColor,
-                                      size: (isScreenWidth(context)) ? 24 : 30,
+                                    prefixIcon: prefixIconController(
+                                      context,
+                                      icon: Icons.location_on,
                                     ),
                                     suffixIcon: cityController.text.isEmpty
                                         ? Container(
@@ -800,13 +741,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                         : IconButton(
                                             onPressed: () =>
                                                 cityController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: (isScreenWidth(context))
-                                                  ? 24
-                                                  : 30,
+                                            icon: suffixIconController(
+                                              context,
+                                              icon: Icons.close,
                                             ),
                                           ),
                                   ),
@@ -825,10 +762,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   decoration: InputDecoration(
                                     hintText:
                                         AppLocalizations.of(context)!.state,
-                                    prefixIcon: Icon(
-                                      Icons.location_on,
-                                      color: Theme.of(context).primaryColor,
-                                      size: (isScreenWidth(context)) ? 24 : 30,
+                                    prefixIcon: prefixIconController(
+                                      context,
+                                      icon: Icons.location_on,
                                     ),
                                     suffixIcon: stateController.text.isEmpty
                                         ? Container(
@@ -837,13 +773,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                         : IconButton(
                                             onPressed: () =>
                                                 stateController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: (isScreenWidth(context))
-                                                  ? 24
-                                                  : 30,
+                                            icon: suffixIconController(
+                                              context,
+                                              icon: Icons.close,
                                             ),
                                           ),
                                   ),
@@ -862,10 +794,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   decoration: InputDecoration(
                                     hintText:
                                         AppLocalizations.of(context)!.country,
-                                    prefixIcon: Icon(
-                                      Icons.location_on,
-                                      color: Theme.of(context).primaryColor,
-                                      size: (isScreenWidth(context)) ? 24 : 30,
+                                    prefixIcon: prefixIconController(
+                                      context,
+                                      icon: Icons.location_on,
                                     ),
                                     suffixIcon: countryController.text.isEmpty
                                         ? Container(
@@ -874,19 +805,17 @@ class _MakeVCardState extends State<MakeVCard> {
                                         : IconButton(
                                             onPressed: () =>
                                                 countryController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: (isScreenWidth(context))
-                                                  ? 24
-                                                  : 30,
+                                            icon: suffixIconController(
+                                              context,
+                                              icon: Icons.close,
                                             ),
                                           ),
                                   ),
                                 ),
                               ),
                               Card(
+                                color: Colors.transparent,
+                                shadowColor: Colors.transparent,
                                 child: SizedBox(
                                   width: double.infinity,
                                   child: ElevatedButton.icon(
@@ -920,25 +849,11 @@ class _MakeVCardState extends State<MakeVCard> {
                                         );
                                       }
                                     },
-                                    icon: Icon(
-                                      Icons.touch_app,
-                                      size: (isScreenWidth(context)) ? 24 : 30,
+                                    icon: iconController(
+                                      context,
+                                      icon: Icons.touch_app,
                                     ),
-                                    label: Padding(
-                                      padding: (isScreenWidth(context))
-                                          ? const EdgeInsets.symmetric(
-                                              vertical: 18)
-                                          : const EdgeInsets.symmetric(
-                                              vertical: 20),
-                                      child: Text(
-                                        AppLocalizations.of(context)!
-                                            .create_qr_code,
-                                        style: TextStyle(
-                                            fontSize: (isScreenWidth(context))
-                                                ? 18
-                                                : 26),
-                                      ),
-                                    ),
+                                    label: labelCreateQRCodeController(context),
                                   ),
                                 ),
                               ),
@@ -969,15 +884,9 @@ class _MakeVCardState extends State<MakeVCard> {
               ),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
-                appBar: AppBar(
-                  title: Text(
-                    AppLocalizations.of(context)!.v_card,
-                    style: const TextStyle(fontSize: 28),
-                  ),
-                  iconTheme: const IconThemeData(
-                    size: 30,
-                    color: Colors.white,
-                  ),
+                appBar: appBarController(
+                  context,
+                  title: AppLocalizations.of(context)!.v_card,
                 ),
                 body: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
@@ -1013,10 +922,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   decoration: InputDecoration(
                                     hintText:
                                         AppLocalizations.of(context)!.full_name,
-                                    prefixIcon: Icon(
-                                      Icons.person,
-                                      color: Theme.of(context).primaryColor,
-                                      size: 30,
+                                    prefixIcon: prefixIconController(
+                                      context,
+                                      icon: Icons.person,
                                     ),
                                     suffixIcon: nameController.text.isEmpty
                                         ? Container(
@@ -1025,11 +933,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                         : IconButton(
                                             onPressed: () =>
                                                 nameController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: 30,
+                                            icon: suffixIconController(
+                                              context,
+                                              icon: Icons.close,
                                             ),
                                           ),
                                   ),
@@ -1047,10 +953,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   decoration: InputDecoration(
                                     hintText:
                                         AppLocalizations.of(context)!.email,
-                                    prefixIcon: Icon(
-                                      Icons.email,
-                                      color: Theme.of(context).primaryColor,
-                                      size: 30,
+                                    prefixIcon: prefixIconController(
+                                      context,
+                                      icon: Icons.email,
                                     ),
                                     suffixIcon: emailController.text.isEmpty
                                         ? Container(
@@ -1059,11 +964,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                         : IconButton(
                                             onPressed: () =>
                                                 emailController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: 30,
+                                            icon: suffixIconController(
+                                              context,
+                                              icon: Icons.close,
                                             ),
                                           ),
                                   ),
@@ -1117,14 +1020,13 @@ class _MakeVCardState extends State<MakeVCard> {
                                             .search_country,
                                         hintStyle: const TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 26,
+                                          fontSize: 20,
                                         ),
                                         isCollapsed: false,
                                         isDense: true,
-                                        suffixIcon: Icon(
-                                          Icons.search,
-                                          color: Theme.of(context).primaryColor,
-                                          size: 30,
+                                        suffixIcon: suffixIconController(
+                                          context,
+                                          icon: Icons.search,
                                         ),
                                       ),
                                       width: 500,
@@ -1139,11 +1041,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                           : IconButton(
                                               onPressed: () =>
                                                   mobileController.clear(),
-                                              icon: Icon(
-                                                Icons.close,
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                                size: 30,
+                                              icon: suffixIconController(
+                                                context,
+                                                icon: Icons.close,
                                               ),
                                             ),
                                     ),
@@ -1202,14 +1102,13 @@ class _MakeVCardState extends State<MakeVCard> {
                                             .search_country,
                                         hintStyle: const TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 26,
+                                          fontSize: 20,
                                         ),
                                         isCollapsed: false,
                                         isDense: true,
-                                        suffixIcon: Icon(
-                                          Icons.search,
-                                          color: Theme.of(context).primaryColor,
-                                          size: 30,
+                                        suffixIcon: suffixIconController(
+                                          context,
+                                          icon: Icons.search,
                                         ),
                                       ),
                                       width: 500,
@@ -1224,11 +1123,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                           : IconButton(
                                               onPressed: () =>
                                                   workController.clear(),
-                                              icon: Icon(
-                                                Icons.close,
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                                size: 30,
+                                              icon: suffixIconController(
+                                                context,
+                                                icon: Icons.close,
                                               ),
                                             ),
                                     ),
@@ -1287,14 +1184,13 @@ class _MakeVCardState extends State<MakeVCard> {
                                             .search_country,
                                         hintStyle: const TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 26,
+                                          fontSize: 20,
                                         ),
                                         isCollapsed: false,
                                         isDense: true,
-                                        suffixIcon: Icon(
-                                          Icons.search,
-                                          color: Theme.of(context).primaryColor,
-                                          size: 30,
+                                        suffixIcon: suffixIconController(
+                                          context,
+                                          icon: Icons.search,
                                         ),
                                       ),
                                       width: 500,
@@ -1309,11 +1205,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                           : IconButton(
                                               onPressed: () =>
                                                   homeController.clear(),
-                                              icon: Icon(
-                                                Icons.close,
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                                size: 30,
+                                              icon: suffixIconController(
+                                                context,
+                                                icon: Icons.close,
                                               ),
                                             ),
                                     ),
@@ -1372,14 +1266,13 @@ class _MakeVCardState extends State<MakeVCard> {
                                             .search_country,
                                         hintStyle: const TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 26,
+                                          fontSize: 20,
                                         ),
                                         isCollapsed: false,
                                         isDense: true,
-                                        suffixIcon: Icon(
-                                          Icons.search,
-                                          color: Theme.of(context).primaryColor,
-                                          size: 30,
+                                        suffixIcon: suffixIconController(
+                                          context,
+                                          icon: Icons.search,
                                         ),
                                       ),
                                       width: 500,
@@ -1394,11 +1287,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                           : IconButton(
                                               onPressed: () =>
                                                   faxController.clear(),
-                                              icon: Icon(
-                                                Icons.close,
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                                size: 30,
+                                              icon: suffixIconController(
+                                                context,
+                                                icon: Icons.close,
                                               ),
                                             ),
                                     ),
@@ -1447,10 +1338,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   decoration: InputDecoration(
                                     hintText: AppLocalizations.of(context)!
                                         .date_of_birth,
-                                    prefixIcon: Icon(
-                                      Icons.date_range,
-                                      color: Theme.of(context).primaryColor,
-                                      size: 30,
+                                    prefixIcon: prefixIconController(
+                                      context,
+                                      icon: Icons.date_range,
                                     ),
                                   ),
                                 ),
@@ -1467,10 +1357,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   decoration: InputDecoration(
                                     hintText: AppLocalizations.of(context)!
                                         .url_hint_text,
-                                    prefixIcon: Icon(
-                                      Icons.link,
-                                      color: Theme.of(context).primaryColor,
-                                      size: 30,
+                                    prefixIcon: prefixIconController(
+                                      context,
+                                      icon: Icons.link,
                                     ),
                                     suffixIcon: urlController.text.isEmpty
                                         ? Container(
@@ -1479,11 +1368,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                         : IconButton(
                                             onPressed: () =>
                                                 urlController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: 30,
+                                            icon: suffixIconController(
+                                              context,
+                                              icon: Icons.close,
                                             ),
                                           ),
                                   ),
@@ -1501,10 +1388,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   decoration: InputDecoration(
                                     hintText: AppLocalizations.of(context)!
                                         .street_address,
-                                    prefixIcon: Icon(
-                                      Icons.location_on,
-                                      color: Theme.of(context).primaryColor,
-                                      size: 30,
+                                    prefixIcon: prefixIconController(
+                                      context,
+                                      icon: Icons.location_on,
                                     ),
                                     suffixIcon: streetController.text.isEmpty
                                         ? Container(
@@ -1513,11 +1399,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                         : IconButton(
                                             onPressed: () =>
                                                 streetController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: 30,
+                                            icon: suffixIconController(
+                                              context,
+                                              icon: Icons.close,
                                             ),
                                           ),
                                   ),
@@ -1535,10 +1419,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   decoration: InputDecoration(
                                     hintText:
                                         AppLocalizations.of(context)!.zip_code,
-                                    prefixIcon: Icon(
-                                      Icons.location_on,
-                                      color: Theme.of(context).primaryColor,
-                                      size: 30,
+                                    prefixIcon: prefixIconController(
+                                      context,
+                                      icon: Icons.location_on,
                                     ),
                                     suffixIcon: zipController.text.isEmpty
                                         ? Container(
@@ -1547,11 +1430,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                         : IconButton(
                                             onPressed: () =>
                                                 zipController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: 30,
+                                            icon: suffixIconController(
+                                              context,
+                                              icon: Icons.close,
                                             ),
                                           ),
                                   ),
@@ -1569,10 +1450,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   decoration: InputDecoration(
                                     hintText:
                                         AppLocalizations.of(context)!.city,
-                                    prefixIcon: Icon(
-                                      Icons.location_on,
-                                      color: Theme.of(context).primaryColor,
-                                      size: 30,
+                                    prefixIcon: prefixIconController(
+                                      context,
+                                      icon: Icons.location_on,
                                     ),
                                     suffixIcon: cityController.text.isEmpty
                                         ? Container(
@@ -1581,11 +1461,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                         : IconButton(
                                             onPressed: () =>
                                                 cityController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: 30,
+                                            icon: suffixIconController(
+                                              context,
+                                              icon: Icons.close,
                                             ),
                                           ),
                                   ),
@@ -1603,10 +1481,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   decoration: InputDecoration(
                                     hintText:
                                         AppLocalizations.of(context)!.state,
-                                    prefixIcon: Icon(
-                                      Icons.location_on,
-                                      color: Theme.of(context).primaryColor,
-                                      size: 30,
+                                    prefixIcon: prefixIconController(
+                                      context,
+                                      icon: Icons.location_on,
                                     ),
                                     suffixIcon: stateController.text.isEmpty
                                         ? Container(
@@ -1615,11 +1492,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                         : IconButton(
                                             onPressed: () =>
                                                 stateController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: 30,
+                                            icon: suffixIconController(
+                                              context,
+                                              icon: Icons.close,
                                             ),
                                           ),
                                   ),
@@ -1637,10 +1512,9 @@ class _MakeVCardState extends State<MakeVCard> {
                                   decoration: InputDecoration(
                                     hintText:
                                         AppLocalizations.of(context)!.country,
-                                    prefixIcon: Icon(
-                                      Icons.location_on,
-                                      color: Theme.of(context).primaryColor,
-                                      size: 30,
+                                    prefixIcon: prefixIconController(
+                                      context,
+                                      icon: Icons.location_on,
                                     ),
                                     suffixIcon: countryController.text.isEmpty
                                         ? Container(
@@ -1649,17 +1523,17 @@ class _MakeVCardState extends State<MakeVCard> {
                                         : IconButton(
                                             onPressed: () =>
                                                 countryController.clear(),
-                                            icon: Icon(
-                                              Icons.close,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              size: 30,
+                                            icon: suffixIconController(
+                                              context,
+                                              icon: Icons.close,
                                             ),
                                           ),
                                   ),
                                 ),
                               ),
                               Card(
+                                color: Colors.transparent,
+                                shadowColor: Colors.transparent,
                                 child: SizedBox(
                                   width: double.infinity,
                                   child: ElevatedButton.icon(
@@ -1693,21 +1567,11 @@ class _MakeVCardState extends State<MakeVCard> {
                                         );
                                       }
                                     },
-                                    icon: const Icon(
-                                      Icons.touch_app,
-                                      size: 30,
+                                    icon: iconController(
+                                      context,
+                                      icon: Icons.touch_app,
                                     ),
-                                    label: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 20),
-                                      child: Text(
-                                        AppLocalizations.of(context)!
-                                            .create_qr_code,
-                                        style: const TextStyle(
-                                          fontSize: 26,
-                                        ),
-                                      ),
-                                    ),
+                                    label: labelCreateQRCodeController(context),
                                   ),
                                 ),
                               ),
