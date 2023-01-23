@@ -82,12 +82,12 @@ class _MainQrState extends State<MainQr> {
             dialogStyle: DialogStyle(
               titleAlign: TextAlign.center,
               titleStyle: TextStyle(
-                fontSize: (MediaQuery.of(context).size.width < 600) ? 20 : 28,
+                fontSize: (MediaQuery.of(context).size.width < 600) ? 16 : 22,
               ),
               messageAlign: TextAlign.start,
               messageStyle: TextStyle(
                 color: Colors.white,
-                fontSize: (MediaQuery.of(context).size.width < 600) ? 18 : 26,
+                fontSize: (MediaQuery.of(context).size.width < 600) ? 14 : 20,
               ),
             ),
           );

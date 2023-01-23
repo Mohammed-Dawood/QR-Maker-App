@@ -41,7 +41,7 @@ class LightTheme {
     appBarTheme: AppBarTheme(
       centerTitle: true,
       color: Colors.blue.shade500,
-      elevation: 10,
+      elevation: 5,
       titleTextStyle: const TextStyle(
         color: Colors.white,
         fontWeight: FontWeight.bold,
@@ -61,7 +61,7 @@ class LightTheme {
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(Colors.blue.shade500),
         foregroundColor: MaterialStateProperty.all(Colors.white),
-        elevation: MaterialStateProperty.all(10),
+        elevation: MaterialStateProperty.all(5),
         textStyle: MaterialStateProperty.all(
           const TextStyle(
             fontWeight: FontWeight.bold,
@@ -70,11 +70,11 @@ class LightTheme {
       ),
     ),
     drawerTheme: DrawerThemeData(
-      elevation: 10,
+      elevation: 5,
       backgroundColor: Colors.blue.shade500,
     ),
     cardTheme: CardTheme(
-      elevation: 10,
+      elevation: 5,
       color: Colors.blue.shade500,
       margin: const EdgeInsets.all(10),
     ),

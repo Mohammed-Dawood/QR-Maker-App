@@ -128,7 +128,7 @@ class _MakeSMSState extends State<MakeSMS> {
                                       hintStyle: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize:
-                                            (isScreenWidth(context) ? 14 : 20),
+                                            (isScreenWidth(context) ? 16 : 22),
                                       ),
                                       isCollapsed: false,
                                       isDense: true,
@@ -310,7 +310,7 @@ class _MakeSMSState extends State<MakeSMS> {
                                           .search_country,
                                       hintStyle: const TextStyle(
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 20,
+                                        fontSize: 22,
                                       ),
                                       isCollapsed: false,
                                       isDense: true,

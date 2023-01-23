@@ -41,7 +41,7 @@ class DarkTheme {
     appBarTheme: AppBarTheme(
       centerTitle: true,
       color: Colors.grey.shade800,
-      elevation: 10,
+      elevation: 5,
       titleTextStyle: const TextStyle(
         color: Colors.white,
         fontWeight: FontWeight.bold,
@@ -61,7 +61,7 @@ class DarkTheme {
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(Colors.grey.shade800),
         foregroundColor: MaterialStateProperty.all(Colors.white),
-        elevation: MaterialStateProperty.all(10),
+        elevation: MaterialStateProperty.all(5),
         textStyle: MaterialStateProperty.all(
           const TextStyle(
             fontWeight: FontWeight.bold,
@@ -70,11 +70,11 @@ class DarkTheme {
       ),
     ),
     drawerTheme: DrawerThemeData(
-      elevation: 10,
+      elevation: 5,
       backgroundColor: Colors.grey.shade800,
     ),
     cardTheme: CardTheme(
-      elevation: 10,
+      elevation: 5,
       color: Colors.grey.shade800,
       margin: const EdgeInsets.all(10),
     ),
