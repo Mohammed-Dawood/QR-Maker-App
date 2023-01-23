@@ -21,4 +21,11 @@ class ThemeController extends GetxController {
     _saveThemeToBox(!_loadThemeFromBox());
     update();
   }
+
+  changeThemeState() {
+    bool value = initValue;
+    Get.changeThemeMode(value ? ThemeMode.light : ThemeMode.dark);
+    _saveThemeToBox(!_loadThemeFromBox());
+    update();
+  }
 }

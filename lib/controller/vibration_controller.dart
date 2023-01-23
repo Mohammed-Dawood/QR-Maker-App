@@ -11,11 +11,17 @@ class VibrationController extends GetxController {
   void switchVibration(value) {
     box.write('vibration', value);
     initValue ? HapticFeedback.vibrate() : null;
-
     update();
   }
 
   void vibration() {
     initValue ? HapticFeedback.vibrate() : null;
+  }
+
+  changeVibrationState() {
+    bool value = initValue;
+    value ? null : HapticFeedback.vibrate();
+    box.write('vibration', !value);
+    update();
   }
 }

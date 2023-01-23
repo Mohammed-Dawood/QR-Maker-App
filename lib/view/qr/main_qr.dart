@@ -501,7 +501,9 @@ class _MainQrState extends State<MainQr> {
                                       const EdgeInsets.symmetric(horizontal: 8),
                                     ),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    themeController.changeThemeState();
+                                  },
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -555,7 +557,10 @@ class _MainQrState extends State<MainQr> {
                                             horizontal: 8),
                                       ),
                                     ),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      vibrationController
+                                          .changeVibrationState();
+                                    },
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -1105,7 +1110,9 @@ class _MainQrState extends State<MainQr> {
                                       const EdgeInsets.symmetric(horizontal: 8),
                                     ),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    themeController.changeThemeState();
+                                  },
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -1157,7 +1164,10 @@ class _MainQrState extends State<MainQr> {
                                             horizontal: 8),
                                       ),
                                     ),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      vibrationController
+                                          .changeVibrationState();
+                                    },
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
