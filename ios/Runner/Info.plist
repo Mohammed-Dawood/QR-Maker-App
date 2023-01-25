@@ -76,5 +76,9 @@
 		<false/>
 		<key>io.flutter.embedded_views_preview</key>
 		<true/>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>This app needs access to location when create location QR.</string>
+		<key>NSLocationAlwaysUsageDescription</key>
+		<string>This app needs access to location when in the background.</string>
 	</dict>
 </plist>

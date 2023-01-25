@@ -7,6 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/controller/icons_controller.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/controller/labels_controller.dart';
+import 'package:qr_maker_app/controller/language_controller.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
 import 'package:qr_maker_app/controller/save_qr_code_controller.dart';
 import 'package:qr_maker_app/controller/share_qr_code_controller.dart';
@@ -26,6 +27,7 @@ class ShowFavoriteQrImage extends StatefulWidget {
 
 class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
   int? qrIndex;
+  LanguageController languageController = Get.find();
   ScreenshotController screenshotController = ScreenshotController();
   TextEditingController textEditingController = TextEditingController();
 
@@ -244,7 +246,11 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                       (FavoriteQrCodeController controller) =>
                                           Expanded(
                                     child: Directionality(
-                                      textDirection: TextDirection.rtl,
+                                      textDirection:
+                                          languageController.currentLanguage ==
+                                                  "ar"
+                                              ? TextDirection.ltr
+                                              : TextDirection.rtl,
                                       child: ElevatedButton.icon(
                                         onPressed: () {
                                           setState(() {
@@ -630,7 +636,11 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                       (FavoriteQrCodeController controller) =>
                                           Expanded(
                                     child: Directionality(
-                                      textDirection: TextDirection.rtl,
+                                      textDirection:
+                                          languageController.currentLanguage ==
+                                                  "ar"
+                                              ? TextDirection.ltr
+                                              : TextDirection.rtl,
                                       child: ElevatedButton.icon(
                                         onPressed: () {
                                           setState(() {

@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:validators/validators.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/controller/icons_controller.dart';
+import 'package:qr_maker_app/controller/labels_controller.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/controller/app_bar_controller.dart';
-import 'package:qr_maker_app/controller/labels_controller.dart';
+import 'package:qr_maker_app/controller/location_controller.dart';
+
 import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
 
 class MakeLocation extends StatefulWidget {
@@ -17,6 +19,8 @@ class MakeLocation extends StatefulWidget {
 
 class _MakeLocationState extends State<MakeLocation> {
   var valueQr = '';
+  late String latitude;
+  late String longitude;
 
   GlobalKey<FormState> validateKey = GlobalKey<FormState>();
   TextEditingController latitudeController = TextEditingController();
@@ -70,7 +74,6 @@ class _MakeLocationState extends State<MakeLocation> {
                                   if (isNull(value!)) {
                                     return AppLocalizations.of(context)!
                                         .please_enter_a_valid_latitude;
-                                    ;
                                   }
                                   return null;
                                 },
@@ -152,6 +155,34 @@ class _MakeLocationState extends State<MakeLocation> {
                                             icon: Icons.close,
                                           ),
                                         ),
+                                ),
+                              ),
+                            ),
+                            Card(
+                              color: Colors.transparent,
+                              shadowColor: Colors.transparent,
+                              child: SizedBox(
+                                width: double.infinity,
+                                child: ElevatedButton.icon(
+                                  onPressed: () {
+                                    getCurrentLocation().then((value) {
+                                      latitude = '${value.latitude}';
+                                      longitude = '${value.longitude}';
+                                      setState(() {
+                                        latitudeController.text = latitude;
+                                        longitudeController.text = longitude;
+                                      });
+                                    });
+                                  },
+                                  icon: iconController(
+                                    context,
+                                    icon: Icons.my_location,
+                                  ),
+                                  label: labelController(
+                                    context,
+                                    label: AppLocalizations.of(context)!
+                                        .current_location,
+                                  ),
                                 ),
                               ),
                             ),
@@ -307,6 +338,34 @@ class _MakeLocationState extends State<MakeLocation> {
                                             icon: Icons.close,
                                           ),
                                         ),
+                                ),
+                              ),
+                            ),
+                            Card(
+                              color: Colors.transparent,
+                              shadowColor: Colors.transparent,
+                              child: SizedBox(
+                                width: double.infinity,
+                                child: ElevatedButton.icon(
+                                  onPressed: () {
+                                    getCurrentLocation().then((value) {
+                                      latitude = '${value.latitude}';
+                                      longitude = '${value.longitude}';
+                                      setState(() {
+                                        latitudeController.text = latitude;
+                                        longitudeController.text = longitude;
+                                      });
+                                    });
+                                  },
+                                  icon: iconController(
+                                    context,
+                                    icon: Icons.my_location,
+                                  ),
+                                  label: labelController(
+                                    context,
+                                    label: AppLocalizations.of(context)!
+                                        .current_location,
+                                  ),
                                 ),
                               ),
                             ),
