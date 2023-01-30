@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/qr_text_field/url.dart';
+import 'package:qr_maker_app/controller/backround_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/qr_text_field/sms.dart';
 import 'package:qr_maker_app/view/qr/maker/qr_text_field/wifi.dart';
 import 'package:qr_maker_app/view/qr/maker/qr_text_field/date.dart';
@@ -30,14 +31,7 @@ class MainQrMake extends StatelessWidget {
             init: ThemeController(),
             builder: (ThemeController controller) => Container(
               alignment: Alignment.center,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: controller.initValue
-                      ? const AssetImage('images/background_dark.png')
-                      : const AssetImage('images/background_light.png'),
-                  fit: BoxFit.cover,
-                ),
-              ),
+              decoration: backgroundController(controller),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 body: Padding(
@@ -119,14 +113,7 @@ class MainQrMake extends StatelessWidget {
             init: ThemeController(),
             builder: (ThemeController controller) => Container(
               alignment: Alignment.center,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: controller.initValue
-                      ? const AssetImage('images/background_dark.png')
-                      : const AssetImage('images/background_light.png'),
-                  fit: BoxFit.cover,
-                ),
-              ),
+              decoration: backgroundController(controller),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 body: Padding(

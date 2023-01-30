@@ -8,6 +8,7 @@ import 'package:qr_maker_app/controller/icons_controller.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/controller/labels_controller.dart';
 import 'package:qr_maker_app/controller/language_controller.dart';
+import 'package:qr_maker_app/controller/backround_controller.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
 import 'package:qr_maker_app/controller/save_qr_code_controller.dart';
 import 'package:qr_maker_app/controller/share_qr_code_controller.dart';
@@ -43,14 +44,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
             init: ThemeController(),
             builder: (ThemeController controller) => Container(
               alignment: Alignment.center,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: controller.initValue
-                      ? const AssetImage('images/background_dark.png')
-                      : const AssetImage('images/background_light.png'),
-                  fit: BoxFit.cover,
-                ),
-              ),
+              decoration: backgroundController(controller),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
@@ -445,14 +439,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
             init: ThemeController(),
             builder: (ThemeController controller) => Container(
               alignment: Alignment.center,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: controller.initValue
-                      ? const AssetImage('images/background_dark.png')
-                      : const AssetImage('images/background_light.png'),
-                  fit: BoxFit.cover,
-                ),
-              ),
+              decoration: backgroundController(controller),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(

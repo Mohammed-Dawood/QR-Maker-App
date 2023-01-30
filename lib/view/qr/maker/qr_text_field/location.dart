@@ -7,7 +7,7 @@ import 'package:qr_maker_app/controller/labels_controller.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/controller/app_bar_controller.dart';
 import 'package:qr_maker_app/controller/location_controller.dart';
-
+import 'package:qr_maker_app/controller/backround_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
 
 class MakeLocation extends StatefulWidget {
@@ -43,14 +43,7 @@ class _MakeLocationState extends State<MakeLocation> {
             init: ThemeController(),
             builder: (ThemeController controller) => Container(
               alignment: Alignment.center,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: controller.initValue
-                      ? const AssetImage('images/background_dark.png')
-                      : const AssetImage('images/background_light.png'),
-                  fit: BoxFit.cover,
-                ),
-              ),
+              decoration: backgroundController(controller),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: appBarController(
@@ -231,14 +224,7 @@ class _MakeLocationState extends State<MakeLocation> {
             init: ThemeController(),
             builder: (ThemeController controller) => Container(
               alignment: Alignment.center,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: controller.initValue
-                      ? const AssetImage('images/background_dark.png')
-                      : const AssetImage('images/background_light.png'),
-                  fit: BoxFit.cover,
-                ),
-              ),
+              decoration: backgroundController(controller),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: appBarController(

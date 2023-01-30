@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:qr_maker_app/controller/backround_controller.dart';
 import 'package:validators/validators.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/controller/icons_controller.dart';
@@ -50,14 +51,7 @@ class _MakeDateState extends State<MakeDate> {
             init: ThemeController(),
             builder: (ThemeController controller) => Container(
               alignment: Alignment.center,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: controller.initValue
-                      ? const AssetImage('images/background_dark.png')
-                      : const AssetImage('images/background_light.png'),
-                  fit: BoxFit.cover,
-                ),
-              ),
+              decoration: backgroundController(controller),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: appBarController(
@@ -448,14 +442,7 @@ class _MakeDateState extends State<MakeDate> {
             init: ThemeController(),
             builder: (ThemeController controller) => Container(
               alignment: Alignment.center,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: controller.initValue
-                      ? const AssetImage('images/background_dark.png')
-                      : const AssetImage('images/background_light.png'),
-                  fit: BoxFit.cover,
-                ),
-              ),
+              decoration: backgroundController(controller),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: appBarController(

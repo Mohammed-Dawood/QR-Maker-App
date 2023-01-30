@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:qr_maker_app/controller/backround_controller.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/controller/favorite_qr_code_controller.dart';
 import 'package:qr_maker_app/view/qr/favorite/show_favorite_qr_image.dart';
@@ -23,14 +24,7 @@ class _MainFavoriteQrState extends State<MainFavoriteQr> {
             init: ThemeController(),
             builder: (ThemeController controller) => Container(
               alignment: Alignment.center,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: controller.initValue
-                      ? const AssetImage('images/background_dark.png')
-                      : const AssetImage('images/background_light.png'),
-                  fit: BoxFit.cover,
-                ),
-              ),
+              decoration: backgroundController(controller),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 body: Padding(
@@ -79,14 +73,7 @@ class _MainFavoriteQrState extends State<MainFavoriteQr> {
             init: ThemeController(),
             builder: (ThemeController controller) => Container(
               alignment: Alignment.center,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: controller.initValue
-                      ? const AssetImage('images/background_dark.png')
-                      : const AssetImage('images/background_light.png'),
-                  fit: BoxFit.cover,
-                ),
-              ),
+              decoration: backgroundController(controller),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 body: Padding(

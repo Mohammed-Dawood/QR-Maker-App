@@ -113,473 +113,191 @@ class _MainQrState extends State<MainQr> {
     return MediaQuery.of(context).orientation == Orientation.portrait
         ? GetBuilder<ThemeController>(
             init: ThemeController(),
-            builder: (ThemeController themeController) => Container(
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: themeController.initValue
-                      ? const AssetImage('images/background_dark.png')
-                      : const AssetImage('images/background_light.png'),
-                  fit: BoxFit.cover,
+            builder: (ThemeController themeController) => Scaffold(
+              appBar: AppBar(
+                title: Text(
+                  title[selectScreen],
+                  style: TextStyle(
+                    fontSize: (isScreenWidth(context)) ? 18 : 24,
+                  ),
+                ),
+                iconTheme: IconThemeData(
+                  size: (isScreenWidth(context)) ? 24 : 28,
+                  color: Theme.of(context).iconTheme.color,
                 ),
               ),
-              child: Scaffold(
-                appBar: AppBar(
-                  title: Text(
-                    title[selectScreen],
-                    style: TextStyle(
-                      fontSize: (isScreenWidth(context)) ? 18 : 24,
-                    ),
+              drawer: Drawer(
+                width: (isScreenWidth(context)) ? 300 : 400,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 20,
+                    horizontal: 10,
                   ),
-                  iconTheme: IconThemeData(
-                    size: (isScreenWidth(context)) ? 24 : 28,
-                    color: Theme.of(context).iconTheme.color,
-                  ),
-                ),
-                drawer: Drawer(
-                  width: (isScreenWidth(context)) ? 300 : 400,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 20,
-                      horizontal: 10,
-                    ),
-                    child: Column(
-                      children: [
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              // Card(
-                              //   child: SizedBox(
-                              //     width: double.infinity,
-                              //     height: 50,
-                              //     child: Center(
-                              //       child: Text(
-                              //         '${FirebaseAuth.instance.currentUser?.email}',
-                              //         overflow: TextOverflow.ellipsis,
-                              //         maxLines: 1,
-                              //         style: const TextStyle(
-                              //           color: Colors.white,
-                              //           fontSize: 18,
-                              //           fontWeight: FontWeight.bold,
-                              //         ),
-                              //       ),
-                              //     ),
-                              //   ),
-                              // ),
-                              const SizedBox(
-                                height: 50,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            // Card(
+                            //   child: SizedBox(
+                            //     width: double.infinity,
+                            //     height: 50,
+                            //     child: Center(
+                            //       child: Text(
+                            //         '${FirebaseAuth.instance.currentUser?.email}',
+                            //         overflow: TextOverflow.ellipsis,
+                            //         maxLines: 1,
+                            //         style: const TextStyle(
+                            //           color: Colors.white,
+                            //           fontSize: 18,
+                            //           fontWeight: FontWeight.bold,
+                            //         ),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+                            const SizedBox(
+                              height: 50,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: isScreenWidth(context) ? 0 : 5,
                               ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                  vertical: isScreenWidth(context) ? 0 : 5,
+                              child: TextButton(
+                                style: ButtonStyle(
+                                  padding:
+                                      MaterialStateProperty.all<EdgeInsets>(
+                                    const EdgeInsets.symmetric(horizontal: 8),
+                                  ),
                                 ),
-                                child: TextButton(
-                                  style: ButtonStyle(
-                                    padding:
-                                        MaterialStateProperty.all<EdgeInsets>(
-                                      const EdgeInsets.symmetric(horizontal: 8),
+                                onPressed: () {},
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    iconController(
+                                      context,
+                                      icon: Icons.settings,
                                     ),
-                                  ),
-                                  onPressed: () {},
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      iconController(
-                                        context,
-                                        icon: Icons.settings,
-                                      ),
-                                      const SizedBox(width: 10),
-                                      Text(
-                                        AppLocalizations.of(context)!.settings,
-                                        style: (isScreenWidth(context))
-                                            ? Theme.of(context)
-                                                .textTheme
-                                                .displaySmall
-                                            : Theme.of(context)
-                                                .textTheme
-                                                .displayMedium,
-                                      ),
-                                    ],
-                                  ),
+                                    const SizedBox(width: 10),
+                                    Text(
+                                      AppLocalizations.of(context)!.settings,
+                                      style: (isScreenWidth(context))
+                                          ? Theme.of(context)
+                                              .textTheme
+                                              .displaySmall
+                                          : Theme.of(context)
+                                              .textTheme
+                                              .displayMedium,
+                                    ),
+                                  ],
                                 ),
                               ),
-                              const Divider(
-                                thickness: 1,
-                                color: Colors.white54,
+                            ),
+                            const Divider(
+                              thickness: 1,
+                              color: Colors.white54,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: isScreenWidth(context) ? 0 : 5,
                               ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                  vertical: isScreenWidth(context) ? 0 : 5,
-                                ),
-                                child: TextButton(
-                                  style: ButtonStyle(
-                                    padding:
-                                        MaterialStateProperty.all<EdgeInsets>(
-                                      const EdgeInsets.symmetric(horizontal: 8),
-                                    ),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            AppLocalizations.of(context)!.flag,
-                                            style: TextStyle(
-                                              fontSize: isScreenWidth(context)
-                                                  ? 22
-                                                  : 26,
-                                            ),
-                                          ),
-                                          const SizedBox(width: 10),
-                                          Text(
-                                            AppLocalizations.of(context)!
-                                                .language,
-                                            style: (isScreenWidth(context))
-                                                ? Theme.of(context)
-                                                    .textTheme
-                                                    .displaySmall
-                                                : Theme.of(context)
-                                                    .textTheme
-                                                    .displayMedium,
-                                          ),
-                                        ],
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 15),
-                                        child: languageController
-                                                .dropDownButtonLanguage
-                                            ? iconController(
-                                                context,
-                                                icon: Icons.close,
-                                              )
-                                            : iconController(
-                                                context,
-                                                icon: Icons.keyboard_arrow_down,
-                                              ),
-                                      ),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    setState(() {
-                                      languageController
-                                          .toggleDropDownButtonLanguage();
-                                    });
-                                  },
-                                ),
-                              ),
-                              languageController.currentLanguage == "ar"
-                                  ? const SizedBox(
-                                      height: 0,
-                                    )
-                                  : AnimationDropDownController(
-                                      changeState: languageController
-                                          .dropDownButtonLanguage,
-                                      durationTime: 100,
-                                      firstChildeCard: Card(
-                                        margin: EdgeInsets.symmetric(
-                                          vertical:
-                                              isScreenWidth(context) ? 0 : 5,
-                                          horizontal: 8,
-                                        ),
-                                        elevation: 0,
-                                        color: Colors.transparent,
-                                        child: TextButton(
-                                          style: ButtonStyle(
-                                            padding: MaterialStateProperty.all<
-                                                EdgeInsets>(
-                                              const EdgeInsets.all(0),
-                                            ),
-                                          ),
-                                          child: Row(
-                                            children: [
-                                              Text(
-                                                '🇮🇶',
-                                                style: TextStyle(
-                                                  fontSize:
-                                                      isScreenWidth(context)
-                                                          ? 22
-                                                          : 26,
-                                                ),
-                                              ),
-                                              const SizedBox(width: 10),
-                                              Text(
-                                                "العربية",
-                                                style: (isScreenWidth(context))
-                                                    ? Theme.of(context)
-                                                        .textTheme
-                                                        .displaySmall
-                                                    : Theme.of(context)
-                                                        .textTheme
-                                                        .displayMedium,
-                                              ),
-                                            ],
-                                          ),
-                                          onPressed: () {
-                                            languageController
-                                                .changeLanguage("ar");
-                                          },
-                                        ),
-                                      ),
-                                    ),
-                              languageController.currentLanguage == "en"
-                                  ? const SizedBox(
-                                      height: 0,
-                                    )
-                                  : AnimationDropDownController(
-                                      changeState: languageController
-                                          .dropDownButtonLanguage,
-                                      durationTime: 200,
-                                      firstChildeCard: Card(
-                                        margin: EdgeInsets.symmetric(
-                                          vertical:
-                                              isScreenWidth(context) ? 0 : 5,
-                                          horizontal: 8,
-                                        ),
-                                        elevation: 0,
-                                        color: Colors.transparent,
-                                        child: TextButton(
-                                          style: ButtonStyle(
-                                            padding: MaterialStateProperty.all<
-                                                EdgeInsets>(
-                                              const EdgeInsets.all(0),
-                                            ),
-                                          ),
-                                          child: Row(
-                                            children: [
-                                              Text(
-                                                '🇺🇸',
-                                                style: TextStyle(
-                                                  fontSize:
-                                                      isScreenWidth(context)
-                                                          ? 22
-                                                          : 26,
-                                                ),
-                                              ),
-                                              const SizedBox(width: 10),
-                                              Text(
-                                                "English",
-                                                style: (isScreenWidth(context))
-                                                    ? Theme.of(context)
-                                                        .textTheme
-                                                        .displaySmall
-                                                    : Theme.of(context)
-                                                        .textTheme
-                                                        .displayMedium,
-                                              ),
-                                            ],
-                                          ),
-                                          onPressed: () {
-                                            languageController
-                                                .changeLanguage("en");
-                                          },
-                                        ),
-                                      ),
-                                    ),
-                              languageController.currentLanguage == "fr"
-                                  ? const SizedBox(
-                                      height: 0,
-                                    )
-                                  : AnimationDropDownController(
-                                      changeState: languageController
-                                          .dropDownButtonLanguage,
-                                      durationTime: 300,
-                                      firstChildeCard: Card(
-                                        margin: EdgeInsets.symmetric(
-                                          vertical:
-                                              isScreenWidth(context) ? 0 : 5,
-                                          horizontal: 8,
-                                        ),
-                                        elevation: 0,
-                                        color: Colors.transparent,
-                                        child: TextButton(
-                                          style: ButtonStyle(
-                                            padding: MaterialStateProperty.all<
-                                                EdgeInsets>(
-                                              const EdgeInsets.all(0),
-                                            ),
-                                          ),
-                                          child: Row(
-                                            children: [
-                                              Text(
-                                                '🇫🇷',
-                                                style: TextStyle(
-                                                  fontSize:
-                                                      isScreenWidth(context)
-                                                          ? 22
-                                                          : 26,
-                                                ),
-                                              ),
-                                              const SizedBox(width: 10),
-                                              Text(
-                                                "Français",
-                                                style: (isScreenWidth(context))
-                                                    ? Theme.of(context)
-                                                        .textTheme
-                                                        .displaySmall
-                                                    : Theme.of(context)
-                                                        .textTheme
-                                                        .displayMedium,
-                                              ),
-                                            ],
-                                          ),
-                                          onPressed: () {
-                                            languageController
-                                                .changeLanguage("fr");
-                                          },
-                                        ),
-                                      ),
-                                    ),
-                              languageController.currentLanguage == "sv"
-                                  ? const SizedBox(
-                                      height: 0,
-                                    )
-                                  : AnimationDropDownController(
-                                      changeState: languageController
-                                          .dropDownButtonLanguage,
-                                      durationTime: 400,
-                                      firstChildeCard: Card(
-                                        margin: EdgeInsets.symmetric(
-                                          vertical:
-                                              isScreenWidth(context) ? 0 : 5,
-                                          horizontal: 8,
-                                        ),
-                                        elevation: 0,
-                                        color: Colors.transparent,
-                                        child: TextButton(
-                                          style: ButtonStyle(
-                                            padding: MaterialStateProperty.all<
-                                                EdgeInsets>(
-                                              const EdgeInsets.all(0),
-                                            ),
-                                          ),
-                                          child: Row(
-                                            children: [
-                                              Text(
-                                                '🇸🇪',
-                                                style: TextStyle(
-                                                  fontSize:
-                                                      isScreenWidth(context)
-                                                          ? 22
-                                                          : 26,
-                                                ),
-                                              ),
-                                              const SizedBox(width: 10),
-                                              Text(
-                                                "Svenska",
-                                                style: (isScreenWidth(context))
-                                                    ? Theme.of(context)
-                                                        .textTheme
-                                                        .displaySmall
-                                                    : Theme.of(context)
-                                                        .textTheme
-                                                        .displayMedium,
-                                              ),
-                                            ],
-                                          ),
-                                          onPressed: () {
-                                            languageController
-                                                .changeLanguage("sv");
-                                          },
-                                        ),
-                                      ),
-                                    ),
-
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                  vertical: isScreenWidth(context) ? 0 : 5,
-                                ),
-                                child: TextButton(
-                                  style: ButtonStyle(
-                                    padding:
-                                        MaterialStateProperty.all<EdgeInsets>(
-                                      const EdgeInsets.symmetric(horizontal: 8),
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    themeController.changeThemeState();
-                                  },
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          themeController.initValue
-                                              ? iconController(context,
-                                                  icon: Icons.dark_mode)
-                                              : iconController(
-                                                  context,
-                                                  icon: Icons.light_mode,
-                                                ),
-                                          const SizedBox(width: 10),
-                                          Text(
-                                            AppLocalizations.of(context)!.theme,
-                                            style: (isScreenWidth(context))
-                                                ? Theme.of(context)
-                                                    .textTheme
-                                                    .displaySmall
-                                                : Theme.of(context)
-                                                    .textTheme
-                                                    .displayMedium,
-                                          ),
-                                        ],
-                                      ),
-                                      Switch(
-                                        value: themeController.initValue,
-                                        onChanged: themeController.switchTheme,
-                                        activeTrackColor: Colors.white54,
-                                        inactiveTrackColor:
-                                            Colors.grey.shade900,
-                                      ),
-                                    ],
+                              child: TextButton(
+                                style: ButtonStyle(
+                                  padding:
+                                      MaterialStateProperty.all<EdgeInsets>(
+                                    const EdgeInsets.symmetric(horizontal: 8),
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                  vertical: isScreenWidth(context) ? 0 : 5,
-                                ),
-                                child: GetBuilder<VibrationController>(
-                                  init: VibrationController(),
-                                  builder: (VibrationController
-                                          vibrationController) =>
-                                      TextButton(
-                                    style: ButtonStyle(
-                                      padding:
-                                          MaterialStateProperty.all<EdgeInsets>(
-                                        const EdgeInsets.symmetric(
-                                            horizontal: 8),
-                                      ),
-                                    ),
-                                    onPressed: () {
-                                      vibrationController
-                                          .changeVibrationState();
-                                    },
-                                    child: Row(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.start,
                                       children: [
-                                        Row(
+                                        Text(
+                                          AppLocalizations.of(context)!.flag,
+                                          style: TextStyle(
+                                            fontSize: isScreenWidth(context)
+                                                ? 22
+                                                : 26,
+                                          ),
+                                        ),
+                                        const SizedBox(width: 10),
+                                        Text(
+                                          AppLocalizations.of(context)!
+                                              .language,
+                                          style: (isScreenWidth(context))
+                                              ? Theme.of(context)
+                                                  .textTheme
+                                                  .displaySmall
+                                              : Theme.of(context)
+                                                  .textTheme
+                                                  .displayMedium,
+                                        ),
+                                      ],
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 15),
+                                      child: languageController
+                                              .dropDownButtonLanguage
+                                          ? iconController(
+                                              context,
+                                              icon: Icons.close,
+                                            )
+                                          : iconController(
+                                              context,
+                                              icon: Icons.keyboard_arrow_down,
+                                            ),
+                                    ),
+                                  ],
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    languageController
+                                        .toggleDropDownButtonLanguage();
+                                  });
+                                },
+                              ),
+                            ),
+                            languageController.currentLanguage == "ar"
+                                ? const SizedBox(
+                                    height: 0,
+                                  )
+                                : AnimationDropDownController(
+                                    changeState: languageController
+                                        .dropDownButtonLanguage,
+                                    durationTime: 100,
+                                    firstChildeCard: Card(
+                                      margin: EdgeInsets.symmetric(
+                                        vertical:
+                                            isScreenWidth(context) ? 0 : 5,
+                                        horizontal: 8,
+                                      ),
+                                      elevation: 0,
+                                      color: Colors.transparent,
+                                      child: TextButton(
+                                        style: ButtonStyle(
+                                          padding: MaterialStateProperty.all<
+                                              EdgeInsets>(
+                                            const EdgeInsets.all(0),
+                                          ),
+                                        ),
+                                        child: Row(
                                           children: [
-                                            vibrationController.initValue
-                                                ? iconController(context,
-                                                    icon: Icons
-                                                        .notifications_active)
-                                                : iconController(
-                                                    context,
-                                                    icon:
-                                                        Icons.notifications_off,
-                                                  ),
+                                            Text(
+                                              '🇮🇶',
+                                              style: TextStyle(
+                                                fontSize: isScreenWidth(context)
+                                                    ? 22
+                                                    : 26,
+                                              ),
+                                            ),
                                             const SizedBox(width: 10),
                                             Text(
-                                              AppLocalizations.of(context)!
-                                                  .vibration,
+                                              "العربية",
                                               style: (isScreenWidth(context))
                                                   ? Theme.of(context)
                                                       .textTheme
@@ -590,556 +308,273 @@ class _MainQrState extends State<MainQr> {
                                             ),
                                           ],
                                         ),
-                                        Switch(
-                                          value: vibrationController.initValue,
-                                          onChanged: vibrationController
-                                              .switchVibration,
-                                          activeTrackColor: Colors.white54,
-                                          inactiveTrackColor:
-                                              Colors.grey.shade900,
+                                        onPressed: () {
+                                          languageController
+                                              .changeLanguage("ar");
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                            languageController.currentLanguage == "en"
+                                ? const SizedBox(
+                                    height: 0,
+                                  )
+                                : AnimationDropDownController(
+                                    changeState: languageController
+                                        .dropDownButtonLanguage,
+                                    durationTime: 200,
+                                    firstChildeCard: Card(
+                                      margin: EdgeInsets.symmetric(
+                                        vertical:
+                                            isScreenWidth(context) ? 0 : 5,
+                                        horizontal: 8,
+                                      ),
+                                      elevation: 0,
+                                      color: Colors.transparent,
+                                      child: TextButton(
+                                        style: ButtonStyle(
+                                          padding: MaterialStateProperty.all<
+                                              EdgeInsets>(
+                                            const EdgeInsets.all(0),
+                                          ),
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              '🇺🇸',
+                                              style: TextStyle(
+                                                fontSize: isScreenWidth(context)
+                                                    ? 22
+                                                    : 26,
+                                              ),
+                                            ),
+                                            const SizedBox(width: 10),
+                                            Text(
+                                              "English",
+                                              style: (isScreenWidth(context))
+                                                  ? Theme.of(context)
+                                                      .textTheme
+                                                      .displaySmall
+                                                  : Theme.of(context)
+                                                      .textTheme
+                                                      .displayMedium,
+                                            ),
+                                          ],
+                                        ),
+                                        onPressed: () {
+                                          languageController
+                                              .changeLanguage("en");
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                            languageController.currentLanguage == "fr"
+                                ? const SizedBox(
+                                    height: 0,
+                                  )
+                                : AnimationDropDownController(
+                                    changeState: languageController
+                                        .dropDownButtonLanguage,
+                                    durationTime: 300,
+                                    firstChildeCard: Card(
+                                      margin: EdgeInsets.symmetric(
+                                        vertical:
+                                            isScreenWidth(context) ? 0 : 5,
+                                        horizontal: 8,
+                                      ),
+                                      elevation: 0,
+                                      color: Colors.transparent,
+                                      child: TextButton(
+                                        style: ButtonStyle(
+                                          padding: MaterialStateProperty.all<
+                                              EdgeInsets>(
+                                            const EdgeInsets.all(0),
+                                          ),
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              '🇫🇷',
+                                              style: TextStyle(
+                                                fontSize: isScreenWidth(context)
+                                                    ? 22
+                                                    : 26,
+                                              ),
+                                            ),
+                                            const SizedBox(width: 10),
+                                            Text(
+                                              "Français",
+                                              style: (isScreenWidth(context))
+                                                  ? Theme.of(context)
+                                                      .textTheme
+                                                      .displaySmall
+                                                  : Theme.of(context)
+                                                      .textTheme
+                                                      .displayMedium,
+                                            ),
+                                          ],
+                                        ),
+                                        onPressed: () {
+                                          languageController
+                                              .changeLanguage("fr");
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                            languageController.currentLanguage == "sv"
+                                ? const SizedBox(
+                                    height: 0,
+                                  )
+                                : AnimationDropDownController(
+                                    changeState: languageController
+                                        .dropDownButtonLanguage,
+                                    durationTime: 400,
+                                    firstChildeCard: Card(
+                                      margin: EdgeInsets.symmetric(
+                                        vertical:
+                                            isScreenWidth(context) ? 0 : 5,
+                                        horizontal: 8,
+                                      ),
+                                      elevation: 0,
+                                      color: Colors.transparent,
+                                      child: TextButton(
+                                        style: ButtonStyle(
+                                          padding: MaterialStateProperty.all<
+                                              EdgeInsets>(
+                                            const EdgeInsets.all(0),
+                                          ),
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              '🇸🇪',
+                                              style: TextStyle(
+                                                fontSize: isScreenWidth(context)
+                                                    ? 22
+                                                    : 26,
+                                              ),
+                                            ),
+                                            const SizedBox(width: 10),
+                                            Text(
+                                              "Svenska",
+                                              style: (isScreenWidth(context))
+                                                  ? Theme.of(context)
+                                                      .textTheme
+                                                      .displaySmall
+                                                  : Theme.of(context)
+                                                      .textTheme
+                                                      .displayMedium,
+                                            ),
+                                          ],
+                                        ),
+                                        onPressed: () {
+                                          languageController
+                                              .changeLanguage("sv");
+                                        },
+                                      ),
+                                    ),
+                                  ),
+
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: isScreenWidth(context) ? 0 : 5,
+                              ),
+                              child: TextButton(
+                                style: ButtonStyle(
+                                  padding:
+                                      MaterialStateProperty.all<EdgeInsets>(
+                                    const EdgeInsets.symmetric(horizontal: 8),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  themeController.changeThemeState();
+                                },
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        themeController.initValue
+                                            ? iconController(context,
+                                                icon: Icons.dark_mode)
+                                            : iconController(
+                                                context,
+                                                icon: Icons.light_mode,
+                                              ),
+                                        const SizedBox(width: 10),
+                                        Text(
+                                          AppLocalizations.of(context)!.theme,
+                                          style: (isScreenWidth(context))
+                                              ? Theme.of(context)
+                                                  .textTheme
+                                                  .displaySmall
+                                              : Theme.of(context)
+                                                  .textTheme
+                                                  .displayMedium,
                                         ),
                                       ],
                                     ),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                  vertical: isScreenWidth(context) ? 0 : 5,
-                                ),
-                                child: TextButton(
-                                  style: ButtonStyle(
-                                    padding:
-                                        MaterialStateProperty.all<EdgeInsets>(
-                                      const EdgeInsets.symmetric(horizontal: 8),
+                                    Switch(
+                                      value: themeController.initValue,
+                                      onChanged: themeController.switchTheme,
+                                      activeTrackColor: Colors.white54,
+                                      inactiveTrackColor: Colors.grey.shade900,
                                     ),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      iconController(
-                                        context,
-                                        icon: Icons.email,
-                                      ),
-                                      const SizedBox(width: 10),
-                                      Text(
-                                        AppLocalizations.of(context)!
-                                            .contact_us,
-                                        style: (isScreenWidth(context))
-                                            ? Theme.of(context)
-                                                .textTheme
-                                                .displaySmall
-                                            : Theme.of(context)
-                                                .textTheme
-                                                .displayMedium,
-                                      ),
-                                    ],
-                                  ),
-                                  onPressed: () async {
-                                    Uri mail = Uri.parse(
-                                      "mailto:qr.maker.app@gmail.com?subject=QR Maker App&body=Hello,",
-                                    );
-                                    if (await canLaunchUrl(mail)) {
-                                      await launchUrl(mail);
-                                    } else {
-                                      throw 'Could not launch $mail';
-                                    }
-                                  },
+                                  ],
                                 ),
                               ),
-
-                              // Card(
-                              //   child: SizedBox(
-                              //     width: double.infinity,
-                              //     height: 50,
-                              //     child: ElevatedButton.icon(
-                              //       onPressed: () {
-                              //         FirebaseAuth.instance.signOut();
-                              //       },
-                              //       icon: const Icon(Icons.lock_outline),
-                              //       label: const Align(
-                              //         alignment: Alignment.centerLeft,
-                              //         child: Text(
-                              //           'Sign Out',
-                              //         ),
-                              //       ),
-                              //     ),
-                              //   ),
-                              // ),
-                              // Card(
-                              //   child: SizedBox(
-                              //     width: double.infinity,
-                              //     height: 50,
-                              //     child: ElevatedButton.icon(
-                              //       onPressed: () {
-                              //         showDialog(
-                              //           context: context,
-                              //           builder: (BuildContext context) => AlertDialog(
-                              //             title: Text(
-                              //               'Delete QR Maker Account !',
-                              //               style: (isScreenWidth(context))
-                              //                   ? Theme.of(context).textTheme.headline3
-                              //                   : Theme.of(context).textTheme.headline2,
-                              //             ),
-                              //             content: const Text(
-                              //               'Are you sure you want to delete your account? This will permanently erase your account.',
-                              //             ),
-                              //             actions: [
-                              //               TextButton(
-                              //                 onPressed: () => Get.back(),
-                              //                 child: const Text('Cancel'),
-                              //               ),
-                              //               TextButton(
-                              //                 onPressed: () async {
-                              //                   await FirebaseAuth.instance.currentUser
-                              //                       ?.delete();
-                              //                   Get.back();
-                              //                 },
-                              //                 child: const Text('Delete'),
-                              //               ),
-                              //             ],
-                              //           ),
-                              //         );
-                              //       },
-                              //       icon: const Icon(Icons.delete),
-                              //       label: const Align(
-                              //         alignment: Alignment.centerLeft,
-                              //         child: Text(
-                              //           'Delete Account',
-                              //         ),
-                              //       ),
-                              //     ),
-                              //   ),
-                              // ),
-                            ],
-                          ),
-                        ),
-                        const Divider(
-                          thickness: 1,
-                          color: Colors.white54,
-                        ),
-                        SizedBox(
-                          width: double.infinity,
-                          height: 50,
-                          child: Center(
-                            child: Text(
-                              AppLocalizations.of(context)!.version,
-                              style: (isScreenWidth(context))
-                                  ? Theme.of(context).textTheme.displaySmall
-                                  : Theme.of(context).textTheme.displayMedium,
                             ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                bottomNavigationBar: BottomNavigationBar(
-                  currentIndex: selectScreen,
-                  onTap: (int screenNumber) {
-                    setState(
-                      () {
-                        selectScreen = screenNumber;
-                      },
-                    );
-                  },
-                  items: [
-                    BottomNavigationBarItem(
-                      icon:
-                          iconController(context, icon: Icons.qr_code_scanner),
-                      label: AppLocalizations.of(context)!.scan,
-                    ),
-                    BottomNavigationBarItem(
-                      icon: iconController(context, icon: Icons.qr_code),
-                      label: AppLocalizations.of(context)!.make,
-                    ),
-                    BottomNavigationBarItem(
-                      icon: iconController(context, icon: Icons.favorite),
-                      label: AppLocalizations.of(context)!.favorite,
-                    ),
-                  ],
-                ),
-                body: screens.elementAt(selectScreen),
-              ),
-            ),
-          )
-        : GetBuilder<ThemeController>(
-            init: ThemeController(),
-            builder: (ThemeController themeController) => Container(
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: themeController.initValue
-                      ? const AssetImage('images/background_dark.png')
-                      : const AssetImage('images/background_light.png'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: Scaffold(
-                appBar: AppBar(
-                  title: Text(
-                    title[selectScreen],
-                    style: const TextStyle(
-                      fontSize: 24,
-                    ),
-                  ),
-                  iconTheme: IconThemeData(
-                    size: 28,
-                    color: Theme.of(context).iconTheme.color,
-                  ),
-                ),
-                drawer: Drawer(
-                  width: 400,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 20,
-                      horizontal: 10,
-                    ),
-                    child: Column(
-                      children: [
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              // Card(
-                              //   child: SizedBox(
-                              //     width: double.infinity,
-                              //     height: 50,
-                              //     child: Center(
-                              //       child: Text(
-                              //         '${FirebaseAuth.instance.currentUser?.email}',
-                              //         overflow: TextOverflow.ellipsis,
-                              //         maxLines: 1,
-                              //         style: const TextStyle(
-                              //           color: Colors.white,
-                              //           fontSize: 18,
-                              //           fontWeight: FontWeight.bold,
-                              //         ),
-                              //       ),
-                              //     ),
-                              //   ),
-                              // ),
-                              const SizedBox(
-                                height: 50,
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: isScreenWidth(context) ? 0 : 5,
                               ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 5,
-                                ),
-                                child: TextButton(
+                              child: GetBuilder<VibrationController>(
+                                init: VibrationController(),
+                                builder:
+                                    (VibrationController vibrationController) =>
+                                        TextButton(
                                   style: ButtonStyle(
                                     padding:
                                         MaterialStateProperty.all<EdgeInsets>(
                                       const EdgeInsets.symmetric(horizontal: 8),
                                     ),
                                   ),
-                                  onPressed: () {},
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      iconController(
-                                        context,
-                                        icon: Icons.settings,
-                                      ),
-                                      const SizedBox(width: 10),
-                                      Text(
-                                        AppLocalizations.of(context)!.settings,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .displayMedium,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              const Divider(
-                                thickness: 1,
-                                color: Colors.white54,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 5,
-                                ),
-                                child: TextButton(
-                                  style: ButtonStyle(
-                                    padding:
-                                        MaterialStateProperty.all<EdgeInsets>(
-                                      const EdgeInsets.symmetric(horizontal: 8),
-                                    ),
-                                  ),
+                                  onPressed: () {
+                                    vibrationController.changeVibrationState();
+                                  },
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            AppLocalizations.of(context)!.flag,
-                                            style: const TextStyle(
-                                              fontSize: 26,
-                                            ),
-                                          ),
+                                          vibrationController.initValue
+                                              ? iconController(context,
+                                                  icon: Icons
+                                                      .notifications_active)
+                                              : iconController(
+                                                  context,
+                                                  icon: Icons.notifications_off,
+                                                ),
                                           const SizedBox(width: 10),
                                           Text(
                                             AppLocalizations.of(context)!
-                                                .language,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .displayMedium,
-                                          ),
-                                        ],
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 10),
-                                        child: languageController
-                                                .dropDownButtonLanguage
-                                            ? iconController(
-                                                context,
-                                                icon: Icons.close,
-                                              )
-                                            : iconController(
-                                                context,
-                                                icon: Icons.keyboard_arrow_down,
-                                              ),
-                                      ),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    setState(() {
-                                      languageController
-                                          .toggleDropDownButtonLanguage();
-                                    });
-                                  },
-                                ),
-                              ),
-                              languageController.currentLanguage == "ar"
-                                  ? const SizedBox(
-                                      height: 0,
-                                    )
-                                  : AnimationDropDownController(
-                                      changeState: languageController
-                                          .dropDownButtonLanguage,
-                                      durationTime: 100,
-                                      firstChildeCard: Card(
-                                        margin: const EdgeInsets.symmetric(
-                                          vertical: 5,
-                                          horizontal: 8,
-                                        ),
-                                        elevation: 0,
-                                        color: Colors.transparent,
-                                        child: TextButton(
-                                          style: ButtonStyle(
-                                            padding: MaterialStateProperty.all<
-                                                EdgeInsets>(
-                                              const EdgeInsets.all(0),
-                                            ),
-                                          ),
-                                          child: Row(
-                                            children: [
-                                              const Text(
-                                                '🇮🇶',
-                                                style: TextStyle(
-                                                  fontSize: 26,
-                                                ),
-                                              ),
-                                              const SizedBox(width: 10),
-                                              Text(
-                                                "العربية",
-                                                style: Theme.of(context)
+                                                .vibration,
+                                            style: (isScreenWidth(context))
+                                                ? Theme.of(context)
+                                                    .textTheme
+                                                    .displaySmall
+                                                : Theme.of(context)
                                                     .textTheme
                                                     .displayMedium,
-                                              ),
-                                            ],
-                                          ),
-                                          onPressed: () {
-                                            languageController
-                                                .changeLanguage("ar");
-                                          },
-                                        ),
-                                      ),
-                                    ),
-                              languageController.currentLanguage == "en"
-                                  ? const SizedBox(
-                                      height: 0,
-                                    )
-                                  : AnimationDropDownController(
-                                      changeState: languageController
-                                          .dropDownButtonLanguage,
-                                      durationTime: 200,
-                                      firstChildeCard: Card(
-                                        margin: const EdgeInsets.symmetric(
-                                          vertical: 5,
-                                          horizontal: 8,
-                                        ),
-                                        elevation: 0,
-                                        color: Colors.transparent,
-                                        child: TextButton(
-                                          style: ButtonStyle(
-                                            padding: MaterialStateProperty.all<
-                                                EdgeInsets>(
-                                              const EdgeInsets.all(0),
-                                            ),
-                                          ),
-                                          child: Row(
-                                            children: [
-                                              const Text(
-                                                '🇺🇸',
-                                                style: TextStyle(
-                                                  fontSize: 26,
-                                                ),
-                                              ),
-                                              const SizedBox(width: 10),
-                                              Text(
-                                                "English",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .displayMedium,
-                                              ),
-                                            ],
-                                          ),
-                                          onPressed: () {
-                                            languageController
-                                                .changeLanguage("en");
-                                          },
-                                        ),
-                                      ),
-                                    ),
-                              languageController.currentLanguage == "fr"
-                                  ? const SizedBox(
-                                      height: 0,
-                                    )
-                                  : AnimationDropDownController(
-                                      changeState: languageController
-                                          .dropDownButtonLanguage,
-                                      durationTime: 300,
-                                      firstChildeCard: Card(
-                                        margin: const EdgeInsets.symmetric(
-                                          vertical: 5,
-                                          horizontal: 8,
-                                        ),
-                                        elevation: 0,
-                                        color: Colors.transparent,
-                                        child: TextButton(
-                                          style: ButtonStyle(
-                                            padding: MaterialStateProperty.all<
-                                                EdgeInsets>(
-                                              const EdgeInsets.all(0),
-                                            ),
-                                          ),
-                                          child: Row(
-                                            children: [
-                                              const Text(
-                                                '🇫🇷',
-                                                style: TextStyle(
-                                                  fontSize: 26,
-                                                ),
-                                              ),
-                                              const SizedBox(width: 10),
-                                              Text(
-                                                "Français",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .displayMedium,
-                                              ),
-                                            ],
-                                          ),
-                                          onPressed: () {
-                                            languageController
-                                                .changeLanguage("fr");
-                                          },
-                                        ),
-                                      ),
-                                    ),
-                              languageController.currentLanguage == "sv"
-                                  ? const SizedBox(
-                                      height: 0,
-                                    )
-                                  : AnimationDropDownController(
-                                      changeState: languageController
-                                          .dropDownButtonLanguage,
-                                      durationTime: 400,
-                                      firstChildeCard: Card(
-                                        margin: const EdgeInsets.symmetric(
-                                          vertical: 5,
-                                          horizontal: 8,
-                                        ),
-                                        elevation: 0,
-                                        color: Colors.transparent,
-                                        child: TextButton(
-                                          style: ButtonStyle(
-                                            padding: MaterialStateProperty.all<
-                                                EdgeInsets>(
-                                              const EdgeInsets.all(0),
-                                            ),
-                                          ),
-                                          child: Row(
-                                            children: [
-                                              const Text(
-                                                '🇸🇪',
-                                                style: TextStyle(
-                                                  fontSize: 26,
-                                                ),
-                                              ),
-                                              const SizedBox(width: 10),
-                                              Text(
-                                                "Svenska",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .displayMedium,
-                                              ),
-                                            ],
-                                          ),
-                                          onPressed: () {
-                                            languageController
-                                                .changeLanguage("sv");
-                                          },
-                                        ),
-                                      ),
-                                    ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 5,
-                                ),
-                                child: TextButton(
-                                  style: ButtonStyle(
-                                    padding:
-                                        MaterialStateProperty.all<EdgeInsets>(
-                                      const EdgeInsets.symmetric(horizontal: 8),
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    themeController.changeThemeState();
-                                  },
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          themeController.initValue
-                                              ? iconController(
-                                                  context,
-                                                  icon: Icons.dark_mode,
-                                                )
-                                              : iconController(
-                                                  context,
-                                                  icon: Icons.light_mode,
-                                                ),
-                                          const SizedBox(width: 10),
-                                          Text(
-                                            AppLocalizations.of(context)!.theme,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .displayMedium,
                                           ),
                                         ],
                                       ),
                                       Switch(
-                                        value: themeController.initValue,
-                                        onChanged: themeController.switchTheme,
+                                        value: vibrationController.initValue,
+                                        onChanged:
+                                            vibrationController.switchVibration,
                                         activeTrackColor: Colors.white54,
                                         inactiveTrackColor:
                                             Colors.grey.shade900,
@@ -1148,218 +583,743 @@ class _MainQrState extends State<MainQr> {
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 5,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: isScreenWidth(context) ? 0 : 5,
+                              ),
+                              child: TextButton(
+                                style: ButtonStyle(
+                                  padding:
+                                      MaterialStateProperty.all<EdgeInsets>(
+                                    const EdgeInsets.symmetric(horizontal: 8),
+                                  ),
                                 ),
-                                child: GetBuilder<VibrationController>(
-                                  init: VibrationController(),
-                                  builder: (VibrationController
-                                          vibrationController) =>
-                                      TextButton(
-                                    style: ButtonStyle(
-                                      padding:
-                                          MaterialStateProperty.all<EdgeInsets>(
-                                        const EdgeInsets.symmetric(
-                                            horizontal: 8),
-                                      ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    iconController(
+                                      context,
+                                      icon: Icons.email,
                                     ),
-                                    onPressed: () {
-                                      vibrationController
-                                          .changeVibrationState();
-                                    },
-                                    child: Row(
+                                    const SizedBox(width: 10),
+                                    Text(
+                                      AppLocalizations.of(context)!.contact_us,
+                                      style: (isScreenWidth(context))
+                                          ? Theme.of(context)
+                                              .textTheme
+                                              .displaySmall
+                                          : Theme.of(context)
+                                              .textTheme
+                                              .displayMedium,
+                                    ),
+                                  ],
+                                ),
+                                onPressed: () async {
+                                  Uri mail = Uri.parse(
+                                    "mailto:qr.maker.app@gmail.com?subject=QR Maker App&body=Hello,",
+                                  );
+                                  if (await canLaunchUrl(mail)) {
+                                    await launchUrl(mail);
+                                  } else {
+                                    throw 'Could not launch $mail';
+                                  }
+                                },
+                              ),
+                            ),
+
+                            // Card(
+                            //   child: SizedBox(
+                            //     width: double.infinity,
+                            //     height: 50,
+                            //     child: ElevatedButton.icon(
+                            //       onPressed: () {
+                            //         FirebaseAuth.instance.signOut();
+                            //       },
+                            //       icon: const Icon(Icons.lock_outline),
+                            //       label: const Align(
+                            //         alignment: Alignment.centerLeft,
+                            //         child: Text(
+                            //           'Sign Out',
+                            //         ),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+                            // Card(
+                            //   child: SizedBox(
+                            //     width: double.infinity,
+                            //     height: 50,
+                            //     child: ElevatedButton.icon(
+                            //       onPressed: () {
+                            //         showDialog(
+                            //           context: context,
+                            //           builder: (BuildContext context) => AlertDialog(
+                            //             title: Text(
+                            //               'Delete QR Maker Account !',
+                            //               style: (isScreenWidth(context))
+                            //                   ? Theme.of(context).textTheme.headline3
+                            //                   : Theme.of(context).textTheme.headline2,
+                            //             ),
+                            //             content: const Text(
+                            //               'Are you sure you want to delete your account? This will permanently erase your account.',
+                            //             ),
+                            //             actions: [
+                            //               TextButton(
+                            //                 onPressed: () => Get.back(),
+                            //                 child: const Text('Cancel'),
+                            //               ),
+                            //               TextButton(
+                            //                 onPressed: () async {
+                            //                   await FirebaseAuth.instance.currentUser
+                            //                       ?.delete();
+                            //                   Get.back();
+                            //                 },
+                            //                 child: const Text('Delete'),
+                            //               ),
+                            //             ],
+                            //           ),
+                            //         );
+                            //       },
+                            //       icon: const Icon(Icons.delete),
+                            //       label: const Align(
+                            //         alignment: Alignment.centerLeft,
+                            //         child: Text(
+                            //           'Delete Account',
+                            //         ),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+                          ],
+                        ),
+                      ),
+                      const Divider(
+                        thickness: 1,
+                        color: Colors.white54,
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        height: 50,
+                        child: Center(
+                          child: Text(
+                            AppLocalizations.of(context)!.version,
+                            style: (isScreenWidth(context))
+                                ? Theme.of(context).textTheme.displaySmall
+                                : Theme.of(context).textTheme.displayMedium,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              bottomNavigationBar: BottomNavigationBar(
+                currentIndex: selectScreen,
+                onTap: (int screenNumber) {
+                  setState(
+                    () {
+                      selectScreen = screenNumber;
+                    },
+                  );
+                },
+                items: [
+                  BottomNavigationBarItem(
+                    icon: iconController(context, icon: Icons.qr_code_scanner),
+                    label: AppLocalizations.of(context)!.scan,
+                  ),
+                  BottomNavigationBarItem(
+                    icon: iconController(context, icon: Icons.qr_code),
+                    label: AppLocalizations.of(context)!.make,
+                  ),
+                  BottomNavigationBarItem(
+                    icon: iconController(context, icon: Icons.favorite),
+                    label: AppLocalizations.of(context)!.favorite,
+                  ),
+                ],
+              ),
+              body: screens.elementAt(selectScreen),
+            ),
+          )
+        : GetBuilder<ThemeController>(
+            init: ThemeController(),
+            builder: (ThemeController themeController) => Scaffold(
+              appBar: AppBar(
+                title: Text(
+                  title[selectScreen],
+                  style: const TextStyle(
+                    fontSize: 24,
+                  ),
+                ),
+                iconTheme: IconThemeData(
+                  size: 28,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+              ),
+              drawer: Drawer(
+                width: 400,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 20,
+                    horizontal: 10,
+                  ),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            // Card(
+                            //   child: SizedBox(
+                            //     width: double.infinity,
+                            //     height: 50,
+                            //     child: Center(
+                            //       child: Text(
+                            //         '${FirebaseAuth.instance.currentUser?.email}',
+                            //         overflow: TextOverflow.ellipsis,
+                            //         maxLines: 1,
+                            //         style: const TextStyle(
+                            //           color: Colors.white,
+                            //           fontSize: 18,
+                            //           fontWeight: FontWeight.bold,
+                            //         ),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+                            const SizedBox(
+                              height: 50,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 5,
+                              ),
+                              child: TextButton(
+                                style: ButtonStyle(
+                                  padding:
+                                      MaterialStateProperty.all<EdgeInsets>(
+                                    const EdgeInsets.symmetric(horizontal: 8),
+                                  ),
+                                ),
+                                onPressed: () {},
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    iconController(
+                                      context,
+                                      icon: Icons.settings,
+                                    ),
+                                    const SizedBox(width: 10),
+                                    Text(
+                                      AppLocalizations.of(context)!.settings,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .displayMedium,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const Divider(
+                              thickness: 1,
+                              color: Colors.white54,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 5,
+                              ),
+                              child: TextButton(
+                                style: ButtonStyle(
+                                  padding:
+                                      MaterialStateProperty.all<EdgeInsets>(
+                                    const EdgeInsets.symmetric(horizontal: 8),
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.start,
                                       children: [
-                                        Row(
+                                        Text(
+                                          AppLocalizations.of(context)!.flag,
+                                          style: const TextStyle(
+                                            fontSize: 26,
+                                          ),
+                                        ),
+                                        const SizedBox(width: 10),
+                                        Text(
+                                          AppLocalizations.of(context)!
+                                              .language,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .displayMedium,
+                                        ),
+                                      ],
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 10),
+                                      child: languageController
+                                              .dropDownButtonLanguage
+                                          ? iconController(
+                                              context,
+                                              icon: Icons.close,
+                                            )
+                                          : iconController(
+                                              context,
+                                              icon: Icons.keyboard_arrow_down,
+                                            ),
+                                    ),
+                                  ],
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    languageController
+                                        .toggleDropDownButtonLanguage();
+                                  });
+                                },
+                              ),
+                            ),
+                            languageController.currentLanguage == "ar"
+                                ? const SizedBox(
+                                    height: 0,
+                                  )
+                                : AnimationDropDownController(
+                                    changeState: languageController
+                                        .dropDownButtonLanguage,
+                                    durationTime: 100,
+                                    firstChildeCard: Card(
+                                      margin: const EdgeInsets.symmetric(
+                                        vertical: 5,
+                                        horizontal: 8,
+                                      ),
+                                      elevation: 0,
+                                      color: Colors.transparent,
+                                      child: TextButton(
+                                        style: ButtonStyle(
+                                          padding: MaterialStateProperty.all<
+                                              EdgeInsets>(
+                                            const EdgeInsets.all(0),
+                                          ),
+                                        ),
+                                        child: Row(
                                           children: [
-                                            vibrationController.initValue
-                                                ? iconController(
-                                                    context,
-                                                    icon: Icons
-                                                        .notifications_active,
-                                                  )
-                                                : iconController(
-                                                    context,
-                                                    icon:
-                                                        Icons.notifications_off,
-                                                  ),
+                                            const Text(
+                                              '🇮🇶',
+                                              style: TextStyle(
+                                                fontSize: 26,
+                                              ),
+                                            ),
                                             const SizedBox(width: 10),
                                             Text(
-                                              AppLocalizations.of(context)!
-                                                  .vibration,
+                                              "العربية",
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .displayMedium,
                                             ),
                                           ],
                                         ),
-                                        Switch(
-                                          value: vibrationController.initValue,
-                                          onChanged: vibrationController
-                                              .switchVibration,
-                                          activeTrackColor: Colors.white54,
-                                          inactiveTrackColor:
-                                              Colors.grey.shade900,
+                                        onPressed: () {
+                                          languageController
+                                              .changeLanguage("ar");
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                            languageController.currentLanguage == "en"
+                                ? const SizedBox(
+                                    height: 0,
+                                  )
+                                : AnimationDropDownController(
+                                    changeState: languageController
+                                        .dropDownButtonLanguage,
+                                    durationTime: 200,
+                                    firstChildeCard: Card(
+                                      margin: const EdgeInsets.symmetric(
+                                        vertical: 5,
+                                        horizontal: 8,
+                                      ),
+                                      elevation: 0,
+                                      color: Colors.transparent,
+                                      child: TextButton(
+                                        style: ButtonStyle(
+                                          padding: MaterialStateProperty.all<
+                                              EdgeInsets>(
+                                            const EdgeInsets.all(0),
+                                          ),
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            const Text(
+                                              '🇺🇸',
+                                              style: TextStyle(
+                                                fontSize: 26,
+                                              ),
+                                            ),
+                                            const SizedBox(width: 10),
+                                            Text(
+                                              "English",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .displayMedium,
+                                            ),
+                                          ],
+                                        ),
+                                        onPressed: () {
+                                          languageController
+                                              .changeLanguage("en");
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                            languageController.currentLanguage == "fr"
+                                ? const SizedBox(
+                                    height: 0,
+                                  )
+                                : AnimationDropDownController(
+                                    changeState: languageController
+                                        .dropDownButtonLanguage,
+                                    durationTime: 300,
+                                    firstChildeCard: Card(
+                                      margin: const EdgeInsets.symmetric(
+                                        vertical: 5,
+                                        horizontal: 8,
+                                      ),
+                                      elevation: 0,
+                                      color: Colors.transparent,
+                                      child: TextButton(
+                                        style: ButtonStyle(
+                                          padding: MaterialStateProperty.all<
+                                              EdgeInsets>(
+                                            const EdgeInsets.all(0),
+                                          ),
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            const Text(
+                                              '🇫🇷',
+                                              style: TextStyle(
+                                                fontSize: 26,
+                                              ),
+                                            ),
+                                            const SizedBox(width: 10),
+                                            Text(
+                                              "Français",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .displayMedium,
+                                            ),
+                                          ],
+                                        ),
+                                        onPressed: () {
+                                          languageController
+                                              .changeLanguage("fr");
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                            languageController.currentLanguage == "sv"
+                                ? const SizedBox(
+                                    height: 0,
+                                  )
+                                : AnimationDropDownController(
+                                    changeState: languageController
+                                        .dropDownButtonLanguage,
+                                    durationTime: 400,
+                                    firstChildeCard: Card(
+                                      margin: const EdgeInsets.symmetric(
+                                        vertical: 5,
+                                        horizontal: 8,
+                                      ),
+                                      elevation: 0,
+                                      color: Colors.transparent,
+                                      child: TextButton(
+                                        style: ButtonStyle(
+                                          padding: MaterialStateProperty.all<
+                                              EdgeInsets>(
+                                            const EdgeInsets.all(0),
+                                          ),
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            const Text(
+                                              '🇸🇪',
+                                              style: TextStyle(
+                                                fontSize: 26,
+                                              ),
+                                            ),
+                                            const SizedBox(width: 10),
+                                            Text(
+                                              "Svenska",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .displayMedium,
+                                            ),
+                                          ],
+                                        ),
+                                        onPressed: () {
+                                          languageController
+                                              .changeLanguage("sv");
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 5,
+                              ),
+                              child: TextButton(
+                                style: ButtonStyle(
+                                  padding:
+                                      MaterialStateProperty.all<EdgeInsets>(
+                                    const EdgeInsets.symmetric(horizontal: 8),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  themeController.changeThemeState();
+                                },
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        themeController.initValue
+                                            ? iconController(
+                                                context,
+                                                icon: Icons.dark_mode,
+                                              )
+                                            : iconController(
+                                                context,
+                                                icon: Icons.light_mode,
+                                              ),
+                                        const SizedBox(width: 10),
+                                        Text(
+                                          AppLocalizations.of(context)!.theme,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .displayMedium,
                                         ),
                                       ],
                                     ),
-                                  ),
+                                    Switch(
+                                      value: themeController.initValue,
+                                      onChanged: themeController.switchTheme,
+                                      activeTrackColor: Colors.white54,
+                                      inactiveTrackColor: Colors.grey.shade900,
+                                    ),
+                                  ],
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 5,
-                                ),
-                                child: TextButton(
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 5,
+                              ),
+                              child: GetBuilder<VibrationController>(
+                                init: VibrationController(),
+                                builder:
+                                    (VibrationController vibrationController) =>
+                                        TextButton(
                                   style: ButtonStyle(
                                     padding:
                                         MaterialStateProperty.all<EdgeInsets>(
                                       const EdgeInsets.symmetric(horizontal: 8),
                                     ),
                                   ),
+                                  onPressed: () {
+                                    vibrationController.changeVibrationState();
+                                  },
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      iconController(
-                                        context,
-                                        icon: Icons.email,
+                                      Row(
+                                        children: [
+                                          vibrationController.initValue
+                                              ? iconController(
+                                                  context,
+                                                  icon: Icons
+                                                      .notifications_active,
+                                                )
+                                              : iconController(
+                                                  context,
+                                                  icon: Icons.notifications_off,
+                                                ),
+                                          const SizedBox(width: 10),
+                                          Text(
+                                            AppLocalizations.of(context)!
+                                                .vibration,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .displayMedium,
+                                          ),
+                                        ],
                                       ),
-                                      const SizedBox(width: 10),
-                                      Text(
-                                        AppLocalizations.of(context)!
-                                            .contact_us,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .displayMedium,
+                                      Switch(
+                                        value: vibrationController.initValue,
+                                        onChanged:
+                                            vibrationController.switchVibration,
+                                        activeTrackColor: Colors.white54,
+                                        inactiveTrackColor:
+                                            Colors.grey.shade900,
                                       ),
                                     ],
                                   ),
-                                  onPressed: () async {
-                                    Uri mail = Uri.parse(
-                                      "mailto:qr.maker.app@gmail.com?subject=QR Maker App&body=Hello,",
-                                    );
-                                    if (await canLaunchUrl(mail)) {
-                                      await launchUrl(mail);
-                                    } else {
-                                      throw 'Could not launch $mail';
-                                    }
-                                  },
                                 ),
                               ),
-
-                              // Card(
-                              //   child: SizedBox(
-                              //     width: double.infinity,
-                              //     height: 50,
-                              //     child: ElevatedButton.icon(
-                              //       onPressed: () {
-                              //         FirebaseAuth.instance.signOut();
-                              //       },
-                              //       icon: const Icon(Icons.lock_outline),
-                              //       label: const Align(
-                              //         alignment: Alignment.centerLeft,
-                              //         child: Text(
-                              //           'Sign Out',
-                              //         ),
-                              //       ),
-                              //     ),
-                              //   ),
-                              // ),
-                              // Card(
-                              //   child: SizedBox(
-                              //     width: double.infinity,
-                              //     height: 50,
-                              //     child: ElevatedButton.icon(
-                              //       onPressed: () {
-                              //         showDialog(
-                              //           context: context,
-                              //           builder: (BuildContext context) => AlertDialog(
-                              //             title: Text(
-                              //               'Delete QR Maker Account !',
-                              //               style: (isScreenWidth(context))
-                              //                   ? Theme.of(context).textTheme.headline3
-                              //                   : Theme.of(context).textTheme.headline2,
-                              //             ),
-                              //             content: const Text(
-                              //               'Are you sure you want to delete your account? This will permanently erase your account.',
-                              //             ),
-                              //             actions: [
-                              //               TextButton(
-                              //                 onPressed: () => Get.back(),
-                              //                 child: const Text('Cancel'),
-                              //               ),
-                              //               TextButton(
-                              //                 onPressed: () async {
-                              //                   await FirebaseAuth.instance.currentUser
-                              //                       ?.delete();
-                              //                   Get.back();
-                              //                 },
-                              //                 child: const Text('Delete'),
-                              //               ),
-                              //             ],
-                              //           ),
-                              //         );
-                              //       },
-                              //       icon: const Icon(Icons.delete),
-                              //       label: const Align(
-                              //         alignment: Alignment.centerLeft,
-                              //         child: Text(
-                              //           'Delete Account',
-                              //         ),
-                              //       ),
-                              //     ),
-                              //   ),
-                              // ),
-                            ],
-                          ),
-                        ),
-                        const Divider(
-                          thickness: 1,
-                          color: Colors.white54,
-                        ),
-                        SizedBox(
-                          width: double.infinity,
-                          height: 50,
-                          child: Center(
-                            child: Text(
-                              AppLocalizations.of(context)!.version,
-                              style: Theme.of(context).textTheme.displayMedium,
                             ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 5,
+                              ),
+                              child: TextButton(
+                                style: ButtonStyle(
+                                  padding:
+                                      MaterialStateProperty.all<EdgeInsets>(
+                                    const EdgeInsets.symmetric(horizontal: 8),
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    iconController(
+                                      context,
+                                      icon: Icons.email,
+                                    ),
+                                    const SizedBox(width: 10),
+                                    Text(
+                                      AppLocalizations.of(context)!.contact_us,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .displayMedium,
+                                    ),
+                                  ],
+                                ),
+                                onPressed: () async {
+                                  Uri mail = Uri.parse(
+                                    "mailto:qr.maker.app@gmail.com?subject=QR Maker App&body=Hello,",
+                                  );
+                                  if (await canLaunchUrl(mail)) {
+                                    await launchUrl(mail);
+                                  } else {
+                                    throw 'Could not launch $mail';
+                                  }
+                                },
+                              ),
+                            ),
+
+                            // Card(
+                            //   child: SizedBox(
+                            //     width: double.infinity,
+                            //     height: 50,
+                            //     child: ElevatedButton.icon(
+                            //       onPressed: () {
+                            //         FirebaseAuth.instance.signOut();
+                            //       },
+                            //       icon: const Icon(Icons.lock_outline),
+                            //       label: const Align(
+                            //         alignment: Alignment.centerLeft,
+                            //         child: Text(
+                            //           'Sign Out',
+                            //         ),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+                            // Card(
+                            //   child: SizedBox(
+                            //     width: double.infinity,
+                            //     height: 50,
+                            //     child: ElevatedButton.icon(
+                            //       onPressed: () {
+                            //         showDialog(
+                            //           context: context,
+                            //           builder: (BuildContext context) => AlertDialog(
+                            //             title: Text(
+                            //               'Delete QR Maker Account !',
+                            //               style: (isScreenWidth(context))
+                            //                   ? Theme.of(context).textTheme.headline3
+                            //                   : Theme.of(context).textTheme.headline2,
+                            //             ),
+                            //             content: const Text(
+                            //               'Are you sure you want to delete your account? This will permanently erase your account.',
+                            //             ),
+                            //             actions: [
+                            //               TextButton(
+                            //                 onPressed: () => Get.back(),
+                            //                 child: const Text('Cancel'),
+                            //               ),
+                            //               TextButton(
+                            //                 onPressed: () async {
+                            //                   await FirebaseAuth.instance.currentUser
+                            //                       ?.delete();
+                            //                   Get.back();
+                            //                 },
+                            //                 child: const Text('Delete'),
+                            //               ),
+                            //             ],
+                            //           ),
+                            //         );
+                            //       },
+                            //       icon: const Icon(Icons.delete),
+                            //       label: const Align(
+                            //         alignment: Alignment.centerLeft,
+                            //         child: Text(
+                            //           'Delete Account',
+                            //         ),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+                          ],
+                        ),
+                      ),
+                      const Divider(
+                        thickness: 1,
+                        color: Colors.white54,
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        height: 50,
+                        child: Center(
+                          child: Text(
+                            AppLocalizations.of(context)!.version,
+                            style: Theme.of(context).textTheme.displayMedium,
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-                bottomNavigationBar: BottomNavigationBar(
-                  currentIndex: selectScreen,
-                  onTap: (int screenNumber) {
-                    setState(
-                      () {
-                        selectScreen = screenNumber;
-                      },
-                    );
-                  },
-                  items: [
-                    BottomNavigationBarItem(
-                      icon:
-                          iconController(context, icon: Icons.qr_code_scanner),
-                      label: AppLocalizations.of(context)!.scan,
-                    ),
-                    BottomNavigationBarItem(
-                      icon: iconController(context, icon: Icons.qr_code),
-                      label: AppLocalizations.of(context)!.make,
-                    ),
-                    BottomNavigationBarItem(
-                      icon: iconController(context, icon: Icons.favorite),
-                      label: AppLocalizations.of(context)!.favorite,
-                    ),
-                  ],
-                ),
-                body: screens.elementAt(selectScreen),
               ),
+              bottomNavigationBar: BottomNavigationBar(
+                currentIndex: selectScreen,
+                onTap: (int screenNumber) {
+                  setState(
+                    () {
+                      selectScreen = screenNumber;
+                    },
+                  );
+                },
+                items: [
+                  BottomNavigationBarItem(
+                    icon: iconController(context, icon: Icons.qr_code_scanner),
+                    label: AppLocalizations.of(context)!.scan,
+                  ),
+                  BottomNavigationBarItem(
+                    icon: iconController(context, icon: Icons.qr_code),
+                    label: AppLocalizations.of(context)!.make,
+                  ),
+                  BottomNavigationBarItem(
+                    icon: iconController(context, icon: Icons.favorite),
+                    label: AppLocalizations.of(context)!.favorite,
+                  ),
+                ],
+              ),
+              body: screens.elementAt(selectScreen),
             ),
           );
   }

@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:validators/validators.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/controller/icons_controller.dart';
+import 'package:qr_maker_app/controller/labels_controller.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/controller/app_bar_controller.dart';
-import 'package:qr_maker_app/controller/labels_controller.dart';
+import 'package:qr_maker_app/controller/backround_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
 
 class MakeTwitter extends StatefulWidget {
@@ -37,14 +38,7 @@ class _MakeTwitterState extends State<MakeTwitter> {
             init: ThemeController(),
             builder: (ThemeController controller) => Container(
               alignment: Alignment.center,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: controller.initValue
-                      ? const AssetImage('images/background_dark.png')
-                      : const AssetImage('images/background_light.png'),
-                  fit: BoxFit.cover,
-                ),
-              ),
+              decoration: backgroundController(controller),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: appBarController(
@@ -146,14 +140,7 @@ class _MakeTwitterState extends State<MakeTwitter> {
             init: ThemeController(),
             builder: (ThemeController controller) => Container(
               alignment: Alignment.center,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: controller.initValue
-                      ? const AssetImage('images/background_dark.png')
-                      : const AssetImage('images/background_light.png'),
-                  fit: BoxFit.cover,
-                ),
-              ),
+              decoration: backgroundController(controller),
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: appBarController(
