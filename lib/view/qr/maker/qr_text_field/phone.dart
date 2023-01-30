@@ -46,7 +46,6 @@ class _MakePhoneState extends State<MakePhone> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.telephone,
@@ -199,7 +198,6 @@ class _MakePhoneState extends State<MakePhone> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.telephone,

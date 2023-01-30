@@ -40,7 +40,6 @@ class _MakeFacebookState extends State<MakeFacebook> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.facebook,
@@ -142,7 +141,6 @@ class _MakeFacebookState extends State<MakeFacebook> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.facebook,

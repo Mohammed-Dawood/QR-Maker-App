@@ -46,7 +46,6 @@ class _MakeEmailState extends State<MakeEmail> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.email,
@@ -214,7 +213,6 @@ class _MakeEmailState extends State<MakeEmail> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.email,

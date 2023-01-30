@@ -45,7 +45,6 @@ class _MakeLocationState extends State<MakeLocation> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.location,
@@ -226,7 +225,6 @@ class _MakeLocationState extends State<MakeLocation> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.location,

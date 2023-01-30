@@ -43,7 +43,6 @@ class _MakeWifiState extends State<MakeWifi> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.wifi,
@@ -248,7 +247,6 @@ class _MakeWifiState extends State<MakeWifi> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.wifi,

@@ -40,7 +40,6 @@ class _MakeLinkedInState extends State<MakeLinkedIn> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.linkedin,
@@ -142,7 +141,6 @@ class _MakeLinkedInState extends State<MakeLinkedIn> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.linkedin,

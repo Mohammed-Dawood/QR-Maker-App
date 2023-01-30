@@ -46,7 +46,6 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: AppBar(
                   title: GetBuilder<FavoriteQrCodeController>(
                     init: FavoriteQrCodeController(),
@@ -441,7 +440,6 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: AppBar(
                   title: GetBuilder<FavoriteQrCodeController>(
                     init: FavoriteQrCodeController(),

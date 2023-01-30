@@ -13,6 +13,7 @@ import 'package:qr_maker_app/controller/vibration_controller.dart';
 import 'package:qr_maker_app/view/qr/favorite/main_favorite_qr.dart';
 import 'package:qr_maker_app/controller/favorite_qr_code_controller.dart';
 import 'package:qr_maker_app/controller/animation_drop_down_controller.dart';
+import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 
 class MainQr extends StatefulWidget {
   const MainQr({Key? key}) : super(key: key);
@@ -114,6 +115,7 @@ class _MainQrState extends State<MainQr> {
         ? GetBuilder<ThemeController>(
             init: ThemeController(),
             builder: (ThemeController themeController) => Scaffold(
+              extendBody: true,
               appBar: AppBar(
                 title: Text(
                   title[selectScreen],
@@ -714,8 +716,38 @@ class _MainQrState extends State<MainQr> {
                   ),
                 ),
               ),
-              bottomNavigationBar: BottomNavigationBar(
+              bottomNavigationBar: FloatingNavbar(
+                borderRadius: 5,
+                itemBorderRadius: 5,
                 currentIndex: selectScreen,
+                selectedBackgroundColor: Colors.white,
+                iconSize: isScreenWidth(context) ? 24 : 28,
+                fontSize: isScreenWidth(context) ? 12 : 14,
+                backgroundColor: Theme.of(context).primaryColor,
+                selectedItemColor: Theme.of(context).primaryColor,
+                unselectedItemColor: Colors.white,
+                margin: const EdgeInsets.symmetric(
+                  vertical: 0,
+                  horizontal: 15,
+                ),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 0,
+                  vertical: 10,
+                ),
+                items: [
+                  FloatingNavbarItem(
+                    icon: Icons.qr_code_scanner,
+                    title: AppLocalizations.of(context)!.scan,
+                  ),
+                  FloatingNavbarItem(
+                    icon: Icons.qr_code,
+                    title: AppLocalizations.of(context)!.make,
+                  ),
+                  FloatingNavbarItem(
+                    icon: Icons.favorite,
+                    title: AppLocalizations.of(context)!.favorite,
+                  ),
+                ],
                 onTap: (int screenNumber) {
                   setState(
                     () {
@@ -723,20 +755,6 @@ class _MainQrState extends State<MainQr> {
                     },
                   );
                 },
-                items: [
-                  BottomNavigationBarItem(
-                    icon: iconController(context, icon: Icons.qr_code_scanner),
-                    label: AppLocalizations.of(context)!.scan,
-                  ),
-                  BottomNavigationBarItem(
-                    icon: iconController(context, icon: Icons.qr_code),
-                    label: AppLocalizations.of(context)!.make,
-                  ),
-                  BottomNavigationBarItem(
-                    icon: iconController(context, icon: Icons.favorite),
-                    label: AppLocalizations.of(context)!.favorite,
-                  ),
-                ],
               ),
               body: screens.elementAt(selectScreen),
             ),
@@ -744,6 +762,7 @@ class _MainQrState extends State<MainQr> {
         : GetBuilder<ThemeController>(
             init: ThemeController(),
             builder: (ThemeController themeController) => Scaffold(
+              extendBody: true,
               appBar: AppBar(
                 title: Text(
                   title[selectScreen],
@@ -1295,8 +1314,38 @@ class _MainQrState extends State<MainQr> {
                   ),
                 ),
               ),
-              bottomNavigationBar: BottomNavigationBar(
+              bottomNavigationBar: FloatingNavbar(
+                borderRadius: 5,
+                itemBorderRadius: 5,
                 currentIndex: selectScreen,
+                selectedBackgroundColor: Colors.white,
+                iconSize: 28,
+                fontSize: 14,
+                backgroundColor: Theme.of(context).primaryColor,
+                selectedItemColor: Theme.of(context).primaryColor,
+                unselectedItemColor: Colors.white,
+                margin: const EdgeInsets.symmetric(
+                  vertical: 0,
+                  horizontal: 15,
+                ),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 0,
+                  vertical: 10,
+                ),
+                items: [
+                  FloatingNavbarItem(
+                    icon: Icons.qr_code_scanner,
+                    title: AppLocalizations.of(context)!.scan,
+                  ),
+                  FloatingNavbarItem(
+                    icon: Icons.qr_code,
+                    title: AppLocalizations.of(context)!.make,
+                  ),
+                  FloatingNavbarItem(
+                    icon: Icons.favorite,
+                    title: AppLocalizations.of(context)!.favorite,
+                  ),
+                ],
                 onTap: (int screenNumber) {
                   setState(
                     () {
@@ -1304,20 +1353,6 @@ class _MainQrState extends State<MainQr> {
                     },
                   );
                 },
-                items: [
-                  BottomNavigationBarItem(
-                    icon: iconController(context, icon: Icons.qr_code_scanner),
-                    label: AppLocalizations.of(context)!.scan,
-                  ),
-                  BottomNavigationBarItem(
-                    icon: iconController(context, icon: Icons.qr_code),
-                    label: AppLocalizations.of(context)!.make,
-                  ),
-                  BottomNavigationBarItem(
-                    icon: iconController(context, icon: Icons.favorite),
-                    label: AppLocalizations.of(context)!.favorite,
-                  ),
-                ],
               ),
               body: screens.elementAt(selectScreen),
             ),

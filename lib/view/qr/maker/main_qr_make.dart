@@ -33,7 +33,6 @@ class MainQrMake extends StatelessWidget {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 body: Padding(
                   padding: const EdgeInsets.only(
                     top: 20,
@@ -115,7 +114,6 @@ class MainQrMake extends StatelessWidget {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 body: Padding(
                   padding: const EdgeInsets.only(
                     top: 20,

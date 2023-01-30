@@ -56,6 +56,7 @@ dependencies:
   flutter_localizations: 
     sdk: flutter         
   geolocator: ^9.0.2
+  floating_bottom_navigation_bar: ^1.5.2
 
 dev_dependencies:
   flutter_lints: ^2.0.1

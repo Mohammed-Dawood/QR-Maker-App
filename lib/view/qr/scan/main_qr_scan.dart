@@ -22,7 +22,6 @@ class MainQrScan extends StatelessWidget {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 body: Center(
                   child: Padding(
                     padding: (isScreenWidth(context))
@@ -55,7 +54,6 @@ class MainQrScan extends StatelessWidget {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 body: Center(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(

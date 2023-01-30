@@ -40,7 +40,6 @@ class _MakeInstagramState extends State<MakeInstagram> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.instagram,
@@ -142,7 +141,6 @@ class _MakeInstagramState extends State<MakeInstagram> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.instagram,

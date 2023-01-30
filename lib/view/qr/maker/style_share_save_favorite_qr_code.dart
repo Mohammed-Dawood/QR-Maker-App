@@ -65,7 +65,6 @@ class _StyleShareSaveFavoriteQrCodeState
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.edit_qr_style,
@@ -996,7 +995,6 @@ class _StyleShareSaveFavoriteQrCodeState
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.edit_qr_style,

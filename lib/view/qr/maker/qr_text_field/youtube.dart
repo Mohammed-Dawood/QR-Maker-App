@@ -40,7 +40,6 @@ class _MakeYoutubeState extends State<MakeYoutube> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.youtube,
@@ -142,7 +141,6 @@ class _MakeYoutubeState extends State<MakeYoutube> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.youtube,

@@ -76,7 +76,6 @@ class _MakeVCardState extends State<MakeVCard> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.v_card,
@@ -870,7 +869,6 @@ class _MakeVCardState extends State<MakeVCard> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.v_card,

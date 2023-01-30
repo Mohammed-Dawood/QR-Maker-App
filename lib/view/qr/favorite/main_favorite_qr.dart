@@ -26,7 +26,6 @@ class _MainFavoriteQrState extends State<MainFavoriteQr> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 body: Padding(
                   padding: const EdgeInsets.only(
                     top: 20,
@@ -75,7 +74,6 @@ class _MainFavoriteQrState extends State<MainFavoriteQr> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 body: Padding(
                   padding: const EdgeInsets.only(
                     top: 20,

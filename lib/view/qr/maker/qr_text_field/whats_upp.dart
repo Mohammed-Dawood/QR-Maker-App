@@ -46,7 +46,6 @@ class _MakeWhatsUppState extends State<MakeWhatsUpp> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.whatsapp,
@@ -200,7 +199,6 @@ class _MakeWhatsUppState extends State<MakeWhatsUpp> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.whatsapp,

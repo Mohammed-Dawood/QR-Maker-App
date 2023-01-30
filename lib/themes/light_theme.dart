@@ -47,16 +47,6 @@ class LightTheme {
         fontWeight: FontWeight.bold,
       ),
     ),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      selectedItemColor: Colors.white,
-      unselectedItemColor: Colors.black45,
-      backgroundColor: Colors.blue.shade500,
-      selectedLabelStyle: const TextStyle(
-        fontSize: 16,
-        color: Colors.white,
-        fontWeight: FontWeight.bold,
-      ),
-    ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(Colors.blue.shade500),

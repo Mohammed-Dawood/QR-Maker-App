@@ -48,7 +48,6 @@ class _MakeSMSState extends State<MakeSMS> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.message_app_bar,
@@ -236,7 +235,6 @@ class _MakeSMSState extends State<MakeSMS> {
               alignment: Alignment.center,
               decoration: backgroundController(controller),
               child: Scaffold(
-                backgroundColor: Colors.transparent,
                 appBar: appBarController(
                   context,
                   title: AppLocalizations.of(context)!.message_app_bar,
