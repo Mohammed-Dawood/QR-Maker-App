@@ -423,7 +423,8 @@ class _MainQrState extends State<MainQr> {
                                       ),
                                     ),
                                   ),
-                            languageController.currentLanguage == "sv"
+
+                            languageController.currentLanguage == "es"
                                 ? const SizedBox(
                                     height: 0,
                                   )
@@ -431,6 +432,60 @@ class _MainQrState extends State<MainQr> {
                                     changeState: languageController
                                         .dropDownButtonLanguage,
                                     durationTime: 400,
+                                    firstChildeCard: Card(
+                                      margin: EdgeInsets.symmetric(
+                                        vertical:
+                                            isScreenWidth(context) ? 0 : 5,
+                                        horizontal: 8,
+                                      ),
+                                      elevation: 0,
+                                      color: Colors.transparent,
+                                      child: TextButton(
+                                        style: ButtonStyle(
+                                          padding: MaterialStateProperty.all<
+                                              EdgeInsets>(
+                                            const EdgeInsets.all(0),
+                                          ),
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              '🇪🇸',
+                                              style: TextStyle(
+                                                fontSize: isScreenWidth(context)
+                                                    ? 22
+                                                    : 26,
+                                              ),
+                                            ),
+                                            const SizedBox(width: 10),
+                                            Text(
+                                              "Español",
+                                              style: (isScreenWidth(context))
+                                                  ? Theme.of(context)
+                                                      .textTheme
+                                                      .displaySmall
+                                                  : Theme.of(context)
+                                                      .textTheme
+                                                      .displayMedium,
+                                            ),
+                                          ],
+                                        ),
+                                        onPressed: () {
+                                          languageController
+                                              .changeLanguage("es");
+                                        },
+                                      ),
+                                    ),
+                                  ),
+
+                            languageController.currentLanguage == "sv"
+                                ? const SizedBox(
+                                    height: 0,
+                                  )
+                                : AnimationDropDownController(
+                                    changeState: languageController
+                                        .dropDownButtonLanguage,
+                                    durationTime: 500,
                                     firstChildeCard: Card(
                                       margin: EdgeInsets.symmetric(
                                         vertical:
@@ -1039,7 +1094,7 @@ class _MainQrState extends State<MainQr> {
                                       ),
                                     ),
                                   ),
-                            languageController.currentLanguage == "sv"
+                            languageController.currentLanguage == "es"
                                 ? const SizedBox(
                                     height: 0,
                                   )
@@ -1047,6 +1102,52 @@ class _MainQrState extends State<MainQr> {
                                     changeState: languageController
                                         .dropDownButtonLanguage,
                                     durationTime: 400,
+                                    firstChildeCard: Card(
+                                      margin: const EdgeInsets.symmetric(
+                                        vertical: 5,
+                                        horizontal: 8,
+                                      ),
+                                      elevation: 0,
+                                      color: Colors.transparent,
+                                      child: TextButton(
+                                        style: ButtonStyle(
+                                          padding: MaterialStateProperty.all<
+                                              EdgeInsets>(
+                                            const EdgeInsets.all(0),
+                                          ),
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            const Text(
+                                              '🇪🇸',
+                                              style: TextStyle(
+                                                fontSize: 26,
+                                              ),
+                                            ),
+                                            const SizedBox(width: 10),
+                                            Text(
+                                              "Español",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .displayMedium,
+                                            ),
+                                          ],
+                                        ),
+                                        onPressed: () {
+                                          languageController
+                                              .changeLanguage("es");
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                            languageController.currentLanguage == "sv"
+                                ? const SizedBox(
+                                    height: 0,
+                                  )
+                                : AnimationDropDownController(
+                                    changeState: languageController
+                                        .dropDownButtonLanguage,
+                                    durationTime: 500,
                                     firstChildeCard: Card(
                                       margin: const EdgeInsets.symmetric(
                                         vertical: 5,
