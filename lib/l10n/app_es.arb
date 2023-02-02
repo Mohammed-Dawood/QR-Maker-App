@@ -14,7 +14,7 @@
     "make_qr_code": "Crear código QR",
     "favorite_qr_code": "Código QR favorito",
     "scanner": "Escáner",
-    "go_to_link": "Ir al enlace",
+    "open_the_link": "Abre el enlace",
     "change_qr_code_name": "Cambiar el nombre del código QR",
     "prev": "Anterior",
     "next": "Siguiente",

@@ -69,9 +69,9 @@
         "description": "AppBar scanner by camera"
     },
 
-    "go_to_link": "Go To Link",
-    "@go_to_link": {
-        "description": "Go To Link"
+    "open_the_link": "Open the Link",
+    "@open_the_link": {
+        "description": "Open the Link"
     },
 
     "change_qr_code_name": "Change QR Code Name",
