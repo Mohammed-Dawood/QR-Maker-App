@@ -12,7 +12,7 @@ import 'package:qr_maker_app/controller/backround_controller.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
 import 'package:qr_maker_app/controller/save_qr_code_controller.dart';
 import 'package:qr_maker_app/controller/share_qr_code_controller.dart';
-import 'package:qr_maker_app/controller/favorite_qr_code_controller.dart';
+import 'package:qr_maker_app/controller/favorite/make_qr_code_list_controller.dart';
 
 class ShowFavoriteQrImage extends StatefulWidget {
   const ShowFavoriteQrImage({
@@ -47,11 +47,11 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
               decoration: backgroundController(controller),
               child: Scaffold(
                 appBar: AppBar(
-                  title: GetBuilder<FavoriteQrCodeController>(
-                    init: FavoriteQrCodeController(),
-                    builder: (FavoriteQrCodeController controller) => Text(
+                  title: GetBuilder<MakeQrCodeListController>(
+                    init: MakeQrCodeListController(),
+                    builder: (MakeQrCodeListController controller) => Text(
                       GetStorage().read(
-                            controller.favoriteQrCodeImageList[qrIndex!],
+                            controller.makeQrCodeList[qrIndex!],
                           ) ??
                           AppLocalizations.of(context)!.change_qr_code_name,
                       style: TextStyle(
@@ -122,16 +122,15 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                           .displayMedium,
                                 ),
                               ),
-                              GetBuilder<FavoriteQrCodeController>(
-                                init: FavoriteQrCodeController(),
+                              GetBuilder<MakeQrCodeListController>(
+                                init: MakeQrCodeListController(),
                                 builder:
-                                    (FavoriteQrCodeController controller) =>
+                                    (MakeQrCodeListController controller) =>
                                         TextButton(
                                   onPressed: () {
                                     setState(() {
                                       GetStorage().write(
-                                        controller
-                                            .favoriteQrCodeImageList[qrIndex!],
+                                        controller.makeQrCodeList[qrIndex!],
                                         textEditingController.text,
                                       );
                                     });
@@ -176,15 +175,14 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                 padding: const EdgeInsets.all(5.0),
                                 child: Screenshot(
                                   controller: screenshotController,
-                                  child: GetBuilder<FavoriteQrCodeController>(
-                                    init: FavoriteQrCodeController(),
+                                  child: GetBuilder<MakeQrCodeListController>(
+                                    init: MakeQrCodeListController(),
                                     builder:
-                                        (FavoriteQrCodeController controller) =>
+                                        (MakeQrCodeListController controller) =>
                                             Image.memory(
                                       Uint8List.fromList(
                                         controller
-                                            .favoriteQrCodeImageList[qrIndex!]
-                                            .codeUnits,
+                                            .makeQrCodeList[qrIndex!].codeUnits,
                                       ),
                                     ),
                                   ),
@@ -200,10 +198,10 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                             width: (isScreenWidth(context)) ? 250 : 410,
                             child: Row(
                               children: [
-                                GetBuilder<FavoriteQrCodeController>(
-                                  init: FavoriteQrCodeController(),
+                                GetBuilder<MakeQrCodeListController>(
+                                  init: MakeQrCodeListController(),
                                   builder:
-                                      (FavoriteQrCodeController controller) =>
+                                      (MakeQrCodeListController controller) =>
                                           Expanded(
                                     child: ElevatedButton.icon(
                                       onPressed: () {
@@ -212,8 +210,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                             qrIndex = qrIndex! - 1;
                                           } else {
                                             qrIndex = controller
-                                                    .favoriteQrCodeImageList
-                                                    .length -
+                                                    .makeQrCodeList.length -
                                                 1;
                                           }
                                         });
@@ -233,10 +230,10 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                 const SizedBox(
                                   width: 10,
                                 ),
-                                GetBuilder<FavoriteQrCodeController>(
-                                  init: FavoriteQrCodeController(),
+                                GetBuilder<MakeQrCodeListController>(
+                                  init: MakeQrCodeListController(),
                                   builder:
-                                      (FavoriteQrCodeController controller) =>
+                                      (MakeQrCodeListController controller) =>
                                           Expanded(
                                     child: Directionality(
                                       textDirection:
@@ -249,8 +246,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                           setState(() {
                                             if ((qrIndex!) <
                                                 controller
-                                                        .favoriteQrCodeImageList
-                                                        .length -
+                                                        .makeQrCodeList.length -
                                                     1) {
                                               qrIndex = qrIndex! + 1;
                                             } else {
@@ -387,19 +383,18 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                                 .cancel,
                                           ),
                                         ),
-                                        GetBuilder<FavoriteQrCodeController>(
-                                          init: FavoriteQrCodeController(),
-                                          builder: (FavoriteQrCodeController
+                                        GetBuilder<MakeQrCodeListController>(
+                                          init: MakeQrCodeListController(),
+                                          builder: (MakeQrCodeListController
                                                   controller) =>
                                               TextButton(
                                             onPressed: () async {
                                               GetStorage().remove(
                                                 controller
-                                                        .favoriteQrCodeImageList[
-                                                    qrIndex!],
+                                                    .makeQrCodeList[qrIndex!],
                                               );
                                               controller
-                                                  .deleteItemFromQrCodeImageList(
+                                                  .deleteItemFromMakeQrCodeList(
                                                 qrIndex!,
                                               );
                                             },
@@ -441,11 +436,11 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
               decoration: backgroundController(controller),
               child: Scaffold(
                 appBar: AppBar(
-                  title: GetBuilder<FavoriteQrCodeController>(
-                    init: FavoriteQrCodeController(),
-                    builder: (FavoriteQrCodeController controller) => Text(
+                  title: GetBuilder<MakeQrCodeListController>(
+                    init: MakeQrCodeListController(),
+                    builder: (MakeQrCodeListController controller) => Text(
                       GetStorage().read(
-                            controller.favoriteQrCodeImageList[qrIndex!],
+                            controller.makeQrCodeList[qrIndex!],
                           ) ??
                           AppLocalizations.of(context)!.change_qr_code_name,
                       style: const TextStyle(
@@ -509,16 +504,15 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                       Theme.of(context).textTheme.displayMedium,
                                 ),
                               ),
-                              GetBuilder<FavoriteQrCodeController>(
-                                init: FavoriteQrCodeController(),
+                              GetBuilder<MakeQrCodeListController>(
+                                init: MakeQrCodeListController(),
                                 builder:
-                                    (FavoriteQrCodeController controller) =>
+                                    (MakeQrCodeListController controller) =>
                                         TextButton(
                                   onPressed: () {
                                     setState(() {
                                       GetStorage().write(
-                                          controller.favoriteQrCodeImageList[
-                                              qrIndex!],
+                                          controller.makeQrCodeList[qrIndex!],
                                           textEditingController.text);
                                     });
                                     Get.back();
@@ -558,15 +552,14 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                 padding: const EdgeInsets.all(5.0),
                                 child: Screenshot(
                                   controller: screenshotController,
-                                  child: GetBuilder<FavoriteQrCodeController>(
-                                    init: FavoriteQrCodeController(),
+                                  child: GetBuilder<MakeQrCodeListController>(
+                                    init: MakeQrCodeListController(),
                                     builder:
-                                        (FavoriteQrCodeController controller) =>
+                                        (MakeQrCodeListController controller) =>
                                             Image.memory(
                                       Uint8List.fromList(
                                         controller
-                                            .favoriteQrCodeImageList[qrIndex!]
-                                            .codeUnits,
+                                            .makeQrCodeList[qrIndex!].codeUnits,
                                       ),
                                     ),
                                   ),
@@ -582,10 +575,10 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                             width: 410,
                             child: Row(
                               children: [
-                                GetBuilder<FavoriteQrCodeController>(
-                                  init: FavoriteQrCodeController(),
+                                GetBuilder<MakeQrCodeListController>(
+                                  init: MakeQrCodeListController(),
                                   builder:
-                                      (FavoriteQrCodeController controller) =>
+                                      (MakeQrCodeListController controller) =>
                                           Expanded(
                                     child: ElevatedButton.icon(
                                       onPressed: () {
@@ -594,8 +587,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                             qrIndex = qrIndex! - 1;
                                           } else {
                                             qrIndex = controller
-                                                    .favoriteQrCodeImageList
-                                                    .length -
+                                                    .makeQrCodeList.length -
                                                 1;
                                           }
                                         });
@@ -615,10 +607,10 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                 const SizedBox(
                                   width: 10,
                                 ),
-                                GetBuilder<FavoriteQrCodeController>(
-                                  init: FavoriteQrCodeController(),
+                                GetBuilder<MakeQrCodeListController>(
+                                  init: MakeQrCodeListController(),
                                   builder:
-                                      (FavoriteQrCodeController controller) =>
+                                      (MakeQrCodeListController controller) =>
                                           Expanded(
                                     child: Directionality(
                                       textDirection:
@@ -631,8 +623,7 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                           setState(() {
                                             if (qrIndex! <
                                                 controller
-                                                        .favoriteQrCodeImageList
-                                                        .length -
+                                                        .makeQrCodeList.length -
                                                     1) {
                                               qrIndex = qrIndex! + 1;
                                             } else {
@@ -760,19 +751,18 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                                 .cancel,
                                           ),
                                         ),
-                                        GetBuilder<FavoriteQrCodeController>(
-                                          init: FavoriteQrCodeController(),
-                                          builder: (FavoriteQrCodeController
+                                        GetBuilder<MakeQrCodeListController>(
+                                          init: MakeQrCodeListController(),
+                                          builder: (MakeQrCodeListController
                                                   controller) =>
                                               TextButton(
                                             onPressed: () async {
                                               GetStorage().remove(
                                                 controller
-                                                        .favoriteQrCodeImageList[
-                                                    qrIndex!],
+                                                    .makeQrCodeList[qrIndex!],
                                               );
                                               controller
-                                                  .deleteItemFromQrCodeImageList(
+                                                  .deleteItemFromMakeQrCodeList(
                                                 qrIndex!,
                                               );
                                             },

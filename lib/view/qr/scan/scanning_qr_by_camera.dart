@@ -5,9 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-// import 'package:qr_maker_app/controller/icons_controller.dart';
-// import 'package:qr_maker_app/controller/labels_controller.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
+import 'package:qr_maker_app/controller/favorite/scan_qr_code_list_controller.dart';
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 
 class ScanningQRByCamera extends StatefulWidget {
@@ -25,9 +24,8 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
   bool isScreenWidth(BuildContext context) =>
       MediaQuery.of(context).size.width < 600;
 
-  VibrationController vibrationController = Get.put(
-    VibrationController(),
-  );
+  ScanQrCodeListController favoriteScanQrCodeController = Get.find();
+  VibrationController vibrationController = Get.put(VibrationController());
 
   // In order to get hot reload to work we need to pause the camera if the platform
   // is android, or resume the camera if the platform is iOS.
@@ -103,8 +101,7 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
               selectedItemColor: Colors.white,
               unselectedItemColor: Colors.white,
               backgroundColor: Theme.of(context).primaryColor,
-              selectedBackgroundColor:
-                  result != null ? Colors.red : Theme.of(context).primaryColor,
+              selectedBackgroundColor: Theme.of(context).primaryColor,
               margin: const EdgeInsets.symmetric(
                 vertical: 0,
                 horizontal: 15,
@@ -119,17 +116,20 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
                     child: Column(
                       children: [
                         Icon(
-                          result != null ? Icons.open_in_browser : null,
+                          result != null
+                              ? Icons.open_in_browser
+                              : Icons.open_in_browser,
                           size: isScreenWidth(context) ? 24 : 28,
-                          color: Colors.white,
+                          color: result != null ? Colors.white : Colors.white30,
                         ),
                         Text(
                           result != null
                               ? AppLocalizations.of(context)!.open_the_link
-                              : '',
+                              : AppLocalizations.of(context)!.open_the_link,
                           style: TextStyle(
                             fontSize: isScreenWidth(context) ? 12 : 14,
-                            color: Colors.white,
+                            color:
+                                result != null ? Colors.white : Colors.white30,
                           ),
                         ),
                       ],
@@ -142,6 +142,38 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
                       } else {
                         throw 'Could not launch ${result!.code}';
                       }
+                    },
+                  ),
+                ),
+                FloatingNavbarItem(
+                  customWidget: InkWell(
+                    child: Column(
+                      children: [
+                        Icon(
+                          result != null
+                              ? Icons.add_box_outlined
+                              : Icons.add_box_outlined,
+                          size: isScreenWidth(context) ? 24 : 28,
+                          color: result != null ? Colors.white : Colors.white30,
+                        ),
+                        Text(
+                          result != null
+                              ? AppLocalizations.of(context)!.add_to_favorite
+                              : AppLocalizations.of(context)!.add_to_favorite,
+                          style: TextStyle(
+                            fontSize: isScreenWidth(context) ? 12 : 14,
+                            color:
+                                result != null ? Colors.white : Colors.white30,
+                          ),
+                        ),
+                      ],
+                    ),
+                    onTap: () async {
+                      final String valueQr = '${result!.code}';
+                      favoriteScanQrCodeController.addItemToScanQrCodeList(
+                        valueQr,
+                        context,
+                      );
                     },
                   ),
                 ),
@@ -303,8 +335,7 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
               selectedItemColor: Colors.white,
               unselectedItemColor: Colors.white,
               backgroundColor: Theme.of(context).primaryColor,
-              selectedBackgroundColor:
-                  result != null ? Colors.red : Theme.of(context).primaryColor,
+              selectedBackgroundColor: Theme.of(context).primaryColor,
               margin: const EdgeInsets.symmetric(
                 vertical: 0,
                 horizontal: 15,
@@ -319,17 +350,20 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
                     child: Column(
                       children: [
                         Icon(
-                          result != null ? Icons.open_in_browser : null,
+                          result != null
+                              ? Icons.open_in_browser
+                              : Icons.open_in_browser,
                           size: 28,
-                          color: Colors.white,
+                          color: result != null ? Colors.white : Colors.white30,
                         ),
                         Text(
                           result != null
                               ? AppLocalizations.of(context)!.open_the_link
-                              : '',
-                          style: const TextStyle(
+                              : AppLocalizations.of(context)!.open_the_link,
+                          style: TextStyle(
                             fontSize: 14,
-                            color: Colors.white,
+                            color:
+                                result != null ? Colors.white : Colors.white30,
                           ),
                         ),
                       ],
@@ -342,6 +376,38 @@ class _ScanningQRByCameraState extends State<ScanningQRByCamera> {
                       } else {
                         throw 'Could not launch ${result!.code}';
                       }
+                    },
+                  ),
+                ),
+                FloatingNavbarItem(
+                  customWidget: InkWell(
+                    child: Column(
+                      children: [
+                        Icon(
+                          result != null
+                              ? Icons.add_box_outlined
+                              : Icons.add_box_outlined,
+                          size: 28,
+                          color: result != null ? Colors.white : Colors.white30,
+                        ),
+                        Text(
+                          result != null
+                              ? AppLocalizations.of(context)!.add_to_favorite
+                              : AppLocalizations.of(context)!.add_to_favorite,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color:
+                                result != null ? Colors.white : Colors.white30,
+                          ),
+                        ),
+                      ],
+                    ),
+                    onTap: () async {
+                      final String valueQr = '${result!.code}';
+                      favoriteScanQrCodeController.addItemToScanQrCodeList(
+                        valueQr,
+                        context,
+                      );
                     },
                   ),
                 ),

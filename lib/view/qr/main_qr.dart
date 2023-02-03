@@ -11,8 +11,9 @@ import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/controller/language_controller.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
 import 'package:qr_maker_app/view/qr/favorite/main_favorite_qr.dart';
-import 'package:qr_maker_app/controller/favorite_qr_code_controller.dart';
 import 'package:qr_maker_app/controller/animation_drop_down_controller.dart';
+import 'package:qr_maker_app/controller/favorite/make_qr_code_list_controller.dart';
+import 'package:qr_maker_app/controller/favorite/scan_qr_code_list_controller.dart';
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 
 class MainQr extends StatefulWidget {
@@ -31,8 +32,13 @@ class _MainQrState extends State<MainQr> {
     const MainFavoriteQr(),
   ];
 
-  FavoriteQrCodeController favoriteQrCodeController = Get.put(
-    FavoriteQrCodeController(),
+  MakeQrCodeListController makeQrCodeListController = Get.put(
+    MakeQrCodeListController(),
+    permanent: true,
+  );
+
+  ScanQrCodeListController scanQrCodeListController = Get.put(
+    ScanQrCodeListController(),
     permanent: true,
   );
 
@@ -47,7 +53,8 @@ class _MainQrState extends State<MainQr> {
 
   @override
   void initState() {
-    favoriteQrCodeController.getQrImageListFromSharePref();
+    makeQrCodeListController.getMakeQrCodeListFromSharePref();
+    scanQrCodeListController.getScanQrCodeListFromSharePref();
 
     rateMyApp.init().then(
       (_) {

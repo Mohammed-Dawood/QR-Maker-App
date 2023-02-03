@@ -14,8 +14,8 @@ import 'package:qr_maker_app/controller/backround_controller.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
 import 'package:qr_maker_app/controller/save_qr_code_controller.dart';
 import 'package:qr_maker_app/controller/share_qr_code_controller.dart';
-import 'package:qr_maker_app/controller/favorite_qr_code_controller.dart';
 import 'package:qr_maker_app/controller/animation_drop_down_controller.dart';
+import 'package:qr_maker_app/controller/favorite/make_qr_code_list_controller.dart';
 
 class StyleShareSaveFavoriteQrCode extends StatefulWidget {
   const StyleShareSaveFavoriteQrCode({
@@ -51,7 +51,7 @@ class _StyleShareSaveFavoriteQrCodeState
 
   ScreenshotController screenshotController = ScreenshotController();
 
-  FavoriteQrCodeController historyQrCodeController = Get.find();
+  MakeQrCodeListController makeQrCodeListController = Get.find();
 
   bool isScreenWidth(BuildContext context) =>
       MediaQuery.of(context).size.width < 600;
@@ -961,9 +961,11 @@ class _StyleShareSaveFavoriteQrCodeState
                                     onPressed: () async {
                                       final image =
                                           await screenshotController.capture();
-                                      historyQrCodeController
-                                          .addQrCodeImageToFavorite(
-                                              image!, context);
+                                      makeQrCodeListController
+                                          .addItemToMakeQrCodeList(
+                                        image!,
+                                        context,
+                                      );
                                       vibrationController.vibration();
                                     },
                                     icon: iconController(context,
@@ -1793,9 +1795,11 @@ class _StyleShareSaveFavoriteQrCodeState
                                     onPressed: () async {
                                       final image =
                                           await screenshotController.capture();
-                                      historyQrCodeController
-                                          .addQrCodeImageToFavorite(
-                                              image!, context);
+                                      makeQrCodeListController
+                                          .addItemToMakeQrCodeList(
+                                        image!,
+                                        context,
+                                      );
                                       vibrationController.vibration();
                                     },
                                     icon: iconController(context,

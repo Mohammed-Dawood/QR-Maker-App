@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_maker_app/controller/backround_controller.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
-import 'package:qr_maker_app/controller/favorite_qr_code_controller.dart';
+import 'package:qr_maker_app/controller/favorite/make_qr_code_list_controller.dart';
 import 'package:qr_maker_app/view/qr/favorite/show_favorite_qr_image.dart';
 
 class MainFavoriteQr extends StatefulWidget {
@@ -32,11 +32,11 @@ class _MainFavoriteQrState extends State<MainFavoriteQr> {
                     left: 10,
                     right: 10,
                   ),
-                  child: GetBuilder<FavoriteQrCodeController>(
-                    init: FavoriteQrCodeController(),
-                    builder: (FavoriteQrCodeController controller) =>
+                  child: GetBuilder<MakeQrCodeListController>(
+                    init: MakeQrCodeListController(),
+                    builder: (MakeQrCodeListController controller) =>
                         GridView.builder(
-                      itemCount: controller.favoriteQrCodeImageList.length,
+                      itemCount: controller.makeQrCodeList.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: (isScreenWidth(context)) ? 3 : 5,
                         mainAxisSpacing: 5,
@@ -55,8 +55,8 @@ class _MainFavoriteQrState extends State<MainFavoriteQr> {
                             child: Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Image.memory(
-                                Uint8List.fromList(controller
-                                    .favoriteQrCodeImageList[index].codeUnits),
+                                Uint8List.fromList(
+                                    controller.makeQrCodeList[index].codeUnits),
                               ),
                             ),
                           ),
@@ -80,11 +80,11 @@ class _MainFavoriteQrState extends State<MainFavoriteQr> {
                     left: 10,
                     right: 10,
                   ),
-                  child: GetBuilder<FavoriteQrCodeController>(
-                    init: FavoriteQrCodeController(),
-                    builder: (FavoriteQrCodeController controller) =>
+                  child: GetBuilder<MakeQrCodeListController>(
+                    init: MakeQrCodeListController(),
+                    builder: (MakeQrCodeListController controller) =>
                         GridView.builder(
-                      itemCount: controller.favoriteQrCodeImageList.length,
+                      itemCount: controller.makeQrCodeList.length,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 7,
@@ -104,8 +104,8 @@ class _MainFavoriteQrState extends State<MainFavoriteQr> {
                             child: Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Image.memory(
-                                Uint8List.fromList(controller
-                                    .favoriteQrCodeImageList[index].codeUnits),
+                                Uint8List.fromList(
+                                    controller.makeQrCodeList[index].codeUnits),
                               ),
                             ),
                           ),

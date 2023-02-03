@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 
 BoxDecoration backgroundController(ThemeController controller) {
-  return BoxDecoration(
+  return const BoxDecoration(
       // image: DecorationImage(
       //   image: controller.initValue
       //       ? const AssetImage('images/background_dark.png')

@@ -6,21 +6,20 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class FavoriteQrCodeController extends GetxController {
-  List<String> favoriteQrCodeImageList = [];
+class MakeQrCodeListController extends GetxController {
+  List<String> makeQrCodeList = [];
 
-  Future<void> addQrCodeImageToFavorite(
+  Future<void> addItemToMakeQrCodeList(
     Uint8List qrImage,
     BuildContext context,
   ) async {
-    String qrCodeImageString = String.fromCharCodes(qrImage);
+    String qrImageToString = String.fromCharCodes(qrImage);
 
-    for (var index = 0; index < favoriteQrCodeImageList.length; index++) {
-      if (qrCodeImageString == favoriteQrCodeImageList[index]) {
+    for (var index = 0; index < makeQrCodeList.length; index++) {
+      if (qrImageToString == makeQrCodeList[index]) {
         Get.snackbar(
           'QR Maker',
           AppLocalizations.of(context)!.already_favorite_snackbar,
-          // "You already have this QR Code in favorite",
           icon: const Icon(
             Icons.done,
             color: Colors.green,
@@ -36,11 +35,11 @@ class FavoriteQrCodeController extends GetxController {
         return;
       }
     }
-    favoriteQrCodeImageList.add(qrCodeImageString);
+    makeQrCodeList.add(qrImageToString);
 
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    SharedPreferences pref = await SharedPreferences.getInstance();
 
-    await prefs.setStringList('newQrCodeImageList', favoriteQrCodeImageList);
+    await pref.setStringList('newMakeQrCodeList', makeQrCodeList);
 
     Get.snackbar(
       'QR Maker',
@@ -60,16 +59,16 @@ class FavoriteQrCodeController extends GetxController {
     );
   }
 
-  Future<void> getQrImageListFromSharePref() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
+  Future<void> getMakeQrCodeListFromSharePref() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
 
-    favoriteQrCodeImageList = prefs.getStringList('newQrCodeImageList')!;
+    makeQrCodeList = pref.getStringList('newMakeQrCodeList')!;
   }
 
-  Future<void> deleteItemFromQrCodeImageList(int number) async {
-    favoriteQrCodeImageList.remove(favoriteQrCodeImageList[number]);
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setStringList('newQrCodeImageList', favoriteQrCodeImageList);
+  Future<void> deleteItemFromMakeQrCodeList(int number) async {
+    makeQrCodeList.remove(makeQrCodeList[number]);
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    await pref.setStringList('newMakeQrCodeList', makeQrCodeList);
     update();
     Get.back();
     Get.back();
