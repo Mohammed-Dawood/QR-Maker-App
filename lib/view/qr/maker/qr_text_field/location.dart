@@ -188,10 +188,8 @@ class _MakeLocationState extends State<MakeLocation> {
                                     if (validateKey.currentState!.validate()) {
                                       setState(
                                         () {
-                                          valueQr = 'geo:' +
-                                              latitudeController.text +
-                                              ',' +
-                                              longitudeController.text;
+                                          valueQr =
+                                              'https://maps.google.com/local?q=${latitudeController.text},${longitudeController.text}';
                                           Get.to(() =>
                                               StyleShareSaveFavoriteQrCode(
                                                 valueQr: valueQr,
@@ -363,10 +361,8 @@ class _MakeLocationState extends State<MakeLocation> {
                                     if (validateKey.currentState!.validate()) {
                                       setState(
                                         () {
-                                          valueQr = 'geo:' +
-                                              latitudeController.text +
-                                              ',' +
-                                              longitudeController.text;
+                                          valueQr =
+                                              'https://maps.google.com/local?q=${latitudeController.text},${longitudeController.text}';
                                           Get.to(() =>
                                               StyleShareSaveFavoriteQrCode(
                                                 valueQr: valueQr,
