@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/qr_text_field/url.dart';
-import 'package:qr_maker_app/controller/backround_controller.dart';
+import 'package:qr_maker_app/controller/background_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/qr_text_field/sms.dart';
 import 'package:qr_maker_app/view/qr/maker/qr_text_field/wifi.dart';
 import 'package:qr_maker_app/view/qr/maker/qr_text_field/date.dart';

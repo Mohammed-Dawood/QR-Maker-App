@@ -8,7 +8,7 @@ import 'package:qr_maker_app/controller/icons_controller.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/controller/labels_controller.dart';
 import 'package:qr_maker_app/controller/language_controller.dart';
-import 'package:qr_maker_app/controller/backround_controller.dart';
+import 'package:qr_maker_app/controller/background_controller.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
 import 'package:qr_maker_app/controller/save_qr_code_controller.dart';
 import 'package:qr_maker_app/controller/share_qr_code_controller.dart';

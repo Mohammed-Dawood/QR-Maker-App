@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
-import 'package:qr_maker_app/controller/backround_controller.dart';
+import 'package:qr_maker_app/controller/background_controller.dart';
 import 'package:qr_maker_app/controller/make_qr_code_controller.dart';
 import 'package:qr_maker_app/view/qr/favorite/show_scan_favorite_qr_code.dart';
 import 'package:qr_maker_app/view/qr/favorite/show_make_favorite_qr_code.dart';

@@ -4,7 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:qr_maker_app/controller/favorite/scan_qr_code_list_controller.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
-import 'package:qr_maker_app/controller/backround_controller.dart';
+import 'package:qr_maker_app/controller/background_controller.dart';
 import 'package:qr_maker_app/controller/make_qr_code_controller.dart';
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
