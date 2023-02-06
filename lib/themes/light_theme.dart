@@ -41,7 +41,7 @@ class LightTheme {
     appBarTheme: AppBarTheme(
       centerTitle: true,
       color: Colors.blue.shade500,
-      elevation: 5,
+      elevation: 0,
       titleTextStyle: const TextStyle(
         color: Colors.white,
         fontWeight: FontWeight.bold,

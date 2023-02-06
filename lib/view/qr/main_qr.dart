@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:rate_my_app/rate_my_app.dart';
 import 'package:url_launcher/url_launcher.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
-import 'package:qr_maker_app/view/qr/scan/main_qr_scan.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:qr_maker_app/view/qr/scan/main_qr_scan.dart';
 import 'package:qr_maker_app/view/qr/maker/main_qr_make.dart';
 import 'package:qr_maker_app/controller/icons_controller.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
@@ -24,7 +24,7 @@ class MainQr extends StatefulWidget {
 }
 
 class _MainQrState extends State<MainQr> {
-  int selectScreen = 0;
+  int selectScreen = 1;
 
   List<Widget> screens = [
     const MainQrScan(),

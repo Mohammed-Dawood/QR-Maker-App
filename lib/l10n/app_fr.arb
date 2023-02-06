@@ -15,7 +15,7 @@
     "scanner": "Scanneur",
     "open_the_link": "Ouvrir le lien",
     "change_qr_code_name": "Modifier le nom du code QR",
-    "prev": "Précédent",
+    "previous": "Précédent",
     "next": "Prochain",
     "save_qr_code": "Enregistrer le code QR",
     "share_qr_code": "Partager le code QR",
@@ -108,5 +108,8 @@
     "rate_app_title": "Évaluer l'application",
     "rate_app_message": "Si vous appréciez cette application, veuillez prendre un moment de votre temps pour la noter ! Cela nous aiderait vraiment et cela ne devrait pas prendre plus d'une minute.",
     "rate_button": "Fréquence",
-    "later_button": "Plus tard"
+    "later_button": "Plus tard",
+    "info": "Information",
+    "qr_code": "QR Code",
+    "flash": "Éclair"
 }

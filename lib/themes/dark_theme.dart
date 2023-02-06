@@ -41,7 +41,7 @@ class DarkTheme {
     appBarTheme: AppBarTheme(
       centerTitle: true,
       color: Colors.grey.shade800,
-      elevation: 5,
+      elevation: 0,
       titleTextStyle: const TextStyle(
         color: Colors.white,
         fontWeight: FontWeight.bold,

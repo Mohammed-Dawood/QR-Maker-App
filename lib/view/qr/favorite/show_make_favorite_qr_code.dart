@@ -14,8 +14,8 @@ import 'package:qr_maker_app/controller/save_qr_code_controller.dart';
 import 'package:qr_maker_app/controller/share_qr_code_controller.dart';
 import 'package:qr_maker_app/controller/favorite/make_qr_code_list_controller.dart';
 
-class ShowFavoriteQrImage extends StatefulWidget {
-  const ShowFavoriteQrImage({
+class ShowMakeFavoriteQrCode extends StatefulWidget {
+  const ShowMakeFavoriteQrCode({
     Key? key,
     required this.index,
   }) : super(key: key);
@@ -23,10 +23,10 @@ class ShowFavoriteQrImage extends StatefulWidget {
   final int index;
 
   @override
-  State<ShowFavoriteQrImage> createState() => _ShowFavoriteQrImageState();
+  State<ShowMakeFavoriteQrCode> createState() => _ShowMakeFavoriteQrCodeState();
 }
 
-class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
+class _ShowMakeFavoriteQrCodeState extends State<ShowMakeFavoriteQrCode> {
   int? qrIndex;
   LanguageController languageController = Get.find();
   ScreenshotController screenshotController = ScreenshotController();
@@ -221,8 +221,8 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                       ),
                                       label: labelController(
                                         context,
-                                        label:
-                                            AppLocalizations.of(context)!.prev,
+                                        label: AppLocalizations.of(context)!
+                                            .previous,
                                       ),
                                     ),
                                   ),
@@ -598,8 +598,8 @@ class _ShowFavoriteQrImageState extends State<ShowFavoriteQrImage> {
                                       ),
                                       label: labelController(
                                         context,
-                                        label:
-                                            AppLocalizations.of(context)!.prev,
+                                        label: AppLocalizations.of(context)!
+                                            .previous,
                                       ),
                                     ),
                                   ),

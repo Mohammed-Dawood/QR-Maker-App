@@ -79,9 +79,9 @@
         "description": "Change QR Code Name Text"
     },
 
-    "prev": "Prev",
-    "@prev": {
-        "description": "Prev button"
+    "previous": "Previous",
+    "@previous": {
+        "description": "Previous button"
     },
 
     "next": "Next",
@@ -548,7 +548,22 @@
     "later_button": "Later",
     "@later_button": {
         "description": "Later Button"
-    }      
+    },    
+    
+    "info": "Information",
+    "@info": {
+        "description": "Info Button"
+    },
+    
+    "qr_code": "QR Code",
+    "@qr_code": {
+        "description": "QR Code Button"
+    },
+
+    "flash": "Flash",
+    "@flash": {
+        "description": "Flash Button"
+    }   
 }
 
 

@@ -16,7 +16,7 @@
     "scanner": "Escáner",
     "open_the_link": "Abre el enlace",
     "change_qr_code_name": "Cambiar el nombre del código QR",
-    "prev": "Anterior",
+    "previous": "Anterior",
     "next": "Siguiente",
     "save_qr_code": "Guardar código QR",
     "share_qr_code": "Compartir código QR",
@@ -109,5 +109,8 @@
     "rate_app_title": "Califica esta aplicación",
     "rate_app_message": "Si te gusta esta aplicación, por favor dedica un momento de tu tiempo para revisarla. Realmente nos ayuda y no debería llevar más de un minuto!",
     "rate_button": "Índice", 
-    "later_button": "Luego"
+    "later_button": "Luego",
+    "info": "Información",
+    "qr_code": "Código QR",
+    "flash": "Destello"
 }

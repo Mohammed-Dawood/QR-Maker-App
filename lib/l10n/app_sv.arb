@@ -15,7 +15,7 @@
     "scanner": "Skanner",
     "open_the_link": "Öppna länken",
     "change_qr_code_name": "Ändra QR-kodens namn",
-    "prev": "Före",
+    "previous": "Föregående",
     "next": "Nästa",
     "save_qr_code": "Spara QR-kod",
     "share_qr_code": "Dela QR-kod",
@@ -108,5 +108,8 @@
     "rate_app_title": "Betygsätt den här appen",
     "rate_app_message": "Om du gillar den här appen, vänligen ta en liten stund av din tid att recensera den! Det hjälper oss verkligen och det borde inte ta mer än en minut.",
     "rate_button": "Betygsätta", 
-    "later_button": "Senare" 
+    "later_button": "Senare",
+    "info": "Information",
+    "qr_code": "QR-kod",
+    "flash": "Blixt"
 }

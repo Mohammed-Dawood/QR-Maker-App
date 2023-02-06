@@ -35,7 +35,7 @@ class MainQrMake extends StatelessWidget {
               child: Scaffold(
                 body: Padding(
                   padding: const EdgeInsets.only(
-                    top: 20,
+                    top: 10,
                     left: 10,
                     right: 10,
                   ),
@@ -116,7 +116,7 @@ class MainQrMake extends StatelessWidget {
               child: Scaffold(
                 body: Padding(
                   padding: const EdgeInsets.only(
-                    top: 20,
+                    top: 10,
                     left: 10,
                     right: 10,
                   ),
