@@ -11,6 +11,27 @@ class ScanQrCodeListController extends GetxController {
     String valueQr,
     BuildContext context,
   ) async {
+    for (var index = 0; index < scanQrCodeList.length; index++) {
+      if (valueQr == scanQrCodeList[index]) {
+        Get.snackbar(
+          'QR Maker',
+          AppLocalizations.of(context)!.already_favorite_snackbar,
+          icon: const Icon(
+            Icons.done,
+            color: Colors.green,
+            size: 30,
+          ),
+          shouldIconPulse: false,
+          padding: const EdgeInsets.all(15),
+          margin: const EdgeInsets.symmetric(
+            horizontal: 25,
+            vertical: 10,
+          ),
+        );
+        return;
+      }
+    }
+
     scanQrCodeList.add(valueQr);
     SharedPreferences pref = await SharedPreferences.getInstance();
     await pref.setStringList('newScanQrCodeList', scanQrCodeList);
