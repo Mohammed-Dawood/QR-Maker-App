@@ -178,7 +178,7 @@ class _MakeEmailState extends State<MakeEmail> {
                                       setState(
                                         () {
                                           valueQr =
-                                              'MAILTO: ${emailController.text.toString()} ?subject=${subjectController.text.toString()}&body=${messageController.text.toString()}';
+                                              'mailto:${emailController.text.toString()}?subject=${subjectController.text.toString()}&body=${messageController.text.toString()}';
                                           Get.to(() =>
                                               StyleShareSaveFavoriteQrCode(
                                                 valueQr: valueQr,
@@ -337,7 +337,7 @@ class _MakeEmailState extends State<MakeEmail> {
                                       setState(
                                         () {
                                           valueQr =
-                                              'MAILTO: ${emailController.text.toString()} ?subject=${subjectController.text.toString()}&body=${messageController.text.toString()}';
+                                              'mailto:${emailController.text.toString()}?subject=${subjectController.text.toString()}&body=${messageController.text.toString()}';
                                           Get.to(() =>
                                               StyleShareSaveFavoriteQrCode(
                                                 valueQr: valueQr,

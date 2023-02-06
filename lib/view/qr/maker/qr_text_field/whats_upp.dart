@@ -164,8 +164,8 @@ class _MakeWhatsUppState extends State<MakeWhatsUpp> {
                                     if (validateKey.currentState!.validate()) {
                                       setState(
                                         () {
-                                          valueQr = 'https://wa.me/' +
-                                              completePhoneNumber;
+                                          valueQr =
+                                              'https://wa.me/$completePhoneNumber';
                                           Get.to(() =>
                                               StyleShareSaveFavoriteQrCode(
                                                 valueQr: valueQr,
@@ -302,8 +302,8 @@ class _MakeWhatsUppState extends State<MakeWhatsUpp> {
                                     if (validateKey.currentState!.validate()) {
                                       setState(
                                         () {
-                                          valueQr = 'https://wa.me/' +
-                                              completePhoneNumber;
+                                          valueQr =
+                                              'https://wa.me/$completePhoneNumber';
                                           Get.to(() =>
                                               StyleShareSaveFavoriteQrCode(
                                                 valueQr: valueQr,

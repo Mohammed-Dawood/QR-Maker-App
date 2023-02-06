@@ -205,15 +205,8 @@ class _MakeWifiState extends State<MakeWifi> {
                                     if (validateKey.currentState!.validate()) {
                                       setState(
                                         () {
-                                          valueQr = 'WIFI:S:' +
-                                              nameNetController.text
-                                                  .toString() +
-                                              ';T:' +
-                                              dropValue +
-                                              ';P:' +
-                                              passNetController.text
-                                                  .toString() +
-                                              ';H:False;;';
+                                          valueQr =
+                                              'WIFI:S:${nameNetController.text};T:$dropValue;P:${passNetController.text};H:False;;';
                                           Get.to(() =>
                                               StyleShareSaveFavoriteQrCode(
                                                 valueQr: valueQr,
@@ -399,15 +392,8 @@ class _MakeWifiState extends State<MakeWifi> {
                                     if (validateKey.currentState!.validate()) {
                                       setState(
                                         () {
-                                          valueQr = 'WIFI:S:' +
-                                              nameNetController.text
-                                                  .toString() +
-                                              ';T:' +
-                                              dropValue +
-                                              ';P:' +
-                                              passNetController.text
-                                                  .toString() +
-                                              ';H:False;;';
+                                          valueQr =
+                                              'WIFI:S:${nameNetController.text};T:$dropValue;P:${passNetController.text};H:False;;';
                                           Get.to(() =>
                                               StyleShareSaveFavoriteQrCode(
                                                 valueQr: valueQr,
