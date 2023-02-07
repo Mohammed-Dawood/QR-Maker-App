@@ -961,8 +961,10 @@ class _StyleShareSaveFavoriteQrCodeState
                                     onPressed: () async {
                                       final image =
                                           await screenshotController.capture();
+                                      final String valueQr = widget.valueQr;
                                       makeQrCodeListController
                                           .addItemToMakeQrCodeList(
+                                        valueQr,
                                         image!,
                                         context,
                                       );
@@ -1795,8 +1797,10 @@ class _StyleShareSaveFavoriteQrCodeState
                                     onPressed: () async {
                                       final image =
                                           await screenshotController.capture();
+                                      final String valueQr = widget.valueQr;
                                       makeQrCodeListController
                                           .addItemToMakeQrCodeList(
+                                        valueQr,
                                         image!,
                                         context,
                                       );

@@ -81,7 +81,7 @@ class _MainFavoriteQrState extends State<MainFavoriteQr> {
                               init: MakeQrCodeListController(),
                               builder: (MakeQrCodeListController controller) =>
                                   GridView.builder(
-                                itemCount: controller.makeQrCodeList.length,
+                                itemCount: controller.makeQrImageList.length,
                                 gridDelegate:
                                     SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount:
@@ -103,7 +103,8 @@ class _MainFavoriteQrState extends State<MainFavoriteQr> {
                                         padding: const EdgeInsets.all(5.0),
                                         child: Image.memory(
                                           Uint8List.fromList(controller
-                                              .makeQrCodeList[index].codeUnits),
+                                              .makeQrImageList[index]
+                                              .codeUnits),
                                         ),
                                       ),
                                     ),
@@ -210,7 +211,7 @@ class _MainFavoriteQrState extends State<MainFavoriteQr> {
                             init: MakeQrCodeListController(),
                             builder: (MakeQrCodeListController controller) =>
                                 GridView.builder(
-                              itemCount: controller.makeQrCodeList.length,
+                              itemCount: controller.makeQrImageList.length,
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 7,
@@ -231,7 +232,7 @@ class _MainFavoriteQrState extends State<MainFavoriteQr> {
                                       padding: const EdgeInsets.all(5.0),
                                       child: Image.memory(
                                         Uint8List.fromList(controller
-                                            .makeQrCodeList[index].codeUnits),
+                                            .makeQrImageList[index].codeUnits),
                                       ),
                                     ),
                                   ),
