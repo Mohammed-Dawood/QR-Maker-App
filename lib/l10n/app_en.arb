@@ -89,14 +89,14 @@
         "description": "Next button"
     },
 
-    "save_qr_code": "Save QR Code",
-    "@save_qr_code": {
-        "description": "Save QR Code button"
+    "save": "Save",
+    "@save": {
+        "description": "Save button"
     },
 
-    "share_qr_code": "Share QR Code",
-    "@share_qr_code": {
-        "description": "Share QR Code button"
+    "share": "Share",
+    "@share": {
+        "description": "Share button"
     },
 
     "add_to_favorite": "Add To Favorite",

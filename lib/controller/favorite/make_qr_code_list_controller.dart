@@ -69,8 +69,6 @@ class MakeQrCodeListController extends GetxController {
 
     makeQrCodeList = pref.getStringList('new_MakeQrCodeList')!;
     makeQrImageList = pref.getStringList('new_MakeQrImageList')!;
-    print(makeQrCodeList);
-    print(makeQrImageList);
   }
 
   Future<void> deleteItemFromMakeQrCodeList(int number) async {

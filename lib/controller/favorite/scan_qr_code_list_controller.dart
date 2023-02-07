@@ -62,9 +62,12 @@ class ScanQrCodeListController extends GetxController {
 
   Future<void> deleteItemFromScanQrCodeList(int number) async {
     scanQrCodeList.remove(scanQrCodeList[number]);
+
     SharedPreferences pref = await SharedPreferences.getInstance();
     await pref.setStringList('newScanQrCodeList', scanQrCodeList);
+
     update();
+
     Get.back();
     Get.back();
   }

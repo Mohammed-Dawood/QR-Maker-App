@@ -907,8 +907,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                       ),
                                       label: labelController(
                                         context,
-                                        label: AppLocalizations.of(context)!
-                                            .save_qr_code,
+                                        label:
+                                            AppLocalizations.of(context)!.save,
                                       ),
                                     ),
                                   ),
@@ -940,8 +940,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                       ),
                                       label: labelController(
                                         context,
-                                        label: AppLocalizations.of(context)!
-                                            .share_qr_code,
+                                        label:
+                                            AppLocalizations.of(context)!.share,
                                       ),
                                     ),
                                   ),
@@ -1743,8 +1743,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                       ),
                                       label: labelController(
                                         context,
-                                        label: AppLocalizations.of(context)!
-                                            .save_qr_code,
+                                        label:
+                                            AppLocalizations.of(context)!.save,
                                       ),
                                     ),
                                   ),
@@ -1776,8 +1776,8 @@ class _StyleShareSaveFavoriteQrCodeState
                                       ),
                                       label: labelController(
                                         context,
-                                        label: AppLocalizations.of(context)!
-                                            .share_qr_code,
+                                        label:
+                                            AppLocalizations.of(context)!.share,
                                       ),
                                     ),
                                   ),

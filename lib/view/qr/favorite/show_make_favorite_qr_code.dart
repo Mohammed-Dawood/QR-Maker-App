@@ -161,6 +161,126 @@ class _ShowMakeFavoriteQrCodeState extends State<ShowMakeFavoriteQrCode> {
                     ),
                   ],
                 ),
+                bottomNavigationBar: GetBuilder<VibrationController>(
+                  init: VibrationController(),
+                  builder: (VibrationController vibrationController) =>
+                      GetBuilder<MakeQrCodeListController>(
+                    init: MakeQrCodeListController(),
+                    builder:
+                        (MakeQrCodeListController makeQrCodeListController) =>
+                            FloatingNavbar(
+                      borderRadius: 5,
+                      itemBorderRadius: 5,
+                      currentIndex: 0,
+                      selectedItemColor: Colors.white,
+                      unselectedItemColor: Colors.white,
+                      iconSize: isScreenWidth(context) ? 24 : 28,
+                      fontSize: isScreenWidth(context) ? 12 : 14,
+                      backgroundColor: Theme.of(context).primaryColor,
+                      selectedBackgroundColor: Theme.of(context).primaryColor,
+                      margin: const EdgeInsets.symmetric(
+                        vertical: 0,
+                        horizontal: 15,
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 0,
+                        vertical: 10,
+                      ),
+                      items: [
+                        FloatingNavbarItem(
+                          icon: Icons.arrow_back_ios,
+                          title: AppLocalizations.of(context)!.previous,
+                        ),
+                        FloatingNavbarItem(
+                          icon: Icons.delete,
+                          title: AppLocalizations.of(context)!.delete,
+                        ),
+                        FloatingNavbarItem(
+                          icon: Icons.arrow_forward_ios,
+                          title: AppLocalizations.of(context)!.next,
+                        ),
+                      ],
+                      onTap: (int screenNumber) {
+                        if (screenNumber == 0) {
+                          setState(
+                            () {
+                              if (qrIndex! > 0) {
+                                qrIndex = qrIndex! - 1;
+                              } else {
+                                qrIndex = makeQrCodeListController
+                                        .makeQrCodeList.length -
+                                    1;
+                              }
+                            },
+                          );
+                        }
+                        if (screenNumber == 1) {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                              title: Text(
+                                AppLocalizations.of(context)!
+                                    .delete_qr_code_text,
+                                style: (isScreenWidth(context))
+                                    ? Theme.of(context).textTheme.displaySmall
+                                    : Theme.of(context).textTheme.displayMedium,
+                              ),
+                              content: Text(
+                                AppLocalizations.of(context)!
+                                    .delete_qr_code_message,
+                                style: (isScreenWidth(context))
+                                    ? const TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white,
+                                      )
+                                    : const TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.white,
+                                      ),
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () => Get.back(),
+                                  child: Text(
+                                    AppLocalizations.of(context)!.cancel,
+                                  ),
+                                ),
+                                TextButton(
+                                  onPressed: () async {
+                                    // GetStorage().remove(
+                                    //   makeQrCodeListController
+                                    //       .makeQrCodeList[qrIndex!],
+                                    // );
+                                    makeQrCodeListController
+                                        .deleteItemFromMakeQrCodeList(qrIndex!);
+                                  },
+                                  child: Text(
+                                    AppLocalizations.of(context)!.delete,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                          vibrationController.vibration();
+                        }
+                        if (screenNumber == 2) {
+                          setState(
+                            () {
+                              if (qrIndex! <
+                                  makeQrCodeListController
+                                          .makeQrCodeList.length -
+                                      1) {
+                                qrIndex = qrIndex! + 1;
+                              } else {
+                                qrIndex = 0;
+                              }
+                            },
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                ),
                 body: Stack(
                   children: [
                     FloatingNavbar(
@@ -357,6 +477,126 @@ class _ShowMakeFavoriteQrCodeState extends State<ShowMakeFavoriteQrCode> {
                     ),
                   ],
                 ),
+                bottomNavigationBar: GetBuilder<VibrationController>(
+                  init: VibrationController(),
+                  builder: (VibrationController vibrationController) =>
+                      GetBuilder<MakeQrCodeListController>(
+                    init: MakeQrCodeListController(),
+                    builder:
+                        (MakeQrCodeListController makeQrCodeListController) =>
+                            FloatingNavbar(
+                      borderRadius: 5,
+                      itemBorderRadius: 5,
+                      currentIndex: 0,
+                      selectedItemColor: Colors.white,
+                      unselectedItemColor: Colors.white,
+                      iconSize: 28,
+                      fontSize: 14,
+                      backgroundColor: Theme.of(context).primaryColor,
+                      selectedBackgroundColor: Theme.of(context).primaryColor,
+                      margin: const EdgeInsets.symmetric(
+                        vertical: 0,
+                        horizontal: 15,
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 0,
+                        vertical: 10,
+                      ),
+                      items: [
+                        FloatingNavbarItem(
+                          icon: Icons.arrow_back_ios,
+                          title: AppLocalizations.of(context)!.previous,
+                        ),
+                        FloatingNavbarItem(
+                          icon: Icons.delete,
+                          title: AppLocalizations.of(context)!.delete,
+                        ),
+                        FloatingNavbarItem(
+                          icon: Icons.arrow_forward_ios,
+                          title: AppLocalizations.of(context)!.next,
+                        ),
+                      ],
+                      onTap: (int screenNumber) {
+                        if (screenNumber == 0) {
+                          setState(
+                            () {
+                              if (qrIndex! > 0) {
+                                qrIndex = qrIndex! - 1;
+                              } else {
+                                qrIndex = makeQrCodeListController
+                                        .makeQrCodeList.length -
+                                    1;
+                              }
+                            },
+                          );
+                        }
+                        if (screenNumber == 1) {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                              title: Text(
+                                AppLocalizations.of(context)!
+                                    .delete_qr_code_text,
+                                style: (isScreenWidth(context))
+                                    ? Theme.of(context).textTheme.displaySmall
+                                    : Theme.of(context).textTheme.displayMedium,
+                              ),
+                              content: Text(
+                                AppLocalizations.of(context)!
+                                    .delete_qr_code_message,
+                                style: (isScreenWidth(context))
+                                    ? const TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white,
+                                      )
+                                    : const TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.white,
+                                      ),
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () => Get.back(),
+                                  child: Text(
+                                    AppLocalizations.of(context)!.cancel,
+                                  ),
+                                ),
+                                TextButton(
+                                  onPressed: () async {
+                                    // GetStorage().remove(
+                                    //   makeQrCodeListController
+                                    //       .makeQrCodeList[qrIndex!],
+                                    // );
+                                    makeQrCodeListController
+                                        .deleteItemFromMakeQrCodeList(qrIndex!);
+                                  },
+                                  child: Text(
+                                    AppLocalizations.of(context)!.delete,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                          vibrationController.vibration();
+                        }
+                        if (screenNumber == 2) {
+                          setState(
+                            () {
+                              if (qrIndex! <
+                                  makeQrCodeListController
+                                          .makeQrCodeList.length -
+                                      1) {
+                                qrIndex = qrIndex! + 1;
+                              } else {
+                                qrIndex = 0;
+                              }
+                            },
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                ),
                 body: Stack(
                   children: [
                     FloatingNavbar(
@@ -364,8 +604,8 @@ class _ShowMakeFavoriteQrCodeState extends State<ShowMakeFavoriteQrCode> {
                       itemBorderRadius: 5,
                       currentIndex: selectScreen,
                       selectedBackgroundColor: Colors.white,
-                      iconSize: isScreenWidth(context) ? 24 : 28,
-                      fontSize: isScreenWidth(context) ? 12 : 14,
+                      iconSize: 28,
+                      fontSize: 14,
                       backgroundColor: Theme.of(context).primaryColor,
                       selectedItemColor: Theme.of(context).primaryColor,
                       unselectedItemColor: Colors.white,
