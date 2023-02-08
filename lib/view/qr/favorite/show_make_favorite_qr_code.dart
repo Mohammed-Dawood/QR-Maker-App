@@ -52,9 +52,11 @@ class _ShowMakeFavoriteQrCodeState extends State<ShowMakeFavoriteQrCode> {
                 appBar: AppBar(
                   title: GetBuilder<MakeQrCodeListController>(
                     init: MakeQrCodeListController(),
-                    builder: (MakeQrCodeListController controller) => Text(
+                    builder:
+                        (MakeQrCodeListController makeQrCodeListController) =>
+                            Text(
                       GetStorage().read(
-                            controller.makeQrImageList[qrIndex!],
+                            makeQrCodeListController.makeQrCodeList[qrIndex!],
                           ) ??
                           AppLocalizations.of(context)!.change_qr_code_name,
                       style: TextStyle(
@@ -127,13 +129,14 @@ class _ShowMakeFavoriteQrCodeState extends State<ShowMakeFavoriteQrCode> {
                               ),
                               GetBuilder<MakeQrCodeListController>(
                                 init: MakeQrCodeListController(),
-                                builder:
-                                    (MakeQrCodeListController controller) =>
-                                        TextButton(
+                                builder: (MakeQrCodeListController
+                                        makeQrCodeListController) =>
+                                    TextButton(
                                   onPressed: () {
                                     setState(() {
                                       GetStorage().write(
-                                        controller.makeQrImageList[qrIndex!],
+                                        makeQrCodeListController
+                                            .makeQrCodeList[qrIndex!],
                                         textEditingController.text,
                                       );
                                     });
@@ -247,10 +250,10 @@ class _ShowMakeFavoriteQrCodeState extends State<ShowMakeFavoriteQrCode> {
                                 ),
                                 TextButton(
                                   onPressed: () async {
-                                    // GetStorage().remove(
-                                    //   makeQrCodeListController
-                                    //       .makeQrCodeList[qrIndex!],
-                                    // );
+                                    GetStorage().remove(
+                                      makeQrCodeListController
+                                          .makeQrCodeList[qrIndex!],
+                                    );
                                     makeQrCodeListController
                                         .deleteItemFromMakeQrCodeList(qrIndex!);
                                   },
@@ -380,9 +383,11 @@ class _ShowMakeFavoriteQrCodeState extends State<ShowMakeFavoriteQrCode> {
                 appBar: AppBar(
                   title: GetBuilder<MakeQrCodeListController>(
                     init: MakeQrCodeListController(),
-                    builder: (MakeQrCodeListController controller) => Text(
+                    builder:
+                        (MakeQrCodeListController makeQrCodeListController) =>
+                            Text(
                       GetStorage().read(
-                            controller.makeQrImageList[qrIndex!],
+                            makeQrCodeListController.makeQrCodeList[qrIndex!],
                           ) ??
                           AppLocalizations.of(context)!.change_qr_code_name,
                       style: const TextStyle(
@@ -448,13 +453,14 @@ class _ShowMakeFavoriteQrCodeState extends State<ShowMakeFavoriteQrCode> {
                               ),
                               GetBuilder<MakeQrCodeListController>(
                                 init: MakeQrCodeListController(),
-                                builder:
-                                    (MakeQrCodeListController controller) =>
-                                        TextButton(
+                                builder: (MakeQrCodeListController
+                                        makeQrCodeListController) =>
+                                    TextButton(
                                   onPressed: () {
                                     setState(() {
                                       GetStorage().write(
-                                          controller.makeQrImageList[qrIndex!],
+                                          makeQrCodeListController
+                                              .makeQrCodeList[qrIndex!],
                                           textEditingController.text);
                                     });
                                     Get.back();
@@ -563,10 +569,10 @@ class _ShowMakeFavoriteQrCodeState extends State<ShowMakeFavoriteQrCode> {
                                 ),
                                 TextButton(
                                   onPressed: () async {
-                                    // GetStorage().remove(
-                                    //   makeQrCodeListController
-                                    //       .makeQrCodeList[qrIndex!],
-                                    // );
+                                    GetStorage().remove(
+                                      makeQrCodeListController
+                                          .makeQrCodeList[qrIndex!],
+                                    );
                                     makeQrCodeListController
                                         .deleteItemFromMakeQrCodeList(qrIndex!);
                                   },

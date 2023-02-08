@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:qr_maker_app/controller/icons_controller.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/controller/vibration_controller.dart';
 import 'package:qr_maker_app/controller/background_controller.dart';
@@ -30,6 +31,8 @@ class _ShowScanFavoriteQrCodeState extends State<ShowScanFavoriteQrCode> {
   int? qrIndex;
   int selectScreen = 0;
 
+  TextEditingController textEditingController = TextEditingController();
+
   bool isScreenWidth(BuildContext context) =>
       MediaQuery.of(context).size.width < 600;
 
@@ -44,16 +47,119 @@ class _ShowScanFavoriteQrCodeState extends State<ShowScanFavoriteQrCode> {
               decoration: backgroundController(controller),
               child: Scaffold(
                 appBar: AppBar(
-                  title: Text(
-                    AppLocalizations.of(context)!.qr_code,
-                    style: TextStyle(
-                      fontSize: (isScreenWidth(context)) ? 18 : 24,
+                  title: GetBuilder<ScanQrCodeListController>(
+                    init: ScanQrCodeListController(),
+                    builder:
+                        (ScanQrCodeListController scanQrCodeListController) =>
+                            Text(
+                      GetStorage().read(
+                            scanQrCodeListController.scanQrCodeList[qrIndex!],
+                          ) ??
+                          AppLocalizations.of(context)!.change_qr_code_name,
+                      style: TextStyle(
+                        fontSize: (isScreenWidth(context)) ? 18 : 24,
+                      ),
                     ),
                   ),
                   iconTheme: IconThemeData(
-                    size: (isScreenWidth(context)) ? 24 : 28,
+                    size: (isScreenWidth(context)) ? 22 : 26,
                     color: Theme.of(context).iconTheme.color,
                   ),
+                  actions: [
+                    IconButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                            title: Text(
+                              AppLocalizations.of(context)!.write_qr_code_name,
+                              style: (isScreenWidth(context))
+                                  ? Theme.of(context).textTheme.displaySmall
+                                  : Theme.of(context).textTheme.displayMedium,
+                            ),
+                            content: SingleChildScrollView(
+                              child: TextFormField(
+                                maxLines: 1,
+                                cursorWidth: 3,
+                                controller: textEditingController,
+                                keyboardType: TextInputType.name,
+                                textInputAction: TextInputAction.next,
+                                cursorColor: Theme.of(context).primaryColor,
+                                style: (isScreenWidth(context))
+                                    ? Theme.of(context).textTheme.titleSmall
+                                    : Theme.of(context).textTheme.titleMedium,
+                                decoration: InputDecoration(
+                                  hintText: AppLocalizations.of(context)!
+                                      .qr_code_name,
+                                  prefixIcon: prefixIconController(
+                                    context,
+                                    icon: Icons.qr_code,
+                                  ),
+                                  suffixIcon: textEditingController.text.isEmpty
+                                      ? Container(
+                                          width: 0,
+                                        )
+                                      : IconButton(
+                                          onPressed: () =>
+                                              textEditingController.clear(),
+                                          icon: suffixIconController(
+                                            context,
+                                            icon: Icons.close,
+                                          ),
+                                        ),
+                                ),
+                              ),
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Get.back();
+                                },
+                                child: Text(
+                                  AppLocalizations.of(context)!.cancel,
+                                  style: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.displaySmall
+                                      : Theme.of(context)
+                                          .textTheme
+                                          .displayMedium,
+                                ),
+                              ),
+                              GetBuilder<ScanQrCodeListController>(
+                                init: ScanQrCodeListController(),
+                                builder: (ScanQrCodeListController
+                                        scanQrCodeListController) =>
+                                    TextButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      GetStorage().write(
+                                        scanQrCodeListController
+                                            .scanQrCodeList[qrIndex!],
+                                        textEditingController.text,
+                                      );
+                                    });
+                                    Get.back();
+                                  },
+                                  child: Text(
+                                    AppLocalizations.of(context)!.ok,
+                                    style: (isScreenWidth(context))
+                                        ? Theme.of(context)
+                                            .textTheme
+                                            .displaySmall
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .displayMedium,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                      icon: const Icon(
+                        Icons.edit,
+                      ),
+                    ),
+                  ],
                 ),
                 bottomNavigationBar: GetBuilder<VibrationController>(
                   init: VibrationController(),
@@ -141,10 +247,10 @@ class _ShowScanFavoriteQrCodeState extends State<ShowScanFavoriteQrCode> {
                                 ),
                                 TextButton(
                                   onPressed: () async {
-                                    // GetStorage().remove(
-                                    //   scanQrCodeListController
-                                    //       .scanQrCodeList[qrIndex!],
-                                    // );
+                                    GetStorage().remove(
+                                      scanQrCodeListController
+                                          .scanQrCodeList[qrIndex!],
+                                    );
                                     scanQrCodeListController
                                         .deleteItemFromScanQrCodeList(qrIndex!);
                                   },
@@ -266,16 +372,108 @@ class _ShowScanFavoriteQrCodeState extends State<ShowScanFavoriteQrCode> {
               decoration: backgroundController(controller),
               child: Scaffold(
                 appBar: AppBar(
-                  title: Text(
-                    AppLocalizations.of(context)!.qr_code,
-                    style: const TextStyle(
-                      fontSize: 24,
+                  title: GetBuilder<ScanQrCodeListController>(
+                    init: ScanQrCodeListController(),
+                    builder:
+                        (ScanQrCodeListController scanQrCodeListController) =>
+                            Text(
+                      GetStorage().read(
+                            scanQrCodeListController.scanQrCodeList[qrIndex!],
+                          ) ??
+                          AppLocalizations.of(context)!.change_qr_code_name,
+                      style: const TextStyle(
+                        fontSize: 24,
+                      ),
                     ),
                   ),
                   iconTheme: IconThemeData(
-                    size: 28,
+                    size: 26,
                     color: Theme.of(context).iconTheme.color,
                   ),
+                  actions: [
+                    IconButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                            title: Text(
+                              AppLocalizations.of(context)!.write_qr_code_name,
+                              style: Theme.of(context).textTheme.displayMedium,
+                            ),
+                            content: SingleChildScrollView(
+                              child: TextFormField(
+                                maxLines: 1,
+                                cursorWidth: 3,
+                                controller: textEditingController,
+                                keyboardType: TextInputType.name,
+                                textInputAction: TextInputAction.next,
+                                cursorColor: Theme.of(context).primaryColor,
+                                style: Theme.of(context).textTheme.titleMedium,
+                                decoration: InputDecoration(
+                                  hintText: AppLocalizations.of(context)!
+                                      .qr_code_name,
+                                  prefixIcon: prefixIconController(
+                                    context,
+                                    icon: Icons.qr_code,
+                                  ),
+                                  suffixIcon: textEditingController.text.isEmpty
+                                      ? Container(
+                                          width: 0,
+                                        )
+                                      : IconButton(
+                                          onPressed: () =>
+                                              textEditingController.clear(),
+                                          icon: suffixIconController(
+                                            context,
+                                            icon: Icons.close,
+                                          ),
+                                        ),
+                                ),
+                              ),
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Get.back();
+                                },
+                                child: Text(
+                                  AppLocalizations.of(context)!.cancel,
+                                  style:
+                                      Theme.of(context).textTheme.displayMedium,
+                                ),
+                              ),
+                              GetBuilder<ScanQrCodeListController>(
+                                init: ScanQrCodeListController(),
+                                builder: (ScanQrCodeListController
+                                        scanQrCodeListController) =>
+                                    TextButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      GetStorage().write(
+                                        scanQrCodeListController
+                                            .scanQrCodeList[qrIndex!],
+                                        textEditingController.text,
+                                      );
+                                    });
+                                    Get.back();
+                                  },
+                                  child: Text(
+                                    AppLocalizations.of(context)!.ok,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .displayMedium,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                      icon: const Icon(
+                        Icons.edit,
+                      ),
+                    ),
+                  ],
                 ),
                 bottomNavigationBar: GetBuilder<VibrationController>(
                   init: VibrationController(),
@@ -363,10 +561,10 @@ class _ShowScanFavoriteQrCodeState extends State<ShowScanFavoriteQrCode> {
                                 ),
                                 TextButton(
                                   onPressed: () async {
-                                    // GetStorage().remove(
-                                    //   scanQrCodeListController
-                                    //       .scanQrCodeList[qrIndex!],
-                                    // );
+                                    GetStorage().remove(
+                                      scanQrCodeListController
+                                          .scanQrCodeList[qrIndex!],
+                                    );
                                     scanQrCodeListController
                                         .deleteItemFromScanQrCodeList(qrIndex!);
                                   },
