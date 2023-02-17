@@ -33,100 +33,203 @@ class _MakeTwitterState extends State<MakeTwitter> {
 
   @override
   Widget build(BuildContext context) {
-    return MediaQuery.of(context).orientation == Orientation.portrait
-        ? GetBuilder<ThemeController>(
-            init: ThemeController(),
-            builder: (ThemeController controller) => Container(
-              alignment: Alignment.center,
-              decoration: backgroundController(controller),
-              child: Scaffold(
-                appBar: appBarController(
-                  context,
-                  title: AppLocalizations.of(context)!.twitter,
-                ),
-                body: Center(
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Form(
-                      key: validateKey,
-                      child: Padding(
-                        padding: isScreenWidth(context)
-                            ? const EdgeInsets.symmetric(horizontal: 40)
-                            : const EdgeInsets.symmetric(horizontal: 130),
-                        child: Column(
-                          children: [
-                            Card(
-                              child: TextFormField(
-                                validator: (value) {
-                                  if (!isURL(value)) {
-                                    return AppLocalizations.of(context)!
-                                        .please_enter_a_valid_link;
-                                  }
-                                  return null;
-                                },
-                                autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                                cursorWidth: 3,
-                                controller: twitterController,
-                                keyboardType: TextInputType.url,
-                                textInputAction: TextInputAction.next,
-                                cursorColor: Theme.of(context).primaryColor,
-                                style: (isScreenWidth(context))
-                                    ? Theme.of(context).textTheme.titleSmall
-                                    : Theme.of(context).textTheme.titleMedium,
-                                decoration: InputDecoration(
-                                  hintText: AppLocalizations.of(context)!
-                                      .twitter_hint_text,
-                                  prefixIcon: prefixIconController(
-                                    context,
-                                    icon: Icons.link,
-                                  ),
-                                  suffixIcon: twitterController.text.isEmpty
-                                      ? Container(
-                                          width: 0,
-                                        )
-                                      : IconButton(
-                                          onPressed: () =>
-                                              twitterController.clear(),
-                                          icon: suffixIconController(
-                                            context,
-                                            icon: Icons.close,
-                                          ),
-                                        ),
-                                ),
-                              ),
-                            ),
-                            Card(
-                              color: Colors.transparent,
-                              shadowColor: Colors.transparent,
-                              child: SizedBox(
-                                width: double.infinity,
-                                child: ElevatedButton.icon(
-                                  onPressed: () {
-                                    if (validateKey.currentState!.validate()) {
-                                      setState(
-                                        () {
-                                          valueQr =
-                                              twitterController.text.toString();
-                                          Get.to(() =>
-                                              StyleShareSaveFavoriteQrCode(
-                                                valueQr: valueQr,
-                                                image: 'images/twitter.png',
-                                                versionValueWithLogo: 6,
-                                              ));
-                                        },
-                                      );
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: MediaQuery.of(context).orientation == Orientation.portrait
+          ? GetBuilder<ThemeController>(
+              init: ThemeController(),
+              builder: (ThemeController controller) => Container(
+                alignment: Alignment.center,
+                decoration: backgroundController(controller),
+                child: Scaffold(
+                  appBar: appBarController(
+                    context,
+                    title: AppLocalizations.of(context)!.twitter,
+                  ),
+                  body: Center(
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Form(
+                        key: validateKey,
+                        child: Padding(
+                          padding: isScreenWidth(context)
+                              ? const EdgeInsets.symmetric(horizontal: 40)
+                              : const EdgeInsets.symmetric(horizontal: 130),
+                          child: Column(
+                            children: [
+                              Card(
+                                child: TextFormField(
+                                  validator: (value) {
+                                    if (!isURL(value)) {
+                                      return AppLocalizations.of(context)!
+                                          .please_enter_a_valid_link;
                                     }
+                                    return null;
                                   },
-                                  icon: iconController(
-                                    context,
-                                    icon: Icons.touch_app,
+                                  autovalidateMode:
+                                      AutovalidateMode.onUserInteraction,
+                                  cursorWidth: 3,
+                                  controller: twitterController,
+                                  keyboardType: TextInputType.url,
+                                  textInputAction: TextInputAction.next,
+                                  cursorColor: Theme.of(context).primaryColor,
+                                  style: (isScreenWidth(context))
+                                      ? Theme.of(context).textTheme.titleSmall
+                                      : Theme.of(context).textTheme.titleMedium,
+                                  decoration: InputDecoration(
+                                    hintText: AppLocalizations.of(context)!
+                                        .twitter_hint_text,
+                                    prefixIcon: prefixIconController(
+                                      context,
+                                      icon: Icons.link,
+                                    ),
+                                    suffixIcon: twitterController.text.isEmpty
+                                        ? Container(
+                                            width: 0,
+                                          )
+                                        : IconButton(
+                                            onPressed: () =>
+                                                twitterController.clear(),
+                                            icon: suffixIconController(
+                                              context,
+                                              icon: Icons.close,
+                                            ),
+                                          ),
                                   ),
-                                  label: labelCreateQRCodeController(context),
                                 ),
                               ),
-                            ),
-                          ],
+                              Card(
+                                color: Colors.transparent,
+                                shadowColor: Colors.transparent,
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: ElevatedButton.icon(
+                                    onPressed: () {
+                                      if (validateKey.currentState!
+                                          .validate()) {
+                                        setState(
+                                          () {
+                                            valueQr = twitterController.text
+                                                .toString();
+                                            Get.to(() =>
+                                                StyleShareSaveFavoriteQrCode(
+                                                  valueQr: valueQr,
+                                                  image: 'images/twitter.png',
+                                                  versionValueWithLogo: 6,
+                                                ));
+                                          },
+                                        );
+                                      }
+                                    },
+                                    icon: iconController(
+                                      context,
+                                      icon: Icons.touch_app,
+                                    ),
+                                    label: labelCreateQRCodeController(context),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            )
+          : GetBuilder<ThemeController>(
+              init: ThemeController(),
+              builder: (ThemeController controller) => Container(
+                alignment: Alignment.center,
+                decoration: backgroundController(controller),
+                child: Scaffold(
+                  appBar: appBarController(
+                    context,
+                    title: AppLocalizations.of(context)!.twitter,
+                  ),
+                  body: Center(
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Form(
+                        key: validateKey,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 230),
+                          child: Column(
+                            children: [
+                              Card(
+                                child: TextFormField(
+                                  validator: (value) {
+                                    if (!isURL(value)) {
+                                      return AppLocalizations.of(context)!
+                                          .please_enter_a_valid_link;
+                                    }
+                                    return null;
+                                  },
+                                  autovalidateMode:
+                                      AutovalidateMode.onUserInteraction,
+                                  cursorWidth: 3,
+                                  controller: twitterController,
+                                  keyboardType: TextInputType.url,
+                                  textInputAction: TextInputAction.next,
+                                  cursorColor: Theme.of(context).primaryColor,
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
+                                  decoration: InputDecoration(
+                                    hintText: AppLocalizations.of(context)!
+                                        .twitter_hint_text,
+                                    prefixIcon: prefixIconController(
+                                      context,
+                                      icon: Icons.link,
+                                    ),
+                                    suffixIcon: twitterController.text.isEmpty
+                                        ? Container(
+                                            width: 0,
+                                          )
+                                        : IconButton(
+                                            onPressed: () =>
+                                                twitterController.clear(),
+                                            icon: suffixIconController(
+                                              context,
+                                              icon: Icons.close,
+                                            ),
+                                          ),
+                                  ),
+                                ),
+                              ),
+                              Card(
+                                color: Colors.transparent,
+                                shadowColor: Colors.transparent,
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: ElevatedButton.icon(
+                                    onPressed: () {
+                                      if (validateKey.currentState!
+                                          .validate()) {
+                                        setState(
+                                          () {
+                                            valueQr = twitterController.text
+                                                .toString();
+                                            Get.to(() =>
+                                                StyleShareSaveFavoriteQrCode(
+                                                  valueQr: valueQr,
+                                                  image: 'images/twitter.png',
+                                                  versionValueWithLogo: 6,
+                                                ));
+                                          },
+                                        );
+                                      }
+                                    },
+                                    icon: iconController(
+                                      context,
+                                      icon: Icons.touch_app,
+                                    ),
+                                    label: labelCreateQRCodeController(context),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -134,103 +237,6 @@ class _MakeTwitterState extends State<MakeTwitter> {
                 ),
               ),
             ),
-          )
-        : GetBuilder<ThemeController>(
-            init: ThemeController(),
-            builder: (ThemeController controller) => Container(
-              alignment: Alignment.center,
-              decoration: backgroundController(controller),
-              child: Scaffold(
-                appBar: appBarController(
-                  context,
-                  title: AppLocalizations.of(context)!.twitter,
-                ),
-                body: Center(
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Form(
-                      key: validateKey,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 230),
-                        child: Column(
-                          children: [
-                            Card(
-                              child: TextFormField(
-                                validator: (value) {
-                                  if (!isURL(value)) {
-                                    return AppLocalizations.of(context)!
-                                        .please_enter_a_valid_link;
-                                  }
-                                  return null;
-                                },
-                                autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                                cursorWidth: 3,
-                                controller: twitterController,
-                                keyboardType: TextInputType.url,
-                                textInputAction: TextInputAction.next,
-                                cursorColor: Theme.of(context).primaryColor,
-                                style: Theme.of(context).textTheme.titleMedium,
-                                decoration: InputDecoration(
-                                  hintText: AppLocalizations.of(context)!
-                                      .twitter_hint_text,
-                                  prefixIcon: prefixIconController(
-                                    context,
-                                    icon: Icons.link,
-                                  ),
-                                  suffixIcon: twitterController.text.isEmpty
-                                      ? Container(
-                                          width: 0,
-                                        )
-                                      : IconButton(
-                                          onPressed: () =>
-                                              twitterController.clear(),
-                                          icon: suffixIconController(
-                                            context,
-                                            icon: Icons.close,
-                                          ),
-                                        ),
-                                ),
-                              ),
-                            ),
-                            Card(
-                              color: Colors.transparent,
-                              shadowColor: Colors.transparent,
-                              child: SizedBox(
-                                width: double.infinity,
-                                child: ElevatedButton.icon(
-                                  onPressed: () {
-                                    if (validateKey.currentState!.validate()) {
-                                      setState(
-                                        () {
-                                          valueQr =
-                                              twitterController.text.toString();
-                                          Get.to(() =>
-                                              StyleShareSaveFavoriteQrCode(
-                                                valueQr: valueQr,
-                                                image: 'images/twitter.png',
-                                                versionValueWithLogo: 6,
-                                              ));
-                                        },
-                                      );
-                                    }
-                                  },
-                                  icon: iconController(
-                                    context,
-                                    icon: Icons.touch_app,
-                                  ),
-                                  label: labelCreateQRCodeController(context),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          );
+    );
   }
 }
