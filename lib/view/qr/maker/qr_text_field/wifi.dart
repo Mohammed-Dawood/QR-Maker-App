@@ -4,7 +4,6 @@ import 'package:validators/validators.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/controller/icons_controller.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
-import 'package:qr_maker_app/controller/labels_controller.dart';
 import 'package:qr_maker_app/controller/app_bar_controller.dart';
 import 'package:qr_maker_app/controller/background_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
@@ -194,10 +193,12 @@ class _MakeWifiState extends State<MakeWifi> {
                                 height: 20,
                               ),
                               Card(
+                                elevation: 0,
+                                margin: const EdgeInsets.all(0),
                                 child: Padding(
-                                  padding: EdgeInsets.only(
-                                    left: isScreenWidth(context) ? 10 : 20,
-                                    right: isScreenWidth(context) ? 10 : 20,
+                                  padding: const EdgeInsets.only(
+                                    left: 15,
+                                    right: 25,
                                   ),
                                   child: DropdownButton<String>(
                                     items: <String>['WPA/WPA2', 'WEP']
@@ -400,17 +401,12 @@ class _MakeWifiState extends State<MakeWifi> {
                                 height: 20,
                               ),
                               Card(
-                                shape: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Theme.of(context).primaryColor,
-                                    width: 3,
-                                  ),
-                                ),
-                                color: Theme.of(context).primaryColor,
+                                elevation: 0,
+                                margin: const EdgeInsets.all(0),
                                 child: Padding(
                                   padding: const EdgeInsets.only(
-                                    left: 20,
-                                    right: 20,
+                                    left: 15,
+                                    right: 25,
                                   ),
                                   child: DropdownButton<String>(
                                     items: <String>['WPA/WPA2', 'WEP']

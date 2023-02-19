@@ -6,6 +6,7 @@ import 'package:qr_maker_app/controller/icons_controller.dart';
 import 'package:qr_maker_app/controller/labels_controller.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/controller/app_bar_controller.dart';
+import 'package:qr_maker_app/controller/language_controller.dart';
 import 'package:qr_maker_app/controller/location_controller.dart';
 import 'package:qr_maker_app/controller/background_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
@@ -23,6 +24,7 @@ class _MakeLocationState extends State<MakeLocation> {
   late String latitude;
   late String longitude;
 
+  LanguageController languageController = Get.find();
   GlobalKey<FormState> validateKey = GlobalKey<FormState>();
   TextEditingController latitudeController = TextEditingController();
   TextEditingController longitudeController = TextEditingController();
@@ -216,14 +218,31 @@ class _MakeLocationState extends State<MakeLocation> {
                                       });
                                     });
                                   },
-                                  icon: iconController(
-                                    context,
-                                    icon: Icons.my_location,
+                                  icon: Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 5,
+                                    ),
+                                    child: iconController(
+                                      context,
+                                      icon: Icons.my_location,
+                                    ),
                                   ),
-                                  label: labelController(
-                                    context,
-                                    label: AppLocalizations.of(context)!
-                                        .current_location,
+                                  label: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 4,
+                                    ),
+                                    child: labelController(
+                                      context,
+                                      label: AppLocalizations.of(context)!
+                                          .current_location,
+                                    ),
+                                  ),
+                                  style: ButtonStyle(
+                                    alignment:
+                                        languageController.currentLanguage ==
+                                                "ar"
+                                            ? Alignment.centerRight
+                                            : Alignment.centerLeft,
                                   ),
                                 ),
                               ),
@@ -405,14 +424,31 @@ class _MakeLocationState extends State<MakeLocation> {
                                       });
                                     });
                                   },
-                                  icon: iconController(
-                                    context,
-                                    icon: Icons.my_location,
+                                  icon: Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 5,
+                                    ),
+                                    child: iconController(
+                                      context,
+                                      icon: Icons.my_location,
+                                    ),
                                   ),
-                                  label: labelController(
-                                    context,
-                                    label: AppLocalizations.of(context)!
-                                        .current_location,
+                                  label: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 4,
+                                    ),
+                                    child: labelController(
+                                      context,
+                                      label: AppLocalizations.of(context)!
+                                          .current_location,
+                                    ),
+                                  ),
+                                  style: ButtonStyle(
+                                    alignment:
+                                        languageController.currentLanguage ==
+                                                "ar"
+                                            ? Alignment.centerRight
+                                            : Alignment.centerLeft,
                                   ),
                                 ),
                               ),
