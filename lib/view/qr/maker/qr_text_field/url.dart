@@ -5,10 +5,10 @@ import 'package:validators/validators.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qr_maker_app/controller/icons_controller.dart';
 import 'package:qr_maker_app/controller/themes_controller.dart';
-import 'package:qr_maker_app/controller/labels_controller.dart';
 import 'package:qr_maker_app/controller/app_bar_controller.dart';
 import 'package:qr_maker_app/controller/background_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
+import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 
 class MakeUrl extends StatefulWidget {
   const MakeUrl({Key? key}) : super(key: key);
@@ -47,6 +47,55 @@ class _MakeUrlState extends State<MakeUrl> {
                     context,
                     title: AppLocalizations.of(context)!.url,
                   ),
+                  bottomNavigationBar: FloatingNavbar(
+                    borderRadius: 5,
+                    itemBorderRadius: 5,
+                    currentIndex: 1,
+                    selectedItemColor: Colors.white,
+                    unselectedItemColor: Theme.of(context).primaryColor,
+                    iconSize: isScreenWidth(context) ? 24 : 28,
+                    fontSize: isScreenWidth(context) ? 12 : 14,
+                    backgroundColor: Theme.of(context).primaryColor,
+                    selectedBackgroundColor: Theme.of(context).primaryColor,
+                    margin: const EdgeInsets.symmetric(
+                      vertical: 0,
+                      horizontal: 15,
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 0,
+                      vertical: 10,
+                    ),
+                    items: [
+                      FloatingNavbarItem(
+                        icon: Icons.build_rounded,
+                        title: AppLocalizations.of(context)!.create_qr_code,
+                      ),
+                      FloatingNavbarItem(
+                        icon: Icons.build_rounded,
+                        title: AppLocalizations.of(context)!.create_qr_code,
+                      ),
+                      FloatingNavbarItem(
+                        icon: Icons.build_rounded,
+                        title: AppLocalizations.of(context)!.create_qr_code,
+                      ),
+                    ],
+                    onTap: (int screenNumber) {
+                      if (validateKey.currentState!.validate()) {
+                        setState(
+                          () {
+                            valueQr = urlController.text.toString();
+                            Get.to(
+                              () => StyleShareSaveFavoriteQrCode(
+                                valueQr: valueQr,
+                                image: 'images/url.png',
+                                versionValueWithLogo: QrVersions.auto,
+                              ),
+                            );
+                          },
+                        );
+                      }
+                    },
+                  ),
                   body: Center(
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
@@ -54,86 +103,45 @@ class _MakeUrlState extends State<MakeUrl> {
                         key: validateKey,
                         child: Padding(
                           padding: isScreenWidth(context)
-                              ? const EdgeInsets.symmetric(horizontal: 40)
+                              ? const EdgeInsets.symmetric(horizontal: 30)
                               : const EdgeInsets.symmetric(horizontal: 130),
-                          child: Column(
-                            children: [
-                              Card(
-                                child: TextFormField(
-                                  validator: (value) {
-                                    if (!isURL(value)) {
-                                      return AppLocalizations.of(context)!
-                                          .please_enter_a_valid_link;
-                                    }
-                                    return null;
-                                  },
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  cursorWidth: 3,
-                                  controller: urlController,
-                                  keyboardType: TextInputType.url,
-                                  textInputAction: TextInputAction.next,
-                                  cursorColor: Theme.of(context).primaryColor,
-                                  style: (isScreenWidth(context))
-                                      ? Theme.of(context).textTheme.titleSmall
-                                      : Theme.of(context).textTheme.titleMedium,
-                                  decoration: InputDecoration(
-                                    hintText: AppLocalizations.of(context)!
-                                        .url_hint_text,
-                                    prefixIcon: prefixIconController(
-                                      context,
-                                      icon: Icons.link,
-                                    ),
-                                    suffixIcon: urlController.text.isEmpty
-                                        ? Container(
-                                            width: 0,
-                                          )
-                                        : IconButton(
-                                            onPressed: () =>
-                                                urlController.clear(),
-                                            icon: suffixIconController(
-                                              context,
-                                              icon: Icons.close,
-                                            ),
-                                          ),
-                                  ),
-                                ),
+                          child: TextFormField(
+                            validator: (value) {
+                              if (!isURL(value)) {
+                                return AppLocalizations.of(context)!
+                                    .please_enter_a_valid_link;
+                              }
+                              return null;
+                            },
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            cursorWidth: 3,
+                            controller: urlController,
+                            keyboardType: TextInputType.url,
+                            textInputAction: TextInputAction.next,
+                            cursorColor: Theme.of(context).primaryColor,
+                            style: (isScreenWidth(context))
+                                ? Theme.of(context).textTheme.titleSmall
+                                : Theme.of(context).textTheme.titleMedium,
+                            decoration: InputDecoration(
+                              hintText:
+                                  AppLocalizations.of(context)!.url_hint_text,
+                              prefixIcon: prefixIconController(
+                                context,
+                                icon: Icons.link,
                               ),
-                              Card(
-                                color: Colors.transparent,
-                                shadowColor: Colors.transparent,
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: ElevatedButton.icon(
-                                    onPressed: () {
-                                      if (validateKey.currentState!
-                                          .validate()) {
-                                        setState(
-                                          () {
-                                            valueQr =
-                                                urlController.text.toString();
-                                            Get.to(
-                                              () =>
-                                                  StyleShareSaveFavoriteQrCode(
-                                                valueQr: valueQr,
-                                                image: 'images/url.png',
-                                                versionValueWithLogo:
-                                                    QrVersions.auto,
-                                              ),
-                                            );
-                                          },
-                                        );
-                                      }
-                                    },
-                                    icon: iconController(
-                                      context,
-                                      icon: Icons.touch_app,
+                              suffixIcon: urlController.text.isEmpty
+                                  ? Container(
+                                      width: 0,
+                                    )
+                                  : IconButton(
+                                      onPressed: () => urlController.clear(),
+                                      icon: suffixIconController(
+                                        context,
+                                        icon: Icons.close,
+                                      ),
                                     ),
-                                    label: labelCreateQRCodeController(context),
-                                  ),
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
                         ),
                       ),
@@ -152,6 +160,55 @@ class _MakeUrlState extends State<MakeUrl> {
                     context,
                     title: AppLocalizations.of(context)!.url,
                   ),
+                  bottomNavigationBar: FloatingNavbar(
+                    borderRadius: 5,
+                    itemBorderRadius: 5,
+                    currentIndex: 1,
+                    selectedItemColor: Colors.white,
+                    unselectedItemColor: Theme.of(context).primaryColor,
+                    iconSize: isScreenWidth(context) ? 24 : 28,
+                    fontSize: isScreenWidth(context) ? 12 : 14,
+                    backgroundColor: Theme.of(context).primaryColor,
+                    selectedBackgroundColor: Theme.of(context).primaryColor,
+                    margin: const EdgeInsets.symmetric(
+                      vertical: 0,
+                      horizontal: 15,
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 0,
+                      vertical: 10,
+                    ),
+                    items: [
+                      FloatingNavbarItem(
+                        icon: Icons.build_rounded,
+                        title: AppLocalizations.of(context)!.create_qr_code,
+                      ),
+                      FloatingNavbarItem(
+                        icon: Icons.build_rounded,
+                        title: AppLocalizations.of(context)!.create_qr_code,
+                      ),
+                      FloatingNavbarItem(
+                        icon: Icons.build_rounded,
+                        title: AppLocalizations.of(context)!.create_qr_code,
+                      ),
+                    ],
+                    onTap: (int screenNumber) {
+                      if (validateKey.currentState!.validate()) {
+                        setState(
+                          () {
+                            valueQr = urlController.text.toString();
+                            Get.to(
+                              () => StyleShareSaveFavoriteQrCode(
+                                valueQr: valueQr,
+                                image: 'images/url.png',
+                                versionValueWithLogo: QrVersions.auto,
+                              ),
+                            );
+                          },
+                        );
+                      }
+                    },
+                  ),
                   body: Center(
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
@@ -159,81 +216,41 @@ class _MakeUrlState extends State<MakeUrl> {
                         key: validateKey,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 230),
-                          child: Column(
-                            children: [
-                              Card(
-                                child: TextFormField(
-                                  validator: (value) {
-                                    if (!isURL(value)) {
-                                      return AppLocalizations.of(context)!
-                                          .please_enter_a_valid_link;
-                                    }
-                                    return null;
-                                  },
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  cursorWidth: 3,
-                                  controller: urlController,
-                                  keyboardType: TextInputType.url,
-                                  textInputAction: TextInputAction.next,
-                                  cursorColor: Theme.of(context).primaryColor,
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                  decoration: InputDecoration(
-                                    hintText: AppLocalizations.of(context)!
-                                        .url_hint_text,
-                                    prefixIcon: prefixIconController(
-                                      context,
-                                      icon: Icons.link,
-                                    ),
-                                    suffixIcon: urlController.text.isEmpty
-                                        ? Container(
-                                            width: 0,
-                                          )
-                                        : IconButton(
-                                            onPressed: () =>
-                                                urlController.clear(),
-                                            icon: suffixIconController(
-                                              context,
-                                              icon: Icons.close,
-                                            ),
-                                          ),
-                                  ),
-                                ),
+                          child: TextFormField(
+                            validator: (value) {
+                              if (!isURL(value)) {
+                                return AppLocalizations.of(context)!
+                                    .please_enter_a_valid_link;
+                              }
+                              return null;
+                            },
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            cursorWidth: 3,
+                            controller: urlController,
+                            keyboardType: TextInputType.url,
+                            textInputAction: TextInputAction.next,
+                            cursorColor: Theme.of(context).primaryColor,
+                            style: Theme.of(context).textTheme.titleMedium,
+                            decoration: InputDecoration(
+                              hintText:
+                                  AppLocalizations.of(context)!.url_hint_text,
+                              prefixIcon: prefixIconController(
+                                context,
+                                icon: Icons.link,
                               ),
-                              Card(
-                                color: Colors.transparent,
-                                shadowColor: Colors.transparent,
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: ElevatedButton.icon(
-                                    onPressed: () {
-                                      if (validateKey.currentState!
-                                          .validate()) {
-                                        setState(
-                                          () {
-                                            valueQr =
-                                                urlController.text.toString();
-                                            Get.to(() =>
-                                                StyleShareSaveFavoriteQrCode(
-                                                  valueQr: valueQr,
-                                                  image: 'images/url.png',
-                                                  versionValueWithLogo:
-                                                      QrVersions.auto,
-                                                ));
-                                          },
-                                        );
-                                      }
-                                    },
-                                    icon: iconController(
-                                      context,
-                                      icon: Icons.touch_app,
+                              suffixIcon: urlController.text.isEmpty
+                                  ? Container(
+                                      width: 0,
+                                    )
+                                  : IconButton(
+                                      onPressed: () => urlController.clear(),
+                                      icon: suffixIconController(
+                                        context,
+                                        icon: Icons.close,
+                                      ),
                                     ),
-                                    label: labelCreateQRCodeController(context),
-                                  ),
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
                         ),
                       ),

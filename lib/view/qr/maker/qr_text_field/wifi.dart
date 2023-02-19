@@ -8,6 +8,7 @@ import 'package:qr_maker_app/controller/labels_controller.dart';
 import 'package:qr_maker_app/controller/app_bar_controller.dart';
 import 'package:qr_maker_app/controller/background_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
+import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 
 class MakeWifi extends StatefulWidget {
   const MakeWifi({Key? key}) : super(key: key);
@@ -49,6 +50,54 @@ class _MakeWifiState extends State<MakeWifi> {
                     context,
                     title: AppLocalizations.of(context)!.wifi,
                   ),
+                  bottomNavigationBar: FloatingNavbar(
+                    borderRadius: 5,
+                    itemBorderRadius: 5,
+                    currentIndex: 1,
+                    selectedItemColor: Colors.white,
+                    unselectedItemColor: Theme.of(context).primaryColor,
+                    iconSize: isScreenWidth(context) ? 24 : 28,
+                    fontSize: isScreenWidth(context) ? 12 : 14,
+                    backgroundColor: Theme.of(context).primaryColor,
+                    selectedBackgroundColor: Theme.of(context).primaryColor,
+                    margin: const EdgeInsets.symmetric(
+                      vertical: 0,
+                      horizontal: 15,
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 0,
+                      vertical: 10,
+                    ),
+                    items: [
+                      FloatingNavbarItem(
+                        icon: Icons.build_rounded,
+                        title: AppLocalizations.of(context)!.create_qr_code,
+                      ),
+                      FloatingNavbarItem(
+                        icon: Icons.build_rounded,
+                        title: AppLocalizations.of(context)!.create_qr_code,
+                      ),
+                      FloatingNavbarItem(
+                        icon: Icons.build_rounded,
+                        title: AppLocalizations.of(context)!.create_qr_code,
+                      ),
+                    ],
+                    onTap: (int screenNumber) {
+                      if (validateKey.currentState!.validate()) {
+                        setState(
+                          () {
+                            valueQr =
+                                'WIFI:S:${nameNetController.text};T:$dropValue;P:${passNetController.text};H:False;;';
+                            Get.to(() => StyleShareSaveFavoriteQrCode(
+                                  valueQr: valueQr,
+                                  image: 'images/wifi.png',
+                                  versionValueWithLogo: 6,
+                                ));
+                          },
+                        );
+                      }
+                    },
+                  ),
                   body: Center(
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
@@ -56,100 +105,95 @@ class _MakeWifiState extends State<MakeWifi> {
                         key: validateKey,
                         child: Padding(
                           padding: isScreenWidth(context)
-                              ? const EdgeInsets.symmetric(horizontal: 40)
+                              ? const EdgeInsets.symmetric(horizontal: 30)
                               : const EdgeInsets.symmetric(horizontal: 130),
                           child: Column(
                             children: [
-                              Card(
-                                child: TextFormField(
-                                  validator: (value) {
-                                    if (isNull(value)) {
-                                      return AppLocalizations.of(context)!
-                                          .please_enter_a_wifi_name;
-                                    }
-                                    return null;
-                                  },
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  cursorWidth: 3,
-                                  controller: nameNetController,
-                                  keyboardType: TextInputType.text,
-                                  textInputAction: TextInputAction.next,
-                                  cursorColor: Theme.of(context).primaryColor,
-                                  style: (isScreenWidth(context))
-                                      ? Theme.of(context).textTheme.titleSmall
-                                      : Theme.of(context).textTheme.titleMedium,
-                                  decoration: InputDecoration(
-                                    hintText:
-                                        AppLocalizations.of(context)!.wifi_name,
-                                    prefixIcon: prefixIconController(
-                                      context,
-                                      icon: Icons.wifi,
-                                    ),
-                                    suffixIcon: nameNetController.text.isEmpty
-                                        ? Container(
-                                            width: 0,
-                                          )
-                                        : IconButton(
-                                            onPressed: () =>
-                                                nameNetController.clear(),
-                                            icon: suffixIconController(
-                                              context,
-                                              icon: Icons.close,
-                                            ),
-                                          ),
+                              TextFormField(
+                                validator: (value) {
+                                  if (isNull(value)) {
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_a_wifi_name;
+                                  }
+                                  return null;
+                                },
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                cursorWidth: 3,
+                                controller: nameNetController,
+                                keyboardType: TextInputType.text,
+                                textInputAction: TextInputAction.next,
+                                cursorColor: Theme.of(context).primaryColor,
+                                style: (isScreenWidth(context))
+                                    ? Theme.of(context).textTheme.titleSmall
+                                    : Theme.of(context).textTheme.titleMedium,
+                                decoration: InputDecoration(
+                                  hintText:
+                                      AppLocalizations.of(context)!.wifi_name,
+                                  prefixIcon: prefixIconController(
+                                    context,
+                                    icon: Icons.wifi,
                                   ),
+                                  suffixIcon: nameNetController.text.isEmpty
+                                      ? Container(
+                                          width: 0,
+                                        )
+                                      : IconButton(
+                                          onPressed: () =>
+                                              nameNetController.clear(),
+                                          icon: suffixIconController(
+                                            context,
+                                            icon: Icons.close,
+                                          ),
+                                        ),
                                 ),
                               ),
-                              Card(
-                                child: TextFormField(
-                                  validator: (value) {
-                                    if (isNull(value)) {
-                                      return AppLocalizations.of(context)!
-                                          .please_enter_a_wifi_password;
-                                    }
-                                    return null;
-                                  },
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  cursorWidth: 3,
-                                  controller: passNetController,
-                                  textInputAction: TextInputAction.next,
-                                  keyboardType: TextInputType.visiblePassword,
-                                  cursorColor: Theme.of(context).primaryColor,
-                                  style: (isScreenWidth(context))
-                                      ? Theme.of(context).textTheme.titleSmall
-                                      : Theme.of(context).textTheme.titleMedium,
-                                  decoration: InputDecoration(
-                                    hintText: AppLocalizations.of(context)!
-                                        .wifi_password,
-                                    prefixIcon: prefixIconController(
-                                      context,
-                                      icon: Icons.wifi_password,
-                                    ),
-                                    suffixIcon: passNetController.text.isEmpty
-                                        ? Container(
-                                            width: 0,
-                                          )
-                                        : IconButton(
-                                            onPressed: () =>
-                                                passNetController.clear(),
-                                            icon: suffixIconController(
-                                              context,
-                                              icon: Icons.close,
-                                            ),
-                                          ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              TextFormField(
+                                validator: (value) {
+                                  if (isNull(value)) {
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_a_wifi_password;
+                                  }
+                                  return null;
+                                },
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                cursorWidth: 3,
+                                controller: passNetController,
+                                textInputAction: TextInputAction.next,
+                                keyboardType: TextInputType.visiblePassword,
+                                cursorColor: Theme.of(context).primaryColor,
+                                style: (isScreenWidth(context))
+                                    ? Theme.of(context).textTheme.titleSmall
+                                    : Theme.of(context).textTheme.titleMedium,
+                                decoration: InputDecoration(
+                                  hintText: AppLocalizations.of(context)!
+                                      .wifi_password,
+                                  prefixIcon: prefixIconController(
+                                    context,
+                                    icon: Icons.wifi_password,
                                   ),
+                                  suffixIcon: passNetController.text.isEmpty
+                                      ? Container(
+                                          width: 0,
+                                        )
+                                      : IconButton(
+                                          onPressed: () =>
+                                              passNetController.clear(),
+                                          icon: suffixIconController(
+                                            context,
+                                            icon: Icons.close,
+                                          ),
+                                        ),
                                 ),
                               ),
+                              const SizedBox(
+                                height: 20,
+                              ),
                               Card(
-                                shape: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Theme.of(context).primaryColor,
-                                    width: 3,
-                                  ),
-                                ),
-                                color: Theme.of(context).primaryColor,
                                 child: Padding(
                                   padding: EdgeInsets.only(
                                     left: isScreenWidth(context) ? 10 : 20,
@@ -199,37 +243,6 @@ class _MakeWifiState extends State<MakeWifi> {
                                   ),
                                 ),
                               ),
-                              Card(
-                                color: Colors.transparent,
-                                shadowColor: Colors.transparent,
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: ElevatedButton.icon(
-                                    onPressed: () {
-                                      if (validateKey.currentState!
-                                          .validate()) {
-                                        setState(
-                                          () {
-                                            valueQr =
-                                                'WIFI:S:${nameNetController.text};T:$dropValue;P:${passNetController.text};H:False;;';
-                                            Get.to(() =>
-                                                StyleShareSaveFavoriteQrCode(
-                                                  valueQr: valueQr,
-                                                  image: 'images/wifi.png',
-                                                  versionValueWithLogo: 6,
-                                                ));
-                                          },
-                                        );
-                                      }
-                                    },
-                                    icon: iconController(
-                                      context,
-                                      icon: Icons.touch_app,
-                                    ),
-                                    label: labelCreateQRCodeController(context),
-                                  ),
-                                ),
-                              ),
                             ],
                           ),
                         ),
@@ -249,6 +262,54 @@ class _MakeWifiState extends State<MakeWifi> {
                     context,
                     title: AppLocalizations.of(context)!.wifi,
                   ),
+                  bottomNavigationBar: FloatingNavbar(
+                    borderRadius: 5,
+                    itemBorderRadius: 5,
+                    currentIndex: 1,
+                    selectedItemColor: Colors.white,
+                    unselectedItemColor: Theme.of(context).primaryColor,
+                    iconSize: isScreenWidth(context) ? 24 : 28,
+                    fontSize: isScreenWidth(context) ? 12 : 14,
+                    backgroundColor: Theme.of(context).primaryColor,
+                    selectedBackgroundColor: Theme.of(context).primaryColor,
+                    margin: const EdgeInsets.symmetric(
+                      vertical: 0,
+                      horizontal: 15,
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 0,
+                      vertical: 10,
+                    ),
+                    items: [
+                      FloatingNavbarItem(
+                        icon: Icons.build_rounded,
+                        title: AppLocalizations.of(context)!.create_qr_code,
+                      ),
+                      FloatingNavbarItem(
+                        icon: Icons.build_rounded,
+                        title: AppLocalizations.of(context)!.create_qr_code,
+                      ),
+                      FloatingNavbarItem(
+                        icon: Icons.build_rounded,
+                        title: AppLocalizations.of(context)!.create_qr_code,
+                      ),
+                    ],
+                    onTap: (int screenNumber) {
+                      if (validateKey.currentState!.validate()) {
+                        setState(
+                          () {
+                            valueQr =
+                                'WIFI:S:${nameNetController.text};T:$dropValue;P:${passNetController.text};H:False;;';
+                            Get.to(() => StyleShareSaveFavoriteQrCode(
+                                  valueQr: valueQr,
+                                  image: 'images/wifi.png',
+                                  versionValueWithLogo: 6,
+                                ));
+                          },
+                        );
+                      }
+                    },
+                  ),
                   body: Center(
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
@@ -258,85 +319,85 @@ class _MakeWifiState extends State<MakeWifi> {
                           padding: const EdgeInsets.symmetric(horizontal: 230),
                           child: Column(
                             children: [
-                              Card(
-                                child: TextFormField(
-                                  validator: (value) {
-                                    if (isNull(value)) {
-                                      return AppLocalizations.of(context)!
-                                          .please_enter_a_wifi_name;
-                                    }
-                                    return null;
-                                  },
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  cursorWidth: 3,
-                                  controller: nameNetController,
-                                  keyboardType: TextInputType.text,
-                                  textInputAction: TextInputAction.next,
-                                  cursorColor: Theme.of(context).primaryColor,
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                  decoration: InputDecoration(
-                                    hintText:
-                                        AppLocalizations.of(context)!.wifi_name,
-                                    prefixIcon: prefixIconController(
-                                      context,
-                                      icon: Icons.wifi,
-                                    ),
-                                    suffixIcon: nameNetController.text.isEmpty
-                                        ? Container(
-                                            width: 0,
-                                          )
-                                        : IconButton(
-                                            onPressed: () =>
-                                                nameNetController.clear(),
-                                            icon: suffixIconController(
-                                              context,
-                                              icon: Icons.close,
-                                            ),
-                                          ),
+                              TextFormField(
+                                validator: (value) {
+                                  if (isNull(value)) {
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_a_wifi_name;
+                                  }
+                                  return null;
+                                },
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                cursorWidth: 3,
+                                controller: nameNetController,
+                                keyboardType: TextInputType.text,
+                                textInputAction: TextInputAction.next,
+                                cursorColor: Theme.of(context).primaryColor,
+                                style: Theme.of(context).textTheme.titleMedium,
+                                decoration: InputDecoration(
+                                  hintText:
+                                      AppLocalizations.of(context)!.wifi_name,
+                                  prefixIcon: prefixIconController(
+                                    context,
+                                    icon: Icons.wifi,
                                   ),
+                                  suffixIcon: nameNetController.text.isEmpty
+                                      ? Container(
+                                          width: 0,
+                                        )
+                                      : IconButton(
+                                          onPressed: () =>
+                                              nameNetController.clear(),
+                                          icon: suffixIconController(
+                                            context,
+                                            icon: Icons.close,
+                                          ),
+                                        ),
                                 ),
                               ),
-                              Card(
-                                child: TextFormField(
-                                  validator: (value) {
-                                    if (isNull(value)) {
-                                      return AppLocalizations.of(context)!
-                                          .please_enter_a_wifi_password;
-                                    }
-                                    return null;
-                                  },
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  cursorWidth: 3,
-                                  controller: passNetController,
-                                  textInputAction: TextInputAction.next,
-                                  keyboardType: TextInputType.visiblePassword,
-                                  cursorColor: Theme.of(context).primaryColor,
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                  decoration: InputDecoration(
-                                    hintText: AppLocalizations.of(context)!
-                                        .wifi_password,
-                                    prefixIcon: prefixIconController(
-                                      context,
-                                      icon: Icons.wifi_password,
-                                    ),
-                                    suffixIcon: passNetController.text.isEmpty
-                                        ? Container(
-                                            width: 0,
-                                          )
-                                        : IconButton(
-                                            onPressed: () =>
-                                                passNetController.clear(),
-                                            icon: suffixIconController(
-                                              context,
-                                              icon: Icons.close,
-                                            ),
-                                          ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              TextFormField(
+                                validator: (value) {
+                                  if (isNull(value)) {
+                                    return AppLocalizations.of(context)!
+                                        .please_enter_a_wifi_password;
+                                  }
+                                  return null;
+                                },
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                cursorWidth: 3,
+                                controller: passNetController,
+                                textInputAction: TextInputAction.next,
+                                keyboardType: TextInputType.visiblePassword,
+                                cursorColor: Theme.of(context).primaryColor,
+                                style: Theme.of(context).textTheme.titleMedium,
+                                decoration: InputDecoration(
+                                  hintText: AppLocalizations.of(context)!
+                                      .wifi_password,
+                                  prefixIcon: prefixIconController(
+                                    context,
+                                    icon: Icons.wifi_password,
                                   ),
+                                  suffixIcon: passNetController.text.isEmpty
+                                      ? Container(
+                                          width: 0,
+                                        )
+                                      : IconButton(
+                                          onPressed: () =>
+                                              passNetController.clear(),
+                                          icon: suffixIconController(
+                                            context,
+                                            icon: Icons.close,
+                                          ),
+                                        ),
                                 ),
+                              ),
+                              const SizedBox(
+                                height: 20,
                               ),
                               Card(
                                 shape: OutlineInputBorder(
@@ -387,37 +448,6 @@ class _MakeWifiState extends State<MakeWifi> {
                                     dropdownColor:
                                         Theme.of(context).primaryColor,
                                     borderRadius: BorderRadius.circular(5),
-                                  ),
-                                ),
-                              ),
-                              Card(
-                                color: Colors.transparent,
-                                shadowColor: Colors.transparent,
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: ElevatedButton.icon(
-                                    onPressed: () {
-                                      if (validateKey.currentState!
-                                          .validate()) {
-                                        setState(
-                                          () {
-                                            valueQr =
-                                                'WIFI:S:${nameNetController.text};T:$dropValue;P:${passNetController.text};H:False;;';
-                                            Get.to(() =>
-                                                StyleShareSaveFavoriteQrCode(
-                                                  valueQr: valueQr,
-                                                  image: 'images/wifi.png',
-                                                  versionValueWithLogo: 6,
-                                                ));
-                                          },
-                                        );
-                                      }
-                                    },
-                                    icon: iconController(
-                                      context,
-                                      icon: Icons.touch_app,
-                                    ),
-                                    label: labelCreateQRCodeController(context),
                                   ),
                                 ),
                               ),

@@ -8,6 +8,7 @@ import 'package:qr_maker_app/controller/themes_controller.dart';
 import 'package:qr_maker_app/controller/app_bar_controller.dart';
 import 'package:qr_maker_app/controller/background_controller.dart';
 import 'package:qr_maker_app/view/qr/maker/style_share_save_favorite_qr_code.dart';
+import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 
 class MakeFacebook extends StatefulWidget {
   const MakeFacebook({Key? key}) : super(key: key);
@@ -46,6 +47,53 @@ class _MakeFacebookState extends State<MakeFacebook> {
                     context,
                     title: AppLocalizations.of(context)!.facebook,
                   ),
+                  bottomNavigationBar: FloatingNavbar(
+                    borderRadius: 5,
+                    itemBorderRadius: 5,
+                    currentIndex: 1,
+                    selectedItemColor: Colors.white,
+                    unselectedItemColor: Theme.of(context).primaryColor,
+                    iconSize: isScreenWidth(context) ? 24 : 28,
+                    fontSize: isScreenWidth(context) ? 12 : 14,
+                    backgroundColor: Theme.of(context).primaryColor,
+                    selectedBackgroundColor: Theme.of(context).primaryColor,
+                    margin: const EdgeInsets.symmetric(
+                      vertical: 0,
+                      horizontal: 15,
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 0,
+                      vertical: 10,
+                    ),
+                    items: [
+                      FloatingNavbarItem(
+                        icon: Icons.build_rounded,
+                        title: AppLocalizations.of(context)!.create_qr_code,
+                      ),
+                      FloatingNavbarItem(
+                        icon: Icons.build_rounded,
+                        title: AppLocalizations.of(context)!.create_qr_code,
+                      ),
+                      FloatingNavbarItem(
+                        icon: Icons.build_rounded,
+                        title: AppLocalizations.of(context)!.create_qr_code,
+                      ),
+                    ],
+                    onTap: (int screenNumber) {
+                      if (validateKey.currentState!.validate()) {
+                        setState(
+                          () {
+                            valueQr = facebookController.text.toString();
+                            Get.to(() => StyleShareSaveFavoriteQrCode(
+                                  valueQr: valueQr,
+                                  image: 'images/facebook.png',
+                                  versionValueWithLogo: 6,
+                                ));
+                          },
+                        );
+                      }
+                    },
+                  ),
                   body: Center(
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
@@ -53,83 +101,46 @@ class _MakeFacebookState extends State<MakeFacebook> {
                         key: validateKey,
                         child: Padding(
                           padding: isScreenWidth(context)
-                              ? const EdgeInsets.symmetric(horizontal: 40)
+                              ? const EdgeInsets.symmetric(horizontal: 30)
                               : const EdgeInsets.symmetric(horizontal: 130),
-                          child: Column(
-                            children: [
-                              Card(
-                                child: TextFormField(
-                                  validator: (value) {
-                                    if (!isURL(value)) {
-                                      return AppLocalizations.of(context)!
-                                          .please_enter_a_valid_link;
-                                    }
-                                    return null;
-                                  },
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  cursorWidth: 3,
-                                  controller: facebookController,
-                                  keyboardType: TextInputType.url,
-                                  textInputAction: TextInputAction.next,
-                                  cursorColor: Theme.of(context).primaryColor,
-                                  style: (isScreenWidth(context))
-                                      ? Theme.of(context).textTheme.titleSmall
-                                      : Theme.of(context).textTheme.titleMedium,
-                                  decoration: InputDecoration(
-                                    hintText: AppLocalizations.of(context)!
-                                        .facebook_hint_text,
-                                    prefixIcon: prefixIconController(
-                                      context,
-                                      icon: Icons.facebook,
-                                    ),
-                                    suffixIcon: facebookController.text.isEmpty
-                                        ? Container(
-                                            width: 0,
-                                          )
-                                        : IconButton(
-                                            onPressed: () =>
-                                                facebookController.clear(),
-                                            icon: suffixIconController(
-                                              context,
-                                              icon: Icons.close,
-                                            ),
-                                          ),
-                                  ),
-                                ),
+                          child: TextFormField(
+                            validator: (value) {
+                              if (!isURL(value)) {
+                                return AppLocalizations.of(context)!
+                                    .please_enter_a_valid_link;
+                              }
+                              return null;
+                            },
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            cursorWidth: 3,
+                            controller: facebookController,
+                            keyboardType: TextInputType.url,
+                            textInputAction: TextInputAction.next,
+                            cursorColor: Theme.of(context).primaryColor,
+                            style: (isScreenWidth(context))
+                                ? Theme.of(context).textTheme.titleSmall
+                                : Theme.of(context).textTheme.titleMedium,
+                            decoration: InputDecoration(
+                              hintText: AppLocalizations.of(context)!
+                                  .facebook_hint_text,
+                              prefixIcon: prefixIconController(
+                                context,
+                                icon: Icons.facebook,
                               ),
-                              Card(
-                                color: Colors.transparent,
-                                shadowColor: Colors.transparent,
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: ElevatedButton.icon(
-                                    onPressed: () {
-                                      if (validateKey.currentState!
-                                          .validate()) {
-                                        setState(
-                                          () {
-                                            valueQr = facebookController.text
-                                                .toString();
-                                            Get.to(() =>
-                                                StyleShareSaveFavoriteQrCode(
-                                                  valueQr: valueQr,
-                                                  image: 'images/facebook.png',
-                                                  versionValueWithLogo: 6,
-                                                ));
-                                          },
-                                        );
-                                      }
-                                    },
-                                    icon: iconController(
-                                      context,
-                                      icon: Icons.touch_app,
+                              suffixIcon: facebookController.text.isEmpty
+                                  ? Container(
+                                      width: 0,
+                                    )
+                                  : IconButton(
+                                      onPressed: () =>
+                                          facebookController.clear(),
+                                      icon: suffixIconController(
+                                        context,
+                                        icon: Icons.close,
+                                      ),
                                     ),
-                                    label: labelCreateQRCodeController(context),
-                                  ),
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
                         ),
                       ),
@@ -148,6 +159,53 @@ class _MakeFacebookState extends State<MakeFacebook> {
                     context,
                     title: AppLocalizations.of(context)!.facebook,
                   ),
+                  bottomNavigationBar: FloatingNavbar(
+                    borderRadius: 5,
+                    itemBorderRadius: 5,
+                    currentIndex: 1,
+                    selectedItemColor: Colors.white,
+                    unselectedItemColor: Theme.of(context).primaryColor,
+                    iconSize: isScreenWidth(context) ? 24 : 28,
+                    fontSize: isScreenWidth(context) ? 12 : 14,
+                    backgroundColor: Theme.of(context).primaryColor,
+                    selectedBackgroundColor: Theme.of(context).primaryColor,
+                    margin: const EdgeInsets.symmetric(
+                      vertical: 0,
+                      horizontal: 15,
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 0,
+                      vertical: 10,
+                    ),
+                    items: [
+                      FloatingNavbarItem(
+                        icon: Icons.build_rounded,
+                        title: AppLocalizations.of(context)!.create_qr_code,
+                      ),
+                      FloatingNavbarItem(
+                        icon: Icons.build_rounded,
+                        title: AppLocalizations.of(context)!.create_qr_code,
+                      ),
+                      FloatingNavbarItem(
+                        icon: Icons.build_rounded,
+                        title: AppLocalizations.of(context)!.create_qr_code,
+                      ),
+                    ],
+                    onTap: (int screenNumber) {
+                      if (validateKey.currentState!.validate()) {
+                        setState(
+                          () {
+                            valueQr = facebookController.text.toString();
+                            Get.to(() => StyleShareSaveFavoriteQrCode(
+                                  valueQr: valueQr,
+                                  image: 'images/facebook.png',
+                                  versionValueWithLogo: 6,
+                                ));
+                          },
+                        );
+                      }
+                    },
+                  ),
                   body: Center(
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
@@ -155,80 +213,42 @@ class _MakeFacebookState extends State<MakeFacebook> {
                         key: validateKey,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 230),
-                          child: Column(
-                            children: [
-                              Card(
-                                child: TextFormField(
-                                  validator: (value) {
-                                    if (!isURL(value)) {
-                                      return AppLocalizations.of(context)!
-                                          .please_enter_a_valid_link;
-                                    }
-                                    return null;
-                                  },
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  cursorWidth: 3,
-                                  controller: facebookController,
-                                  keyboardType: TextInputType.url,
-                                  textInputAction: TextInputAction.next,
-                                  cursorColor: Theme.of(context).primaryColor,
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                  decoration: InputDecoration(
-                                    hintText: AppLocalizations.of(context)!
-                                        .facebook_hint_text,
-                                    prefixIcon: prefixIconController(
-                                      context,
-                                      icon: Icons.facebook,
-                                    ),
-                                    suffixIcon: facebookController.text.isEmpty
-                                        ? Container(
-                                            width: 0,
-                                          )
-                                        : IconButton(
-                                            onPressed: () =>
-                                                facebookController.clear(),
-                                            icon: suffixIconController(
-                                              context,
-                                              icon: Icons.close,
-                                            ),
-                                          ),
-                                  ),
-                                ),
+                          child: TextFormField(
+                            validator: (value) {
+                              if (!isURL(value)) {
+                                return AppLocalizations.of(context)!
+                                    .please_enter_a_valid_link;
+                              }
+                              return null;
+                            },
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            cursorWidth: 3,
+                            controller: facebookController,
+                            keyboardType: TextInputType.url,
+                            textInputAction: TextInputAction.next,
+                            cursorColor: Theme.of(context).primaryColor,
+                            style: Theme.of(context).textTheme.titleMedium,
+                            decoration: InputDecoration(
+                              hintText: AppLocalizations.of(context)!
+                                  .facebook_hint_text,
+                              prefixIcon: prefixIconController(
+                                context,
+                                icon: Icons.facebook,
                               ),
-                              Card(
-                                color: Colors.transparent,
-                                shadowColor: Colors.transparent,
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: ElevatedButton.icon(
-                                    onPressed: () {
-                                      if (validateKey.currentState!
-                                          .validate()) {
-                                        setState(
-                                          () {
-                                            valueQr = facebookController.text
-                                                .toString();
-                                            Get.to(() =>
-                                                StyleShareSaveFavoriteQrCode(
-                                                  valueQr: valueQr,
-                                                  image: 'images/facebook.png',
-                                                  versionValueWithLogo: 6,
-                                                ));
-                                          },
-                                        );
-                                      }
-                                    },
-                                    icon: iconController(
-                                      context,
-                                      icon: Icons.touch_app,
+                              suffixIcon: facebookController.text.isEmpty
+                                  ? Container(
+                                      width: 0,
+                                    )
+                                  : IconButton(
+                                      onPressed: () =>
+                                          facebookController.clear(),
+                                      icon: suffixIconController(
+                                        context,
+                                        icon: Icons.close,
+                                      ),
                                     ),
-                                    label: labelCreateQRCodeController(context),
-                                  ),
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
                         ),
                       ),
