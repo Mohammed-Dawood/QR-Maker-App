@@ -490,6 +490,21 @@
         "description": "Data button"
     },
 
+    "background": "Background",
+    "@background": {
+        "description": "Background button"
+    },
+
+    "colors": "Colors",
+    "@colors": {
+        "description": "Colors button"
+    },
+
+    "design": "Design",
+    "@design": {
+        "description": "Design button"
+    },
+
     "logo": "Logo",
     "@logo": {
         "description": "Logo button"
@@ -513,21 +528,6 @@
     "logo_size": "Logo Size",
     "@logo_size": {
         "description": "Logo Size button"
-    },
-
-    "eyes_color": "Eyes Color",
-    "@eyes_color": {
-        "description": "Eyes Color button"
-    },
-
-    "data_color": "Data Color",
-    "@data_color": {
-        "description": "data Color button"
-    },
-
-    "bg_color": "BG Color",
-    "@bg_color": {
-        "description": "BG Color button"
     },
 
     "rate_app_title": "Rate this app",
